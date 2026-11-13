@@ -1,0 +1,21 @@
+{
+  "id": "banknotes",
+  "eruditionRequired": 5,
+  "price": 12,
+  "name": "Banknotes",
+  "description": "Worn paper currency, folded from years of use.",
+  "rarity": "common",
+  "quality": 2,
+  "category": "Valuable",
+  "icon": {
+    "x": 875,
+    "y": 450,
+    "width": 165,
+    "height": 130
+  },
+  "scale": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "barter": 3
+  }
+}

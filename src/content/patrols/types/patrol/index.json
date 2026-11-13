@@ -1,0 +1,63 @@
+{
+  "name": "Militia",
+  "kind": "human",
+  "combat": {
+    "detectionRadius": 520,
+    "hitFlashMs": 180,
+    "chaseStopRatio": 0.8,
+    "health": 200,
+    "meleeDamage": 40,
+    "meleeRange": 60,
+    "attackCooldownMs": 1000,
+    "reactionDelayMs": 600,
+    "deathHoldMs": 500,
+    "chaseSpeed": 320,
+    "levelTolerance": 20,
+    "ranged": {
+      "damage": 30,
+      "range": 520,
+      "heightTolerance": 120
+    }
+  },
+  "sourceKey": "patrol-source",
+  "textureKey": "patrol",
+  "path": "assets/characters/npc/patrol.png?v=2e2edc51",
+  "referenceWidth": 2172,
+  "background": "dark",
+  "backgroundThreshold": 24,
+  "backgroundMinGreenRed": 0,
+  "keepLargestComponent": true,
+  "displayHeight": 100,
+  "frameSize": {
+    "width": 224,
+    "height": 240,
+    "referenceHeight": 184
+  },
+  "scale": 1,
+  "depth": 6.5,
+  "interactionRadius": 65,
+  "movement": {
+    "speed": 55,
+    "minWalkMs": 1800,
+    "maxWalkMs": 6500,
+    "minPauseMs": 900,
+    "maxPauseMs": 2600
+  },
+  "corpseLoot": [
+    {
+      "min": 0,
+      "max": 1,
+      "itemId": "red-cigarettes"
+    },
+    {
+      "min": 0,
+      "max": 2,
+      "itemId": "pistol-ammunition"
+    },
+    {
+      "min": 0,
+      "max": 2,
+      "itemId": "bandage"
+    }
+  ]
+}

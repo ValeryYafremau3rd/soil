@@ -1,0 +1,70 @@
+{
+  "key": "fly-death",
+  "steps": [
+    {
+      "x": 190,
+      "y": 558,
+      "width": 170,
+      "height": 166,
+      "anchorX": 85,
+      "anchorY": 160
+    },
+    {
+      "x": 426,
+      "y": 558,
+      "width": 172,
+      "height": 166,
+      "anchorX": 86,
+      "anchorY": 160
+    },
+    {
+      "x": 650,
+      "y": 558,
+      "width": 216,
+      "height": 166,
+      "anchorX": 108,
+      "anchorY": 160
+    },
+    {
+      "x": 890,
+      "y": 558,
+      "width": 222,
+      "height": 166,
+      "anchorX": 111,
+      "anchorY": 160
+    },
+    {
+      "x": 1120,
+      "y": 558,
+      "width": 250,
+      "height": 166,
+      "anchorX": 125,
+      "anchorY": 160
+    },
+    {
+      "x": 1390,
+      "y": 558,
+      "width": 252,
+      "height": 166,
+      "anchorX": 126,
+      "anchorY": 160
+    },
+    {
+      "x": 1650,
+      "y": 558,
+      "width": 250,
+      "height": 166,
+      "anchorX": 125,
+      "anchorY": 160
+    },
+    {
+      "x": 1890,
+      "y": 558,
+      "width": 280,
+      "height": 166,
+      "anchorX": 140,
+      "anchorY": 160
+    }
+  ],
+  "frameRate": 10
+}

@@ -1,0 +1,81 @@
+[
+  {
+    "id": "factory-toolbox",
+    "type": "toolbox",
+    "x": 683.5238095238,
+    "floor": 0,
+    "items": [
+      {
+        "itemId": "athletics-training-magazine",
+        "quantity": 1
+      },
+      {
+        "itemId": "crowbar",
+        "quantity": 1
+      },
+      {
+        "itemId": "work-gloves",
+        "quantity": 1
+      }
+    ],
+    "scale": 0.5714285714,
+    "locked": true,
+    "restock": false
+  },
+  {
+    "type": "smuggler-crate",
+    "scale": 0.6666666667,
+    "locked": false,
+    "id": "smuggler-factory-crate",
+    "x": 1569.2380952381,
+    "quality": 5,
+    "items": [],
+    "restock": false,
+    "floor": 0
+  },
+  {
+    "id": "factory-workshop-safe",
+    "type": "safe",
+    "x": 1902.5714285714,
+    "scale": 0.8571428571,
+    "locked": true,
+    "items": [
+      {
+        "itemId": "charisma-training-pocket-guide",
+        "quantity": 1
+      },
+      {
+        "itemId": "frying-pan",
+        "quantity": 1
+      },
+      {
+        "itemId": "atomic-physics",
+        "quantity": 1
+      }
+    ],
+    "floor": 0,
+    "restock": false
+  },
+  {
+    "id": "factory-daily-supplies",
+    "type": "crate",
+    "x": 854.9523809524,
+    "scale": 0.5714285714,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "lockpick",
+        "quantity": 1
+      },
+      {
+        "itemId": "duct-tape",
+        "quantity": 1
+      },
+      {
+        "itemId": "batteries",
+        "quantity": 1
+      }
+    ],
+    "floor": 0
+  }
+]

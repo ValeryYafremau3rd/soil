@@ -1,0 +1,46 @@
+{
+  "name": "Octopus",
+  "kind": "monster",
+  "combat": {
+    "attackCooldownMs": 1400,
+    "levelTolerance": 24,
+    "chaseSpeed": 95,
+    "meleeRange": 95,
+    "chaseStopRatio": 0.8,
+    "hitFlashMs": 180,
+    "detectionRadius": 480,
+    "health": 320,
+    "deathHoldMs": 700,
+    "fear": {
+      "radius": 500,
+      "sanityPerSecond": 2,
+      "noticeSanityDamage": 6
+    },
+    "meleeDamage": 36,
+    "reactionDelayMs": 900
+  },
+  "sourceKey": "octopus-source",
+  "textureKey": "octopus",
+  "path": "assets/characters/patrol/octopus.png",
+  "referenceWidth": 2048,
+  "background": "dark",
+  "backgroundThreshold": 24,
+  "backgroundMinGreenRed": 0,
+  "keepLargestComponent": true,
+  "displayHeight": 110,
+  "frameSize": {
+    "referenceHeight": 155,
+    "width": 280,
+    "height": 180
+  },
+  "scale": 0.5,
+  "depth": 6.5,
+  "interactionRadius": 65,
+  "movement": {
+    "minWalkMs": 1200,
+    "minPauseMs": 800,
+    "speed": 28,
+    "maxPauseMs": 1500,
+    "maxWalkMs": 2400
+  }
+}

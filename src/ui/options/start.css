@@ -1,0 +1,6 @@
+.start-menu { width: min(420px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 36px; border: 1px solid #69717d; border-radius: 6px; background: #1e242c; color: #edf0f4; text-align: center; overflow: auto; }
+.start-menu::backdrop { background: #0d101ae6; }
+.start-menu h1 { margin: 0 0 28px; font-size: 28px; }
+.start-menu-actions { display: grid; gap: 12px; }
+.start-menu-actions .ui-button { width: 100%; min-height: 44px; }
+.start-menu .game-messages { position: static; transform: none; width: auto; max-width: none; margin-top: 20px; }

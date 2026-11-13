@@ -1,0 +1,46 @@
+{
+  "name": "Apartment 51",
+  "sprite": {
+    "key": "room-house-51",
+    "path": "assets/buildings/house_rooms.png",
+    "background": "none",
+    "referenceWidth": 1536,
+    "crop": {
+      "x": 192,
+      "y": 196,
+      "width": 360,
+      "height": 151
+    }
+  },
+  "widthScale": 1.1,
+  "groundY": 151,
+  "bounds": {
+    "left": 8,
+    "right": 392,
+    "ceiling": 0
+  },
+  "containers": [
+    {
+      "id": "developer-container",
+      "type": "developer-crate",
+      "x": 130,
+      "scale": 0.7,
+      "locked": false,
+      "developerStock": true
+    }
+  ],
+  "furniture": [
+    {
+      "id": "chair",
+      "type": "armchair-padded",
+      "x": 198,
+      "scale": 1
+    },
+    {
+      "id": "sofa",
+      "type": "sofa-green",
+      "x": 302.5,
+      "scale": 1
+    }
+  ]
+}

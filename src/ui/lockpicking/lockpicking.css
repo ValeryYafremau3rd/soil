@@ -1,0 +1,111 @@
+.ui-modal.lock-modal {
+  height: auto;
+  width: min(1000px, calc(100vw - 24px), calc((100dvh - var(--hud-bottom-height) - 40px) * 1.9643));
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+  color: #772608;
+  container-type: inline-size;
+}
+.lock-modal .ui-panel {
+  height: auto;
+  overflow: visible;
+  position: relative;
+  padding: 0;
+  aspect-ratio: 1760 / 896;
+  background: url('/assets/ui/lock.png') center / 100% 100% no-repeat;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+.lock-modal .ui-modal__header {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: block;
+  pointer-events: none;
+}
+.lock-modal .ui-modal__header h2 {
+  position: absolute;
+  left: 17%;
+  top: 6%;
+  width: 71%;
+  height: 9%;
+  display: flex;
+  align-items: center;
+  font: bold clamp(12px, 2.8cqw, 28px) Georgia, 'Times New Roman', serif;
+  text-shadow: 0 1px #ffe0a5;
+}
+.lock-modal .ui-modal__header button {
+  position: absolute;
+  right: 3.2%;
+  top: 5.5%;
+  width: 5%;
+  height: 10%;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #8d210d;
+  font-size: 0;
+  pointer-events: auto;
+}
+.lock-modal .ui-modal__header button::after { content: '\00d7'; font: bold 5cqw Georgia, serif; line-height: 1; }
+.lock-modal .ui-modal__header button:hover { color: #bc4312; }
+.lock-timer {
+  position: absolute;
+  left: 7.4%;
+  top: 34.4%;
+  width: 85.5%;
+  height: 6.2%;
+  overflow: hidden;
+  border-radius: 2cqw;
+}
+.lock-timer__fill {
+  height: 100%;
+  background: linear-gradient(#ffe58e 0%, #e9b33f 25%, #d49524 80%, #f7ce68 100%);
+  box-shadow: inset 0 0 .4cqw #fff1a3;
+  border-right: 1px solid #ffdf83;
+  transition: width 50ms linear;
+}
+.lock-sum {
+  position: absolute;
+  left: 5%;
+  top: 54%;
+  width: 19%;
+  height: 28%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px #ffe0a5;
+}
+.lock-sum span { font-size: 2.1cqw; font-weight: bold; }
+.lock-sum strong { font-size: 8cqw; line-height: 1.1; }
+.lock-sum small { font-size: 1.8cqw; }
+.lock-numbers { position: absolute; inset: 0; pointer-events: none; }
+.lock-numbers button {
+  position: absolute;
+  top: 54%;
+  width: 12.6%;
+  height: 28%;
+  padding: 0;
+  border: .35cqw solid transparent;
+  border-radius: 1.5cqw;
+  background: transparent;
+  color: #f4c993;
+  font: bold 9.8cqw / 1 Georgia, 'Times New Roman', serif;
+  text-shadow: 0 .2cqw .3cqw #100b06, 0 0 .15cqw #ffe2ad;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.lock-numbers button:nth-child(1) { left: 33%; }
+.lock-numbers button:nth-child(2) { left: 50.5%; }
+.lock-numbers button:nth-child(3) { left: 67.7%; }
+.lock-numbers button.is-selected {
+  border-color: #ffcf29;
+  outline: .55cqw solid #ffbf19;
+  outline-offset: .8cqw;
+  box-shadow: 0 0 1.4cqw .7cqw #ffb000b3, inset 0 0 .8cqw #ffc83e66;
+}
+.lock-numbers button:focus-visible { outline-color: #ffe45e; }

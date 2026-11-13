@@ -1,0 +1,11 @@
+{
+  "minItems": 2,
+  "maxItems": 3,
+  "itemIds": [
+    "pistol-ammunition",
+    "medicine",
+    "canned-meat",
+    "water-bottle"
+  ],
+  "rarityWeighted": true
+}

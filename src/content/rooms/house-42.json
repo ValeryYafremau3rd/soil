@@ -1,0 +1,35 @@
+{
+  "name": "Apartment 42",
+  "sprite": {
+    "key": "room-house-42",
+    "path": "assets/buildings/house_rooms.png",
+    "background": "none",
+    "referenceWidth": 1536,
+    "crop": {
+      "x": 884,
+      "y": 368,
+      "width": 454,
+      "height": 143
+    }
+  },
+  "groundY": 143,
+  "bounds": {
+    "left": 8,
+    "right": 446,
+    "ceiling": 0
+  },
+  "furniture": [
+    {
+      "id": "chair",
+      "type": "chair-bentwood",
+      "x": 350,
+      "scale": 1
+    },
+    {
+      "id": "bed",
+      "type": "mattress-quilted",
+      "x": 148,
+      "scale": 1
+    }
+  ]
+}

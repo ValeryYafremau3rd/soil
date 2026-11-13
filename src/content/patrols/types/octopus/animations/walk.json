@@ -1,0 +1,70 @@
+{
+  "key": "octopus-walk",
+  "steps": [
+    {
+      "anchorY": 140,
+      "width": 220,
+      "y": 207,
+      "anchorX": 110,
+      "x": 169,
+      "height": 145
+    },
+    {
+      "anchorY": 140,
+      "width": 217,
+      "y": 207,
+      "anchorX": 108,
+      "x": 404,
+      "height": 145
+    },
+    {
+      "anchorY": 140,
+      "width": 213,
+      "y": 207,
+      "anchorX": 106,
+      "x": 637,
+      "height": 145
+    },
+    {
+      "anchorY": 140,
+      "width": 215,
+      "y": 207,
+      "anchorX": 108,
+      "x": 865,
+      "height": 145
+    },
+    {
+      "anchorY": 140,
+      "width": 222,
+      "y": 207,
+      "anchorX": 111,
+      "x": 1091,
+      "height": 145
+    },
+    {
+      "anchorY": 140,
+      "width": 220,
+      "y": 207,
+      "anchorX": 110,
+      "x": 1334,
+      "height": 145
+    },
+    {
+      "anchorY": 140,
+      "width": 225,
+      "y": 207,
+      "anchorX": 112,
+      "x": 1560,
+      "height": 145
+    },
+    {
+      "anchorY": 140,
+      "width": 217,
+      "y": 207,
+      "anchorX": 108,
+      "x": 1796,
+      "height": 145
+    }
+  ],
+  "frameRate": 5
+}

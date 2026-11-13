@@ -1,0 +1,29 @@
+{
+  "id": "chef-jacket",
+  "name": "Chef jacket",
+  "description": "Chef jacket recovered from the district.",
+  "category": "Clothing",
+  "damageResistance": 10,
+  "stealthModifier": -1,
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 18,
+  "eruditionRequired": 2,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 643,
+    "y": 520,
+    "width": 208,
+    "height": 159
+  },
+  "scale": 1,
+  "bonus": {
+    "skill": "medicine",
+    "amount": 1
+  },
+  "equipmentSlot": "armor"
+}

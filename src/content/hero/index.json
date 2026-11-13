@@ -1,0 +1,63 @@
+{
+  "asset": {
+    "key": "hero-sheet",
+    "path": "assets/characters/hero.png?v=921f1e50",
+    "referenceWidth": 2048
+  },
+  "actions": {
+    "idle": "hero-idle",
+    "run": "hero-run",
+    "jump": "hero-jump",
+    "fight": "hero-fight",
+    "shoot": "hero-shoot",
+    "hurt": "hero-hurt",
+    "death": "hero-death",
+    "fightPrepare": "hero-fight-prepare",
+    "shootPrepare": "hero-shoot-prepare"
+  },
+  "settings": {
+    "hitFlashMs": 180,
+    "fallDamage": {
+      "safeHeight": 180,
+      "damagePerPixel": 0.2
+    },
+    "meleeDamage": 10,
+    "shotDamage": 15,
+    "meleeRange": 60,
+    "combatLevelTolerance": 20,
+    "speed": 120,
+    "scale": 0.8,
+    "roomScale": 0.64,
+    "edgeMargin": 40,
+    "maxDeltaMs": 50,
+    "jumpHeight": 60,
+    "energyCosts": {
+      "jump": 1,
+      "perPixel": 0.005
+    },
+    "frameWidth": 192,
+    "frameHeight": 140,
+    "footWidth": 16,
+    "attackTiming": {
+      "halfCycleMs": 500,
+      "minDamageMultiplier": 1,
+      "maxDamageMultiplier": 2,
+      "radius": 64,
+      "dotRadius": 3,
+      "lineWidth": 3,
+      "ringColor": 15058063,
+      "dotColor": 16777215,
+      "perfectColor": 10211496,
+      "feedbackDurationMs": 1000,
+      "feedbackOffset": 96
+    }
+  },
+  "matte": {
+    "redMax": 32,
+    "greenMax": 40,
+    "blueMax": 48,
+    "minGreenRed": 3,
+    "minBlueRed": 5
+  },
+  "$comment": "Crop coordinates use the 2048-wide reference layout. Per-frame scale normalizes the larger replacement poses without changing world display scale."
+}

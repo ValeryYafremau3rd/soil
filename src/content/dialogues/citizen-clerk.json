@@ -1,0 +1,161 @@
+{
+  "start": "greeting",
+  "nodes": {
+    "greeting": {
+      "text": "I'm Pavel Sokolov, the clerk. I handle records, receipts, and delivery paperwork. Someone has to keep track of everything.",
+      "choices": [
+        {
+          "questId": "find-work",
+          "next": "find-work-contacts",
+          "id": "find-work-ask",
+          "text": "I need work and a place to live. Can you help?"
+        },
+        {
+          "questId": "find-work",
+          "next": "find-work-reward",
+          "id": "find-work-report",
+          "text": "I've settled into room 21 and taken work from everyone you suggested."
+        },
+        {
+          "id": "courier-pickup",
+          "text": "[Courier] I am here to collect the parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-pickup-confirmed"
+        },
+        {
+          "id": "courier-deliver",
+          "text": "[Courier] I have your parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-delivery-thanks"
+        },
+        {
+          "id": "advice",
+          "text": "[Advice]",
+          "next": "advice"
+        },
+        {
+          "id": "about",
+          "text": "Tell about yourself.",
+          "next": "about"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        },
+        {
+          "id": "find-item-start",
+          "text": "[Find item] Tell me about your request.",
+          "questId": "find-item",
+          "next": "find-item-instructions"
+        },
+        {
+          "id": "find-item-deliver",
+          "text": "[Find item] I found the requested item.",
+          "questId": "find-item",
+          "next": "find-item-payment"
+        }
+      ]
+    },
+    "advice": {
+      "text": "Taskboards offer paid courier work. Accept a notice, collect the parcel from its sender, then deliver it to the named recipient.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "about": {
+      "text": "I handle records, receipts, and delivery paperwork. Someone has to keep track of everything. Morning: you can find me in Center's shop. Afternoon: you can find me in the streets of Center. Evening: you can find me in Center's bar. Night: you can find me in apartment 32 in Living District.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "courier-pickup-confirmed": {
+      "text": "Take this parcel to the recipient named in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "courier-delivery-thanks": {
+      "text": "Thank you. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-instructions": {
+      "text": "Find the requested item and take it to the recipient in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-payment": {
+      "text": "Exactly what was requested. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-work-contacts": {
+      "text": "With the town under quarantine, you will need to earn your meals while you stay here. We have a free room: the person who lived there is in hospital in poor medical condition and will not return soon. Here are the apartment and building keys. Room 21 is in the Living District apartment building; go inside and make yourself at home. For work, ask Dusan Markovic, the mechanic, Viktor Petrov, the bartender, Zofia Nowak, the cashier, and Nadia Morozova, the nurse. Take a job from each of them and visit your room, then come back to me.",
+      "choices": [
+        {
+          "next": "greeting",
+          "id": "back",
+          "text": "Something else..."
+        },
+        {
+          "close": true,
+          "id": "goodbye",
+          "text": "Goodbye."
+        }
+      ]
+    },
+    "find-work-reward": {
+      "text": "Good. Now you have some work to keep food on the table while you are stuck here. If you are interested in local news, take this newspaper.",
+      "choices": [
+        {
+          "next": "greeting",
+          "id": "back",
+          "text": "Something else..."
+        },
+        {
+          "close": true,
+          "id": "goodbye",
+          "text": "Goodbye."
+        }
+      ]
+    }
+  }
+}

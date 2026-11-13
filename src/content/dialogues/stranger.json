@@ -1,0 +1,172 @@
+{
+  "start": "greeting",
+  "nodes": {
+    "greeting": {
+      "text": "I'm Milena Vukovic, the retired railway worker. I used to keep the railway running. These days I watch the streets and help newcomers find their way.",
+      "choices": [
+        {
+          "id": "lost-suitcase",
+          "text": "Have you lost something?",
+          "next": "lost-suitcase"
+        },
+        {
+          "id": "return-family-photo",
+          "text": "I found your family photo.",
+          "questId": "milena-family-photo",
+          "next": "photo-thanks"
+        },
+        {
+          "id": "courier-pickup",
+          "text": "[Courier] I am here to collect the parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-pickup-confirmed"
+        },
+        {
+          "id": "courier-deliver",
+          "text": "[Courier] I have your parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-delivery-thanks"
+        },
+        {
+          "id": "advice",
+          "text": "[Advice]",
+          "next": "advice"
+        },
+        {
+          "id": "about",
+          "text": "Tell about yourself.",
+          "next": "about"
+        },
+        {
+          "id": "persuade-advice",
+          "text": "[Persuade] Please, I need your advice to stay safe.",
+          "approach": "persuasion",
+          "next": "advice"
+        },
+        {
+          "id": "goodbye",
+          "text": "goodbye",
+          "close": true
+        },
+        {
+          "id": "find-item-start",
+          "text": "[Find item] Tell me about your request.",
+          "questId": "find-item",
+          "next": "find-item-instructions"
+        },
+        {
+          "id": "find-item-deliver",
+          "text": "[Find item] I found the requested item.",
+          "questId": "find-item",
+          "next": "find-item-payment"
+        }
+      ]
+    },
+    "advice": {
+      "text": "Walking between districts is free. The bus costs Thalers and does not run at night.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "about": {
+      "text": "I used to keep the railway running. These days I watch the streets and help newcomers find their way. Morning: you can find me in the streets of Living District. Afternoon: you can find me in the streets of Center. Evening: you can find me in the streets of Living District. Night: you can find me in apartment 11 in Living District.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "courier-pickup-confirmed": {
+      "text": "Take this parcel to the recipient named in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "courier-delivery-thanks": {
+      "text": "Thank you. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-instructions": {
+      "text": "Find the requested item and take it to the recipient in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-payment": {
+      "text": "Exactly what was requested. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "lost-suitcase": {
+      "text": "I lost my suitcase near the bus stop in Living District, and I cannot find it anywhere. There is a photograph of my family inside. It is very dear to me. You can keep everything else in the suitcase, but please bring me that photo. I have an Athletics magazine for you if you find it.",
+      "choices": [
+        {
+          "id": "accept-photo-quest",
+          "text": "I'll look for your suitcase and bring back the photo.",
+          "acceptQuestId": "milena-family-photo",
+          "next": "photo-accepted"
+        },
+        {
+          "id": "back",
+          "text": "Maybe later.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "photo-accepted": {
+      "text": "Thank you. Please bring the family photo back to me. The rest is yours.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "I'll be back.",
+          "close": true
+        }
+      ]
+    },
+    "photo-thanks": {
+      "text": "My family! I thought I had lost this photo forever. Thank you for bringing it back. Here is the Athletics magazine I promised you.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "Take care, Milena.",
+          "close": true
+        }
+      ]
+    }
+  }
+}

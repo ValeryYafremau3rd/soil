@@ -1,0 +1,55 @@
+.inventory-summary { margin: 0 0 12px; color: #b7c5d6; font-size: 13px; }
+.ui-modal.inventory-modal { width: min(900px, calc(100vw - 32px)); }
+.ui-modal.inventory-modal--exchange { width: min(1120px, calc(100vw - 32px)); }
+.inventory-layout { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 24px; }
+.inventory-layout h3 { margin: 0 0 8px; font-size: 16px; }
+.inventory-exchange { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.inventory-exchange > section { min-width: 0; }
+.inventory-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; list-style: none; padding: 0; margin: 0; max-height: 46dvh; overflow-y: auto; }
+.inventory-grid li { min-width: 0; }
+.inventory-slot { position: relative; width: 100%; min-height: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 12px 6px; border: 1px solid #4c5664; border-radius: 4px; background: #18202a; color: #edf0f4; font: inherit; cursor: pointer; }
+.inventory-slot[aria-pressed="true"] { border-color: #e5c48f; background: #35404d; box-shadow: inset 0 0 0 1px #e5c48f; }
+.inventory-slot:hover { background: #35404d; }
+.inventory-slot:focus-visible { outline: 2px solid #9bbce5; outline-offset: -3px; }
+.inventory-slot--empty { color: #6d7888; border-style: dashed; }
+.inventory-slot--empty:hover { background: #18202a; }
+.inventory-slot__name { font-size: 12px; text-align: center; overflow-wrap: anywhere; }
+.inventory-slot > kbd { position: absolute; left: 5px; bottom: 4px; padding: 2px 5px; border: 1px solid #596473; border-radius: 3px; background: #111820; color: #eee7da; font: 12px sans-serif; }
+.inventory-slot__quantity { position: absolute; right: 5px; top: 4px; font-size: 11px; background: #111820; border-radius: 3px; padding: 2px 4px; }
+.item-icon { flex-shrink: 0; display: grid; place-items: center; background: #121820; border-radius: 3px; }
+.item-icon > span { display: block; background-repeat: no-repeat; }
+.inventory-details { min-width: 0; padding-left: 24px; border-left: 1px solid #4c5664; }
+.inventory-details > .item-icon { margin: 0 auto 20px; }
+.inventory-details p { line-height: 1.6; font-size: 14px; }
+.inventory-details__category { color: #b7c5d6; font-size: 12px !important; }
+.inventory-details__effect { color: #9bd0a8; }
+.inventory-details__effect small { display: block; color: #b7c5d6; }
+.inventory-help { color: #b7c5d6; font-size: 12px; line-height: 1.6; }
+@media (max-width: 800px) { .inventory-modal--exchange .inventory-layout { grid-template-columns: 1fr; } .inventory-modal--exchange .inventory-details { padding: 16px 0 0; border-left: 0; border-top: 1px solid #4c5664; } }
+@media (max-width: 540px) { .inventory-layout, .inventory-exchange { grid-template-columns: 1fr; } .inventory-details { padding: 16px 0 0; border-left: 0; border-top: 1px solid #4c5664; } }
+.inventory-player-grids { max-height: 46dvh; overflow-y: auto; }
+.inventory-player-grids .inventory-grid { max-height: none; overflow: visible; }
+.inventory-bag-slots { margin: 16px 0 0; padding: 10px; border: 2px solid #bca571; min-width: 0; }
+.inventory-bag-slots legend { padding: 0 8px; color: #e7d19c; }
+
+.inventory-slot[data-appearance="common"], .inventory-item-name[data-appearance="common"] { --rarity-color: #edf0f4; --rarity-surface: #252a30; }
+.inventory-slot[data-appearance="uncommon"], .inventory-item-name[data-appearance="uncommon"] { --rarity-color: #efcf70; --rarity-surface: #35301d; }
+.inventory-slot[data-appearance="rare"], .inventory-item-name[data-appearance="rare"] { --rarity-color: #80d895; --rarity-surface: #1b3027; }
+.inventory-slot[data-appearance="epic"], .inventory-item-name[data-appearance="epic"] { --rarity-color: #5287ff; --rarity-surface: #1c2645; }
+.inventory-slot[data-appearance="legendary"], .inventory-item-name[data-appearance="legendary"] { --rarity-color: #cc9aff; --rarity-surface: #30213e; }
+.inventory-slot[data-appearance="unknown"], .inventory-item-name[data-appearance="unknown"] { --rarity-color: #8e99a8; --rarity-surface: #242a32; }
+.inventory-slot[data-appearance] { border: 2px solid var(--slot-border, var(--rarity-color)); background: var(--rarity-surface); }
+.inventory-slot[data-appearance] .inventory-slot__name, .inventory-item-name[data-appearance] { color: var(--rarity-color); }
+.inventory-slot[data-appearance][aria-pressed="true"] { box-shadow: inset 0 0 0 2px #edf0f4; }
+.inventory-slot[data-appearance]:hover { filter: brightness(1.15); }
+.inventory-slot.inventory-slot--unusable::after { content: '!'; position: absolute; left: 5px; top: 4px; padding: 1px 5px; border-radius: 3px; background: #5b2028; color: #ff9ba4; font-weight: 700; }
+
+.inventory-slot[data-appearance="plain"], .inventory-item-name[data-appearance="plain"] { --rarity-color: #edf0f4; --rarity-surface: #18202a; --slot-border: #4c5664; }
+.inventory-slot[data-appearance="valuable"], .inventory-item-name[data-appearance="valuable"] { --rarity-color: #e5c48f; --rarity-surface: #352d1b; }
+
+.inventory-grid--equipment { grid-template-columns: repeat(8, minmax(64px, 1fr)); overflow-x: auto; margin-bottom: 16px; }
+.inventory-grid--equipment .inventory-slot { min-height: 100px; padding: 6px 2px; }
+.inventory-grid--equipment .inventory-slot__name { font-size: 10px; }
+
+.inventory-equipment { grid-column: 1 / -1; min-width: 0; }
+.inventory-equipment .inventory-grid--equipment { margin-bottom: 0; }

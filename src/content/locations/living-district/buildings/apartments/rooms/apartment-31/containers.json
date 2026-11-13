@@ -1,0 +1,29 @@
+[
+  {
+    "id": "dusan-apartment-31-loot",
+    "type": "suitcase",
+    "x": 90.2,
+    "scale": 0.6875,
+    "quality": 5,
+    "locked": false,
+    "lootTable": "dusan-apartment"
+  },
+  {
+    "id": "apartments-reward-2",
+    "type": "safe",
+    "x": 155,
+    "scale": 0.6875,
+    "locked": true,
+    "items": [
+      {
+        "itemId": "scraper-training-magazine",
+        "quantity": 1
+      },
+      {
+        "itemId": "medical-coat",
+        "quantity": 1
+      }
+    ],
+    "restock": false
+  }
+]

@@ -1,0 +1,161 @@
+{
+  "corridorLights": false,
+  "outer": {
+    "key": "house-outer",
+    "groundY": 1008,
+    "crop": {
+      "x": 126,
+      "y": 124,
+      "width": 1285,
+      "height": 890
+    },
+    "floors": [
+      {
+        "y": 1008,
+        "left": 126,
+        "right": 1411,
+        "ceiling": 0
+      }
+    ],
+    "platforms": [
+      {
+        "left": 0.09765625,
+        "right": 0.8984375,
+        "top": 0.15625
+      }
+    ]
+  },
+  "inner": {
+    "key": "house-inner",
+    "groundY": 984,
+    "crop": {
+      "x": 140,
+      "y": 150,
+      "width": 1255,
+      "height": 858
+    },
+    "floors": [
+      {
+        "y": 984,
+        "left": 200,
+        "right": 1330,
+        "ceiling": 844
+      },
+      {
+        "y": 829,
+        "left": 200,
+        "right": 1330,
+        "ceiling": 689
+      },
+      {
+        "y": 674,
+        "left": 200,
+        "right": 1330,
+        "ceiling": 527
+      },
+      {
+        "y": 511,
+        "left": 200,
+        "right": 1330,
+        "ceiling": 366
+      },
+      {
+        "y": 347,
+        "left": 200,
+        "right": 1330,
+        "ceiling": 194
+      }
+    ]
+  },
+  "entranceX": 795,
+  "stairX": 650,
+  "stairLandingX": 820,
+  "interactionRadius": 38,
+  "stairDurationMs": 1400,
+  "scale": 0.8,
+  "name": "apartment house",
+  "sprites": [
+    {
+      "key": "house-outer",
+      "path": "assets/buildings/house_o.png",
+      "background": "none"
+    },
+    {
+      "key": "house-inner",
+      "path": "assets/buildings/house_i.png",
+      "background": "none"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "apartment-11",
+      "type": "house-11",
+      "floor": 0,
+      "x": 192,
+      "doorX": 302
+    },
+    {
+      "id": "apartment-12",
+      "type": "house-12",
+      "floor": 0,
+      "x": 884,
+      "doorX": 1188
+    },
+    {
+      "id": "apartment-21",
+      "type": "house-21",
+      "floor": 1,
+      "x": 192,
+      "doorX": 302
+    },
+    {
+      "id": "apartment-22",
+      "type": "house-22",
+      "floor": 1,
+      "x": 884,
+      "doorX": 1188
+    },
+    {
+      "id": "apartment-31",
+      "type": "house-31",
+      "floor": 2,
+      "x": 192,
+      "doorX": 302
+    },
+    {
+      "id": "apartment-32",
+      "type": "house-32",
+      "floor": 2,
+      "x": 884,
+      "doorX": 1188
+    },
+    {
+      "id": "apartment-41",
+      "type": "house-41",
+      "floor": 3,
+      "x": 192,
+      "doorX": 302
+    },
+    {
+      "id": "apartment-42",
+      "type": "house-42",
+      "floor": 3,
+      "x": 884,
+      "doorX": 1188
+    },
+    {
+      "id": "apartment-51",
+      "type": "house-51",
+      "floor": 4,
+      "x": 192,
+      "doorX": 302
+    },
+    {
+      "id": "apartment-52",
+      "type": "house-52",
+      "floor": 4,
+      "x": 884,
+      "doorX": 1188
+    }
+  ]
+}

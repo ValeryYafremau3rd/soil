@@ -1,0 +1,26 @@
+{
+  "id": "first-aid-kit",
+  "eruditionRequired": 15,
+  "price": 14,
+  "name": "First aid kit",
+  "description": "A complete treatment kit requiring Medicine 10. Restores Health.",
+  "consumable": true,
+  "maxStack": 5,
+  "recovery": {
+    "health": 50
+  },
+  "rarity": "rare",
+  "quality": 4,
+  "category": "Medical",
+  "icon": {
+    "x": 375,
+    "y": 270,
+    "width": 170,
+    "height": 145
+  },
+  "scale": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "medicine": 10
+  }
+}

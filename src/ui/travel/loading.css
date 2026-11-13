@@ -1,0 +1,8 @@
+.location-loading { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: #000; color: #edf0f4; text-align: center; padding: 24px; opacity: 1; cursor: wait; }
+.location-loading span { color: #b7c5d6; font-size: 14px; letter-spacing: .15em; text-transform: uppercase; }
+.location-loading strong { font-size: clamp(24px, 5vw, 44px); font-weight: 500; letter-spacing: .04em; }
+.location-loading--fade-out { animation: location-cover var(--location-fade-duration) ease-out both; }
+.location-loading--fade-in { animation: location-reveal var(--location-fade-duration) ease-in both; }
+@keyframes location-cover { from { opacity: 0; } to { opacity: 1; } }
+@keyframes location-reveal { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .location-loading { animation-duration: 1ms; } }

@@ -1,0 +1,98 @@
+{
+  "name": "Zofia Nowak",
+  "sourceKey": "cashier-source",
+  "textureKey": "cashier",
+  "path": "assets/characters/npc/cashier.png?v=f4f90f57",
+  "idleAnimation": "cashier-idle",
+  "referenceWidth": 2172,
+  "frameRate": 6,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "idleSteps": [
+    {
+      "x": 137,
+      "y": 34,
+      "width": 212,
+      "height": 667,
+      "anchorX": 106,
+      "anchorY": 667
+    },
+    {
+      "x": 483,
+      "y": 31,
+      "width": 199,
+      "height": 670,
+      "anchorX": 99.5,
+      "anchorY": 670
+    },
+    {
+      "x": 805,
+      "y": 28,
+      "width": 212,
+      "height": 673,
+      "anchorX": 106,
+      "anchorY": 673
+    },
+    {
+      "x": 1141,
+      "y": 40,
+      "width": 203,
+      "height": 661,
+      "anchorX": 101.5,
+      "anchorY": 661
+    },
+    {
+      "x": 1485,
+      "y": 50,
+      "width": 210,
+      "height": 651,
+      "anchorX": 105,
+      "anchorY": 651
+    },
+    {
+      "x": 1830,
+      "y": 34,
+      "width": 205,
+      "height": 667,
+      "anchorX": 102.5,
+      "anchorY": 667
+    }
+  ],
+  "frameSize": {
+    "width": 340,
+    "height": 680,
+    "referenceHeight": 667
+  },
+  "dialogueId": "cashier",
+  "scale": 0.9,
+  "background": "light",
+  "repeat": -1,
+  "schedule": {
+    "morning": {
+      "locationId": "center",
+      "buildingId": "center-shop",
+      "scale": 0.8,
+      "x": 220
+    },
+    "afternoon": {
+      "locationId": "center",
+      "buildingId": "center-shop",
+      "scale": 0.8,
+      "x": 220
+    },
+    "evening": {
+      "locationId": "center",
+      "buildingId": "center-shop",
+      "scale": 0.8,
+      "x": 220
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-41",
+      "x": 187
+    }
+  }
+}

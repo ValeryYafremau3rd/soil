@@ -1,0 +1,69 @@
+{
+  "key": "patrol-run",
+  "frameRate": 24,
+  "steps": [
+    {
+      "x": 303,
+      "y": 279,
+      "width": 108,
+      "height": 151,
+      "anchorX": 64,
+      "anchorY": 149,
+      "scale": 1.08
+    },
+    {
+      "x": 414,
+      "y": 279,
+      "width": 110,
+      "height": 151,
+      "anchorX": 63,
+      "anchorY": 149,
+      "scale": 1.08
+    },
+    {
+      "x": 529,
+      "y": 279,
+      "width": 118,
+      "height": 151,
+      "anchorX": 66,
+      "anchorY": 149,
+      "scale": 1.08
+    },
+    {
+      "x": 644,
+      "y": 279,
+      "width": 118,
+      "height": 151,
+      "anchorX": 66,
+      "anchorY": 149,
+      "scale": 1.08
+    },
+    {
+      "x": 765,
+      "y": 279,
+      "width": 135,
+      "height": 151,
+      "anchorX": 73,
+      "anchorY": 149,
+      "scale": 1.08
+    },
+    {
+      "x": 901,
+      "y": 279,
+      "width": 112,
+      "height": 151,
+      "anchorX": 63,
+      "anchorY": 149,
+      "scale": 1.08
+    },
+    {
+      "x": 1019,
+      "y": 279,
+      "width": 121,
+      "height": 151,
+      "anchorX": 68,
+      "anchorY": 149,
+      "scale": 1.08
+    }
+  ]
+}

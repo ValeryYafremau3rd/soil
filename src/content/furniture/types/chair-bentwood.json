@@ -1,0 +1,23 @@
+{
+    "name":  "Bentwood chair",
+    "key":  "furniture-chair-bentwood",
+    "path":  "assets/characters/npc/bench.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  810,
+                 "y":  366,
+                 "width":  166,
+                 "height":  311
+             },
+    "displayHeight":  55,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "rest",
+    "prompt":  "Enter · Rest",
+    "platform":  {
+                     "left":  0.08,
+                     "right":  0.92,
+                     "top":  0.55
+                 }
+}

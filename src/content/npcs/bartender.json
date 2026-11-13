@@ -1,0 +1,98 @@
+{
+  "name": "Viktor Petrov",
+  "sourceKey": "bartender-source",
+  "textureKey": "bartender",
+  "path": "assets/characters/npc/bartender.png?v=3483bb16",
+  "idleAnimation": "bartender-idle",
+  "referenceWidth": 2170,
+  "frameRate": 6,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "idleSteps": [
+    {
+      "x": 42,
+      "y": 59,
+      "width": 288,
+      "height": 622,
+      "anchorX": 144,
+      "anchorY": 622
+    },
+    {
+      "x": 405,
+      "y": 59,
+      "width": 287,
+      "height": 622,
+      "anchorX": 143.5,
+      "anchorY": 622
+    },
+    {
+      "x": 769,
+      "y": 59,
+      "width": 288,
+      "height": 622,
+      "anchorX": 144,
+      "anchorY": 622
+    },
+    {
+      "x": 1124,
+      "y": 68,
+      "width": 287,
+      "height": 613,
+      "anchorX": 143.5,
+      "anchorY": 613
+    },
+    {
+      "x": 1484,
+      "y": 73,
+      "width": 284,
+      "height": 608,
+      "anchorX": 142,
+      "anchorY": 608
+    },
+    {
+      "x": 1850,
+      "y": 59,
+      "width": 285,
+      "height": 622,
+      "anchorX": 142.5,
+      "anchorY": 622
+    }
+  ],
+  "frameSize": {
+    "width": 340,
+    "height": 680,
+    "referenceHeight": 622
+  },
+  "dialogueId": "bartender",
+  "scale": 0.9,
+  "background": "light",
+  "repeat": -1,
+  "schedule": {
+    "morning": {
+      "locationId": "center",
+      "buildingId": "center-bar",
+      "scale": 0.8,
+      "x": 280
+    },
+    "afternoon": {
+      "locationId": "center",
+      "buildingId": "center-bar",
+      "scale": 0.8,
+      "x": 280
+    },
+    "evening": {
+      "locationId": "center",
+      "buildingId": "center-bar",
+      "scale": 0.8,
+      "x": 280
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-51",
+      "x": 187
+    }
+  }
+}

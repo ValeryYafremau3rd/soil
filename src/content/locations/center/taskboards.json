@@ -1,0 +1,10 @@
+[
+  {
+    "id": "center-street-board",
+    "type": "street",
+    "x": 150,
+    "space": "outside",
+    "heightOffset": 0,
+    "scale": 1
+  }
+]

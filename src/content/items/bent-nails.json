@@ -1,0 +1,25 @@
+{
+  "id": "bent-nails",
+  "name": "Bent nails",
+  "description": "Bent nails recovered from the district. Scrap one for a small Scraper-based chance to recover something useful; failure still spends it.",
+  "category": "Scrap",
+  "rarity": "common",
+  "quality": 1,
+  "price": 1,
+  "eruditionRequired": 2,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 38,
+    "y": 826,
+    "width": 142,
+    "height": 162
+  },
+  "scale": 1,
+  "scrap": true,
+  "consumable": true,
+  "maxStack": 1
+}

@@ -1,0 +1,20 @@
+{
+  "id": "money",
+  "eruditionRequired": 2,
+  "price": 1,
+  "name": "Thaler",
+  "description": "Local Thalers used to pay vendors and bus fares. A full stack holds 100 Thalers.",
+  "rarity": "common",
+  "quality": 2,
+  "category": "Currency",
+  "maxStack": 100,
+  "saleable": false,
+  "randomLoot": false,
+  "icon": {
+    "x": 874,
+    "y": 449,
+    "width": 198,
+    "height": 153
+  },
+  "scale": 1
+}

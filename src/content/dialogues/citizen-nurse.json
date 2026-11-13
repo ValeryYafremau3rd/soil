@@ -1,0 +1,256 @@
+{
+  "start": "greeting",
+  "nodes": {
+    "greeting": {
+      "text": "I'm Nadia Morozova, the nurse. I am the district nurse. I check on the barracks residents and make rounds in Center.",
+      "choices": [
+        {
+          "id": "barter",
+          "text": "[Barter] I need medical supplies.",
+          "barter": true
+        },
+        {
+          "id": "ask-about-tablets",
+          "text": "[Work] Do you need help with your patients?",
+          "next": "tablet-request"
+        },
+        {
+          "id": "nurse-tablet-report",
+          "text": "[Medicine] I spoke to Elena and Dusan. Dusan refused his tablet.",
+          "questId": "nurse-tablet-deliveries",
+          "next": "tablet-reward"
+        },
+        {
+          "id": "courier-pickup",
+          "text": "[Courier] I am here to collect the parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-pickup-confirmed"
+        },
+        {
+          "id": "courier-deliver",
+          "text": "[Courier] I have your parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-delivery-thanks"
+        },
+        {
+          "id": "advice",
+          "text": "[Advice]",
+          "next": "advice"
+        },
+        {
+          "id": "about",
+          "text": "Tell about yourself.",
+          "next": "about"
+        },
+        {
+          "id": "cashier-2-deliver-0",
+          "text": "[Delivery] Deliver 1 Bandage to Nadia Morozova.",
+          "next": "cashier-2-cashier-2-deliver-0",
+          "questId": "cashier-2"
+        },
+        {
+          "id": "cashier-5-deliver",
+          "text": "[Delivery] Deliver 1 Bandage to Nadia Morozova in the morning.",
+          "next": "cashier-5-cashier-5-deliver",
+          "questId": "cashier-5"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        },
+        {
+          "id": "find-item-start",
+          "text": "[Find item] Tell me about your request.",
+          "questId": "find-item",
+          "next": "find-item-instructions"
+        },
+        {
+          "id": "find-item-deliver",
+          "text": "[Find item] I found the requested item.",
+          "questId": "find-item",
+          "next": "find-item-payment"
+        }
+      ]
+    },
+    "advice": {
+      "text": "Bandages and medicine restore Health. Open your inventory and use a medical supply before your Health runs out.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "about": {
+      "text": "I am the district nurse. I check on the barracks residents and make rounds in Center. Morning: you can find me in the barracks. Afternoon: you can find me in the barracks. Evening: you can find me in the streets of Center. Night: you can find me in apartment 22 in Living District.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-2-cashier-2-deliver-0": {
+      "text": "Thank you. The delivery is recorded.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-5-cashier-5-deliver": {
+      "text": "Thank you. The delivery is recorded.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "courier-pickup-confirmed": {
+      "text": "Take this parcel to the recipient named in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "courier-delivery-thanks": {
+      "text": "Thank you. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-instructions": {
+      "text": "Find the requested item and take it to the recipient in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-payment": {
+      "text": "Exactly what was requested. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "tablet-request": {
+      "text": "The virus affects some people more seriously than others. They need to take these tablets regularly. Could you deliver one white tablet to Elena Jovanovic, the caretaker, and one to Dusan Markovic? I can give you a white tablet and a Medicine magazine for your help.",
+      "choices": [
+        {
+          "id": "accept-tablets",
+          "text": "I'll take the tablets to them.",
+          "acceptQuestId": "nurse-tablet-deliveries",
+          "next": "tablet-accepted"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "tablet-accepted": {
+      "text": "Here are two white tablets, one for Elena and one for Dusan. You can visit them in either order. Come back and tell me how it went.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "tablet-reward": {
+      "text": "Thank you for checking on them. I wish Dusan would listen, but you did all you could. Here is a white tablet and a Medicine magazine for you. If you feel symptoms of the virus, take this pill.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    }
+  },
+  "barter": {
+    "id": "merchant:citizen-nurse",
+    "name": "Nadia Morozova - Barter",
+    "locationId": "living-district",
+    "items": [
+      {
+        "itemId": "bandage",
+        "quantity": 2
+      },
+      {
+        "itemId": "antiseptic",
+        "quantity": 1
+      },
+      {
+        "itemId": "medicine",
+        "quantity": 1
+      }
+    ],
+    "stock": {
+      "categories": [
+        "Medical"
+      ],
+      "minItems": 1,
+      "maxItems": 2,
+      "minQuantity": 1,
+      "maxQuantity": 1
+    }
+  }
+}

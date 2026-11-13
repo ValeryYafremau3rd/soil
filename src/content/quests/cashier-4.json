@@ -1,0 +1,98 @@
+{
+  "id": "cashier-4",
+  "name": "One day: two deliveries",
+  "description": "Ask Zofia Nowak for work, deliver the regular goods, then return for payment. Finish within one day (four phases), including your return. Restart with Zofia if late; buy replacements if needed. Complete both deliveries in either order. Deliver 1 Duct tape to Elena Jovanovic. Deliver 1 Water bottle to Irina Kovalenko.",
+  "offeredBy": "cashier",
+  "offerText": "Looking for courier work?",
+  "prerequisites": [
+    "cashier-3"
+  ],
+  "retryStage": 1,
+  "stages": [
+    {
+      "id": "cashier-4-collect",
+      "description": "Receive the delivery goods from Zofia.",
+      "trigger": {
+        "kind": "accept"
+      },
+      "grantItems": [
+        {
+          "itemId": "duct-tape",
+          "quantity": 1
+        },
+        {
+          "itemId": "water-bottle",
+          "quantity": 1
+        }
+      ],
+      "deadlinePhases": 4
+    },
+    {
+      "id": "cashier-4-deliver-0",
+      "description": "Deliver 1 Duct tape to Elena Jovanovic.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-caretaker",
+        "choiceId": "cashier-4-deliver-0"
+      },
+      "requiredItems": [
+        {
+          "itemId": "duct-tape",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "duct-tape",
+          "quantity": 1
+        }
+      ],
+      "parallelGroup": "deliveries"
+    },
+    {
+      "id": "cashier-4-deliver-1",
+      "description": "Deliver 1 Water bottle to Irina Kovalenko.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "cashier-4-deliver-1"
+      },
+      "requiredItems": [
+        {
+          "itemId": "water-bottle",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "water-bottle",
+          "quantity": 1
+        }
+      ],
+      "parallelGroup": "deliveries"
+    },
+    {
+      "id": "cashier-4-return",
+      "description": "Report completed deliveries and collect payment.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "cashier",
+        "choiceId": "cashier-4-return"
+      }
+    }
+  ],
+  "reward": {
+    "money": 14,
+    "items": [
+      {
+        "itemId": "work-pass",
+        "quantity": 1
+      }
+    ]
+  },
+  "retryTrigger": {
+    "npcId": "cashier",
+    "choiceId": "cashier-4-retry"
+  },
+  "deliveryKind": "courier"
+}

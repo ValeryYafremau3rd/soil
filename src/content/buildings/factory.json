@@ -1,0 +1,125 @@
+{
+    "name":  "factory",
+    "outer":  {
+                  "key":  "factory-outer",
+                  "groundY":  310,
+                  "crop":  {
+                               "y":  0,
+                               "width":  1988,
+                               "height":  330,
+                               "x":  0
+                           },
+                  "floors":  [
+                                 {
+                                     "y":  310,
+                                     "left":  16,
+                                     "right":  1972,
+                                     "ceiling":  0
+                                 }
+                             ],
+                  "platforms":  [
+                                    {
+                                        "left":  0.01,
+                                        "right":  0.04,
+                                        "top":  0.22424242424242424
+                                    },
+                                    {
+                                        "left":  0.04,
+                                        "right":  0.14,
+                                        "top":  0.024242424242424242
+                                    },
+                                    {
+                                        "left":  0.14,
+                                        "right":  0.868,
+                                        "top":  0.18787878787878787
+                                    },
+                                    {
+                                        "left":  0.868,
+                                        "right":  0.995,
+                                        "top":  0.39090909090909093
+                                    }
+                                ]
+              },
+    "inner":  {
+                  "key":  "factory-inner",
+                  "groundY":  305,
+                  "crop":  {
+                               "y":  0,
+                               "width":  1988,
+                               "height":  330,
+                               "x":  0
+                           },
+                  "floors":  [
+                                 {
+                                     "y":  305,
+                                     "left":  40,
+                                     "right":  1955,
+                                     "ceiling":  180
+                                 },
+                                 {
+                                     "y":  203,
+                                     "left":  45,
+                                     "right":  660,
+                                     "ceiling":  70
+                                 },
+                                 {
+                                     "y":  203,
+                                     "left":  1330,
+                                     "right":  1850,
+                                     "ceiling":  70
+                                 }
+                             ]
+              },
+    "entranceX":  994,
+    "entrances":  [
+                      180,
+                      994
+                  ],
+    "stairs":  [
+                   {
+                       "toFloor":  1,
+                       "toX":  155,
+                       "fromFloor":  0,
+                       "fromX":  155,
+                       "landingX":  155
+                   },
+                   {
+                       "toFloor":  2,
+                       "toX":  1610,
+                       "fromFloor":  0,
+                       "fromX":  1485,
+                       "landingX":  1548
+                   }
+               ],
+    "stairX":  155,
+    "stairLandingX":  155,
+    "interactionRadius":  38,
+    "stairDurationMs":  1400,
+    "scale":  1.05,
+    "sprites":  [
+                    {
+                        "referenceWidth":  2048,
+                        "path":  "assets/buildings/factory.png",
+                        "key":  "factory-outer",
+                        "crop":  {
+                                     "y":  10,
+                                     "width":  1988,
+                                     "height":  330,
+                                     "x":  30
+                                 },
+                        "background":  "none"
+                    },
+                    {
+                        "referenceWidth":  2048,
+                        "path":  "assets/buildings/factory.png",
+                        "key":  "factory-inner",
+                        "crop":  {
+                                     "y":  345,
+                                     "width":  1988,
+                                     "height":  330,
+                                     "x":  30
+                                 },
+                        "background":  "none"
+                    }
+                ]
+}

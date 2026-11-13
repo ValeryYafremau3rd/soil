@@ -1,0 +1,24 @@
+[
+  {
+    "id": "apartments-reward-1",
+    "type": "safe",
+    "x": 60,
+    "scale": 0.6875,
+    "locked": true,
+    "items": [
+      {
+        "itemId": "paper-roll",
+        "quantity": 1
+      },
+      {
+        "itemId": "lockpicking-training-handbook",
+        "quantity": 1
+      },
+      {
+        "itemId": "compact-pistol",
+        "quantity": 1
+      }
+    ],
+    "restock": false
+  }
+]

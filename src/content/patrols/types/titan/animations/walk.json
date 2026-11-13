@@ -1,0 +1,70 @@
+{
+  "key": "titan-walk",
+  "steps": [
+    {
+      "anchorY": 159,
+      "width": 160,
+      "y": 205,
+      "anchorX": 80,
+      "x": 185,
+      "height": 165
+    },
+    {
+      "anchorY": 159,
+      "width": 170,
+      "y": 205,
+      "anchorX": 85,
+      "x": 365,
+      "height": 165
+    },
+    {
+      "anchorY": 159,
+      "width": 185,
+      "y": 205,
+      "anchorX": 92,
+      "x": 550,
+      "height": 165
+    },
+    {
+      "anchorY": 159,
+      "width": 202,
+      "y": 205,
+      "anchorX": 101,
+      "x": 740,
+      "height": 165
+    },
+    {
+      "anchorY": 159,
+      "width": 202,
+      "y": 205,
+      "anchorX": 101,
+      "x": 940,
+      "height": 165
+    },
+    {
+      "anchorY": 159,
+      "width": 195,
+      "y": 205,
+      "anchorX": 98,
+      "x": 1135,
+      "height": 165
+    },
+    {
+      "anchorY": 159,
+      "width": 195,
+      "y": 205,
+      "anchorX": 98,
+      "x": 1330,
+      "height": 165
+    },
+    {
+      "anchorY": 159,
+      "width": 205,
+      "y": 205,
+      "anchorX": 102,
+      "x": 1535,
+      "height": 165
+    }
+  ],
+  "frameRate": 6
+}

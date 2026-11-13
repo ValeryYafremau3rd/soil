@@ -1,0 +1,70 @@
+{
+  "key": "titan-attack",
+  "steps": [
+    {
+      "anchorY": 158,
+      "width": 158,
+      "y": 372,
+      "anchorX": 111,
+      "x": 182,
+      "height": 164
+    },
+    {
+      "anchorY": 158,
+      "width": 170,
+      "y": 372,
+      "anchorX": 117,
+      "x": 370,
+      "height": 164
+    },
+    {
+      "anchorY": 158,
+      "width": 190,
+      "y": 372,
+      "anchorX": 131,
+      "x": 548,
+      "height": 164
+    },
+    {
+      "anchorY": 158,
+      "width": 214,
+      "y": 372,
+      "anchorX": 134,
+      "x": 738,
+      "height": 164
+    },
+    {
+      "anchorY": 158,
+      "width": 244,
+      "y": 372,
+      "anchorX": 148,
+      "x": 927,
+      "height": 164
+    },
+    {
+      "anchorY": 158,
+      "width": 270,
+      "y": 372,
+      "anchorX": 150,
+      "x": 1130,
+      "height": 164
+    },
+    {
+      "anchorY": 158,
+      "width": 216,
+      "y": 372,
+      "anchorX": 110,
+      "x": 1392,
+      "height": 164
+    },
+    {
+      "anchorY": 158,
+      "width": 186,
+      "y": 372,
+      "anchorX": 100,
+      "x": 1620,
+      "height": 164
+    }
+  ],
+  "frameRate": 10
+}

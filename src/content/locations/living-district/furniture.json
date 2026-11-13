@@ -1,0 +1,51 @@
+[
+  {
+    "id": "living-district-small-car",
+    "type": "small-car",
+    "x": 150,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "living-district-bench",
+    "type": "bench",
+    "x": 900,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "living-district-cover-dumpster",
+    "space": "outside",
+    "scale": 1,
+    "type": "cover-dumpster",
+    "x": 2800
+  },
+  {
+    "id": "living-district-cover-crates-stacked",
+    "type": "cover-crates-stacked",
+    "x": 1075,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "living-district-cover-crate-draped",
+    "type": "cover-crate-draped",
+    "x": 350,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "living-district-cover",
+    "type": "cover-crate",
+    "x": 1750,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "living-district-cover-pallet",
+    "space": "outside",
+    "scale": 1,
+    "type": "cover-pallet",
+    "x": 2000
+  }
+]

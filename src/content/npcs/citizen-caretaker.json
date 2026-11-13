@@ -1,0 +1,95 @@
+{
+  "name": "Elena Jovanovic",
+  "sourceKey": "citizens-source",
+  "textureKey": "citizen-caretaker",
+  "path": "assets/characters/npc/citizens.png",
+  "idleAnimation": "citizen-caretaker-idle",
+  "referenceWidth": 2048,
+  "frameRate": 3,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "background": "light",
+  "scale": 0.9,
+  "repeat": -1,
+  "frameSize": {
+    "width": 112,
+    "height": 180,
+    "referenceHeight": 172
+  },
+  "idleSteps": [
+    {
+      "x": 70,
+      "y": 508,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 172
+    },
+    {
+      "x": 252,
+      "y": 508,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 172
+    },
+    {
+      "x": 434,
+      "y": 508,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 172
+    },
+    {
+      "x": 616,
+      "y": 508,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 172
+    },
+    {
+      "x": 798,
+      "y": 508,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 172
+    },
+    {
+      "x": 980,
+      "y": 508,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 172
+    }
+  ],
+  "dialogueId": "citizen-caretaker",
+  "schedule": {
+    "morning": {
+      "locationId": "center",
+      "x": 800
+    },
+    "afternoon": {
+      "locationId": "living-district",
+      "x": 800
+    },
+    "evening": {
+      "locationId": "living-district",
+      "buildingId": "living-barracks",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 1000
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-42",
+      "x": 306
+    }
+  }
+}

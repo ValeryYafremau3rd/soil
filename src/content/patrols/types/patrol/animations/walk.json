@@ -1,0 +1,78 @@
+{
+  "key": "patrol-walk",
+  "frameRate": 9,
+  "steps": [
+    {
+      "x": 1205,
+      "y": 44,
+      "width": 105,
+      "height": 178,
+      "anchorX": 55,
+      "anchorY": 173,
+      "scale": 1.06
+    },
+    {
+      "x": 1317,
+      "y": 44,
+      "width": 105,
+      "height": 178,
+      "anchorX": 55,
+      "anchorY": 172,
+      "scale": 1.06
+    },
+    {
+      "x": 1427,
+      "y": 44,
+      "width": 108,
+      "height": 178,
+      "anchorX": 53,
+      "anchorY": 172,
+      "scale": 1.06
+    },
+    {
+      "x": 1543,
+      "y": 44,
+      "width": 103,
+      "height": 178,
+      "anchorX": 52,
+      "anchorY": 172,
+      "scale": 1.06
+    },
+    {
+      "x": 1651,
+      "y": 44,
+      "width": 106,
+      "height": 178,
+      "anchorX": 54,
+      "anchorY": 172,
+      "scale": 1.06
+    },
+    {
+      "x": 1761,
+      "y": 44,
+      "width": 106,
+      "height": 178,
+      "anchorX": 54,
+      "anchorY": 172,
+      "scale": 1.06
+    },
+    {
+      "x": 1873,
+      "y": 44,
+      "width": 102,
+      "height": 178,
+      "anchorX": 50,
+      "anchorY": 172,
+      "scale": 1.07
+    },
+    {
+      "x": 1984,
+      "y": 44,
+      "width": 107,
+      "height": 178,
+      "anchorX": 54,
+      "anchorY": 172,
+      "scale": 1.07
+    }
+  ]
+}

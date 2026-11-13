@@ -1,0 +1,197 @@
+{
+  "start": "greeting",
+  "nodes": {
+    "find-service-pistol-thanks": {
+      "text": "You found a service pistol. Hard to come by these days. As promised, here's double its listed price.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Anything else?",
+          "next": "greeting"
+        }
+      ]
+    },
+    "greeting": {
+      "text": "I'm Irina Kovalenko, the factory worker. I work the factory shift. If it rattles, leaks, or needs carrying, they send me.",
+      "choices": [
+        {
+          "id": "ask-about-materials",
+          "text": "[Quest] Does the factory need help?",
+          "next": "scrap-request"
+        },
+        {
+          "id": "deliver-scrap",
+          "text": "[Quest] I found scrap for the factory.",
+          "questId": "mechanic-scrap",
+          "next": "scrap-thanks"
+        },
+        {
+          "id": "courier-pickup",
+          "text": "[Courier] I am here to collect the parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-pickup-confirmed"
+        },
+        {
+          "id": "courier-deliver",
+          "text": "[Courier] I have your parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-delivery-thanks"
+        },
+        {
+          "id": "advice",
+          "text": "[Advice]",
+          "next": "advice"
+        },
+        {
+          "id": "about",
+          "text": "Tell about yourself.",
+          "next": "about"
+        },
+        {
+          "id": "cashier-4-deliver-1",
+          "text": "[Delivery] Deliver 1 Water bottle to Irina Kovalenko.",
+          "next": "cashier-4-cashier-4-deliver-1",
+          "questId": "cashier-4"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        },
+        {
+          "id": "find-item-start",
+          "text": "[Find item] Tell me about your request.",
+          "questId": "find-item",
+          "next": "find-item-instructions"
+        },
+        {
+          "id": "find-item-deliver",
+          "text": "[Find item] I found the requested item.",
+          "questId": "find-item",
+          "next": "find-item-payment"
+        }
+      ]
+    },
+    "scrap-request": {
+      "text": "The factory is running low on materials. With the city under blockade, we have to use whatever we can find. Bring me one piece of scrap. Check the trash bins at night: the caretaker cleans them out in the morning, but before that you can find materials in them. I'll pay you 10 Thalers and give you a pair of work gloves.",
+      "choices": [
+        {
+          "id": "accept-scrap",
+          "text": "I'll find some scrap.",
+          "acceptQuestId": "mechanic-scrap",
+          "next": "scrap-instructions"
+        },
+        {
+          "id": "back",
+          "text": "Maybe later.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "scrap-instructions": {
+      "text": "One piece of scrap will help. Search the trash bins after dark, and bring it back before you scrap it for parts yourself.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "I'll be back.",
+          "close": true
+        }
+      ]
+    },
+    "scrap-thanks": {
+      "text": "This will help keep the factory running. Here are your 10 Thalers and a pair of work gloves. You may need them if you're not afraid of work.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Thank you.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "advice": {
+      "text": "A bench lets you rest for one phase and recover Energy. A bed or sofa lets you sleep until morning.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "about": {
+      "text": "I work the factory shift. If it rattles, leaks, or needs carrying, they send me. Morning: find me outside the factory. Afternoon: I am outside the factory too. Evening: I spend time in Center. Night: I stay in apartment 31 in Living District.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-4-cashier-4-deliver-1": {
+      "text": "Thank you. The delivery is recorded.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "courier-pickup-confirmed": {
+      "text": "Take this parcel to the recipient named in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "courier-delivery-thanks": {
+      "text": "Thank you. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-instructions": {
+      "text": "Find the requested item and take it to the recipient in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-payment": {
+      "text": "Exactly what was requested. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Apartment 31",
+  "sprite": {
+    "key": "room-house-31",
+    "path": "assets/buildings/house_rooms.png",
+    "background": "none",
+    "referenceWidth": 1536,
+    "crop": {
+      "x": 192,
+      "y": 529,
+      "width": 360,
+      "height": 145
+    }
+  },
+  "widthScale": 1.1,
+  "groundY": 145,
+  "bounds": {
+    "left": 8,
+    "right": 392,
+    "ceiling": 0
+  },
+  "furniture": [
+    {
+      "id": "chair",
+      "type": "chair-armrests",
+      "x": 198,
+      "scale": 1
+    },
+    {
+      "id": "sofa",
+      "type": "sofa-patterned",
+      "x": 302.5,
+      "scale": 1
+    }
+  ]
+}

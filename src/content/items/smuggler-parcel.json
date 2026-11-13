@@ -1,0 +1,20 @@
+{
+  "id": "smuggler-parcel",
+  "saleable": false,
+  "eruditionRequired": 2,
+  "price": 10,
+  "randomLoot": false,
+  "name": "Smuggler parcel",
+  "description": "A sealed shipment for the active smuggler delivery.",
+  "rarity": "common",
+  "quality": 2,
+  "category": "Quest",
+  "icon": {
+    "x": 385,
+    "y": 470,
+    "width": 125,
+    "height": 115
+  },
+  "scale": 1,
+  "maxStack": 1
+}

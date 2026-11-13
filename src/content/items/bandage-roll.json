@@ -1,0 +1,31 @@
+{
+  "id": "bandage-roll",
+  "name": "Bandage roll",
+  "description": "Bandage roll recovered from the district. Use to restore Health.",
+  "category": "Medical",
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 5,
+  "eruditionRequired": 5,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 910,
+    "y": 192,
+    "width": 114,
+    "height": 154
+  },
+  "scale": 1,
+  "consumable": true,
+  "maxStack": 5,
+  "recovery": {
+    "health": 25
+  },
+  "requirementMode": "any",
+  "skillRequirements": {
+    "medicine": 3
+  }
+}

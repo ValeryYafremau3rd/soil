@@ -1,0 +1,31 @@
+[
+  {
+    "id": "smuggler-apartment-safe",
+    "restock": false,
+    "type": "safe",
+    "x": 92.4,
+    "scale": 0.6875,
+    "locked": true,
+    "quality": 5,
+    "lockRarity": "rare",
+    "items": [
+      {
+        "itemId": "service-pistol",
+        "quantity": 1
+      },
+      {
+        "itemId": "pistol-ammunition",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "id": "dusan-apartment-11-loot",
+    "type": "suitcase",
+    "x": 370.7,
+    "scale": 0.6875,
+    "quality": 5,
+    "locked": false,
+    "lootTable": "dusan-apartment"
+  }
+]

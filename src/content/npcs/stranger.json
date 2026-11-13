@@ -1,0 +1,75 @@
+{
+  "name": "Milena Vukovic",
+  "sourceKey": "stranger-source",
+  "textureKey": "stranger",
+  "path": "assets/characters/npc/stranger.png",
+  "idleAnimation": "stranger-idle",
+  "referenceWidth": 2048,
+  "frameRate": 6,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "idleSteps": [
+    {
+      "x": 116,
+      "y": 30,
+      "width": 232,
+      "height": 624
+    },
+    {
+      "x": 450,
+      "y": 30,
+      "width": 232,
+      "height": 624
+    },
+    {
+      "x": 780,
+      "y": 30,
+      "width": 232,
+      "height": 624
+    },
+    {
+      "x": 1100,
+      "y": 30,
+      "width": 232,
+      "height": 624
+    },
+    {
+      "x": 1425,
+      "y": 30,
+      "width": 232,
+      "height": 624
+    },
+    {
+      "x": 1750,
+      "y": 30,
+      "width": 232,
+      "height": 624
+    }
+  ],
+  "dialogueId": "stranger",
+  "scale": 0.9,
+  "background": "light",
+  "repeat": -1,
+  "schedule": {
+    "morning": {
+      "locationId": "living-district",
+      "x": 210
+    },
+    "afternoon": {
+      "locationId": "center",
+      "x": 2200
+    },
+    "evening": {
+      "locationId": "living-district",
+      "x": 1250
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-11",
+      "x": 187
+    }
+  }
+}

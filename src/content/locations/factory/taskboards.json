@@ -1,0 +1,10 @@
+[
+  {
+    "id": "factory-street-board",
+    "type": "street",
+    "x": 240,
+    "space": "outside",
+    "heightOffset": 0,
+    "scale": 1
+  }
+]

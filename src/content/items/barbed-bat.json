@@ -1,0 +1,27 @@
+{
+  "damageMultiplier": 1.3,
+  "id": "barbed-bat",
+  "eruditionRequired": 10,
+  "price": 18,
+  "name": "Barbed bat",
+  "quality": 3,
+  "category": "Weapon",
+  "icon": {
+    "x": 1180,
+    "y": 65,
+    "width": 185,
+    "height": 190
+  },
+  "scale": 1,
+  "rarity": "rare",
+  "description": "Barbed bat.",
+  "requirementMode": "any",
+  "skillRequirements": {
+    "martialArts": 8
+  },
+  "bonus": {
+    "skill": "martialArts",
+    "amount": 2
+  },
+  "equipmentSlot": "melee"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "cashier-1",
+  "name": "First job: beer for Viktor",
+  "description": "Ask Zofia Nowak for work, deliver the regular goods, then return for payment.  Deliver 1 Beer bottle to Viktor Petrov.",
+  "offeredBy": "cashier",
+  "offerText": "Looking for courier work?",
+  "stages": [
+    {
+      "id": "cashier-1-collect",
+      "description": "Receive the delivery goods from Zofia.",
+      "trigger": {
+        "kind": "accept"
+      },
+      "grantItems": [
+        {
+          "itemId": "beer-bottle",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "cashier-1-deliver-0",
+      "description": "Deliver 1 Beer bottle to Viktor Petrov.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "cashier-1-deliver-0"
+      },
+      "requiredItems": [
+        {
+          "itemId": "beer-bottle",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "beer-bottle",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "cashier-1-return",
+      "description": "Report completed deliveries and collect payment.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "cashier",
+        "choiceId": "cashier-1-return"
+      }
+    }
+  ],
+  "reward": {
+    "money": 5
+  },
+  "deliveryKind": "courier"
+}

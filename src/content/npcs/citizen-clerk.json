@@ -1,0 +1,98 @@
+{
+  "name": "Pavel Sokolov",
+  "sourceKey": "citizens-source",
+  "textureKey": "citizen-clerk",
+  "path": "assets/characters/npc/citizens.png",
+  "idleAnimation": "citizen-clerk-idle",
+  "referenceWidth": 2048,
+  "frameRate": 3,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "background": "light",
+  "scale": 0.9,
+  "repeat": -1,
+  "frameSize": {
+    "width": 112,
+    "height": 180,
+    "referenceHeight": 152
+  },
+  "idleSteps": [
+    {
+      "x": 70,
+      "y": 352,
+      "width": 96,
+      "height": 156,
+      "anchorX": 48,
+      "anchorY": 152
+    },
+    {
+      "x": 252,
+      "y": 352,
+      "width": 96,
+      "height": 156,
+      "anchorX": 48,
+      "anchorY": 152
+    },
+    {
+      "x": 434,
+      "y": 352,
+      "width": 96,
+      "height": 156,
+      "anchorX": 48,
+      "anchorY": 152
+    },
+    {
+      "x": 616,
+      "y": 352,
+      "width": 96,
+      "height": 156,
+      "anchorX": 48,
+      "anchorY": 152
+    },
+    {
+      "x": 798,
+      "y": 352,
+      "width": 96,
+      "height": 156,
+      "anchorX": 48,
+      "anchorY": 152
+    },
+    {
+      "x": 980,
+      "y": 352,
+      "width": 96,
+      "height": 156,
+      "anchorX": 48,
+      "anchorY": 152
+    }
+  ],
+  "dialogueId": "citizen-clerk",
+  "schedule": {
+    "morning": {
+      "locationId": "center",
+      "buildingId": "center-shop",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 700
+    },
+    "afternoon": {
+      "locationId": "center",
+      "x": 1500
+    },
+    "evening": {
+      "locationId": "center",
+      "buildingId": "center-bar",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 300
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-32",
+      "x": 306
+    }
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "dusan-apartment-22-loot",
+    "restock": false,
+    "items": [
+      {
+        "itemId": "weapons-training-magazine",
+        "quantity": 1
+      }
+    ],
+    "type": "safe",
+    "x": 50,
+    "scale": 0.6875,
+    "quality": 5,
+    "locked": true,
+    "lootTable": "dusan-apartment"
+  }
+]

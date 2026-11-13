@@ -1,0 +1,21 @@
+{
+  "id": "postcard",
+  "eruditionRequired": 8,
+  "price": 8,
+  "name": "Postcard",
+  "description": "An illustrated postcard with writing on the reverse.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Valuable",
+  "icon": {
+    "x": 595,
+    "y": 466,
+    "width": 120,
+    "height": 116
+  },
+  "scale": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "barter": 5
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "initialDay": 1,
+  "findItemMaxPrice": 20,
+  "findItemRewardMultipliers": {
+    "common": 2,
+    "uncommon": 2,
+    "rare": 2,
+    "epic": 2,
+    "legendary": 2
+  },
+  "sleepDeprivation": {
+    "gracePhases": 4,
+    "sanityPerPhase": 5
+  },
+  "initialPhase": "night",
+  "travelsPerPhase": 2,
+  "nightDurationMultiplier": 3,
+  "busFare": 1,
+  "courierJobsPerDay": {
+    "min": 1,
+    "max": 1
+  },
+  "statCostsPerPhase": {
+    "energy": 2.5,
+    "sanity": 0.01
+  },
+  "iconSheet": {
+    "path": "assets/ui/icons/daytime.png",
+    "width": 2172,
+    "height": 724
+  },
+  "phases": {
+    "morning": {
+      "label": "Morning",
+      "icon": {
+        "x": 80,
+        "y": 140,
+        "width": 500,
+        "height": 440
+      },
+      "filter": {
+        "color": 13133136,
+        "alpha": 0.28
+      }
+    },
+    "afternoon": {
+      "label": "Afternoon",
+      "icon": {
+        "x": 580,
+        "y": 140,
+        "width": 500,
+        "height": 440
+      },
+      "filter": {
+        "color": 15123594,
+        "alpha": 0.14
+      }
+    },
+    "evening": {
+      "label": "Evening",
+      "icon": {
+        "x": 1100,
+        "y": 140,
+        "width": 500,
+        "height": 440
+      },
+      "filter": {
+        "color": 2637705,
+        "alpha": 0.44
+      }
+    },
+    "night": {
+      "label": "Night",
+      "icon": {
+        "x": 1630,
+        "y": 140,
+        "width": 500,
+        "height": 440
+      },
+      "filter": {
+        "color": 331045,
+        "alpha": 0.62
+      }
+    }
+  },
+  "initialLocationId": "factory",
+  "initialPhaseTravels": 4
+}

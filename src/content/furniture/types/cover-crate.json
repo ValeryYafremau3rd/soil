@@ -1,0 +1,25 @@
+{
+  "background": "dark",
+  "referenceWidth": 2172,
+  "scale": 1,
+  "interactionRadius": 40,
+  "name": "Crate cover",
+  "key": "furniture-cover-crate",
+  "path": "assets/hidden/hidden.png",
+  "crop": {
+    "x": 48,
+    "y": 162,
+    "width": 170,
+    "height": 171
+  },
+  "displayHeight": 100,
+  "action": "hide",
+  "groundOrigin": 0.97,
+  "prompt": "Enter · Hide",
+  "revealPrompt": "Enter · Step out",
+  "platform": {
+    "left": 0.06,
+    "right": 0.94,
+    "top": 0.164
+  }
+}

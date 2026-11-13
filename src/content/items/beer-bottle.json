@@ -1,0 +1,28 @@
+{
+  "id": "beer-bottle",
+  "name": "Beer bottle",
+  "description": "Beer bottle recovered from the district. Drink to recover Energy and Sanity.",
+  "category": "Drink",
+  "rarity": "common",
+  "quality": 2,
+  "price": 2,
+  "eruditionRequired": 2,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 913,
+    "y": 22,
+    "width": 101,
+    "height": 161
+  },
+  "scale": 1,
+  "consumable": true,
+  "maxStack": 1,
+  "recovery": {
+    "energy": 15,
+    "sanity": 24
+  }
+}

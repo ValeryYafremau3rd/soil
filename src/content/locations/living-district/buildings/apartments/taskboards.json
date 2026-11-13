@@ -1,0 +1,10 @@
+[
+  {
+    "id": "apartments-wall-board",
+    "type": "inside",
+    "x": 401.25,
+    "floor": 0,
+    "heightOffset": 50,
+    "scale": 0.875
+  }
+]

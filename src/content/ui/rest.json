@@ -1,0 +1,17 @@
+{
+  "rest": "Rest until",
+  "sleep": "Sleep until next morning",
+  "cancel": "Cancel",
+  "healthRecovery": {
+    "rest": 0,
+    "sleep": 10
+  },
+  "energyRecovery": {
+    "rest": 15,
+    "sleep": 50
+  },
+  "sanityRecovery": {
+    "rest": 0,
+    "sleep": 10
+  }
+}

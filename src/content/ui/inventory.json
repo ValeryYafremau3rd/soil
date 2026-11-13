@@ -1,0 +1,12 @@
+{
+  "itemSheet": {
+    "path": "assets/items/items.png",
+    "width": 1536,
+    "height": 1024
+  },
+  "itemIconSize": 48,
+  "detailIconSize": 128,
+  "noteIconSize": 96,
+  "gridColumns": 3,
+  "minimumContainerSlots": 6
+}

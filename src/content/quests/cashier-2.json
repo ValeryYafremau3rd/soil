@@ -1,0 +1,65 @@
+{
+  "id": "cashier-2",
+  "name": "A courier in the making",
+  "description": "Ask Zofia Nowak for work, deliver the regular goods, then return for payment.  Deliver 1 Bandage to Nadia Morozova.",
+  "offeredBy": "cashier",
+  "offerText": "Looking for courier work?",
+  "prerequisites": [
+    "cashier-1"
+  ],
+  "stages": [
+    {
+      "id": "cashier-2-collect",
+      "description": "Receive the delivery goods from Zofia.",
+      "trigger": {
+        "kind": "accept"
+      },
+      "grantItems": [
+        {
+          "itemId": "bandage",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "cashier-2-deliver-0",
+      "description": "Deliver 1 Bandage to Nadia Morozova.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-nurse",
+        "choiceId": "cashier-2-deliver-0"
+      },
+      "requiredItems": [
+        {
+          "itemId": "bandage",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "bandage",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "cashier-2-return",
+      "description": "Report completed deliveries and collect payment.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "cashier",
+        "choiceId": "cashier-2-return"
+      }
+    }
+  ],
+  "reward": {
+    "money": 8,
+    "items": [
+      {
+        "itemId": "flat-cap",
+        "quantity": 1
+      }
+    ]
+  },
+  "deliveryKind": "courier"
+}

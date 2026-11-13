@@ -1,0 +1,21 @@
+{
+  "id": "red-book",
+  "eruditionRequired": 15,
+  "price": 22,
+  "name": "Red book",
+  "quality": 3,
+  "category": "Document",
+  "icon": {
+    "x": 20,
+    "y": 450,
+    "width": 145,
+    "height": 155
+  },
+  "scale": 1,
+  "rarity": "epic",
+  "description": "Red book.",
+  "bonus": {
+    "skill": "erudition",
+    "amount": 4
+  }
+}

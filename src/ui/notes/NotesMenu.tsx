@@ -1,0 +1,141 @@
+import { useState,useSyncExternalStore } from "react";
+import type { InventoryController } from '../../app/contracts/inventory';
+import type { NotesController } from "../../app/contracts/notes";
+import type { PerksController } from '../../app/contracts/perks';
+import { ITEM_BY_ID } from "../../content/items";
+import skillsConfig from '../../content/skills.json';
+import type { Character } from '../../domain/skills/character';
+import { SKILL_LABELS } from '../../domain/skills/character';
+import type { NoteTarget } from './QuestText';
+import { ItemNote } from './ItemNote';
+import { LocationNote } from './LocationNote';
+import type { Tab } from './noteEntries';
+import { ITEM_GROUPS,name,TABS } from './noteEntries';
+import "./notes.css";
+import { notesKeyboard } from './notesKeyboard';
+import { PerkNote } from './PerkNote';
+import { PersonNote } from './PersonNote';
+
+export function NotesMenu({
+  notes,
+  initialTarget,
+  inventory,
+  perks,
+}: {
+  notes: NotesController;
+  initialTarget?: NoteTarget;
+  inventory: InventoryController;
+  perks: PerksController;
+}) {
+  const notesState = useSyncExternalStore(notes.subscribe, notes.getSnapshot);
+  const perkState = useSyncExternalStore(perks.subscribe, perks.getSnapshot);
+  useSyncExternalStore(inventory.subscribe, inventory.getSnapshot);
+  const perkEntries = [...skillsConfig.legendary.perks.map(perk => ({ ...perk, id: `legendary:${perk.skill}`, name: `Legendary ${SKILL_LABELS[perk.skill as keyof Character['skills']]}` })),
+    ...perks.definitions, ...perks.buffDefinitions.map(buff => ({ ...buff, id: `buff:${buff.id}` }))];
+  const discovered = { ...notesState, perks: perkEntries.map(perk => perk.id) };
+  const [tab, setTab] = useState<Tab>(initialTarget?.category ?? "locations");
+  const [selection, setSelection] = useState<Partial<Record<Tab, string>>>(initialTarget ? { [initialTarget.category]: initialTarget.id } : {});
+  const [expandedGroups, setExpandedGroups] = useState<ReadonlySet<string>>(() => {
+    const category = initialTarget?.category === 'items' ? ITEM_BY_ID[initialTarget.id]?.category : undefined;
+    return new Set(category ? [ITEM_GROUPS[category] ?? category] : []);
+  });
+  const groups = new Map<string, string[]>();
+  for (const id of tab === 'perks' ? discovered.perks : discovered.items) {
+    const category = tab === 'perks' ? (id.startsWith('legendary:') ? 'Legendary perks' : id.startsWith('buff:') ? 'Temporary effects' : 'Permanent perks') : ITEM_BY_ID[id].category;
+    const group = tab === 'perks' ? category : ITEM_GROUPS[category] ?? category;
+    groups.set(group, [...(groups.get(group) ?? []), id]);
+  }
+  const selected =
+    selection[tab] && discovered[tab].includes(selection[tab]!)
+      ? selection[tab]
+      : discovered[tab][0];
+  return (
+    <div
+      className="notes-menu"
+      onKeyDownCapture={notesKeyboard({ tab, selected, discovered, setTab, setSelection })}
+    >
+      <div
+        className="notes-tabs"
+        role="tablist"
+        aria-label="Note categories"
+        aria-orientation="horizontal"
+      >
+        {(Object.keys(TABS) as Tab[]).map((category) => (
+          <button
+            type="button"
+            key={category}
+            id={`notes-tab-${category}`}
+            role="tab"
+            aria-selected={tab === category}
+            aria-controls="notes-panel"
+            tabIndex={tab === category ? 0 : -1}
+            data-autofocus={tab === category || undefined}
+            onClick={() => setTab(category)}
+          >
+            {TABS[category]} <span>{discovered[category].length}</span>
+          </button>
+        ))}
+      </div>
+      <div
+        className="notes-layout"
+        id="notes-panel"
+        role="tabpanel"
+        aria-labelledby={`notes-tab-${tab}`}
+      >
+        <aside className="notes-sidebar">
+          <ul className="notes-entries" aria-label={`All ${tab}`}>
+            {tab === 'items' || tab === 'perks' ? [...groups].map(([group, ids], index) => (
+              <li key={group}>
+                <button type="button" className="notes-group" aria-expanded={expandedGroups.has(group)}
+                  aria-controls={`notes-group-${index}`}
+                  onClick={() => setExpandedGroups(current => {
+                    const next = new Set(current);
+                    if (next.has(group)) next.delete(group); else next.add(group);
+                    return next;
+                  })}>
+                  {expandedGroups.has(group) ? '▾' : '▸'} {group} ({ids.length})
+                </button>
+                <ul id={`notes-group-${index}`} className="notes-group-items" hidden={!expandedGroups.has(group)}>
+                  {expandedGroups.has(group) && ids.map(id => (
+                    <li key={id}>
+                      <button type="button" aria-pressed={selected === id}
+                        onFocus={() => setSelection(current => ({ ...current, [tab]: id }))}
+                        onClick={() => setSelection(current => ({ ...current, [tab]: id }))}>
+                        {tab === 'perks' ? perkEntries.find(perk => perk.id === id)?.name : name('items', id)}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )) : discovered[tab].map((id) => (
+              <li key={id}>
+                <button
+                  type="button"
+                  aria-pressed={selected === id}
+                  onClick={() =>
+                    setSelection((current) => ({ ...current, [tab]: id }))
+                  }
+                >
+                  {name(tab, id)}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </aside>
+        <section className="notes-details" aria-label="Note details">
+          {selected ? (
+            tab === 'perks' ? <PerkNote id={selected} perks={perks} state={perkState} skills={inventory.getSkills()} />
+              : <>{tab === 'locations' ? <LocationNote id={selected} /> : tab === 'people' ? <PersonNote id={selected} /> : <ItemNote id={selected} inventory={inventory} />}</>
+          ) : (
+            <p>
+              No entries available.
+            </p>
+          )}
+        </section>
+      </div>
+      <p className="notes-help">
+        ← / → Switch tabs · ↑ / ↓ Select entry · Enter Toggle group · Escape Close
+      </p>
+    </div>
+  );
+}

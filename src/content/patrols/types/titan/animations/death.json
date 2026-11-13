@@ -1,0 +1,70 @@
+{
+  "key": "titan-death",
+  "steps": [
+    {
+      "anchorY": 151,
+      "width": 155,
+      "y": 529,
+      "anchorX": 78,
+      "x": 185,
+      "height": 153
+    },
+    {
+      "anchorY": 151,
+      "width": 170,
+      "y": 529,
+      "anchorX": 85,
+      "x": 370,
+      "height": 153
+    },
+    {
+      "anchorY": 151,
+      "width": 195,
+      "y": 529,
+      "anchorX": 98,
+      "x": 558,
+      "height": 153
+    },
+    {
+      "anchorY": 151,
+      "width": 210,
+      "y": 529,
+      "anchorX": 105,
+      "x": 762,
+      "height": 153
+    },
+    {
+      "anchorY": 151,
+      "width": 228,
+      "y": 529,
+      "anchorX": 114,
+      "x": 975,
+      "height": 153
+    },
+    {
+      "anchorY": 151,
+      "width": 235,
+      "y": 529,
+      "anchorX": 118,
+      "x": 1200,
+      "height": 153
+    },
+    {
+      "anchorY": 151,
+      "width": 250,
+      "y": 529,
+      "anchorX": 125,
+      "x": 1430,
+      "height": 153
+    },
+    {
+      "anchorY": 151,
+      "width": 270,
+      "y": 529,
+      "anchorX": 135,
+      "x": 1680,
+      "height": 153
+    }
+  ],
+  "frameRate": 10
+}

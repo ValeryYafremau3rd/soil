@@ -1,0 +1,25 @@
+{
+    "name":  "Stacked crates",
+    "key":  "furniture-cover-crates-stacked",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  258,
+                 "y":  96,
+                 "width":  256,
+                 "height":  242
+             },
+    "displayHeight":  125,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.976,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.21,
+    "right": 0.66,
+    "top": 0.116
+                 }
+}

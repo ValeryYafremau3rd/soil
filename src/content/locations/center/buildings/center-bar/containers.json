@@ -1,0 +1,43 @@
+[
+  {
+    "id": "bar-suitcase",
+    "type": "suitcase",
+    "x": 658.25,
+    "scale": 0.9375,
+    "locked": true,
+    "items": [
+      {
+        "itemId": "barter-training-handbook",
+        "quantity": 1
+      },
+      {
+        "itemId": "sun-amulet",
+        "quantity": 1
+      }
+    ],
+    "floor": 0,
+    "restock": false
+  },
+  {
+    "id": "bar-daily-supplies",
+    "type": "crate",
+    "x": 884.8125,
+    "scale": 0.9375,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "bread",
+        "quantity": 1
+      },
+      {
+        "itemId": "spirits",
+        "quantity": 1
+      },
+      {
+        "itemId": "red-cigarettes",
+        "quantity": 1
+      }
+    ],
+    "floor": 0
+  }
+]

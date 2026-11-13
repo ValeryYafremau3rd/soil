@@ -1,0 +1,26 @@
+{
+  "id": "screwdriver",
+  "eruditionRequired": 5,
+  "price": 6,
+  "name": "Screwdriver",
+  "description": "A simple screwdriver with a steel shaft and a sturdy handle.",
+  "rarity": "common",
+  "quality": 2,
+  "category": "Tool",
+  "icon": {
+    "x": 154,
+    "y": 643,
+    "width": 100,
+    "height": 135
+  },
+  "scale": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "scraper": 3
+  },
+  "bonus": {
+    "skill": "scraper",
+    "amount": 1
+  },
+  "equipmentSlot": "tool"
+}

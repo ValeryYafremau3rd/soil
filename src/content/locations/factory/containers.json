@@ -1,0 +1,136 @@
+[
+  {
+    "id": "factory-trash",
+    "type": "trash",
+    "x": 80,
+    "space": "outside",
+    "items": [],
+    "lootTable": "street-supplies",
+    "scale": 1,
+    "quality": 5
+  },
+  {
+    "id": "factory-crate",
+    "type": "crate",
+    "x": 550,
+    "space": "outside",
+    "items": [],
+    "lootTable": "scavenge",
+    "scale": 1
+  },
+  {
+    "id": "factory-locker",
+    "type": "locker",
+    "x": 1450,
+    "space": "outside",
+    "items": [],
+    "lootTable": "scavenge",
+    "scale": 1
+  },
+  {
+    "id": "factory-trash-2",
+    "type": "trash",
+    "x": 1720,
+    "space": "outside",
+    "scale": 1,
+    "locked": false,
+    "items": [],
+    "lootTable": "street-supplies",
+    "quality": 5
+  },
+  {
+    "id": "factory-yard-toolbox",
+    "type": "toolbox",
+    "x": 1960,
+    "space": "outside",
+    "scale": 0.6,
+    "locked": true,
+    "items": [
+      {
+        "itemId": "intelligence-training-pocket-guide",
+        "quantity": 1
+      },
+      {
+        "itemId": "intelligence-training-handbook",
+        "quantity": 1
+      },
+      {
+        "itemId": "medal",
+        "quantity": 1
+      }
+    ],
+    "restock": false
+  },
+  {
+    "id": "factory-roof-safe",
+    "type": "toolbox",
+    "x": 440.16599999999994,
+    "space": "outside",
+    "scale": 0.6,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "medicine-training-magazine",
+        "quantity": 1
+      },
+      {
+        "itemId": "erudition-training-handbook",
+        "quantity": 1
+      },
+      {
+        "itemId": "stealth-training-handbook",
+        "quantity": 1
+      }
+    ],
+    "heightOffset": 317.1,
+    "restock": false
+  },
+  {
+    "id": "factory-roof-toolbox",
+    "type": "toolbox",
+    "x": 2196.7131,
+    "space": "outside",
+    "scale": 0.6,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "persuasion-training-magazine",
+        "quantity": 1
+      },
+      {
+        "itemId": "hatchet",
+        "quantity": 1
+      },
+      {
+        "itemId": "suspenders",
+        "quantity": 1
+      }
+    ],
+    "heightOffset": 160,
+    "restock": false
+  },
+  {
+    "id": "factory-bus-roof-reward",
+    "type": "toolbox",
+    "x": 690,
+    "space": "outside",
+    "scale": 0.6,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "willpower-training-pocket-guide",
+        "quantity": 1
+      },
+      {
+        "itemId": "leather-boots",
+        "quantity": 1
+      },
+      {
+        "itemId": "work-jacket",
+        "quantity": 1
+      }
+    ],
+    "heightOffset": 186.864,
+    "restock": false
+  }
+]

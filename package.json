@@ -1,0 +1,53 @@
+{
+  "name": "my-game",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "check": "tsc -b --pretty false",
+    "test": "node scripts/test.mjs",
+    "test:all": "node scripts/test.mjs all",
+    "test:list": "node scripts/test.mjs --list",
+    "test:character": "node scripts/test.mjs character",
+    "test:inventory": "node scripts/test.mjs inventory",
+    "test:travel": "node scripts/test.mjs travel",
+    "test:world": "node scripts/test.mjs world",
+    "test:movement": "node scripts/test.mjs movement",
+    "test:combat": "node scripts/test.mjs combat",
+    "test:quests": "node scripts/test.mjs quests",
+    "test:lockpicking": "node scripts/test.mjs lockpicking",
+    "test:persistence": "node scripts/test.mjs persistence",
+    "test:content": "node scripts/test.mjs content",
+    "test:ui": "node scripts/test.mjs ui",
+    "test:rendering": "node scripts/test.mjs rendering",
+    "test:tooling": "node scripts/test.mjs tooling",
+    "lint:files": "eslint"
+  },
+  "dependencies": {
+    "phaser": "^4.2.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@eslint/js": "^10.0.1",
+    "@rolldown/plugin-babel": "^0.3.0",
+    "@types/babel__core": "^7.20.5",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^10.14.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.13.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vite": "^8.3.6"
+  }
+}

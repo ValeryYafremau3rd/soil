@@ -1,0 +1,480 @@
+{
+  "start": "greeting",
+  "barter": {
+    "id": "merchant:cashier",
+    "name": "Zofia Nowak - Barter",
+    "locationId": "center",
+    "items": [
+      {
+        "itemId": "rope",
+        "quantity": 1
+      },
+      {
+        "itemId": "certificate",
+        "quantity": 1
+      },
+      {
+        "itemId": "old-newspapers",
+        "quantity": 1
+      },
+      {
+        "itemId": "screwdriver",
+        "quantity": 1
+      },
+      {
+        "itemId": "charisma-training-handbook",
+        "quantity": 1
+      },
+      {
+        "itemId": "horseshoe-charm",
+        "quantity": 1
+      },
+      {
+        "itemId": "mechanics-book",
+        "quantity": 1
+      },
+      {
+        "itemId": "sewing-magazine",
+        "quantity": 1
+      },
+      {
+        "itemId": "wool-socks",
+        "quantity": 1
+      },
+      {
+        "itemId": "multimeter",
+        "quantity": 1
+      }
+    ],
+    "stock": {
+      "categories": [
+        "Tool",
+        "Medical",
+        "Material",
+        "Supply",
+        "Electronics",
+        "Clothing",
+        "Book",
+        "Document"
+      ],
+      "minItems": 3,
+      "maxItems": 4,
+      "minQuantity": 1,
+      "maxQuantity": 1
+    }
+  },
+  "nodes": {
+    "greeting": {
+      "text": "I'm Zofia Nowak, the shop cashier. I run the shop counter. Looking for tools or supplies? Ask to barter.",
+      "choices": [
+        {
+          "id": "courier-pickup",
+          "text": "[Courier] I am here to collect the parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-pickup-confirmed"
+        },
+        {
+          "id": "courier-deliver",
+          "text": "[Courier] I have your parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-delivery-thanks"
+        },
+        {
+          "id": "advice",
+          "text": "[Advice]",
+          "next": "advice"
+        },
+        {
+          "id": "about",
+          "text": "Tell about yourself.",
+          "next": "about"
+        },
+        {
+          "id": "barter",
+          "text": "[Barter]",
+          "barter": true
+        },
+        {
+          "id": "stock",
+          "text": "What do you have?",
+          "next": "supplies"
+        },
+        {
+          "id": "cashier-1-accept",
+          "text": "[Work] First job: beer for Viktor",
+          "next": "cashier-1-cashier-1-accept",
+          "acceptQuestId": "cashier-1"
+        },
+        {
+          "id": "cashier-1-return",
+          "text": "[Delivery] Report completed deliveries and collect payment.",
+          "next": "cashier-1-cashier-1-return",
+          "questId": "cashier-1"
+        },
+        {
+          "id": "cashier-2-accept",
+          "text": "[Work] A courier in the making",
+          "next": "cashier-2-cashier-2-accept",
+          "acceptQuestId": "cashier-2"
+        },
+        {
+          "id": "cashier-2-return",
+          "text": "[Delivery] Report completed deliveries and collect payment.",
+          "next": "cashier-2-cashier-2-return",
+          "questId": "cashier-2"
+        },
+        {
+          "id": "cashier-3-accept",
+          "text": "[Work] One day: supplies for Dusan",
+          "next": "cashier-3-cashier-3-accept",
+          "acceptQuestId": "cashier-3"
+        },
+        {
+          "id": "cashier-3-return",
+          "text": "[Delivery] Report completed deliveries and collect payment.",
+          "next": "cashier-3-cashier-3-return",
+          "questId": "cashier-3"
+        },
+        {
+          "id": "cashier-4-accept",
+          "text": "[Work] One day: two deliveries",
+          "next": "cashier-4-cashier-4-accept",
+          "acceptQuestId": "cashier-4"
+        },
+        {
+          "id": "cashier-4-return",
+          "text": "[Delivery] Report completed deliveries and collect payment.",
+          "next": "cashier-4-cashier-4-return",
+          "questId": "cashier-4"
+        },
+        {
+          "id": "cashier-5-accept",
+          "text": "[Work] Ask about the next delivery.",
+          "next": "cashier-5-cashier-5-accept",
+          "acceptQuestId": "cashier-5"
+        },
+        {
+          "id": "cashier-5-return",
+          "text": "[Delivery] Return to Zofia for payment before afternoon.",
+          "next": "cashier-5-cashier-5-return",
+          "questId": "cashier-5"
+        },
+        {
+          "id": "cashier-3-retry",
+          "text": "[Delivery] Restart the expired delivery.",
+          "questId": "cashier-3",
+          "next": "cashier-3-retry"
+        },
+        {
+          "id": "cashier-4-retry",
+          "text": "[Delivery] Restart the expired delivery.",
+          "questId": "cashier-4",
+          "next": "cashier-4-retry"
+        },
+        {
+          "id": "cashier-5-retry",
+          "text": "[Delivery] Restart the expired delivery.",
+          "questId": "cashier-5",
+          "next": "cashier-5-retry"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        },
+        {
+          "id": "find-item-start",
+          "text": "[Find item] Tell me about your request.",
+          "questId": "find-item",
+          "next": "find-item-instructions"
+        },
+        {
+          "id": "find-item-deliver",
+          "text": "[Find item] I found the requested item.",
+          "questId": "find-item",
+          "next": "find-item-payment"
+        }
+      ]
+    },
+    "supplies": {
+      "text": "I always keep rope for delivery work. The rest changes each morning: tools, medicine, materials, and practical supplies. Ask to barter to see what arrived today.",
+      "choices": [
+        {
+          "id": "barter",
+          "text": "[Barter]",
+          "barter": true
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "advice": {
+      "text": "You only have six inventory slots. Stack supplies where you can, and leave room before collecting a delivery.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "about": {
+      "text": "I run the shop counter. Looking for tools or supplies? Ask to barter. Morning: you can find me in Center's shop. Afternoon: you can find me in Center's shop. Evening: you can find me in Center's shop. Night: you can find me in apartment 41 in Living District.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-1-cashier-1-accept": {
+      "text": "Deliver 1 Beer bottle to Viktor Petrov. The goods are yours now. Return to me for payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-1-cashier-1-return": {
+      "text": "Good work. Here is your pay. Ask for another job.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-2-cashier-2-accept": {
+      "text": "Deliver 1 Bandage to Nadia Morozova. The goods are yours now. Return to me for payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-2-cashier-2-return": {
+      "text": "Here is a cap and your pay. You can work as a courier now.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-3-cashier-3-accept": {
+      "text": "Deliver 1 Batteries to Dusan Markovic. The goods are yours now. Return to me for payment. You have one day (four phases), including your return.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-3-cashier-3-return": {
+      "text": "Here is a bag and your pay. You may need it: there will be several deliveries at once.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-4-cashier-4-accept": {
+      "text": "Deliver 1 Duct tape to Elena Jovanovic. Deliver 1 Water bottle to Irina Kovalenko. The goods are yours now. Return to me for payment. You have one day (four phases), including your return.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-4-cashier-4-return": {
+      "text": "Here is your pay and a courier night pass. Carry it and patrols treat you as they do during daytime. Monsters still attack.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-5-cashier-5-accept": {
+      "text": "Take a bandage from the courier crate near the shop in Center at night. Deliver it to Nadia Morozova the following morning and return before afternoon. Carry your pass for the night journey.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-5-cashier-5-return": {
+      "text": "Night delivery complete. Here is your pay. Taskboards offer more night deliveries with different goods and recipients.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-3-retry": {
+      "text": "The delivery is active again. No replacement goods are issued. Check your journal for the delivery instructions.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-4-retry": {
+      "text": "The delivery is active again. No replacement goods are issued. Check your journal for the delivery instructions.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-5-retry": {
+      "text": "The delivery is active again. No replacement goods are issued. Check your journal for the delivery instructions.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "courier-pickup-confirmed": {
+      "text": "Take this parcel to the recipient named in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "courier-delivery-thanks": {
+      "text": "Thank you. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-instructions": {
+      "text": "Find the requested item and take it to the recipient in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-payment": {
+      "text": "Exactly what was requested. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    }
+  }
+}

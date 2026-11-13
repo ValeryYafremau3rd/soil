@@ -1,0 +1,60 @@
+{
+  "key": "patrol-shoot",
+  "frameRate": 10,
+  "steps": [
+    {
+      "anchorY": 160,
+      "width": 142,
+      "y": 270,
+      "anchorX": 66,
+      "x": 1210,
+      "scale": 1.14,
+      "height": 168
+    },
+    {
+      "anchorY": 160,
+      "width": 140,
+      "y": 270,
+      "anchorX": 66,
+      "x": 1360,
+      "scale": 1.14,
+      "height": 168
+    },
+    {
+      "anchorY": 160,
+      "width": 144,
+      "y": 270,
+      "anchorX": 68,
+      "x": 1508,
+      "scale": 1.14,
+      "height": 168
+    },
+    {
+      "anchorY": 160,
+      "width": 164,
+      "y": 270,
+      "anchorX": 68,
+      "x": 1660,
+      "scale": 1.14,
+      "height": 168
+    },
+    {
+      "anchorY": 160,
+      "width": 148,
+      "y": 270,
+      "anchorX": 66,
+      "x": 1820,
+      "scale": 1.14,
+      "height": 168
+    },
+    {
+      "anchorY": 160,
+      "width": 116,
+      "y": 270,
+      "anchorX": 58,
+      "x": 1995,
+      "scale": 1.14,
+      "height": 168
+    }
+  ]
+}

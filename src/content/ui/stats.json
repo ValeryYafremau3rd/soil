@@ -1,0 +1,58 @@
+[
+  {
+    "id": "health",
+    "attributeBonuses": [
+      {
+        "attribute": "strength",
+        "pointsPerAttribute": 5
+      },
+      {
+        "attribute": "willpower",
+        "pointsPerAttribute": 3
+      }
+    ],
+    "label": "Health",
+    "value": 100,
+    "max": 100
+  },
+  {
+    "id": "energy",
+    "attributeBonuses": [
+      {
+        "attribute": "strength",
+        "pointsPerAttribute": 5
+      },
+      {
+        "attribute": "agility",
+        "pointsPerAttribute": 5
+      },
+      {
+        "attribute": "willpower",
+        "pointsPerAttribute": 3
+      }
+    ],
+    "label": "Energy",
+    "value": 100,
+    "max": 100
+  },
+  {
+    "id": "sanity",
+    "attributeBonuses": [
+      {
+        "attribute": "charisma",
+        "pointsPerAttribute": 5
+      },
+      {
+        "attribute": "intelligence",
+        "pointsPerAttribute": 5
+      },
+      {
+        "attribute": "willpower",
+        "pointsPerAttribute": 3
+      }
+    ],
+    "label": "Sanity",
+    "value": 100,
+    "max": 100
+  }
+]

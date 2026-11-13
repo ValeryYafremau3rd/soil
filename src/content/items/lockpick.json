@@ -1,0 +1,23 @@
+{
+  "id": "lockpick",
+  "eruditionRequired": 5,
+  "price": 3,
+  "name": "Lockpick",
+  "description": "Thin pins for picking locks. One breaks on a failed or cancelled attempt.",
+  "consumable": true,
+  "maxStack": 3,
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Tool",
+  "icon": {
+    "x": 603,
+    "y": 642,
+    "width": 56,
+    "height": 130
+  },
+  "scale": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "lockpicking": 3
+  }
+}

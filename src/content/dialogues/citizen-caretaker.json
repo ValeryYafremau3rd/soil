@@ -1,0 +1,161 @@
+{
+  "start": "greeting",
+  "nodes": {
+    "greeting": {
+      "text": "I'm Elena Jovanovic, the caretaker. I look after the apartments and barracks. A clean corridor and a sound door save a lot of trouble.",
+      "choices": [
+        {
+          "id": "nurse-tablet-deliver",
+          "text": "[Medicine] Nadia sent me with a white tablet for you.",
+          "questId": "nurse-tablet-deliveries",
+          "next": "tablet-response"
+        },
+        {
+          "id": "courier-pickup",
+          "text": "[Courier] I am here to collect the parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-pickup-confirmed"
+        },
+        {
+          "id": "courier-deliver",
+          "text": "[Courier] I have your parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-delivery-thanks"
+        },
+        {
+          "id": "advice",
+          "text": "[Advice]",
+          "next": "advice"
+        },
+        {
+          "id": "about",
+          "text": "Tell about yourself.",
+          "next": "about"
+        },
+        {
+          "id": "cashier-4-deliver-0",
+          "text": "[Delivery] Deliver 1 Duct tape to Elena Jovanovic.",
+          "next": "cashier-4-cashier-4-deliver-0",
+          "questId": "cashier-4"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        },
+        {
+          "id": "find-item-start",
+          "text": "[Find item] Tell me about your request.",
+          "questId": "find-item",
+          "next": "find-item-instructions"
+        },
+        {
+          "id": "find-item-deliver",
+          "text": "[Find item] I found the requested item.",
+          "questId": "find-item",
+          "next": "find-item-payment"
+        }
+      ]
+    },
+    "advice": {
+      "text": "It is worth checking the trash bins at night. You can find useful things, but we clean them out in the morning, so do your scavenging before sunrise. Watch out for patrols while you are outside.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "about": {
+      "text": "I look after the apartments and barracks. A clean corridor and a sound door save a lot of trouble. Morning: you can find me in the streets of Center. Afternoon: you can find me in the streets of Living District. Evening: you can find me in the barracks. Night: you can find me in apartment 42 in Living District.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-4-cashier-4-deliver-0": {
+      "text": "Thank you. The delivery is recorded.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "courier-pickup-confirmed": {
+      "text": "Take this parcel to the recipient named in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "courier-delivery-thanks": {
+      "text": "Thank you. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-instructions": {
+      "text": "Find the requested item and take it to the recipient in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-payment": {
+      "text": "Exactly what was requested. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "tablet-response": {
+      "text": "Thank you very much, kind sir. Please give Nadia my heartfelt thanks as well. It is a great comfort to know that someone is looking out for us.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    }
+  }
+}

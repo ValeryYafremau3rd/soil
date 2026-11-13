@@ -1,0 +1,47 @@
+{
+  "id": "red-tablets",
+  "name": "Painkillers",
+  "description": "Red painkiller tablets reduce incoming Health damage by 30% for four phases or until sleep. They also grant +1 Physique and -1 Intelligence for the same duration. Another dose refreshes these effects without stacking.",
+  "category": "Medical",
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 6,
+  "eruditionRequired": 15,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 443,
+    "y": 232,
+    "width": 130,
+    "height": 106
+  },
+  "scale": 1,
+  "consumable": true,
+  "maxStack": 5,
+  "iconClip": [
+    {
+      "y": 0,
+      "x": 0.65
+    },
+    {
+      "y": 0.24,
+      "x": 1
+    },
+    {
+      "y": 1,
+      "x": 0.4
+    },
+    {
+      "y": 0.75,
+      "x": 0
+    }
+  ],
+  "requirementMode": "any",
+  "skillRequirements": {
+    "medicine": 10
+  },
+  "recovery": {}
+}

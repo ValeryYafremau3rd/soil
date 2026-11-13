@@ -1,0 +1,14 @@
+{
+  "name": "Wall taskboard",
+  "key": "taskboard-inside",
+  "path": "assets/taskboards/inside.png",
+  "referenceWidth": 1536,
+  "background": "none",
+  "crop": { "x": 76, "y": 116, "width": 1385, "height": 794 },
+  "space": "inside",
+  "displayHeight": 56,
+  "scale": 1,
+  "interactionRadius": 65,
+  "prompt": "Enter · Quests",
+  "menuId": "quests"
+}

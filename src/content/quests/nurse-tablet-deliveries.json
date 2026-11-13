@@ -1,0 +1,81 @@
+{
+  "id": "nurse-tablet-deliveries",
+  "name": "A dose of kindness",
+  "description": "Bring white tablets to Elena Jovanovic and Dusan Markovic in either order, then report to Nadia for a white tablet and a Medicine magazine.",
+  "offeredBy": "citizen-nurse",
+  "offerText": "Could you help me deliver medicine?",
+  "stages": [
+    {
+      "id": "receive-tablets",
+      "description": "Receive two white tablets from Nadia.",
+      "trigger": {
+        "kind": "accept"
+      },
+      "grantItems": [
+        {
+          "itemId": "white-tablets",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "visit-caretaker",
+      "description": "Deliver one white tablet to Elena Jovanovic.",
+      "parallelGroup": "patients",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-caretaker",
+        "choiceId": "nurse-tablet-deliver"
+      },
+      "requiredItems": [
+        {
+          "itemId": "white-tablets",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "white-tablets",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "visit-dusan",
+      "description": "Offer Dusan Markovic a white tablet.",
+      "parallelGroup": "patients",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "nurse-tablet-offer"
+      },
+      "requiredItems": [
+        {
+          "itemId": "white-tablets",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "report-to-nurse",
+      "description": "Return to Nadia after speaking to Elena and Dusan.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-nurse",
+        "choiceId": "nurse-tablet-report"
+      }
+    }
+  ],
+  "reward": {
+    "items": [
+      {
+        "itemId": "white-tablets",
+        "quantity": 1
+      },
+      {
+        "itemId": "medicine-training-magazine",
+        "quantity": 1
+      }
+    ]
+  }
+}

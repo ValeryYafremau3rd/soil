@@ -1,0 +1,25 @@
+{
+    "name":  "Dumpster",
+    "key":  "furniture-cover-dumpster",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  631,
+                 "y":  461,
+                 "width":  221,
+                 "height":  184
+             },
+    "displayHeight":  100,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.97,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.06,
+    "right": 0.94,
+    "top": 0.239
+                 }
+}

@@ -1,0 +1,166 @@
+[
+  {
+    "id": "center-locker-box",
+    "type": "crate",
+    "x": 2533,
+    "space": "outside",
+    "heightOffset": 117,
+    "scale": 0.6,
+    "locked": false,
+    "items": [],
+    "restock": false
+  },
+  {
+    "id": "cashier-5-crate",
+    "type": "smuggler-crate",
+    "x": 2336,
+    "space": "outside",
+    "scale": 0.7,
+    "quality": 3,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "bandage",
+        "quantity": 1
+      },
+      {
+        "itemId": "beer-bottle",
+        "quantity": 1
+      },
+      {
+        "itemId": "duct-tape",
+        "quantity": 1
+      },
+      {
+        "itemId": "water-bottle",
+        "quantity": 1
+      },
+      {
+        "itemId": "batteries",
+        "quantity": 1
+      }
+    ],
+    "restock": false
+  },
+  {
+    "id": "center-trash-1",
+    "type": "trash",
+    "x": 300,
+    "space": "outside",
+    "scale": 1,
+    "locked": false,
+    "items": [],
+    "lootTable": "street-supplies",
+    "quality": 5
+  },
+  {
+    "id": "center-trash-2",
+    "type": "trash",
+    "x": 900,
+    "space": "outside",
+    "scale": 1,
+    "locked": false,
+    "items": [],
+    "lootTable": "street-supplies",
+    "quality": 5
+  },
+  {
+    "id": "center-yard-toolbox",
+    "type": "toolbox",
+    "x": 2450,
+    "space": "outside",
+    "scale": 0.6,
+    "locked": true,
+    "items": [
+      {
+        "itemId": "chef-jacket",
+        "quantity": 1
+      },
+      {
+        "itemId": "weapons-training-handbook",
+        "quantity": 1
+      }
+    ],
+    "restock": false
+  },
+  {
+    "id": "bar-roof-crate",
+    "type": "toolbox",
+    "x": 1100,
+    "space": "outside",
+    "scale": 0.6,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "encyclopedia",
+        "quantity": 1
+      },
+      {
+        "itemId": "brass-knuckles",
+        "quantity": 1
+      },
+      {
+        "itemId": "precision-screwdriver",
+        "quantity": 1
+      },
+      {
+        "itemId": "trainers",
+        "quantity": 1
+      }
+    ],
+    "heightOffset": 166,
+    "restock": false
+  },
+  {
+    "id": "shop-roof-crate",
+    "type": "crate",
+    "x": 2420,
+    "space": "outside",
+    "scale": 0.6,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "intimidation-training-magazine",
+        "quantity": 1
+      },
+      {
+        "itemId": "chemistry-book",
+        "quantity": 1
+      },
+      {
+        "itemId": "scraper-training-handbook",
+        "quantity": 1
+      },
+      {
+        "itemId": "revolver",
+        "quantity": 1
+      }
+    ],
+    "heightOffset": 250,
+    "restock": false
+  },
+  {
+    "id": "center-bus-roof-reward",
+    "type": "suitcase",
+    "x": 1600,
+    "space": "outside",
+    "scale": 0.8,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "adjustable-wrench",
+        "quantity": 1
+      },
+      {
+        "itemId": "martialArts-training-handbook",
+        "quantity": 1
+      },
+      {
+        "itemId": "botany-guide",
+        "quantity": 1
+      }
+    ],
+    "heightOffset": 185,
+    "restock": false
+  }
+]

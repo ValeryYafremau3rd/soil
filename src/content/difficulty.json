@@ -1,0 +1,41 @@
+{
+  "defaultId": "normal",
+  "presets": [
+    {
+      "id": "easy", "name": "Easy", "description": "Stronger attacks, gentler patrols, and more recovery.",
+      "modifiers": {
+        "heroDamage": 1.5, "patrolDamage": 0.5, "patrolHealth": 0.8,
+        "fallDamage": 0.5, "safeFallHeight": 1.25,
+        "restRecovery": 1.5, "sleepRecovery": 1.5, "itemRecovery": 1.25,
+        "energyCost": 0.6, "sanityCost": 1,
+        "startingHealth": 1, "startingEnergy": 1, "startingSanity": 1, "maximumStats": 1,
+        "patrolCooldown": 1.4, "patrolReaction": 1.4, "patrolSpeed": 0.6,
+        "patrolDetection": 0.9, "monsterStrength": 0.9
+      }
+    },
+    {
+      "id": "normal", "name": "Normal", "description": "The standard balance of combat, survival, and recovery.",
+      "modifiers": {
+        "heroDamage": 1, "patrolDamage": 1, "patrolHealth": 1,
+        "fallDamage": 1, "safeFallHeight": 1,
+        "restRecovery": 1, "sleepRecovery": 1, "itemRecovery": 1,
+        "energyCost": 1, "sanityCost": 1,
+        "startingHealth": 1, "startingEnergy": 1, "startingSanity": 1, "maximumStats": 1,
+        "patrolCooldown": 1, "patrolReaction": 1, "patrolSpeed": 0.8,
+        "patrolDetection": 1, "monsterStrength": 1
+      }
+    },
+    {
+      "id": "hard", "name": "Hard", "description": "Tougher patrols, harsher falls, and scarce recovery.",
+      "modifiers": {
+        "heroDamage": 0.8, "patrolDamage": 1.5, "patrolHealth": 1.2,
+        "fallDamage": 1.5, "safeFallHeight": 0.85,
+        "restRecovery": 0.6, "sleepRecovery": 0.6, "itemRecovery": 0.75,
+        "energyCost": 1.6, "sanityCost": 2,
+        "startingHealth": 1, "startingEnergy": 1, "startingSanity": 1, "maximumStats": 1,
+        "patrolCooldown": 0.8, "patrolReaction": 0.7, "patrolSpeed": 1,
+        "patrolDetection": 1.1, "monsterStrength": 1.1
+      }
+    }
+  ]
+}

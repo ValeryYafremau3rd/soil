@@ -1,0 +1,27 @@
+[
+  {
+    "id": "dusan-apartment-42-loot",
+    "restock": false,
+    "items": [
+      {
+        "itemId": "smuggler-lock-guide",
+        "quantity": 1
+      }
+    ],
+    "type": "safe",
+    "x": 200,
+    "scale": 0.6875,
+    "quality": 5,
+    "locked": true,
+    "lootTable": "dusan-apartment"
+  },
+  {
+    "id": "apartments-reward-3",
+    "type": "suitcase",
+    "x": 388,
+    "scale": 0.6875,
+    "locked": true,
+    "items": [],
+    "restock": false
+  }
+]

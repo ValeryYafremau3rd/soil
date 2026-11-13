@@ -1,0 +1,51 @@
+{
+    "name":  "Parked car",
+    "key":  "vehicle-small-car",
+    "path":  "assets/transport/cars.png",
+    "background":  "none",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  14,
+                 "y":  380,
+                 "width":  506,
+                 "height":  208
+             },
+    "displayHeight":  115,
+    "scale":  1,
+    "action":  "none",
+    "interactionRadius":  40,
+    "prompt":  "Parked car",
+    "groundOrigin":  0.89,
+    "platforms":  [
+                      {
+                          "left":  0.05,
+                          "right":  0.19,
+                          "top":  0.36,
+                          "rightTop":  0.32
+                      },
+                      {
+                          "left":  0.19,
+                          "right":  0.3,
+                          "top":  0.32,
+                          "rightTop":  0.04
+                      },
+                      {
+                          "left":  0.3,
+                          "right":  0.57,
+                          "top":  0.04,
+                          "rightTop":  0.04
+                      },
+                      {
+                          "left":  0.57,
+                          "right":  0.7,
+                          "top":  0.04,
+                          "rightTop":  0.32
+                      },
+                      {
+                          "left":  0.7,
+                          "right":  0.91,
+                          "top":  0.32,
+                          "rightTop":  0.38
+                      }
+                  ]
+}

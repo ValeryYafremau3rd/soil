@@ -1,0 +1,58 @@
+{
+  "id": "smuggler-1",
+  "name": "After dark: a quiet delivery",
+  "offeredBy": "citizen-mechanic",
+  "offerText": "Come closer. I have a quiet job for you.",
+  "description": "Dusan Markovic needs a sealed parts parcel from the new crate beside the Living District barracks. Collect it at night, then return it to him. He works at the factory in the morning and afternoon.",
+  "reward": {
+    "money": 8,
+    "items": [
+      {
+        "itemId": "flashlight",
+        "quantity": 1
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "collect",
+      "description": "At night, collect the Parts parcel from the crate beside the Living District barracks.",
+      "trigger": {
+        "kind": "loot",
+        "containerId": "smuggler-living-crate"
+      },
+      "requiredItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ],
+      "phases": [
+        "night"
+      ]
+    },
+    {
+      "id": "deliver",
+      "description": "Return to Dusan Markovic and hand over the Parts parcel.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "smuggler-1-deliver"
+      },
+      "requiredItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "deliveryKind": "smuggler",
+  "deliveryItemId": "smuggler-parcel"
+}

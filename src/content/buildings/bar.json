@@ -1,0 +1,90 @@
+{
+  "outer": {
+    "key": "bar-outer",
+    "groundY": 495,
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "width": 1000,
+      "height": 505
+    },
+    "floors": [
+      {
+        "y": 495,
+        "left": 25,
+        "right": 975,
+        "ceiling": 0
+      }
+    ],
+    "platforms": [
+      {
+        "left": 0.04,
+        "right": 0.96,
+        "top": 0.2120792079
+      }
+    ]
+  },
+  "inner": {
+    "key": "bar-inner",
+    "groundY": 520,
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "width": 985,
+      "height": 535
+    },
+    "floors": [
+      {
+        "y": 520,
+        "left": 35,
+        "right": 950,
+        "ceiling": 120
+      }
+    ],
+    "platforms": [
+      {
+        "left": 0.05,
+        "right": 0.24,
+        "top": 0.8276635514
+      },
+      {
+        "left": 0.6,
+        "right": 0.8,
+        "top": 0.8579439252
+      }
+    ]
+  },
+  "entranceX": 502,
+  "stairX": 470,
+  "stairLandingX": 470,
+  "interactionRadius": 38,
+  "stairDurationMs": 1400,
+  "scale": 0.8,
+  "name": "bar",
+  "sprites": [
+    {
+      "key": "bar-outer",
+      "path": "assets/buildings/bar.png",
+      "referenceWidth": 2048,
+      "background": "dark",
+      "crop": {
+        "x": 18,
+        "y": 105,
+        "width": 1000,
+        "height": 505
+      }
+    },
+    {
+      "key": "bar-inner",
+      "path": "assets/buildings/bar.png",
+      "referenceWidth": 2048,
+      "background": "dark",
+      "crop": {
+        "x": 1045,
+        "y": 80,
+        "width": 985,
+        "height": 535
+      }
+    }
+  ]
+}

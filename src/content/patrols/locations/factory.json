@@ -1,0 +1,59 @@
+{
+  "type": "patrol",
+  "emptyInteriorSpawn": {
+    "type": "octopus",
+    "chance": 0.1
+  },
+  "counts": {
+    "morning": 1,
+    "afternoon": 1,
+    "evening": 1,
+    "night": 2
+  },
+  "bounds": {
+    "left": 0.04,
+    "right": 0.96
+  },
+  "scale": 1,
+  "interiors": [
+    {
+      "id": "factory-octopus",
+      "buildingId": "factory-main",
+      "floor": 0,
+      "type": "octopus",
+      "counts": {
+        "morning": 0,
+        "afternoon": 0,
+        "evening": 0,
+        "night": 1
+      },
+      "bounds": {
+        "left": 0.25,
+        "right": 0.85
+      },
+      "scale": 1
+    }
+  ],
+  "nightEncounters": [
+    {
+      "count": 1,
+      "weight": 70,
+      "type": "titan"
+    },
+    {
+      "count": 1,
+      "weight": 10,
+      "type": "fly"
+    },
+    {
+      "count": 3,
+      "weight": 10,
+      "type": "octopus"
+    },
+    {
+      "count": 3,
+      "weight": 10,
+      "type": "patrol"
+    }
+  ]
+}

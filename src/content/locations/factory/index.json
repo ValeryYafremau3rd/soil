@@ -1,0 +1,28 @@
+{
+  "id": "factory",
+  "connections": {
+    "right": "center"
+  },
+  "name": "Factory",
+  "description": "The industrial district and its factory workshop.",
+  "background": {
+    "key": "factory-background",
+    "path": "assets/background/factory.png",
+    "height": 960,
+    "groundRatio": 0.905,
+    "scrollFactor": 0.7,
+    "scale": 1
+  },
+  "busStop": {
+    "x": 830,
+    "scale": 0.32,
+    "interactionRadius": 180,
+    "spawnOffset": 110
+  },
+  "npc": {
+    "type": "worker",
+    "x": 1196,
+    "scale": 1
+  },
+  "order": 1
+}

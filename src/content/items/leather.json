@@ -1,0 +1,17 @@
+{
+  "id": "leather",
+  "eruditionRequired": 2,
+  "price": 8,
+  "name": "Leather",
+  "description": "A thick piece of leather with a rough, weathered surface.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Material",
+  "icon": {
+    "x": 1425,
+    "y": 642,
+    "width": 96,
+    "height": 125
+  },
+  "scale": 1
+}

@@ -1,0 +1,57 @@
+{
+  "id": "precision-screwdriver",
+  "name": "Precision screwdriver",
+  "description": "Precision screwdriver recovered from the district.",
+  "category": "Tool",
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 16,
+  "eruditionRequired": 11,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 1235,
+    "y": 842,
+    "width": 155,
+    "height": 146
+  },
+  "scale": 1,
+  "iconClip": [
+    {
+      "y": 0,
+      "x": 0.6
+    },
+    {
+      "y": 0,
+      "x": 1
+    },
+    {
+      "y": 0.35,
+      "x": 1
+    },
+    {
+      "y": 1,
+      "x": 0.3
+    },
+    {
+      "y": 1,
+      "x": 0
+    },
+    {
+      "y": 0.72,
+      "x": 0
+    }
+  ],
+  "requirementMode": "any",
+  "skillRequirements": {
+    "lockpicking": 8
+  },
+  "bonus": {
+    "skill": "lockpicking",
+    "amount": 3
+  },
+  "equipmentSlot": "tool"
+}

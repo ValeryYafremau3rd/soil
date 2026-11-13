@@ -1,0 +1,53 @@
+{
+  "corpseLoot": [
+    {
+      "itemId": "strange-key",
+      "min": 1,
+      "max": 1
+    }
+  ],
+  "name": "Titan",
+  "kind": "monster",
+  "combat": {
+    "attackCooldownMs": 1800,
+    "levelTolerance": 28,
+    "chaseSpeed": 145,
+    "meleeRange": 110,
+    "chaseStopRatio": 0.8,
+    "hitFlashMs": 180,
+    "detectionRadius": 640,
+    "health": 700,
+    "deathHoldMs": 900,
+    "fear": {
+      "radius": 800,
+      "sanityPerSecond": 4,
+      "noticeSanityDamage": 8
+    },
+    "meleeDamage": 60,
+    "reactionDelayMs": 1200
+  },
+  "sourceKey": "titan-source",
+  "textureKey": "titan",
+  "path": "assets/characters/patrol/titan.png",
+  "referenceWidth": 2048,
+  "background": "dark",
+  "backgroundThreshold": 24,
+  "backgroundMinGreenRed": 0,
+  "keepLargestComponent": true,
+  "displayHeight": 175,
+  "frameSize": {
+    "referenceHeight": 196,
+    "width": 300,
+    "height": 210
+  },
+  "scale": 1.1,
+  "depth": 6.5,
+  "interactionRadius": 65,
+  "movement": {
+    "minWalkMs": 1300,
+    "minPauseMs": 700,
+    "speed": 42,
+    "maxPauseMs": 1500,
+    "maxWalkMs": 2500
+  }
+}

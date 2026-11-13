@@ -1,0 +1,87 @@
+{
+  "id": "find-work",
+  "name": "Find work and a place to live",
+  "stages": [
+    {
+      "description": "Ask Pavel Sokolov, the clerk, for work and a place to live.",
+      "id": "ask-clerk",
+      "trigger": {
+        "npcId": "citizen-clerk",
+        "choiceId": "find-work-ask",
+        "kind": "dialogue"
+      },
+      "grantItems": [
+        {
+          "quantity": 1,
+          "itemId": "key-ring"
+        }
+      ]
+    },
+    {
+      "description": "Accept a job from Dusan Markovic, the mechanic.",
+      "parallelGroup": "employers",
+      "id": "work-citizen-mechanic",
+      "trigger": {
+        "kind": "questAccepted",
+        "npcId": "citizen-mechanic"
+      }
+    },
+    {
+      "description": "Accept a job from Viktor Petrov, the bartender.",
+      "parallelGroup": "employers",
+      "id": "work-bartender",
+      "trigger": {
+        "kind": "questAccepted",
+        "npcId": "bartender"
+      }
+    },
+    {
+      "description": "Accept a job from Zofia Nowak, the cashier.",
+      "parallelGroup": "employers",
+      "id": "work-cashier",
+      "trigger": {
+        "kind": "questAccepted",
+        "npcId": "cashier"
+      }
+    },
+    {
+      "description": "Accept a job from Nadia Morozova, the nurse.",
+      "parallelGroup": "employers",
+      "id": "work-citizen-nurse",
+      "trigger": {
+        "kind": "questAccepted",
+        "npcId": "citizen-nurse"
+      }
+    },
+    {
+      "description": "Enter room 21 in the Living District apartment building.",
+      "parallelGroup": "employers",
+      "id": "visit-apartment",
+      "trigger": {
+        "locationId": "living-district",
+        "buildingId": "apartments",
+        "roomId": "apartment-21",
+        "kind": "room"
+      }
+    },
+    {
+      "description": "You have visited room 21 and accepted work from all four contacts. Return to Pavel Sokolov, the clerk.",
+      "id": "return-clerk",
+      "trigger": {
+        "npcId": "citizen-clerk",
+        "choiceId": "find-work-report",
+        "kind": "dialogue"
+      }
+    }
+  ],
+  "description": "The town is under quarantine. You need work to afford food and a place to stay. Ask the clerk for help.",
+  "autoStart": true,
+  "reward": {
+    "items": [
+      {
+        "quantity": 1,
+        "itemId": "old-newspapers"
+      }
+    ]
+  }
+}

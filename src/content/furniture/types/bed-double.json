@@ -1,0 +1,23 @@
+{
+    "name":  "Double bed",
+    "key":  "furniture-bed-double",
+    "path":  "assets/characters/npc/beds.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  822,
+                 "y":  47,
+                 "width":  403,
+                 "height":  339
+             },
+    "displayHeight":  60,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "sleep",
+    "prompt":  "Enter · Sleep",
+    "platform":  {
+                     "left":  0.08,
+                     "right":  0.92,
+                     "top":  0.4
+                 }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "nuts-and-bolts",
+  "eruditionRequired": 2,
+  "price": 1,
+  "name": "Nuts and bolts",
+  "description": "An assortment of threaded bolts and matching nuts. Scrap one for a small Scraper-based chance to recover useful equipment.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Scrap",
+  "icon": {
+    "x": 1100,
+    "y": 667,
+    "width": 90,
+    "height": 95
+  },
+  "scale": 1,
+  "scrap": true,
+  "consumable": true,
+  "maxStack": 1
+}

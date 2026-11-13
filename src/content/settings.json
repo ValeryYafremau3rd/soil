@@ -1,0 +1,92 @@
+{
+  "lighting": {
+    "depth": 11,
+    "phaseIntensity": { "morning": 0.25, "afternoon": 0.1, "evening": 0.25, "night": 0.5 },
+    "sources": {
+      "entrance": { "color": 16765594, "radius": 150, "intensity": 0.55, "attenuation": 0.9, "offsetY": 95 },
+      "corridor": { "color": 16769973, "radius": 210, "intensity": 0.35, "attenuation": 0.9, "offsetY": 100 },
+      "room": { "color": 16769973, "radius": 190, "intensity": 0.32, "attenuation": 0.9, "offsetY": -35 },
+      "busStop": { "color": 16773076, "radius": 185, "intensity": 0.65, "attenuation": 0.9, "offsetY": -25 },
+      "taskboard": { "color": 16765594, "radius": 115, "intensity": 0.5, "attenuation": 0.9, "offsetY": -12 }
+    }
+  },
+  "combatFeedback": {
+    "hitTint": 16742263,
+    "healthBar": { "width": 44, "height": 5, "offsetY": 10, "backgroundColor": 1316896, "fillColor": 13198950 }
+  },
+  "layers": {
+    "background": 0,
+    "outdoors": 0.5,
+    "interiorShade": 0.75,
+    "building": 1,
+    "roomShade": 1.25,
+    "room": 1.5,
+    "actors": 4,
+    "hero": 5,
+    "hints": 20,
+    "daytimeTint": 10
+  },
+  "exitMarker": {
+    "label": "EXIT ↓",
+    "offsetY": 8,
+    "color": "#b9f6cf",
+    "backgroundColor": "#10261f",
+    "fontSize": "12px"
+  },
+  "roomShade": { "color": 527380, "alpha": 0.72 },
+  "roomExitRadius": 16,
+  "interiorShade": {
+    "color": 527380,
+    "alpha": 0.65
+  },
+  "scene": {
+    "width": 960,
+    "height": 540,
+    "backgroundColor": "#141820",
+    "cameraFollowX": 0.1,
+    "cameraFollowY": 0.1,
+    "groundScreenRatio": 1
+  },
+  "interaction": {
+    "verticalTolerance": 30,
+    "hintWidth": 280,
+    "hintGap": 8,
+    "hintOffset": 130,
+    "interiorHeadroom": 12,
+    "minimumInteriorHeight": 140,
+    "style": {
+      "fontFamily": "system-ui, sans-serif",
+      "fontSize": "16px",
+      "color": "#fff4da",
+      "backgroundColor": "#191a22",
+      "padding": {
+        "x": 10,
+        "y": 6
+      }
+    }
+  },
+  "input": {
+    "left": "A",
+    "right": "D",
+    "jump": "SPACE",
+    "fight": "F",
+    "shoot": "G",
+    "interact": "ENTER",
+    "up": "W",
+    "down": "S"
+  },
+  "busStop": {
+    "sourceKey": "bus-stop-source",
+    "textureKey": "bus-stop",
+    "path": "assets/interactive/bus_stop.png",
+    "groundOrigin": 0.85,
+    "prompt": "Enter · Travel",
+    "platforms": [
+      {
+        "left": 0.15783540022547915,
+        "right": 0.9075535512965051,
+        "top": 0.19165727170236754
+      }
+    ]
+  }
+}

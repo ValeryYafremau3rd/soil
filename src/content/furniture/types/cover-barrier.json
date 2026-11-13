@@ -1,0 +1,25 @@
+{
+    "name":  "Concrete barrier",
+    "key":  "furniture-cover-barrier",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  338,
+                 "y":  499,
+                 "width":  271,
+                 "height":  149
+             },
+    "displayHeight":  90,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.96666666666666667,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.08,
+    "right": 0.92,
+    "top": 0.174
+                 }
+}

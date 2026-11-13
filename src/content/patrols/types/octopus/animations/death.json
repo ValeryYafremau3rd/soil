@@ -1,0 +1,70 @@
+{
+  "key": "octopus-death",
+  "steps": [
+    {
+      "anchorY": 139,
+      "width": 232,
+      "y": 529,
+      "anchorX": 116,
+      "x": 165,
+      "height": 145
+    },
+    {
+      "anchorY": 139,
+      "width": 232,
+      "y": 529,
+      "anchorX": 116,
+      "x": 398,
+      "height": 145
+    },
+    {
+      "anchorY": 139,
+      "width": 232,
+      "y": 529,
+      "anchorX": 116,
+      "x": 631,
+      "height": 145
+    },
+    {
+      "anchorY": 139,
+      "width": 232,
+      "y": 529,
+      "anchorX": 116,
+      "x": 864,
+      "height": 145
+    },
+    {
+      "anchorY": 139,
+      "width": 232,
+      "y": 529,
+      "anchorX": 116,
+      "x": 1097,
+      "height": 145
+    },
+    {
+      "anchorY": 139,
+      "width": 232,
+      "y": 529,
+      "anchorX": 116,
+      "x": 1330,
+      "height": 145
+    },
+    {
+      "anchorY": 139,
+      "width": 232,
+      "y": 529,
+      "anchorX": 116,
+      "x": 1563,
+      "height": 145
+    },
+    {
+      "anchorY": 139,
+      "width": 232,
+      "y": 529,
+      "anchorX": 116,
+      "x": 1796,
+      "height": 145
+    }
+  ],
+  "frameRate": 10
+}

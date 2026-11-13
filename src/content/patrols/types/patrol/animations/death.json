@@ -1,0 +1,51 @@
+{
+  "key": "patrol-death",
+  "frameRate": 8,
+  "steps": [
+    {
+      "x": 1538,
+      "y": 506,
+      "width": 94,
+      "height": 166,
+      "anchorX": 50,
+      "anchorY": 164,
+      "scale": 1.08
+    },
+    {
+      "x": 1652,
+      "y": 503,
+      "width": 88,
+      "height": 169,
+      "anchorX": 44,
+      "anchorY": 167,
+      "scale": 1.08
+    },
+    {
+      "x": 1752,
+      "y": 546,
+      "width": 96,
+      "height": 126,
+      "anchorX": 48,
+      "anchorY": 124,
+      "scale": 1.08
+    },
+    {
+      "x": 1855,
+      "y": 585,
+      "width": 108,
+      "height": 87,
+      "anchorX": 54,
+      "anchorY": 85,
+      "scale": 1.08
+    },
+    {
+      "x": 1970,
+      "y": 614,
+      "width": 184,
+      "height": 58,
+      "anchorX": 84,
+      "anchorY": 56,
+      "scale": 1.08
+    }
+  ]
+}

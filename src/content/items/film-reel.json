@@ -1,0 +1,21 @@
+{
+  "id": "film-reel",
+  "eruditionRequired": 12,
+  "price": 28,
+  "name": "Film reel",
+  "description": "A reel of film wound around a metal spool.",
+  "rarity": "common",
+  "quality": 3,
+  "category": "Valuable",
+  "icon": {
+    "x": 195,
+    "y": 824,
+    "width": 165,
+    "height": 155
+  },
+  "scale": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "barter": 8
+  }
+}

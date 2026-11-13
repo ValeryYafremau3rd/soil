@@ -1,0 +1,25 @@
+{
+    "name":  "Draped crate",
+    "key":  "furniture-cover-crate-draped",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  854,
+                 "y":  107,
+                 "width":  259,
+                 "height":  229
+             },
+    "displayHeight":  110,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.97272727272727277,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.13,
+    "right": 0.86,
+    "top": 0.148
+                 }
+}

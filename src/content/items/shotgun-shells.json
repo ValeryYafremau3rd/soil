@@ -1,0 +1,20 @@
+{
+  "id": "shotgun-shells",
+  "eruditionRequired": 2,
+  "price": 3,
+  "name": "Spent shotgun shells",
+  "description": "Spent shotgun shells. Scrap them to recover useful supplies.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Scrap",
+  "consumable": true,
+  "maxStack": 1,
+  "icon": {
+    "x": 220,
+    "y": 280,
+    "width": 145,
+    "height": 130
+  },
+  "scale": 1,
+  "scrap": true
+}

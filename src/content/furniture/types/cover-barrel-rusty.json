@@ -1,0 +1,25 @@
+{
+    "name":  "Rusty barrel",
+    "key":  "furniture-cover-barrel-rusty",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  1802,
+                 "y":  123,
+                 "width":  128,
+                 "height":  215
+             },
+    "displayHeight":  110,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+    "groundOrigin": 0.9454545454545454,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.08,
+    "right": 0.92,
+    "top": 0.126
+                 }
+}

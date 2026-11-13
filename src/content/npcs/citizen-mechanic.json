@@ -1,0 +1,101 @@
+{
+  "name": "Dusan Markovic",
+  "sourceKey": "citizens-source",
+  "textureKey": "citizen-mechanic",
+  "path": "assets/characters/npc/citizens.png",
+  "idleAnimation": "citizen-mechanic-idle",
+  "referenceWidth": 2048,
+  "frameRate": 3,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "background": "light",
+  "scale": 0.9,
+  "repeat": -1,
+  "frameSize": {
+    "width": 112,
+    "height": 180,
+    "referenceHeight": 170
+  },
+  "idleSteps": [
+    {
+      "x": 70,
+      "y": 0,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 170
+    },
+    {
+      "x": 252,
+      "y": 0,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 170
+    },
+    {
+      "x": 434,
+      "y": 0,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 170
+    },
+    {
+      "x": 616,
+      "y": 0,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 170
+    },
+    {
+      "x": 798,
+      "y": 0,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 170
+    },
+    {
+      "x": 980,
+      "y": 0,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 170
+    }
+  ],
+  "dialogueId": "citizen-mechanic",
+  "schedule": {
+    "morning": {
+      "locationId": "factory",
+      "buildingId": "factory-main",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 350
+    },
+    "afternoon": {
+      "locationId": "factory",
+      "buildingId": "factory-main",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 1040
+    },
+    "evening": {
+      "locationId": "center",
+      "buildingId": "center-bar",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 120
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-12",
+      "x": 306
+    }
+  }
+}

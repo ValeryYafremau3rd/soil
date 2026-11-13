@@ -1,0 +1,25 @@
+{
+    "name":  "Wooden pallet",
+    "key":  "furniture-cover-pallet",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  1901,
+                 "y":  468,
+                 "width":  239,
+                 "height":  179
+             },
+    "displayHeight":  95,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.968421052631579,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.08,
+    "right": 0.92,
+    "top": 0.112
+                 }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "living-district",
+  "connections": {
+    "left": "center"
+  },
+  "name": "Living District",
+  "description": "Apartment blocks, quiet courtyards, and the neighbourhood bus stop.",
+  "background": {
+    "key": "living",
+    "path": "assets/background/living.png",
+    "height": 960,
+    "groundRatio": 0.905,
+    "scrollFactor": 0.7,
+    "scale": 1
+  },
+  "busStop": {
+    "x": 1440,
+    "scale": 0.32,
+    "interactionRadius": 180,
+    "spawnOffset": 110
+  },
+  "npc": {
+    "type": "stranger",
+    "x": 210,
+    "scale": 1
+  },
+  "order": 2
+}

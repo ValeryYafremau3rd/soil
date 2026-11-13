@@ -1,0 +1,26 @@
+{
+  "id": "mechanic-scrap",
+  "name": "Materials under blockade",
+  "description": "The blockade has left the factory short of materials. Find one piece of scrap in the trash bins at night, before the caretaker clears them in the morning, and bring it to Irina Kovalenko for 10 Thalers and work gloves.",
+  "offeredBy": "worker",
+  "offerText": "The factory needs scrap. Can you help?",
+  "stages": [
+    {
+      "id": "collect-scrap",
+      "description": "Find one piece of scrap. Check trash bins at night, before the morning cleanup.",
+      "trigger": { "kind": "inventory" },
+      "requiredItemGroups": [["bent-nails", "copper-wire", "gears", "loose-nuts", "metal-bars", "needles", "nuts-and-bolts", "old-ashtray", "rusty-gears", "shotgun-shells", "small-key", "vacuum-tube", "wire-coil"]]
+    },
+    {
+      "id": "deliver-scrap",
+      "description": "Return to Irina Kovalenko with one piece of scrap for the factory.",
+      "trigger": { "kind": "dialogue", "npcId": "worker", "choiceId": "deliver-scrap" },
+      "requiredItemGroups": [["bent-nails", "copper-wire", "gears", "loose-nuts", "metal-bars", "needles", "nuts-and-bolts", "old-ashtray", "rusty-gears", "shotgun-shells", "small-key", "vacuum-tube", "wire-coil"]],
+      "removeRequiredItemGroups": true
+    }
+  ],
+  "reward": {
+    "money": 10,
+    "items": [{ "itemId": "work-gloves", "quantity": 1 }]
+  }
+}

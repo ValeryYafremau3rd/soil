@@ -1,0 +1,38 @@
+{
+  "name": "Barracks",
+  "outer": {
+    "key": "barracs-outer",
+    "groundY": 305,
+    "crop": { "x": 0, "y": 0, "width": 1490, "height": 328 },
+    "floors": [{ "y": 305, "left": 16, "right": 1474, "ceiling": 0 }],
+    "platforms": [{ "left": 0.1912751677852349, "right": 0.8120805369127517, "top": 0.1676829268292683 }]
+  },
+  "inner": {
+    "key": "barracs-inner",
+    "groundY": 280,
+    "crop": { "x": 0, "y": 0, "width": 1490, "height": 308 },
+    "floors": [{ "y": 280, "left": 220, "right": 1280, "ceiling": 110 }]
+  },
+  "entranceX": 750,
+  "stairX": 750,
+  "stairLandingX": 750,
+  "interactionRadius": 38,
+  "stairDurationMs": 1400,
+  "scale": 0.6,
+  "sprites": [
+    {
+      "key": "barracs-outer",
+      "path": "assets/buildings/barracs.png",
+      "referenceWidth": 2048,
+      "background": "light",
+      "crop": { "x": 280, "y": 16, "width": 1490, "height": 328 }
+    },
+    {
+      "key": "barracs-inner",
+      "path": "assets/buildings/barracs.png",
+      "referenceWidth": 2048,
+      "background": "light",
+      "crop": { "x": 280, "y": 355, "width": 1490, "height": 308 }
+    }
+  ]
+}

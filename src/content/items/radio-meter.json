@@ -1,0 +1,21 @@
+{
+  "id": "radio-meter",
+  "eruditionRequired": 17,
+  "price": 75,
+  "name": "Radio meter",
+  "description": "A portable measuring device with a dial and a needle display.",
+  "rarity": "common",
+  "quality": 4,
+  "category": "Valuable",
+  "icon": {
+    "x": 350,
+    "y": 808,
+    "width": 195,
+    "height": 170
+  },
+  "scale": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "barter": 10
+  }
+}

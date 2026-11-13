@@ -1,0 +1,29 @@
+{
+  "id": "steroids",
+  "name": "Steroids",
+  "description": "Temporary medication. Steroids increase Physique by 2 for up to one full day, ending on sleep. Steroids increase Concentration by 1 for up to one full day, ending on sleep. Steroid fog: -1 Intelligence until four phases pass or you sleep.",
+  "category": "Medical",
+  "rarity": "rare",
+  "quality": 3,
+  "price": 18,
+  "eruditionRequired": 15,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 638,
+    "y": 192,
+    "width": 88,
+    "height": 154
+  },
+  "scale": 1,
+  "consumable": true,
+  "maxStack": 5,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "medicine": 10
+  },
+  "recovery": {}
+}

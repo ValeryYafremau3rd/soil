@@ -1,0 +1,23 @@
+{
+  "id": "wine",
+  "eruditionRequired": 2,
+  "price": 5,
+  "name": "Wine",
+  "description": "A bottle of wine. Drink to recover Sanity.",
+  "consumable": true,
+  "maxStack": 1,
+  "recovery": {
+    "sanity": 44,
+    "energy": 15
+  },
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Drink",
+  "icon": {
+    "x": 1000,
+    "y": 265,
+    "width": 70,
+    "height": 155
+  },
+  "scale": 1
+}

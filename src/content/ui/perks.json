@@ -1,0 +1,257 @@
+[
+  {
+    "id": "smoking-addiction",
+    "group": "substance",
+    "name": "Cigarette addiction",
+    "description": "You crave cigarettes. A smoke calms your nerves, but going without leaves you restless.",
+    "itemIds": [
+      "red-cigarettes",
+      "grey-cigarettes"
+    ],
+    "goal": 10,
+    "sanityMultiplier": 2,
+    "withdrawalFraction": 0.5,
+    "willpowerOnUse": 1,
+    "willpowerAfterDay": -1,
+    "consumeAtMaximum": true
+  },
+  {
+    "id": "alcohol-addiction",
+    "group": "substance",
+    "name": "Alcohol addiction",
+    "description": "You crave alcohol. A drink brings comfort, but sobriety leaves you on edge.",
+    "itemIds": [
+      "spirits",
+      "beer-bottle",
+      "canned-beer",
+      "cider",
+      "wine",
+      "vodka",
+      "whiskey"
+    ],
+    "goal": 10,
+    "sanityMultiplier": 2,
+    "withdrawalFraction": 0.5,
+    "willpowerOnUse": 1,
+    "willpowerAfterDay": -1,
+    "consumeAtMaximum": true
+  },
+  {
+    "id": "unlawful",
+    "group": "alignment",
+    "name": "Unlawful",
+    "description": "Your reputation is bad. People are afraid of you.",
+    "itemIds": [],
+    "goal": 50,
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false,
+    "actionPoints": {
+      "lockPicked": 5,
+      "policeHit": 2,
+      "policeKilled": 10,
+      "policeEngaged": 1,
+      "intimidated": 1
+    },
+    "skillModifiers": {
+      "persuasion": -2,
+      "intimidation": 2
+    }
+  },
+  {
+    "id": "lawful",
+    "group": "alignment",
+    "name": "Lawful",
+    "description": "Your reputation is good. People trust you.",
+    "itemIds": [],
+    "goal": 50,
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false,
+    "actionPoints": {
+      "itemSold": 2,
+      "dialogueChosen": 1,
+      "questFinished": 10,
+      "persuaded": 1
+    },
+    "skillModifiers": {
+      "persuasion": 2,
+      "intimidation": -2
+    }
+  },
+  {
+    "id": "hoarder",
+    "group": "possessions",
+    "name": "Hoarder",
+    "description": "You keep what others leave behind. Every discarded object has its uses.",
+    "itemIds": [],
+    "goal": 5,
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false,
+    "actionPoints": {
+      "itemScrapped": 1
+    },
+    "skillModifiers": {
+      "barter": -2,
+      "scraper": 2
+    }
+  },
+  {
+    "id": "scalper",
+    "group": "possessions",
+    "name": "Scalper",
+    "description": "You see a price on everything. Nothing stays in your pockets for long.",
+    "itemIds": [],
+    "goal": 5,
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false,
+    "actionPoints": {
+      "itemSold": 1
+    },
+    "skillModifiers": {
+      "scraper": -2,
+      "barter": 2
+    }
+  },
+  {
+    "id": "sniper",
+    "group": "attack-charge",
+    "name": "Sniper",
+    "description": "Starting damage is lower, but full-charge damage is higher.",
+    "itemIds": [],
+    "goal": 20,
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false,
+    "actionPoints": {
+      "attackAboveHalf": 1
+    },
+    "chargeDamage": {
+      "start": -0.25,
+      "full": 0.25
+    }
+  },
+  {
+    "id": "brawler",
+    "group": "attack-charge",
+    "name": "Brawler",
+    "description": "Starting damage is higher, but full-charge damage is lower.",
+    "itemIds": [],
+    "goal": 20,
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false,
+    "actionPoints": {
+      "attackBelowHalf": 1
+    },
+    "chargeDamage": {
+      "start": 0.25,
+      "full": -0.25
+    }
+  },
+  {
+    "id": "bruiser",
+    "group": "combat-style",
+    "name": "Bruiser",
+    "description": "You settle trouble with your fists. People think twice before crossing you.",
+    "itemIds": [],
+    "goal": 10,
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false,
+    "actionPoints": {
+      "policeFightStarted": 2,
+      "monsterFightStarted": 2
+    },
+    "skillModifiers": {
+      "martialArts": 1,
+      "weapons": 1,
+      "athletics": -1,
+      "stealth": -1
+    }
+  },
+  {
+    "id": "skulker",
+    "group": "combat-style",
+    "name": "Skulker",
+    "description": "You slip away before trouble catches you. The shadows feel like home.",
+    "itemIds": [],
+    "goal": 10,
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false,
+    "actionPoints": {
+      "policeEscaped": 1,
+      "policeHidden": 1,
+      "monsterEscaped": 1,
+      "monsterHidden": 1
+    },
+    "skillModifiers": {
+      "martialArts": -1,
+      "weapons": -1,
+      "athletics": 1,
+      "stealth": 1
+    }
+  },
+  {
+    "id": "nerd",
+    "group": "social-style",
+    "name": "Nerd",
+    "description": "You listen, learn and remember. Knowledge comes more easily than throwing your weight around.",
+    "itemIds": [],
+    "goal": 10,
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false,
+    "actionPoints": {
+      "adviceAsked": 1
+    },
+    "skillModifiers": {
+      "erudition": 2,
+      "intimidation": -1,
+      "martialArts": -1
+    }
+  },
+  {
+    "id": "punk",
+    "group": "social-style",
+    "name": "Punk",
+    "description": "You make your point with threats and muscle. Books and polite requests hold little appeal.",
+    "itemIds": [],
+    "goal": 10,
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false,
+    "actionPoints": {
+      "intimidated": 1
+    },
+    "skillModifiers": {
+      "erudition": -1,
+      "persuasion": -1,
+      "martialArts": 1,
+      "athletics": 1
+    }
+  }
+]

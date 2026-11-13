@@ -1,0 +1,25 @@
+{
+    "name":  "Stacked cases",
+    "key":  "furniture-cover-cases",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  887,
+                 "y":  465,
+                 "width":  247,
+                 "height":  181
+             },
+    "displayHeight":  100,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.97,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.3,
+    "right": 0.65,
+    "top": 0.144
+                 }
+}

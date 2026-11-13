@@ -1,0 +1,26 @@
+{
+  "id": "antiseptic",
+  "eruditionRequired": 5,
+  "price": 4,
+  "name": "Antiseptic",
+  "description": "A bottle of disinfectant with a sharp medicinal smell.",
+  "consumable": true,
+  "maxStack": 5,
+  "recovery": {
+    "health": 15
+  },
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Medical",
+  "icon": {
+    "x": 1320,
+    "y": 255,
+    "width": 85,
+    "height": 165
+  },
+  "scale": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "medicine": 3
+  }
+}

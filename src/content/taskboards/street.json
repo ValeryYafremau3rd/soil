@@ -1,0 +1,23 @@
+{
+  "name": "Street taskboard",
+  "key": "taskboard-street",
+  "path": "assets/taskboards/street.png",
+  "referenceWidth": 1536,
+  "background": "none",
+  "crop": { "x": 100, "y": 50, "width": 1335, "height": 944 },
+  "outline": [
+    { "x": 20, "y": 2 }, { "x": 1318, "y": 2 }, { "x": 1335, "y": 20 },
+    { "x": 1335, "y": 65 }, { "x": 1268, "y": 142 }, { "x": 1268, "y": 922 },
+    { "x": 1255, "y": 940 }, { "x": 1205, "y": 940 }, { "x": 1198, "y": 922 },
+    { "x": 1198, "y": 758 }, { "x": 138, "y": 758 }, { "x": 138, "y": 922 },
+    { "x": 124, "y": 940 }, { "x": 73, "y": 940 }, { "x": 66, "y": 922 },
+    { "x": 66, "y": 142 }, { "x": 0, "y": 65 }, { "x": 0, "y": 20 }
+  ],
+  "space": "outside",
+  "displayHeight": 155,
+  "scale": 1,
+  "interactionRadius": 70,
+  "prompt": "Enter · Quests",
+  "menuId": "quests",
+  "platform": { "left": 0.02, "right": 0.98, "top": 0.01 }
+}

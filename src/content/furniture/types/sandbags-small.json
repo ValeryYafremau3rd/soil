@@ -1,0 +1,25 @@
+{
+    "name":  "Small sandbag cover",
+    "key":  "furniture-sandbags-small",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  1564,
+                 "y":  191,
+                 "width":  190,
+                 "height":  143
+             },
+    "displayHeight":  80,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.9625,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+                     "left":  0.08,
+                     "right":  0.92,
+                     "top":  0.08
+                 }
+}

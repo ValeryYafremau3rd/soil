@@ -1,0 +1,25 @@
+{
+  "id": "chemistry-book",
+  "eruditionRequired": 15,
+  "price": 28,
+  "name": "Chemistry book",
+  "quality": 3,
+  "category": "Document",
+  "icon": {
+    "x": 265,
+    "y": 450,
+    "width": 130,
+    "height": 160
+  },
+  "scale": 1,
+  "rarity": "epic",
+  "description": "A reference to chemical compounds and their medical applications.",
+  "requirementMode": "any",
+  "skillRequirements": {
+    "medicine": 10
+  },
+  "bonus": {
+    "skill": "medicine",
+    "amount": 3
+  }
+}

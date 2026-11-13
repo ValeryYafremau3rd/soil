@@ -1,0 +1,44 @@
+[
+  {
+    "id": "perks",
+    "title": "Perks",
+    "key": "p",
+    "emptyMessage": "No perks acquired yet."
+  },
+  {
+    "id": "character",
+    "title": "Character",
+    "key": "c"
+  },
+  {
+    "id": "inventory",
+    "title": "Inventory",
+    "key": "i"
+  },
+  {
+    "id": "map",
+    "title": "Map",
+    "key": "m"
+  },
+  {
+    "id": "quests",
+    "title": "Journal",
+    "key": "j",
+    "emptyMessage": "No quests available."
+  },
+  {
+    "id": "notes",
+    "title": "Notes",
+    "key": "n"
+  },
+  {
+    "id": "statistics",
+    "title": "Statistics",
+    "key": "t"
+  },
+  {
+    "id": "options",
+    "title": "Options",
+    "key": "Escape"
+  }
+]

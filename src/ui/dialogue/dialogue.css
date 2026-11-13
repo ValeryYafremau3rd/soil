@@ -1,0 +1,9 @@
+.ui-modal.dialogue-modal { width: min(800px, calc(100vw - 32px)); }
+.dialogue-modal .ui-panel { display: flex; flex-direction: column; overflow: hidden; }
+.dialogue-modal .ui-modal__header { flex-shrink: 0; }
+.dialogue-trust { flex-shrink: 0; padding-top: 8px; color: #d9c58a; letter-spacing: 3px; }
+.dialogue-layout { display: grid; grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); flex: 1; min-height: 0; }
+.dialogue-speech { padding: 16px 4px; border-bottom: 1px solid #4c5664; overflow: auto; }
+.dialogue-speech p { margin: 0; font-size: 18px; line-height: 1.6; }
+.dialogue-replies { padding-top: 16px; overflow: auto; }
+.dialogue-help { margin: 12px 0 0; color: #b7c5d6; font-size: 12px; }

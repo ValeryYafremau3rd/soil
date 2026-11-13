@@ -1,0 +1,85 @@
+{
+  "id": "courier-delivery",
+  "name": "Courier: {source} to {destination}",
+  "repeatable": true,
+  "description": "Collect a sealed Courier parcel from {source} and deliver it to {destination} for 8 Thalers. Collect within four phases, then deliver within four phases after pickup.",
+  "reward": {
+    "money": 8
+  },
+  "stages": [
+    {
+      "id": "pickup",
+      "description": "Collect the Courier parcel from {source}. Leave one inventory slot free.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "$source",
+        "choiceId": "courier-pickup"
+      },
+      "grantItems": [
+        {
+          "itemId": "courier-parcel",
+          "quantity": 1
+        }
+      ],
+      "deadlinePhases": 4
+    },
+    {
+      "id": "deliver",
+      "description": "Bring the Courier parcel to {destination}. Payment: 8 Thalers.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "$destination",
+        "choiceId": "courier-deliver"
+      },
+      "requiredItems": [
+        {
+          "itemId": "courier-parcel",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "courier-parcel",
+          "quantity": 1
+        }
+      ],
+      "deadlinePhases": 4
+    }
+  ],
+  "deliveryKind": "courier",
+  "deliveryItemId": "courier-parcel",
+  "destinations": [
+    {
+      "id": "bartender",
+      "name": "Viktor Petrov"
+    },
+    {
+      "id": "cashier",
+      "name": "Zofia Nowak"
+    },
+    {
+      "id": "citizen-caretaker",
+      "name": "Elena Jovanovic"
+    },
+    {
+      "id": "citizen-clerk",
+      "name": "Pavel Sokolov"
+    },
+    {
+      "id": "citizen-mechanic",
+      "name": "Dusan Markovic"
+    },
+    {
+      "id": "citizen-nurse",
+      "name": "Nadia Morozova"
+    },
+    {
+      "id": "stranger",
+      "name": "Milena Vukovic"
+    },
+    {
+      "id": "worker",
+      "name": "Irina Kovalenko"
+    }
+  ]
+}

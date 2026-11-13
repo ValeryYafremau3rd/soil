@@ -1,0 +1,27 @@
+{
+  "damageMultiplier": 1.1,
+  "id": "crowbar",
+  "eruditionRequired": 8,
+  "price": 12,
+  "name": "Crowbar",
+  "description": "A solid steel bar with a hooked end for prying.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Tool",
+  "icon": {
+    "x": 535,
+    "y": 65,
+    "width": 205,
+    "height": 180
+  },
+  "scale": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "martialArts": 5
+  },
+  "bonus": {
+    "skill": "martialArts",
+    "amount": 2
+  },
+  "equipmentSlot": "melee"
+}

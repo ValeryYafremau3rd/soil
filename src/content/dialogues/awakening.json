@@ -1,0 +1,15 @@
+{
+  "start": "wake-up",
+  "nodes": {
+    "wake-up": {
+      "text": "I wake up late at night in the west of the city, beside the Factory bus stop. The city is under quarantine, and a curfew is in force. I need to run before a patrol catches me, or something even worse finds me. RUN EAST TO CENTER.",
+      "choices": [
+        {
+          "id": "run-east",
+          "text": "Run east.",
+          "close": true
+        }
+      ]
+    }
+  }
+}

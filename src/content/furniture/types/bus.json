@@ -1,0 +1,46 @@
+{
+    "name":  "Parked bus",
+    "key":  "vehicle-bus",
+    "path":  "assets/transport/cars.png",
+    "background":  "none",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  524,
+                 "y":  248,
+                 "width":  840,
+                 "height":  340
+             },
+    "displayHeight":  190,
+    "depth": 0.25,
+    "scale":  1,
+    "action":  "none",
+    "interactionRadius":  40,
+    "prompt":  "Parked bus",
+    "groundOrigin":  0.9136842105263158,
+    "platforms":  [
+                      {
+                          "left":  0.04,
+                          "right":  0.09,
+                          "top":  0.16,
+                          "rightTop":  0.04
+                      },
+                      {
+                          "left":  0.09,
+                          "right":  0.87,
+                          "top":  0.04,
+                          "rightTop":  0.04
+                      },
+                      {
+                          "left":  0.87,
+                          "right":  0.92,
+                          "top":  0.04,
+                          "rightTop":  0.15
+                      },
+                      {
+                          "left":  0.92,
+                          "right":  0.97,
+                          "top":  0.15,
+                          "rightTop":  0.51
+                      }
+                  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bartender-supplies",
+  "name": "Running low",
+  "description": "Viktor is running out of supplies. Bring him one food item and one alcoholic drink for 10 Thalers and a frying pan.",
+  "offeredBy": "bartender",
+  "offerText": "Looking for work? My supplies are running low.",
+  "stages": [
+    {
+      "id": "collect-food",
+      "description": "Collect one food item.",
+      "parallelGroup": "supplies",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItemGroups": [
+        [
+          "berry-jam",
+          "bread",
+          "canned-fish",
+          "canned-meat",
+          "open-sardines",
+          "tinned-beef",
+          "tinned-chicken"
+        ]
+      ]
+    },
+    {
+      "id": "collect-alcohol",
+      "description": "Collect one alcoholic drink.",
+      "parallelGroup": "supplies",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItemGroups": [
+        [
+          "vodka",
+          "whiskey",
+          "beer-bottle",
+          "canned-beer",
+          "cider",
+          "wine",
+          "spirits"
+        ]
+      ]
+    },
+    {
+      "id": "deliver-supplies",
+      "description": "Bring one food item and one alcoholic drink to Viktor at the bar.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "deliver-supplies"
+      },
+      "requiredItemGroups": [
+        [
+          "berry-jam",
+          "bread",
+          "canned-fish",
+          "canned-meat",
+          "open-sardines",
+          "tinned-beef",
+          "tinned-chicken"
+        ],
+        [
+          "vodka",
+          "whiskey",
+          "beer-bottle",
+          "canned-beer",
+          "cider",
+          "wine",
+          "spirits"
+        ]
+      ],
+      "removeRequiredItemGroups": true
+    }
+  ],
+  "reward": {
+    "money": 10,
+    "items": [
+      {
+        "itemId": "frying-pan",
+        "quantity": 1
+      }
+    ]
+  }
+}

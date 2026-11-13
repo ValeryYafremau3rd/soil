@@ -1,0 +1,23 @@
+{
+  "background": "dark",
+  "referenceWidth": 2172,
+  "scale": 1,
+  "interactionRadius": 40,
+  "name": "Sofa",
+  "key": "furniture-sofa",
+  "path": "assets/characters/npc/beds.png",
+  "crop": {
+    "x": 85,
+    "y": 440,
+    "width": 610,
+    "height": 245
+  },
+  "displayHeight": 45,
+  "action": "sleep",
+  "prompt": "Enter · Sleep",
+  "platform": {
+    "left": 0.08,
+    "right": 0.92,
+    "top": 0.55
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "milena-family-photo",
+  "name": "Milena's family photo",
+  "description": "A faded photograph of Milena and her family. It means more to her than anything else in her lost suitcase.",
+  "saleable": false,
+  "randomLoot": false,
+  "price": 1,
+  "rarity": "common",
+  "quality": 1,
+  "category": "Quest",
+  "icon": {
+    "x": 1145,
+    "y": 810,
+    "width": 190,
+    "height": 170
+  },
+  "scale": 1,
+  "maxStack": 1,
+  "eruditionRequired": 2
+}

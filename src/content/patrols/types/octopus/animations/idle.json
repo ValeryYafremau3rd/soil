@@ -1,0 +1,55 @@
+{
+  "idleAnimation": "octopus-idle",
+  "frameRate": 4,
+  "repeat": -1,
+  "idleSteps": [
+    {
+      "anchorY": 156,
+      "width": 202,
+      "y": 12,
+      "anchorX": 101,
+      "x": 180,
+      "height": 160
+    },
+    {
+      "anchorY": 156,
+      "width": 206,
+      "y": 12,
+      "anchorX": 103,
+      "x": 412,
+      "height": 160
+    },
+    {
+      "anchorY": 156,
+      "width": 205,
+      "y": 12,
+      "anchorX": 102,
+      "x": 650,
+      "height": 160
+    },
+    {
+      "anchorY": 156,
+      "width": 208,
+      "y": 12,
+      "anchorX": 104,
+      "x": 894,
+      "height": 160
+    },
+    {
+      "anchorY": 156,
+      "width": 209,
+      "y": 12,
+      "anchorX": 104,
+      "x": 1134,
+      "height": 160
+    },
+    {
+      "anchorY": 156,
+      "width": 216,
+      "y": 12,
+      "anchorX": 108,
+      "x": 1375,
+      "height": 160
+    }
+  ]
+}

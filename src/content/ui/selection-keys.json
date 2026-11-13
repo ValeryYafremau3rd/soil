@@ -1,0 +1,14 @@
+{
+  "up": [
+    "w",
+    "arrowup"
+  ],
+  "down": [
+    "s",
+    "arrowdown"
+  ],
+  "choose": [
+    "enter",
+    " "
+  ]
+}

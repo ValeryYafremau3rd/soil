@@ -1,0 +1,35 @@
+{
+  "name": "Apartment 52",
+  "sprite": {
+    "key": "room-house-52",
+    "path": "assets/buildings/house_rooms.png",
+    "background": "none",
+    "referenceWidth": 1536,
+    "crop": {
+      "x": 884,
+      "y": 196,
+      "width": 454,
+      "height": 151
+    }
+  },
+  "groundY": 151,
+  "bounds": {
+    "left": 8,
+    "right": 446,
+    "ceiling": 0
+  },
+  "furniture": [
+    {
+      "id": "chair",
+      "type": "chair-metal",
+      "x": 165,
+      "scale": 1
+    },
+    {
+      "id": "bed",
+      "type": "mattress-striped",
+      "x": 384,
+      "scale": 0.75
+    }
+  ]
+}

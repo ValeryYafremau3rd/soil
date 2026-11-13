@@ -1,0 +1,23 @@
+{
+  "id": "water-bottle",
+  "eruditionRequired": 2,
+  "price": 1,
+  "name": "Water bottle",
+  "description": "A capped bottle of drinking water.",
+  "consumable": true,
+  "maxStack": 1,
+  "recovery": {
+    "energy": 30,
+    "sanity": 10
+  },
+  "rarity": "common",
+  "quality": 2,
+  "category": "Drink",
+  "icon": {
+    "x": 1230,
+    "y": 255,
+    "width": 80,
+    "height": 165
+  },
+  "scale": 1
+}

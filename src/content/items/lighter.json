@@ -1,0 +1,22 @@
+{
+  "id": "lighter",
+  "bonus": {
+    "attribute": "willpower",
+    "amount": 1
+  },
+  "eruditionRequired": 2,
+  "price": 4,
+  "name": "Lighter",
+  "description": "A pocket lighter with a hinged metal lid.",
+  "rarity": "common",
+  "quality": 2,
+  "category": "Tool",
+  "icon": {
+    "x": 1180,
+    "y": 453,
+    "width": 80,
+    "height": 135
+  },
+  "scale": 1,
+  "equipmentSlot": "tool"
+}

@@ -1,0 +1,25 @@
+{
+  "background": "dark",
+  "referenceWidth": 2172,
+  "scale": 1,
+  "interactionRadius": 40,
+  "name": "Sandbag cover",
+  "key": "furniture-sandbags",
+  "path": "assets/hidden/hidden.png",
+  "crop": {
+    "x": 1140,
+    "y": 158,
+    "width": 395,
+    "height": 168
+  },
+  "displayHeight": 90,
+  "action": "hide",
+  "groundOrigin": 0.96666666666666667,
+  "prompt": "Enter · Hide",
+  "revealPrompt": "Enter · Step out",
+  "platform": {
+    "left": 0.06,
+    "right": 0.94,
+    "top": 0.08
+  }
+}

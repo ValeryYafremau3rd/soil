@@ -1,0 +1,143 @@
+[
+  {
+    "id": "living-district-cover-box",
+    "type": "crate",
+    "x": 1730,
+    "space": "outside",
+    "heightOffset": 80.6,
+    "scale": 0.5,
+    "locked": false,
+    "items": [],
+    "restock": false
+  },
+  {
+    "id": "living-trash",
+    "type": "trash",
+    "x": 1200,
+    "space": "outside",
+    "items": [],
+    "lootTable": "street-supplies",
+    "scale": 1,
+    "quality": 5
+  },
+  {
+    "id": "living-taskboard-suitcase",
+    "type": "suitcase",
+    "x": 2220,
+    "space": "outside",
+    "heightOffset": 153.45,
+    "items": [
+      {
+        "itemId": "barter-training-magazine",
+        "quantity": 1
+      },
+      {
+        "itemId": "athletics-training-handbook",
+        "quantity": 1
+      },
+      {
+        "itemId": "medicine-training-handbook",
+        "quantity": 1
+      },
+      {
+        "itemId": "military-coat",
+        "quantity": 1
+      }
+    ],
+    "scale": 0.8,
+    "locked": false,
+    "restock": false,
+    "quality": 4
+  },
+  {
+    "id": "living-crate",
+    "type": "crate",
+    "x": 2600,
+    "space": "outside",
+    "items": [],
+    "lootTable": "scavenge",
+    "scale": 1
+  },
+  {
+    "type": "smuggler-crate",
+    "scale": 1,
+    "locked": false,
+    "id": "smuggler-living-crate",
+    "x": 580,
+    "space": "outside",
+    "quality": 3,
+    "items": [],
+    "restock": false
+  },
+  {
+    "id": "living-district-trash-2",
+    "type": "trash",
+    "x": 1880,
+    "space": "outside",
+    "scale": 1,
+    "locked": false,
+    "items": [],
+    "lootTable": "street-supplies",
+    "quality": 5
+  },
+  {
+    "id": "living-district-bus-roof-reward",
+    "type": "toolbox",
+    "x": 1500,
+    "space": "outside",
+    "scale": 0.6,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "stealth-training-magazine",
+        "quantity": 1
+      },
+      {
+        "itemId": "intimidation-training-handbook",
+        "quantity": 1
+      },
+      {
+        "itemId": "willpower-training-handbook",
+        "quantity": 1
+      }
+    ],
+    "heightOffset": 185.12,
+    "restock": false
+  },
+  {
+    "id": "milena-bus-stop-suitcase",
+    "type": "suitcase",
+    "x": 1570,
+    "space": "outside",
+    "scale": 0.6,
+    "locked": false,
+    "heightOffset": 185.12,
+    "restock": false,
+    "items": [
+      {
+        "itemId": "milena-family-photo",
+        "quantity": 1
+      },
+      {
+        "itemId": "wool-socks",
+        "quantity": 1
+      },
+      {
+        "itemId": "leather-journal",
+        "quantity": 1
+      },
+      {
+        "itemId": "white-tablets",
+        "quantity": 1
+      },
+      {
+        "itemId": "money",
+        "quantity": 8
+      },
+      {
+        "itemId": "bread",
+        "quantity": 1
+      }
+    ]
+  }
+]

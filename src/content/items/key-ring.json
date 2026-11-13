@@ -1,0 +1,32 @@
+{
+  "id": "key-ring",
+  "saleable": false,
+  "eruditionRequired": 2,
+  "price": 3,
+  "name": "Keys",
+  "description": "Your apartment and building keys. Use this item to view the keys on your ring. Carried keys open their matching doors automatically.",
+  "maxStack": 1,
+  "randomLoot": false,
+  "keys": [
+    {
+      "id": "apartment-21",
+      "name": "Apartment 21 key - Living District",
+      "doorId": "apartments:apartment-21"
+    },
+    {
+      "id": "apartment-building",
+      "name": "Apartment building key - Living District",
+      "doorId": "apartments"
+    }
+  ],
+  "rarity": "uncommon",
+  "quality": 1,
+  "category": "Tool",
+  "icon": {
+    "x": 665,
+    "y": 634,
+    "width": 115,
+    "height": 140
+  },
+  "scale": 1
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Trash can",
+  "locked": false,
+  "x": 75,
+  "y": 145,
+  "width": 325,
+  "height": 410,
+  "displayHeight": 75,
+  "scale": 1,
+  "groundOrigin": 0.9166666666666666,
+  "quality": 1
+}

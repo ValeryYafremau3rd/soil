@@ -1,0 +1,26 @@
+{
+  "id": "matchbox",
+  "bonus": {
+    "attribute": "willpower",
+    "amount": 1
+  },
+  "name": "Matchbox",
+  "description": "A small box of matches.",
+  "category": "Supply",
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 1,
+  "eruditionRequired": 2,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 1324,
+    "y": 192,
+    "width": 186,
+    "height": 154
+  },
+  "scale": 1
+}

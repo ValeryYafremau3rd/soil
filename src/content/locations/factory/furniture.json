@@ -1,0 +1,44 @@
+[
+  {
+    "id": "factory-big-car",
+    "type": "big-car",
+    "x": 2300,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "factory-bench",
+    "type": "bench",
+    "x": 1850,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "factory-sandbags",
+    "type": "sandbags",
+    "x": 2600,
+    "space": "outside",
+    "scale": 0.8
+  },
+  {
+    "id": "factory-cover-crate-large",
+    "type": "cover-crate-large",
+    "x": 1580,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "factory-cover-barrel-rusty",
+    "type": "cover-barrel-rusty",
+    "x": 1080,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "factory-cover-crates-draped",
+    "type": "cover-crates-draped",
+    "x": 2080,
+    "space": "outside",
+    "scale": 1
+  }
+]

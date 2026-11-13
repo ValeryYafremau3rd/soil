@@ -1,0 +1,27 @@
+{
+  "id": "charisma-training-pocket-guide",
+  "name": "Charisma pocket guide",
+  "description": "Exercises and practical advice for Charisma.",
+  "category": "Book",
+  "rarity": "common",
+  "quality": 1,
+  "price": 12,
+  "eruditionRequired": 4,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 1347,
+    "y": 357,
+    "width": 173,
+    "height": 161
+  },
+  "scale": 1,
+  "maxStack": 1,
+  "bonus": {
+    "attribute": "charisma",
+    "amount": 1
+  }
+}

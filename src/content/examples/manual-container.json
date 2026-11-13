@@ -1,0 +1,17 @@
+{
+  "id": "medical-crate",
+  "type": "crate",
+  "x": 1700,
+  "space": "outside",
+  "scale": 1,
+  "items": [
+    {
+      "itemId": "bandage",
+      "quantity": 3
+    },
+    {
+      "itemId": "bread",
+      "quantity": 2
+    }
+  ]
+}

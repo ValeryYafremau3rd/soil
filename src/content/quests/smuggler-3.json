@@ -1,0 +1,65 @@
+{
+  "id": "smuggler-3",
+  "name": "After dark: the warehouse lock",
+  "offeredBy": "citizen-mechanic",
+  "prerequisites": [
+    "smuggler-2"
+  ],
+  "offerText": "The warehouse job is ready. Bring your lockpicks.",
+  "description": "Dusan wants a rare precision core from the unlocked crate on the factory warehouse ground floor. The shipment is present only at night. Pick the factory entrance door, collect the core, and return it for a rare Triquetra pendant, 20 Thalers, and keys to his apartment 12 in Living District.",
+  "reward": {
+    "money": 20,
+    "items": [
+      {
+        "itemId": "triquetra-pendant",
+        "quantity": 1
+      },
+      {
+        "itemId": "boris-apartment-keys",
+        "quantity": 1
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "collect",
+      "description": "At night, pick the factory entrance door and loot the Precision core from the unlocked crate on the warehouse ground floor. Buy and carry extra tools from Dusan to improve Lockpicking if needed.",
+      "trigger": {
+        "kind": "loot",
+        "containerId": "smuggler-factory-crate"
+      },
+      "requiredItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ],
+      "phases": [
+        "night"
+      ]
+    },
+    {
+      "id": "deliver",
+      "description": "Return to Dusan Markovic and hand over the Precision core.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "smuggler-3-deliver"
+      },
+      "requiredItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "deliveryKind": "smuggler",
+  "deliveryItemId": "smuggler-parcel"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "center",
+  "connections": {
+    "left": "factory",
+    "right": "living-district"
+  },
+  "name": "Center",
+  "description": "The town center, with a bar to the west and a shop to the east.",
+  "background": {
+    "key": "center-background",
+    "path": "assets/background/center.png",
+    "height": 960,
+    "groundRatio": 0.905,
+    "scrollFactor": 0.7,
+    "scale": 1
+  },
+  "busStop": {
+    "x": 1440,
+    "scale": 0.32,
+    "interactionRadius": 180,
+    "spawnOffset": 110
+  },
+  "order": 0
+}

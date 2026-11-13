@@ -1,0 +1,274 @@
+[
+  {
+    "id": "well-fed",
+    "group": "food",
+    "name": "Well fed",
+    "description": "A hearty meal bolsters your Health for up to one full day, ending on sleep.",
+    "itemIds": [
+      "tinned-beef",
+      "tinned-chicken",
+      "canned-meat",
+      "canned-fish"
+    ],
+    "vital": "health",
+    "amount": 10,
+    "durationDays": 1
+  },
+  {
+    "id": "sustained-energy",
+    "group": "food",
+    "name": "Sustained energy",
+    "description": "Bread provides extra Energy capacity for up to one full day, ending on sleep.",
+    "itemIds": [
+      "bread"
+    ],
+    "vital": "energy",
+    "amount": 15,
+    "durationDays": 1
+  },
+  {
+    "id": "calm",
+    "group": "medicine",
+    "name": "Clear focus",
+    "description": "White tablets sharpen your mind for up to one full day, ending on sleep.",
+    "itemIds": [
+      "white-tablets"
+    ],
+    "attribute": "intelligence",
+    "amount": 1,
+    "durationDays": 1
+  },
+  {
+    "id": "restored-strength",
+    "group": "medicine",
+    "name": "Restored physique",
+    "description": "Painkillers bolster your physique for up to one full day, ending on sleep.",
+    "itemIds": [
+      "red-tablets"
+    ],
+    "attribute": "strength",
+    "amount": 1,
+    "durationDays": 1
+  },
+  {
+    "id": "steroid-strength",
+    "group": "medicine",
+    "name": "Steroid physique",
+    "description": "Steroids increase Physique by 2 for up to one full day, ending on sleep.",
+    "itemIds": [
+      "steroids"
+    ],
+    "attribute": "strength",
+    "amount": 2,
+    "durationDays": 1
+  },
+  {
+    "id": "steroid-agility",
+    "group": "medicine",
+    "name": "Steroid concentration",
+    "description": "Steroids increase Concentration by 1 for up to one full day, ending on sleep.",
+    "itemIds": [
+      "steroids"
+    ],
+    "attribute": "agility",
+    "amount": 1,
+    "durationDays": 1
+  },
+  {
+    "id": "liquid-courage",
+    "name": "Liquid courage",
+    "description": "40% alcohol grants +40% fear resistance for up to one full day, ending on sleep. Replaces other alcohol fear resistance.",
+    "group": "alcohol",
+    "itemIds": [
+      "vodka",
+      "whiskey"
+    ],
+    "fearResistance": true,
+    "amount": 40,
+    "durationDays": 1
+  },
+  {
+    "id": "liquid-courage-beer",
+    "name": "Liquid courage (5%)",
+    "description": "5% alcohol grants +5% fear resistance for up to one full day, ending on sleep. Replaces other alcohol fear resistance.",
+    "group": "alcohol",
+    "itemIds": [
+      "beer-bottle",
+      "canned-beer",
+      "cider"
+    ],
+    "fearResistance": true,
+    "amount": 5,
+    "durationDays": 1
+  },
+  {
+    "id": "liquid-courage-wine",
+    "name": "Liquid courage (12%)",
+    "description": "12% alcohol grants +12% fear resistance for up to one full day, ending on sleep. Replaces other alcohol fear resistance.",
+    "group": "alcohol",
+    "itemIds": [
+      "wine"
+    ],
+    "fearResistance": true,
+    "amount": 12,
+    "durationDays": 1
+  },
+  {
+    "id": "liquid-courage-spirits",
+    "name": "Liquid courage (60%)",
+    "description": "60% alcohol grants +60% fear resistance for up to one full day, ending on sleep. Replaces other alcohol fear resistance.",
+    "group": "alcohol",
+    "itemIds": [
+      "spirits"
+    ],
+    "fearResistance": true,
+    "amount": 60,
+    "durationDays": 1
+  },
+  {
+    "id": "alcohol-clouded-mind",
+    "group": "alcohol",
+    "name": "Clouded mind",
+    "description": "Clouded mind: -1 Intelligence until four phases pass or you sleep.",
+    "itemIds": [
+      "spirits",
+      "beer-bottle",
+      "canned-beer",
+      "cider",
+      "wine",
+      "vodka",
+      "whiskey"
+    ],
+    "attribute": "intelligence",
+    "amount": -1,
+    "durationDays": 1
+  },
+  {
+    "id": "alcohol-unsteady",
+    "group": "alcohol",
+    "name": "Unsteady focus",
+    "description": "Unsteady focus: -1 Concentration until four phases pass or you sleep.",
+    "itemIds": [
+      "spirits",
+      "beer-bottle",
+      "canned-beer",
+      "cider",
+      "wine",
+      "vodka",
+      "whiskey"
+    ],
+    "attribute": "agility",
+    "amount": -1,
+    "durationDays": 1
+  },
+  {
+    "id": "smoking-focus",
+    "name": "Nicotine focus",
+    "description": "Nicotine focus: +1 Concentration until four phases pass or you sleep.",
+    "itemIds": [
+      "red-cigarettes",
+      "grey-cigarettes"
+    ],
+    "attribute": "agility",
+    "amount": 1,
+    "durationDays": 1
+  },
+  {
+    "id": "smoking-fatigue",
+    "name": "Nicotine fatigue",
+    "description": "Nicotine fatigue: -1 Physique until four phases pass or you sleep.",
+    "itemIds": [
+      "red-cigarettes",
+      "grey-cigarettes"
+    ],
+    "attribute": "strength",
+    "amount": -1,
+    "durationDays": 1
+  },
+  {
+    "id": "tablet-fatigue",
+    "group": "medicine",
+    "name": "Mental exertion",
+    "description": "Mental exertion: -1 Physique until four phases pass or you sleep.",
+    "itemIds": [
+      "white-tablets"
+    ],
+    "attribute": "strength",
+    "amount": -1,
+    "durationDays": 1
+  },
+  {
+    "id": "tablet-fog",
+    "group": "medicine",
+    "name": "Restorative fog",
+    "description": "Restorative fog: -1 Intelligence until four phases pass or you sleep.",
+    "itemIds": [
+      "red-tablets"
+    ],
+    "attribute": "intelligence",
+    "amount": -1,
+    "durationDays": 1
+  },
+  {
+    "id": "steroid-fog",
+    "group": "medicine",
+    "name": "Steroid fog",
+    "description": "Steroid fog: -1 Intelligence until four phases pass or you sleep.",
+    "itemIds": [
+      "steroids"
+    ],
+    "attribute": "intelligence",
+    "amount": -1,
+    "durationDays": 1
+  },
+  {
+    "id": "medicine-strength",
+    "group": "medicine",
+    "name": "Medicated physique",
+    "description": "Medicated physique: +2 Physique until four phases pass or you sleep.",
+    "itemIds": [
+      "medicine",
+      "medicine-bottle"
+    ],
+    "attribute": "strength",
+    "amount": 2,
+    "durationDays": 1
+  },
+  {
+    "id": "medicine-drowsy",
+    "group": "medicine",
+    "name": "Medicinal drowsiness",
+    "description": "Medicinal drowsiness: -1 Concentration until four phases pass or you sleep.",
+    "itemIds": [
+      "medicine",
+      "medicine-bottle"
+    ],
+    "attribute": "agility",
+    "amount": -1,
+    "durationDays": 1
+  },
+  {
+    "id": "red-tablets-protection",
+    "group": "medicine",
+    "name": "Pain relief",
+    "description": "Reduces incoming Health damage by 30% for four phases or until sleep.",
+    "itemIds": [
+      "red-tablets"
+    ],
+    "damageResistance": true,
+    "amount": 30,
+    "durationDays": 1
+  },
+  {
+    "id": "steroids-protection",
+    "group": "medicine",
+    "name": "Steroid protection",
+    "description": "Reduces incoming Health damage by 20% for four phases or until sleep.",
+    "itemIds": [
+      "steroids"
+    ],
+    "damageResistance": true,
+    "amount": 20,
+    "durationDays": 1
+  }
+]

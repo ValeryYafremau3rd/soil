@@ -1,0 +1,16 @@
+{
+  "name": "Safe",
+  "locked": false,
+  "x": 1720,
+  "y": 128,
+  "width": 255,
+  "height": 430,
+  "displayHeight": 105,
+  "scale": 1,
+  "platform": {
+    "left": 0.08,
+    "right": 0.92,
+    "top": 0.03
+  },
+  "quality": 5
+}

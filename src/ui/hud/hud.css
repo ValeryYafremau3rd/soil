@@ -1,0 +1,28 @@
+.game-hud-top, .game-hud-bottom { position: fixed; left: 0; right: 0; z-index: 10; background: #141820ed; color: #eee7da; font-size: 14px; }
+.game-hud-top { top: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 18px; border-bottom: 1px solid #454d59; pointer-events: none; }
+.game-hud-location { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; }
+.game-hud-time { display: inline-flex; align-items: center; gap: 7px; }
+.game-hud-time .sprite-icon { width: 32px; height: 28px; flex-shrink: 0; }
+.game-hud-location span { color: #bdc5d0; }
+.game-hud-stats { display: flex; gap: 16px; }
+.game-hud-stat { display: grid; gap: 4px; font-size: 12px; --stat-color: #ce6666; }
+.game-hud-stat progress { width: clamp(60px, 12vw, 150px); height: 8px; border: 0; border-radius: 4px; overflow: hidden; background: #343c48; appearance: none; }
+.game-hud-stat progress::-webkit-progress-bar { background: #343c48; }
+.game-hud-stat--energy { --stat-color: #d5b55c; }
+.game-hud-stat--sanity { --stat-color: #8198d4; }
+.game-hud-stat progress::-webkit-progress-value { background: var(--stat-color); }
+.game-hud-stat progress::-moz-progress-bar { background: var(--stat-color); }
+.game-hud-bottom { position: static; display: flex; justify-content: center; flex-wrap: wrap; gap: 5px; background: transparent; pointer-events: auto; }
+.game-hud-bottom button { padding: 4px 6px; border: 1px solid #596473; border-radius: 4px; background: #252d38; color: inherit; font: inherit; font-size: 11px; cursor: pointer; }
+.game-hud-bottom button:hover { background: #394656; }
+.game-hud-bottom button:focus-visible { outline: 2px solid #9bbce5; outline-offset: 2px; }
+.game-hud-bottom kbd { margin-left: 8px; color: #aebacc; font: inherit; font-size: 12px; }
+.game-hud-empty { min-height: 180px; }
+@media (max-width: 540px) {
+  .game-hud-top { align-items: center; flex-wrap: wrap; padding: 8px 10px; gap: 8px; }
+  .game-hud-location { flex-direction: column; gap: 3px; }
+  .game-hud-stats { gap: 8px; }
+  .game-hud-bottom { gap: 5px; padding: 10px 6px; }
+  .game-hud-bottom button { padding: 4px 5px; font-size: 11px; }
+  .game-hud-bottom kbd { display: none; }
+}

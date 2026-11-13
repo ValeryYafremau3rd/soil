@@ -1,0 +1,35 @@
+{
+  "name": "Apartment 32",
+  "sprite": {
+    "key": "room-house-32",
+    "path": "assets/buildings/house_rooms.png",
+    "background": "none",
+    "referenceWidth": 1536,
+    "crop": {
+      "x": 884,
+      "y": 529,
+      "width": 454,
+      "height": 145
+    }
+  },
+  "groundY": 145,
+  "bounds": {
+    "left": 8,
+    "right": 446,
+    "ceiling": 0
+  },
+  "furniture": [
+    {
+      "id": "chair",
+      "type": "chair-metal",
+      "x": 290,
+      "scale": 1
+    },
+    {
+      "id": "bed",
+      "type": "mattress-quilted",
+      "x": 90,
+      "scale": 1
+    }
+  ]
+}

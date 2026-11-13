@@ -1,0 +1,25 @@
+{
+    "name":  "Striped concrete barrier",
+    "key":  "furniture-cover-barrier-striped",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  33,
+                 "y":  485,
+                 "width":  289,
+                 "height":  165
+             },
+    "displayHeight":  90,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.96666666666666667,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.08,
+    "right": 0.92,
+    "top": 0.182
+                 }
+}

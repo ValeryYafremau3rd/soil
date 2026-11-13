@@ -1,0 +1,23 @@
+{
+    "name":  "Padded armchair",
+    "key":  "furniture-armchair-padded",
+    "path":  "assets/characters/npc/bench.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  1097,
+                 "y":  382,
+                 "width":  240,
+                 "height":  295
+             },
+    "displayHeight":  55,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "rest",
+    "prompt":  "Enter · Rest",
+    "platform":  {
+                     "left":  0.08,
+                     "right":  0.92,
+                     "top":  0.55
+                 }
+}

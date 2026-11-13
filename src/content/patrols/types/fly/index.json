@@ -1,0 +1,46 @@
+{
+  "name": "Fly",
+  "kind": "monster",
+  "combat": {
+    "attackCooldownMs": 1200,
+    "levelTolerance": 26,
+    "chaseSpeed": 220,
+    "meleeRange": 100,
+    "chaseStopRatio": 0.8,
+    "hitFlashMs": 180,
+    "detectionRadius": 560,
+    "health": 500,
+    "deathHoldMs": 800,
+    "fear": {
+      "radius": 650,
+      "sanityPerSecond": 3,
+      "noticeSanityDamage": 8
+    },
+    "meleeDamage": 48,
+    "reactionDelayMs": 600
+  },
+  "sourceKey": "fly-source",
+  "textureKey": "fly",
+  "path": "assets/characters/patrol/fly.png",
+  "referenceWidth": 2172,
+  "background": "dark",
+  "backgroundThreshold": 24,
+  "backgroundMinGreenRed": 0,
+  "keepLargestComponent": true,
+  "displayHeight": 140,
+  "frameSize": {
+    "referenceHeight": 188,
+    "width": 300,
+    "height": 210
+  },
+  "scale": 0.75,
+  "depth": 6.5,
+  "interactionRadius": 65,
+  "movement": {
+    "minWalkMs": 1000,
+    "minPauseMs": 350,
+    "speed": 65,
+    "maxPauseMs": 800,
+    "maxWalkMs": 2200
+  }
+}

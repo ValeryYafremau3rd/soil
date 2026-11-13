@@ -1,0 +1,18 @@
+[
+  {
+    "id": "dusan-apartment-32-loot",
+    "restock": false,
+    "items": [
+      {
+        "itemId": "pliers",
+        "quantity": 1
+      }
+    ],
+    "type": "safe",
+    "x": 31,
+    "scale": 0.6875,
+    "quality": 5,
+    "locked": true,
+    "lootTable": "dusan-apartment"
+  }
+]

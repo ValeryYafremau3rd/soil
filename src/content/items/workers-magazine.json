@@ -1,0 +1,31 @@
+{
+  "id": "workers-magazine",
+  "name": "Workers magazine",
+  "category": "Book",
+  "quality": 3,
+  "price": 12,
+  "eruditionRequired": 5,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 250,
+    "y": 357,
+    "width": 172,
+    "height": 161
+  },
+  "scale": 1,
+  "maxStack": 1,
+  "rarity": "rare",
+  "description": "Workers magazine.",
+  "requirementMode": "any",
+  "skillRequirements": {
+    "weapons": 4
+  },
+  "bonus": {
+    "skill": "weapons",
+    "amount": 2
+  }
+}

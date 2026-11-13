@@ -1,0 +1,49 @@
+{
+  "name": "Apartment 21",
+  "sprite": {
+    "key": "room-house-21",
+    "path": "assets/buildings/house_rooms.png",
+    "background": "none",
+    "referenceWidth": 1536,
+    "crop": {
+      "x": 192,
+      "y": 691,
+      "width": 360,
+      "height": 138
+    }
+  },
+  "widthScale": 1.1,
+  "groundY": 138,
+  "bounds": {
+    "left": 8,
+    "right": 392,
+    "ceiling": 0
+  },
+  "furniture": [
+    {
+      "id": "sofa",
+      "type": "sofa-green",
+      "x": 234.3,
+      "scale": 0.8
+    }
+  ],
+  "containers": [
+    {
+      "id": "room-21-suitcase",
+      "heightOffset": 104,
+      "type": "suitcase",
+      "x": 341,
+      "items": [],
+      "lootTable": "rarity-scavenge",
+      "scale": 0.5
+    },
+    {
+      "id": "room-21-storage",
+      "type": "suitcase",
+      "x": 373,
+      "scale": 0.7,
+      "locked": false,
+      "items": []
+    }
+  ]
+}

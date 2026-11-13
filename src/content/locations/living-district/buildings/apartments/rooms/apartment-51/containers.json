@@ -1,0 +1,11 @@
+[
+  {
+    "id": "dusan-apartment-51-loot",
+    "type": "suitcase",
+    "x": 90.2,
+    "scale": 0.6875,
+    "quality": 5,
+    "locked": false,
+    "lootTable": "dusan-apartment"
+  }
+]

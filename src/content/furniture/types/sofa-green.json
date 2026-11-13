@@ -1,0 +1,23 @@
+{
+    "name":  "Green sofa",
+    "key":  "furniture-sofa-green",
+    "path":  "assets/characters/npc/beds.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  770,
+                 "y":  445,
+                 "width":  606,
+                 "height":  243
+             },
+    "displayHeight":  45,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "sleep",
+    "prompt":  "Enter · Sleep",
+    "platform":  {
+                     "left":  0.08,
+                     "right":  0.92,
+                     "top":  0.55
+                 }
+}

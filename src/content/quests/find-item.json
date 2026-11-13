@@ -1,0 +1,73 @@
+{
+  "id": "find-item",
+  "name": "Find item: {item} for {destination}",
+  "repeatable": true,
+  "findItem": "$item",
+  "description": "{source} needs one {item} delivered to {destination}. Talk to {source} for instructions, then find or buy the item and hand it to {destination}. Payment is twice its listed price.",
+  "destinations": [
+    {
+      "id": "bartender",
+      "name": "Viktor Petrov"
+    },
+    {
+      "id": "cashier",
+      "name": "Zofia Nowak"
+    },
+    {
+      "id": "citizen-caretaker",
+      "name": "Elena Jovanovic"
+    },
+    {
+      "id": "citizen-clerk",
+      "name": "Pavel Sokolov"
+    },
+    {
+      "id": "citizen-mechanic",
+      "name": "Dusan Markovic"
+    },
+    {
+      "id": "citizen-nurse",
+      "name": "Nadia Morozova"
+    },
+    {
+      "id": "stranger",
+      "name": "Milena Vukovic"
+    },
+    {
+      "id": "worker",
+      "name": "Irina Kovalenko"
+    }
+  ],
+  "stages": [
+    {
+      "id": "instructions",
+      "description": "Talk to {source} about finding {item} for {destination}.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "$source",
+        "choiceId": "find-item-start"
+      }
+    },
+    {
+      "id": "hand-over",
+      "description": "Find one {item} and hand it to {destination}.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "$destination",
+        "choiceId": "find-item-deliver"
+      },
+      "requiredItems": [
+        {
+          "itemId": "$item",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "$item",
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}

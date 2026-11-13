@@ -1,0 +1,25 @@
+{
+    "name":  "Locker",
+    "key":  "furniture-cover-locker",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  1459,
+                 "y":  373,
+                 "width":  183,
+                 "height":  272
+             },
+    "displayHeight":  130,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.97692307692307689,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.08,
+    "right": 0.92,
+    "top": 0.077
+                 }
+}

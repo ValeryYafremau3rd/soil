@@ -1,0 +1,26 @@
+[
+  {
+    "key": "A / D",
+    "label": "Move"
+  },
+  {
+    "key": "Space",
+    "label": "Jump"
+  },
+  {
+    "key": "F",
+    "label": "Melee (hold/release)"
+  },
+  {
+    "key": "G",
+    "label": "Shoot (hold/release)"
+  },
+  {
+    "key": "Enter",
+    "label": "Interact"
+  },
+  {
+    "key": "W / S",
+    "label": "Stairs"
+  }
+]

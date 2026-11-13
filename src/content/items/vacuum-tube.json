@@ -1,0 +1,20 @@
+{
+  "id": "vacuum-tube",
+  "eruditionRequired": 2,
+  "price": 6,
+  "name": "Vacuum tube",
+  "description": "A delicate glass electronic tube with metal contacts. Scrap one for a small Scraper-based chance to recover useful equipment.",
+  "rarity": "rare",
+  "quality": 1,
+  "category": "Scrap",
+  "icon": {
+    "x": 548,
+    "y": 806,
+    "width": 74,
+    "height": 175
+  },
+  "scale": 1,
+  "scrap": true,
+  "consumable": true,
+  "maxStack": 1
+}

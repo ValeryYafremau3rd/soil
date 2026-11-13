@@ -1,0 +1,51 @@
+[
+  {
+    "id": "center-bus",
+    "type": "bus",
+    "x": 1100,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "center-bench",
+    "type": "bench",
+    "x": 1070,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "center-cover-shelf",
+    "type": "cover-shelf",
+    "x": 420,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "center-cover-barrier",
+    "type": "cover-barrier",
+    "x": 2750,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "center-cover-barrel-metal",
+    "type": "cover-barrel-metal",
+    "x": 1900,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "center-cover-locker",
+    "type": "cover-locker",
+    "x": 2550,
+    "space": "outside",
+    "scale": 1
+  },
+  {
+    "id": "center-cover-cases",
+    "space": "outside",
+    "scale": 1,
+    "type": "cover-cases",
+    "x": 1750
+  }
+]

@@ -1,0 +1,77 @@
+{
+  "id": "smuggler-delivery",
+  "name": "Night delivery: {source} to {destination}",
+  "description": "At night, collect the Smuggler parcel from the Smuggler crate in {source}. Put it in the Smuggler crate in {destination}, then return to Dusan for 16 Thalers. Complete each step within four phases.",
+  "repeatable": true,
+  "offeredBy": "citizen-mechanic",
+  "prerequisites": [
+    "smuggler-4"
+  ],
+  "offerText": "I need a shipment moved from {source} to {destination}.",
+  "deliveryKind": "smuggler",
+  "deliveryItemId": "smuggler-parcel",
+  "reward": {
+    "money": 16
+  },
+  "stages": [
+    {
+      "id": "collect",
+      "description": "At night, take the Smuggler parcel from the Smuggler crate in {source}.",
+      "trigger": {
+        "kind": "loot",
+        "containerId": "$source"
+      },
+      "phases": [
+        "night"
+      ],
+      "deadlinePhases": 4,
+      "requiredItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "deposit",
+      "description": "Put the Smuggler parcel in the Smuggler crate in {destination}.",
+      "trigger": {
+        "kind": "deposit",
+        "containerId": "$destination"
+      },
+      "requiredItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ],
+      "deadlinePhases": 4
+    },
+    {
+      "id": "report",
+      "description": "Return to Dusan Markovic for 16 Thalers.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "smuggler-delivery-report"
+      }
+    }
+  ],
+  "destinations": [
+    {
+      "id": "center",
+      "name": "Center",
+      "containerId": "cashier-5-crate"
+    },
+    {
+      "id": "factory",
+      "name": "Factory",
+      "containerId": "smuggler-factory-crate"
+    },
+    {
+      "id": "living-district",
+      "name": "Living District",
+      "containerId": "smuggler-living-crate"
+    }
+  ]
+}

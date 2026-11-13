@@ -1,0 +1,28 @@
+[
+  {
+    "id": "dusan-apartment-52-loot",
+    "restock": false,
+    "items": [
+      {
+        "itemId": "repair-pliers",
+        "quantity": 1
+      }
+    ],
+    "type": "safe",
+    "x": 337,
+    "scale": 0.6875,
+    "quality": 5,
+    "locked": true,
+    "lootTable": "dusan-apartment"
+  },
+  {
+    "id": "apartments-reward-4",
+    "heightOffset": 87,
+    "type": "suitcase",
+    "x": 65,
+    "scale": 0.6875,
+    "locked": true,
+    "items": [],
+    "restock": false
+  }
+]

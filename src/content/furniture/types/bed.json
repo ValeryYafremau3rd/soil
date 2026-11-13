@@ -1,0 +1,23 @@
+{
+  "background": "dark",
+  "referenceWidth": 2172,
+  "scale": 1,
+  "interactionRadius": 40,
+  "name": "Bed",
+  "key": "furniture-bed",
+  "path": "assets/characters/npc/beds.png",
+  "crop": {
+    "x": 90,
+    "y": 46,
+    "width": 240,
+    "height": 340
+  },
+  "displayHeight": 60,
+  "action": "sleep",
+  "prompt": "Enter · Sleep",
+  "platform": {
+    "left": 0.1,
+    "right": 0.9,
+    "top": 0.4
+  }
+}

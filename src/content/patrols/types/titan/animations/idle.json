@@ -1,0 +1,55 @@
+{
+  "idleAnimation": "titan-idle",
+  "frameRate": 4,
+  "repeat": -1,
+  "idleSteps": [
+    {
+      "anchorY": 196,
+      "width": 148,
+      "y": 0,
+      "anchorX": 74,
+      "x": 190,
+      "height": 201
+    },
+    {
+      "anchorY": 196,
+      "width": 150,
+      "y": 0,
+      "anchorX": 75,
+      "x": 378,
+      "height": 201
+    },
+    {
+      "anchorY": 196,
+      "width": 152,
+      "y": 0,
+      "anchorX": 76,
+      "x": 568,
+      "height": 201
+    },
+    {
+      "anchorY": 196,
+      "width": 154,
+      "y": 0,
+      "anchorX": 77,
+      "x": 758,
+      "height": 201
+    },
+    {
+      "anchorY": 196,
+      "width": 156,
+      "y": 0,
+      "anchorX": 78,
+      "x": 948,
+      "height": 201
+    },
+    {
+      "anchorY": 196,
+      "width": 158,
+      "y": 0,
+      "anchorX": 79,
+      "x": 1138,
+      "height": 201
+    }
+  ]
+}

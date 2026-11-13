@@ -1,0 +1,16 @@
+.character-details h2 { margin: 0 0 16px; color: #e5c48f; }
+.character-details h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: #b7c5d6; margin: 0 0 8px; }
+.character-details__stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.character-details dl { margin: 0; }
+.character-details dl > div { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; border-bottom: 1px solid #ffffff0a; }
+.character-details dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+.character-bonus { color: #9bd0a8; }
+.character-penalty { color: #e69b94; }
+.character-vital--health { color: #ce6666; }
+.character-vital--energy { color: #d5b55c; }
+.character-vital--sanity { color: #8198d4; }
+.character-details section[aria-label$="penalties"] { margin-top: 20px; }
+.character-modal { width: min(820px, calc(100vw - 32px)); }
+.character-modal .character-details__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 680px) { .character-modal .character-details__stats { grid-template-columns: 1fr; gap: 20px; } }
+@media (max-width: 480px) { .character-details__stats { grid-template-columns: 1fr; gap: 20px; } }

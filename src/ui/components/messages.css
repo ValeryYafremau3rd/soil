@@ -1,0 +1,8 @@
+.game-messages { position: fixed; z-index: 40; left: 50%; bottom: calc(var(--hud-bottom-height) + 24px); transform: translateX(-50%); width: max-content; max-width: calc(100vw - 32px); display: grid; gap: 8px; pointer-events: none; }
+.game-message { margin: 0; padding: 12px 20px; border: 1px solid #dbad57; border-radius: 4px; background: #202631; color: #f4c993; text-align: center; box-shadow: 0 3px 12px #0006; }
+.game-message-success { position: fixed; left: 50%; margin: 0; width: max-content; max-width: calc(100vw - 32px); font: 22px sans-serif; text-align: center; -webkit-text-stroke: 5px #10151d; paint-order: stroke fill; animation: lockpick-success-float linear forwards; }
+.game-success-messages { position: fixed; inset: 0; z-index: 40; pointer-events: none; }
+@keyframes lockpick-success-float {
+  from { transform: translate(-50%, -50%); opacity: 1; }
+  to { transform: translate(-50%, calc(-50% - 45px)); opacity: 0; }
+}

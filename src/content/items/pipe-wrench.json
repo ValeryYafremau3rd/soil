@@ -1,0 +1,26 @@
+{
+  "id": "pipe-wrench",
+  "eruditionRequired": 5,
+  "price": 14,
+  "name": "Pipe wrench",
+  "description": "A heavy wrench with adjustable, serrated jaws.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Tool",
+  "icon": {
+    "x": 1030,
+    "y": 60,
+    "width": 175,
+    "height": 195
+  },
+  "scale": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "scraper": 4
+  },
+  "equipmentSlot": "tool",
+  "bonus": {
+    "skill": "scraper",
+    "amount": 1
+  }
+}

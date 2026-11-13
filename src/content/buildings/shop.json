@@ -1,0 +1,85 @@
+{
+  "outer": {
+    "key": "shop-outer",
+    "groundY": 635,
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "width": 970,
+      "height": 635
+    },
+    "floors": [
+      {
+        "y": 635,
+        "left": 25,
+        "right": 945,
+        "ceiling": 0
+      }
+    ],
+    "platforms": [
+      {
+        "left": 0.04,
+        "right": 0.96,
+        "top": 0.2
+      }
+    ]
+  },
+  "inner": {
+    "key": "shop-inner",
+    "groundY": 548,
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "width": 1040,
+      "height": 565
+    },
+    "floors": [
+      {
+        "y": 548,
+        "left": 40,
+        "right": 1000,
+        "ceiling": 125
+      }
+    ],
+    "platforms": [
+      {
+        "left": 0.25,
+        "right": 0.95,
+        "top": 0.7784070796
+      }
+    ]
+  },
+  "entranceX": 508,
+  "stairX": 480,
+  "stairLandingX": 480,
+  "interactionRadius": 38,
+  "stairDurationMs": 1400,
+  "scale": 0.8,
+  "name": "shop",
+  "sprites": [
+    {
+      "key": "shop-outer",
+      "path": "assets/buildings/shop.png",
+      "referenceWidth": 2048,
+      "background": "dark",
+      "crop": {
+        "x": 12,
+        "y": 12,
+        "width": 970,
+        "height": 635
+      }
+    },
+    {
+      "key": "shop-inner",
+      "path": "assets/buildings/shop.png",
+      "referenceWidth": 2048,
+      "background": "dark",
+      "crop": {
+        "x": 1000,
+        "y": 80,
+        "width": 1040,
+        "height": 565
+      }
+    }
+  ]
+}

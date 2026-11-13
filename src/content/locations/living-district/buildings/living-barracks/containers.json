@@ -1,0 +1,61 @@
+[
+  {
+    "id": "living-barracks-medical-crate",
+    "type": "crate",
+    "x": 850,
+    "floor": 0,
+    "scale": 1,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "bandage",
+        "quantity": 3
+      },
+      {
+        "itemId": "medicine",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "living-barracks-medical-crate-2",
+    "type": "crate",
+    "x": 1180,
+    "floor": 0,
+    "scale": 1,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "bandage",
+        "quantity": 3
+      },
+      {
+        "itemId": "medicine",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "barracks-safe",
+    "type": "safe",
+    "x": 310,
+    "scale": 1,
+    "locked": true,
+    "items": [
+      {
+        "itemId": "martialArts-training-magazine",
+        "quantity": 1
+      },
+      {
+        "itemId": "leather-belt",
+        "quantity": 1
+      },
+      {
+        "itemId": "pocket-watch",
+        "quantity": 1
+      }
+    ],
+    "floor": 0,
+    "restock": false
+  }
+]

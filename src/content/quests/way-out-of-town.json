@@ -1,0 +1,36 @@
+{
+  "id": "way-out-of-town",
+  "autoStart": true,
+  "name": "Find a way out of the town",
+  "description": "There must be a way out of this town. Search for a clue.",
+  "stages": [
+    {
+      "id": "run-east",
+      "description": "Run east to Center. Avoid patrols and whatever else lurks in the night.",
+      "trigger": {
+        "kind": "location",
+        "locationId": "center"
+      }
+    },
+    {
+      "id": "find-a-clue",
+      "description": "Find a way out of the town.",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItems": [
+        {
+          "itemId": "strange-key",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "strange-key",
+      "description": "You found a strange key on a Titan. Find out what it opens.",
+      "trigger": {
+        "kind": "pending"
+      }
+    }
+  ]
+}

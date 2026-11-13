@@ -1,0 +1,25 @@
+{
+    "name":  "Storage shelf",
+    "key":  "furniture-cover-shelf",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  1671,
+                 "y":  379,
+                 "width":  214,
+                 "height":  266
+             },
+    "displayHeight":  130,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.97692307692307689,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.08,
+    "right": 0.92,
+    "top": 0.098
+                 }
+}

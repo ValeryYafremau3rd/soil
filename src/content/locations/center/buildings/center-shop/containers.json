@@ -1,0 +1,43 @@
+[
+  {
+    "id": "shop-safe",
+    "type": "safe",
+    "x": 916.3333333333,
+    "scale": 1.25,
+    "locked": true,
+    "items": [
+      {
+        "itemId": "agriculture-guide",
+        "quantity": 1
+      },
+      {
+        "itemId": "soldering-iron",
+        "quantity": 1
+      }
+    ],
+    "floor": 0,
+    "restock": false
+  },
+  {
+    "id": "shop-daily-supplies",
+    "type": "crate",
+    "x": 820.5,
+    "scale": 1.25,
+    "locked": false,
+    "items": [
+      {
+        "itemId": "water-bottle",
+        "quantity": 1
+      },
+      {
+        "itemId": "batteries",
+        "quantity": 1
+      },
+      {
+        "itemId": "duct-tape",
+        "quantity": 1
+      }
+    ],
+    "floor": 0
+  }
+]

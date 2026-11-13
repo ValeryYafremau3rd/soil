@@ -1,0 +1,98 @@
+{
+  "name": "Nadia Morozova",
+  "sourceKey": "citizens-source",
+  "textureKey": "citizen-nurse",
+  "path": "assets/characters/npc/citizens.png",
+  "idleAnimation": "citizen-nurse-idle",
+  "referenceWidth": 2048,
+  "frameRate": 3,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "background": "light",
+  "scale": 0.9,
+  "repeat": -1,
+  "frameSize": {
+    "width": 112,
+    "height": 180,
+    "referenceHeight": 176
+  },
+  "idleSteps": [
+    {
+      "x": 70,
+      "y": 174,
+      "width": 96,
+      "height": 180,
+      "anchorX": 48,
+      "anchorY": 176
+    },
+    {
+      "x": 252,
+      "y": 174,
+      "width": 96,
+      "height": 180,
+      "anchorX": 48,
+      "anchorY": 176
+    },
+    {
+      "x": 434,
+      "y": 174,
+      "width": 96,
+      "height": 180,
+      "anchorX": 48,
+      "anchorY": 176
+    },
+    {
+      "x": 616,
+      "y": 174,
+      "width": 96,
+      "height": 180,
+      "anchorX": 48,
+      "anchorY": 176
+    },
+    {
+      "x": 798,
+      "y": 174,
+      "width": 96,
+      "height": 180,
+      "anchorX": 48,
+      "anchorY": 176
+    },
+    {
+      "x": 980,
+      "y": 174,
+      "width": 96,
+      "height": 180,
+      "anchorX": 48,
+      "anchorY": 176
+    }
+  ],
+  "dialogueId": "citizen-nurse",
+  "schedule": {
+    "morning": {
+      "locationId": "living-district",
+      "buildingId": "living-barracks",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 520
+    },
+    "afternoon": {
+      "locationId": "living-district",
+      "buildingId": "living-barracks",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 520
+    },
+    "evening": {
+      "locationId": "center",
+      "x": 1900
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-22",
+      "x": 306
+    }
+  }
+}

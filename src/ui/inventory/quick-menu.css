@@ -1,0 +1,8 @@
+.quick-menu { position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 4px; padding: 6px; border: 1px solid #596473; border-radius: 6px; background: #141820ed; }
+.quick-menu button { position: relative; display: grid; place-items: center; width: clamp(30px, 8vw, 44px); height: 46px; padding: 0 0 9px; border: 1px solid #596473; border-radius: 4px; background: #252d38; color: #eee7da; cursor: pointer; }
+.quick-menu .item-icon { max-width: 100%; }
+.quick-menu button:disabled { cursor: default; }
+.quick-menu button:enabled:hover { background: #394656; }
+.quick-menu button:focus-visible { outline: 2px solid #9bbce5; outline-offset: 2px; }
+.quick-menu kbd { position: absolute; bottom: 1px; left: 4px; font: 11px sans-serif; color: #bdc5d0; }
+.quick-menu__quantity { position: absolute; right: 3px; bottom: 1px; font: 11px sans-serif; text-shadow: 0 1px 2px #000; }

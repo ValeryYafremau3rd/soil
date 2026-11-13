@@ -1,0 +1,329 @@
+{
+  "start": "greeting",
+  "barter": {
+    "id": "merchant:bartender",
+    "name": "Viktor Petrov - Barter",
+    "locationId": "center",
+    "items": [
+      {
+        "itemId": "spirits",
+        "quantity": 2
+      },
+      {
+        "itemId": "tinned-beef",
+        "quantity": 1
+      },
+      {
+        "itemId": "red-cigarettes",
+        "quantity": 1
+      },
+      {
+        "itemId": "matchbox",
+        "quantity": 1
+      },
+      {
+        "itemId": "agility-training-pocket-guide",
+        "quantity": 1
+      },
+      {
+        "itemId": "lockpicking-training-magazine",
+        "quantity": 1
+      },
+      {
+        "itemId": "strength-training-pocket-guide",
+        "quantity": 1
+      },
+      {
+        "itemId": "barbed-bat",
+        "quantity": 1
+      },
+      {
+        "itemId": "flat-cap",
+        "quantity": 1
+      },
+      {
+        "itemId": "leather-journal",
+        "quantity": 1
+      },
+      {
+        "itemId": "red-book",
+        "quantity": 1
+      },
+      {
+        "itemId": "tool-roll",
+        "quantity": 1
+      },
+      {
+        "itemId": "machine-blueprints",
+        "quantity": 1
+      },
+      {
+        "itemId": "service-pistol",
+        "quantity": 1
+      }
+    ],
+    "stock": {
+      "categories": [
+        "Food",
+        "Drink",
+        "Supply",
+        "Book"
+      ],
+      "minItems": 1,
+      "maxItems": 2,
+      "minQuantity": 1,
+      "maxQuantity": 1
+    }
+  },
+  "nodes": {
+    "find-rope-thanks": {
+      "text": "Perfect. That rope will hold the cellar supplies. Here is the payment from my notice.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Anything else?",
+          "next": "greeting"
+        }
+      ]
+    },
+    "greeting": {
+      "text": "I'm Viktor Petrov, the bartender. Welcome to my bar. I serve food, drinks, and the occasional bit of local news.",
+      "choices": [
+        {
+          "id": "ask-for-job",
+          "text": "Do you have a job for me?",
+          "next": "supplies-job"
+        },
+        {
+          "id": "deliver-supplies",
+          "text": "[Work] Here are your food and alcohol.",
+          "questId": "bartender-supplies",
+          "next": "supplies-thanks"
+        },
+        {
+          "id": "courier-pickup",
+          "text": "[Courier] I am here to collect the parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-pickup-confirmed"
+        },
+        {
+          "id": "courier-deliver",
+          "text": "[Courier] I have your parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-delivery-thanks"
+        },
+        {
+          "id": "advice",
+          "text": "[Advice]",
+          "next": "advice"
+        },
+        {
+          "id": "about",
+          "text": "Tell about yourself.",
+          "next": "about"
+        },
+        {
+          "id": "delivery-notice",
+          "text": "[Quest] I saw your delivery notice.",
+          "questId": "a-fraying-strap",
+          "next": "delivery-request"
+        },
+        {
+          "id": "deliver-rope",
+          "text": "[Quest] Here is a rope for your delivery.",
+          "questId": "a-fraying-strap",
+          "next": "delivery-thanks"
+        },
+        {
+          "id": "barter",
+          "text": "[Barter]",
+          "barter": true
+        },
+        {
+          "id": "news",
+          "text": "What do you serve?",
+          "next": "menu"
+        },
+        {
+          "id": "cashier-1-deliver-0",
+          "text": "[Delivery] Deliver 1 Beer bottle to Viktor Petrov.",
+          "next": "cashier-1-cashier-1-deliver-0",
+          "questId": "cashier-1"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        },
+        {
+          "id": "find-item-start",
+          "text": "[Find item] Tell me about your request.",
+          "questId": "find-item",
+          "next": "find-item-instructions"
+        },
+        {
+          "id": "find-item-deliver",
+          "text": "[Find item] I found the requested item.",
+          "questId": "find-item",
+          "next": "find-item-payment"
+        }
+      ]
+    },
+    "delivery-request": {
+      "text": "The strap on my delivery crate snapped. Bring me one rope and I can secure it. The cashier across the street sells rope, or you might find some in a container.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "I'll find you a rope.",
+          "close": true
+        }
+      ]
+    },
+    "delivery-thanks": {
+      "text": "That is just what I needed. I'll take this rope and tie the crate down. Here is a service pistol and five bullets for your help. Thank you!",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "Glad I could help.",
+          "close": true
+        }
+      ]
+    },
+    "menu": {
+      "text": "I always keep spirits behind the counter. My selection of food and other drinks changes each morning, so have a look at today's stock.",
+      "choices": [
+        {
+          "id": "barter",
+          "text": "[Barter]",
+          "barter": true
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "advice": {
+      "text": "If your mind is fraying, drink some vodka: the Spirits in my stock restore Sanity. Do not let Sanity reach zero.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "about": {
+      "text": "Welcome to my bar. I serve food, drinks, and the occasional bit of local news. Morning: you can find me in Center's bar. Afternoon: you can find me in Center's bar. Evening: you can find me in Center's bar. Night: you can find me in apartment 51 in Living District.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-1-cashier-1-deliver-0": {
+      "text": "Thank you. The delivery is recorded.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "courier-pickup-confirmed": {
+      "text": "Take this parcel to the recipient named in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "courier-delivery-thanks": {
+      "text": "Thank you. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-instructions": {
+      "text": "Find the requested item and take it to the recipient in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-payment": {
+      "text": "Exactly what was requested. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "supplies-job": {
+      "text": "Yes, I have one. My supplies are running low. Bring me one food item and one alcoholic drink. Any kind will do. I will pay you 10 Thalers and give you a frying pan.",
+      "choices": [
+        {
+          "id": "accept-supplies",
+          "text": "I'll bring you the supplies.",
+          "acceptQuestId": "bartender-supplies",
+          "next": "supplies-accepted"
+        },
+        {
+          "id": "back",
+          "text": "Maybe later.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "supplies-accepted": {
+      "text": "Good. Bring both supplies back to me when you have them.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "I'll be back.",
+          "close": true
+        }
+      ]
+    },
+    "supplies-thanks": {
+      "text": "Just what I needed! Here are 10 Thalers and a frying pan for your trouble.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "Glad I could help.",
+          "close": true
+        }
+      ]
+    }
+  }
+}

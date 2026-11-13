@@ -1,0 +1,25 @@
+{
+    "name":  "Draped stacked crates",
+    "key":  "furniture-cover-crates-draped",
+    "path":  "assets/hidden/hidden.png",
+    "background":  "dark",
+    "referenceWidth":  2172,
+    "crop":  {
+                 "x":  1157,
+                 "y":  461,
+                 "width":  282,
+                 "height":  185
+             },
+    "displayHeight":  100,
+    "scale":  1,
+    "interactionRadius":  40,
+    "action":  "hide",
+  "groundOrigin": 0.97,
+    "prompt":  "Enter · Hide",
+    "revealPrompt":  "Enter · Step out",
+    "platform":  {
+    "left": 0.12,
+    "right": 0.61,
+    "top": 0.162
+                 }
+}

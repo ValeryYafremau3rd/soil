@@ -1,0 +1,31 @@
+{
+  "id": "intimidation-training-handbook",
+  "name": "Intimidation handbook",
+  "description": "A detailed handbook for practicing Intimidation.",
+  "category": "Book",
+  "rarity": "rare",
+  "quality": 3,
+  "price": 32,
+  "eruditionRequired": 11,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 563,
+    "y": 357,
+    "width": 143,
+    "height": 161
+  },
+  "scale": 1,
+  "maxStack": 1,
+  "requirementMode": "any",
+  "skillRequirements": {
+    "intimidation": 8
+  },
+  "bonus": {
+    "skill": "intimidation",
+    "amount": 4
+  }
+}

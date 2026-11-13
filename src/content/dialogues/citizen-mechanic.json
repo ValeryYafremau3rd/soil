@@ -1,0 +1,354 @@
+{
+  "start": "greeting",
+  "nodes": {
+    "find-screwdriver-thanks": {
+      "text": "That's the screwdriver I needed. Here is your payment, with a little extra for finding it.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Anything else?",
+          "next": "greeting"
+        }
+      ]
+    },
+    "greeting": {
+      "text": "I'm Dusan Markovic, the mechanic. I keep the factory machinery alive. Finding the right part is usually harder than fitting it.",
+      "choices": [
+        {
+          "id": "nurse-tablet-offer",
+          "text": "[Medicine] Nadia sent me with a white tablet for you.",
+          "questId": "nurse-tablet-deliveries",
+          "next": "tablet-response"
+        },
+        {
+          "id": "smuggler-delivery-offer",
+          "text": "[Smuggler] Do you have a delivery job?",
+          "acceptQuestId": "smuggler-delivery",
+          "next": "smuggler-delivery-instructions"
+        },
+        {
+          "id": "smuggler-delivery-report",
+          "text": "[Smuggler] The parcel is in the destination crate.",
+          "questId": "smuggler-delivery",
+          "next": "smuggler-delivery-thanks"
+        },
+        {
+          "id": "courier-pickup",
+          "text": "[Courier] I am here to collect the parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-pickup-confirmed"
+        },
+        {
+          "id": "courier-deliver",
+          "text": "[Courier] I have your parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-delivery-thanks"
+        },
+        {
+          "id": "smuggler-1-offer",
+          "text": "[Quest] A quiet job?",
+          "acceptQuestId": "smuggler-1",
+          "next": "smuggler-1-instructions"
+        },
+        {
+          "id": "smuggler-1-deliver",
+          "text": "[Quest] I brought the parts parcel.",
+          "questId": "smuggler-1",
+          "next": "smuggler-1-thanks"
+        },
+        {
+          "id": "smuggler-2-offer",
+          "text": "[Quest] Another night delivery?",
+          "acceptQuestId": "smuggler-2",
+          "next": "smuggler-2-instructions"
+        },
+        {
+          "id": "smuggler-2-deliver",
+          "text": "[Quest] I brought the sealed ledger.",
+          "questId": "smuggler-2",
+          "next": "smuggler-2-thanks"
+        },
+        {
+          "id": "smuggler-3-offer",
+          "text": "[Quest] The warehouse job?",
+          "acceptQuestId": "smuggler-3",
+          "next": "smuggler-3-instructions"
+        },
+        {
+          "id": "smuggler-3-deliver",
+          "text": "[Quest] I brought the precision core.",
+          "questId": "smuggler-3",
+          "next": "smuggler-3-thanks"
+        },
+        {
+          "id": "smuggler-4-offer",
+          "text": "[Quest] One final job?",
+          "acceptQuestId": "smuggler-4",
+          "next": "smuggler-4-instructions"
+        },
+        {
+          "id": "smuggler-trade",
+          "text": "[Barter]",
+          "barter": true,
+          "barterId": "merchant:worker-basic"
+        },
+        {
+          "id": "advice",
+          "text": "[Advice]",
+          "next": "advice"
+        },
+        {
+          "id": "about",
+          "text": "Tell about yourself.",
+          "next": "about"
+        },
+        {
+          "id": "cashier-3-deliver-0",
+          "text": "[Delivery] Deliver 1 Batteries to Dusan Markovic.",
+          "next": "cashier-3-cashier-3-deliver-0",
+          "questId": "cashier-3"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        },
+        {
+          "id": "find-item-start",
+          "text": "[Find item] Tell me about your request.",
+          "questId": "find-item",
+          "next": "find-item-instructions"
+        },
+        {
+          "id": "find-item-deliver",
+          "text": "[Find item] I found the requested item.",
+          "questId": "find-item",
+          "next": "find-item-payment"
+        }
+      ]
+    },
+    "advice": {
+      "text": "Carried tools can improve your skills, but you must meet their Erudition requirement to receive the bonus.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "about": {
+      "text": "I keep the factory machinery alive. Finding the right part is usually harder than fitting it. Morning: you can find me in the factory. Afternoon: you can find me in the factory. Evening: you can find me in the bar in Center. Night: you can find me in apartment 12 in Living District.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "smuggler-1-instructions": {
+      "text": "At night, look for the new crate beside the Living District barracks. Bring me the sealed parts parcel. I work inside the factory on the ground floor in the morning and afternoon.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "I will be back.",
+          "close": true
+        }
+      ]
+    },
+    "smuggler-1-thanks": {
+      "text": "Good work. I am a smuggler, and I can use someone discreet. Take this flashlight and 8 Thalers. I will now sell you tools, factory supplies, and lockpicking equipment. Another job is waiting. Nobody will notice if something small disappears from this warehouse.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "smuggler-2-instructions": {
+      "text": "Pick up the sealed ledger from the new crate near the shop in Center. Go at night, then bring it back. Nobody will notice if something small disappears from this warehouse.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "I will be back.",
+          "close": true
+        }
+      ]
+    },
+    "smuggler-2-thanks": {
+      "text": "The ledger is intact. Take three lockpicks and 12 Thalers. If you are not skilled in lockpicking, buy additional tools from my Barter stock. Carry pliers and a precision screwdriver to improve your Lockpicking. The warehouse job is waiting.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "smuggler-3-instructions": {
+      "text": "The shipment is in an unlocked crate on the ground floor inside the factory warehouse, only at night. Bring lockpicks for the factory entrance door. If you are not skilled in lockpicking, buy additional tools from my Barter stock: carried pliers and a precision screwdriver improve your Lockpicking. Anyone can use these tools. Take the precision core, then return it to me.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "I will be back.",
+          "close": true
+        }
+      ]
+    },
+    "smuggler-3-thanks": {
+      "text": "That is the core. You have earned my trust. Take this rare Triquetra pendant, 20 Thalers, and my apartment 12 keys, attached to your key ring. The apartment is in Living District; the building key is on the same ring. I have one final job for you.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "smuggler-4-instructions": {
+      "text": "I know someone is hiding an illegal weapon in apartment 11 in Living District, on the ground floor. He will not go to the militia over an illegal gun. Pick the apartment door at night, open the locked safe inside, and take the service pistol and all five bullets. Keep them. Once you have both, our business is finished. If you need help with lockpicking, buy additional tools from my Barter stock. After this, ask me for work: I can offer one crate delivery or apartment loot tip each day. Finish any outstanding job before taking another.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "I will take a look.",
+          "close": true
+        }
+      ]
+    },
+    "cashier-3-cashier-3-deliver-0": {
+      "text": "Thank you. The delivery is recorded.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "courier-pickup-confirmed": {
+      "text": "Take this parcel to the recipient named in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "courier-delivery-thanks": {
+      "text": "Thank you. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "smuggler-delivery-instructions": {
+      "text": "Collect the shipment at night, put it in the destination crate, then return to me.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "smuggler-delivery-thanks": {
+      "text": "Good work. Here is your 16 Thalers.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-instructions": {
+      "text": "Find the requested item and take it to the recipient in your journal.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "find-item-payment": {
+      "text": "Exactly what was requested. Here is your payment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "tablet-response": {
+      "text": "I don't need that medicine. I don't trust it, and I don't believe it works. Keep your tablet.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    }
+  },
+  "barters": [
+    {
+      "id": "merchant:worker-basic",
+      "name": "Dusan - Barter",
+      "locationId": "factory",
+      "items": [
+        {
+          "itemId": "lockpick",
+          "quantity": 3
+        }
+      ]
+    }
+  ]
+}

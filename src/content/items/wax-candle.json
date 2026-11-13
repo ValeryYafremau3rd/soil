@@ -1,0 +1,26 @@
+{
+  "id": "wax-candle",
+  "bonus": {
+    "attribute": "willpower",
+    "amount": 1
+  },
+  "name": "Wax candle",
+  "description": "A wax candle with a cotton wick.",
+  "category": "Supply",
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 2,
+  "eruditionRequired": 2,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 1219,
+    "y": 192,
+    "width": 105,
+    "height": 154
+  },
+  "scale": 1
+}
