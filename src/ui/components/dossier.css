@@ -1,0 +1,153 @@
+/* Layered paper, faded ink and fold marks need no image assets. */
+.ui-modal.dossier-modal {
+  --paper-surface: #ddc99f;
+  --paper-edge: #9b8055;
+  --paper-highlight: #eee0bd;
+  --paper-ink: #352d22;
+  --paper-muted: #6f6049;
+  --paper-rule: #80684255;
+  --paper-red: #873e30;
+  --paper-green: #42603b;
+  width: min(960px, calc(100vw - 24px));
+  height: min(650px, calc(100dvh - var(--hud-bottom-height) - 24px));
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+  color: var(--paper-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  filter: drop-shadow(0 12px 18px #0009);
+}
+.dossier-modal .ui-panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 44px 30px;
+  overflow: hidden;
+  border: 1px solid #9b8055;
+  border-radius: 2px;
+  background:
+    radial-gradient(ellipse at 0 0, #99662d33, transparent 45%),
+    radial-gradient(ellipse at 100% 100%, #88552640, transparent 40%),
+    linear-gradient(92deg, transparent 49.7%, #886b3220 50%, #fff5d638 50.3%, transparent 50.6%),
+    repeating-linear-gradient(0deg, #78582b05 0 1px, transparent 1px 4px),
+    linear-gradient(115deg, #d6bd8c, #efe1bd 40%, #e3cfa6 80%, #cbb080);
+  box-shadow: inset 0 0 30px #79512030, 3px 4px 0 #c4ad82, 4px 5px 0 #806a48, 7px 8px 0 #cdb58b;
+}
+/* Faint margin rules stay clear of text and controls. */
+.dossier-modal .ui-panel::before, .dossier-modal .ui-panel::after {
+  content: ''; position: absolute; top: 16px; bottom: 16px; width: 3px;
+  z-index: -1; pointer-events: none; border-inline: 1px solid #89543b30;
+}
+.dossier-modal .ui-panel::before { left: 12px; }
+.dossier-modal .ui-panel::after { right: 12px; }
+.dossier-modal .ui-modal__header {
+  flex-shrink: 0;
+  margin-bottom: 16px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid var(--paper-rule);
+}
+.dossier-modal .ui-modal__header h2 { font: bold 30px/1.1 'Courier New', monospace; text-transform: uppercase; letter-spacing: .08em; text-shadow: 0 1px #fff4d766; }
+.dossier-close {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #9b8055;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--paper-red);
+  font: 28px/1 Georgia, serif;
+  cursor: pointer;
+}
+.dossier-close:hover { border-color: var(--paper-rule); background: #8b351b12; }
+.dossier-modal :is(button, a):focus-visible { outline: 2px solid var(--paper-red); outline-offset: -3px; }
+.dossier-modal :is(.quest-tabs, .notes-tabs) { gap: 7px; border-color: var(--paper-rule); padding-bottom: 12px; margin-bottom: 16px; }
+.dossier-modal :is(.quest-tabs, .notes-tabs, .quest-names, .notes-entries) button,
+.dossier-modal .ui-button {
+  min-height: 36px;
+  padding: 8px 14px;
+  border: 1px solid #9b8055;
+  border-radius: 2px;
+  background: linear-gradient(#f1e4c6, #d5bf94);
+  box-shadow: inset 0 0 0 1px #eee0bd66, 0 2px 2px #30382c66;
+  color: var(--paper-ink);
+  font: inherit;
+  text-shadow: none;
+}
+.dossier-modal :is(.quest-tabs, .notes-tabs, .quest-names, .notes-entries) button:hover,
+.dossier-modal .ui-button:hover { filter: brightness(1.06); }
+.dossier-modal :is(button[aria-selected='true'], .quest-names button[aria-current='true'], .notes-entries button[aria-pressed='true']) {
+  background: linear-gradient(#965e44, #75432f);
+  border-color: #4c2926;
+  color: #eee0be;
+  text-shadow: 0 1px #25241e;
+}
+.dossier-modal :is(.quest-details, .notes-details) { line-height: 1.5; }
+.dossier-modal :is(.quest-details, .notes-details) h3 { font-size: 23px; line-height: 1.2; color: var(--paper-red); margin: 0 0 14px; }
+.dossier-modal :is(.quest-help, .notes-help, .inventory-help) { color: var(--paper-muted); font-size: 11px; }
+.dossier-modal :is(.quest-note-link, a) { color: var(--paper-red); }
+/* Notes and character perks share the same expandable group states. */
+.dossier-modal :is(.notes-entries .notes-group, .quest-names .perks-group) {
+  font-weight: 400;
+  border-color: #996e47;
+}
+.dossier-modal :is(.notes-entries .notes-group, .quest-names .perks-group):is(
+  [aria-expanded='true'], :focus-visible
+) {
+  background: linear-gradient(#965e44, #75432f);
+  border-color: #4c2926;
+  color: #eee0be;
+  box-shadow: inset 4px 0 #e7c976, 0 2px 2px #30382c66;
+  text-shadow: 0 1px #25241e;
+}
+.dossier-modal :is(.notes-entries .notes-group, .quest-names .perks-group):focus-visible {
+  outline: 2px solid #e7c976;
+  outline-offset: -4px;
+}
+.dossier-modal .requirement-unmet { color: #873e30; }
+.dossier-modal .requirement-fulfilled { color: var(--paper-green); }
+.dossier-modal .requirement-irrelevant { color: var(--paper-muted); }
+.dossier-modal .item-icon { background: transparent; border-radius: 0; }
+.dossier-modal .keys-list__item { background: #95643612; border-color: var(--paper-rule); }
+@media (max-width: 600px) {
+  .ui-modal.dossier-modal { width: calc(100vw - 12px); font-size: 13px; }
+  .dossier-modal .ui-panel { padding: 24px 22px; }
+  .dossier-modal .ui-modal__header h2 { font-size: 28px; }
+  .dossier-modal :is(.quest-tabs, .notes-tabs, .quest-names, .notes-entries) button { padding: 8px; }
+}
+@media (max-height: 540px) {
+  .dossier-modal .ui-panel { padding-top: 18px; padding-bottom: 18px; }
+  .dossier-modal .ui-modal__header { margin-bottom: 8px; padding-bottom: 6px; }
+  .dossier-modal .ui-modal__header h2 { font-size: 26px; }
+}
+
+/* The selected tab joins the sheet; the others sit behind it like folder dividers. */
+.dossier-modal :is(.quest-tabs, .notes-tabs) {
+  gap: 4px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  padding: 4px 0 0;
+  border-bottom: 1px solid var(--paper-edge);
+}
+.dossier-modal :is(.quest-tabs, .notes-tabs) button {
+  position: relative;
+  margin-bottom: -1px;
+  min-height: 40px;
+  padding: 10px 18px 8px;
+  border: 1px solid var(--paper-edge);
+  border-radius: 6px 16px 0 0;
+  background: linear-gradient(#d6bd8f, #c4a575);
+  box-shadow: inset 0 2px #fff1cf55;
+  color: var(--paper-muted);
+  text-shadow: none;
+}
+.dossier-modal :is(.quest-tabs, .notes-tabs) button[aria-selected='true'] {
+  z-index: 1;
+  padding-top: 14px;
+  border-bottom-color: var(--paper-surface);
+  background: linear-gradient(var(--paper-highlight), var(--paper-surface));
+  color: var(--paper-ink);
+  text-shadow: none;
+}
+.dossier-modal :is(.quest-tabs, .notes-tabs) button:focus-visible { outline-offset: -4px; }

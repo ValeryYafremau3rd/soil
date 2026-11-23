@@ -69,7 +69,8 @@
     }
   ],
   "reward": {
-    "money": 18
+    "money": 18,
+    "items": [{ "itemId": "leather-boots", "quantity": 1 }]
   },
   "retryTrigger": {
     "npcId": "cashier",

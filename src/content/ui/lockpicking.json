@@ -1,0 +1,10 @@
+{
+  "tickMs": 50,
+  "wheelTransitionMs": 150,
+  "swipeThresholdPx": 18,
+  "wheelStepIntervalMs": 100,
+  "title": "Combination lock",
+  "instructions": "Turn the wheels. Find three numbers that add up to the target.",
+  "controls": "Scroll or swipe to turn · ← → select · ↑ ↓ turn · Enter try · Esc leave",
+  "submitLabel": "Try combination"
+}

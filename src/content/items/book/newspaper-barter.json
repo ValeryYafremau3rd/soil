@@ -1,0 +1,53 @@
+{
+  "id": "newspaper-barter",
+  "name": "Newspaper issue 2: Barter",
+  "description": "Read once to permanently gain +1 Barter. Duplicate copies give no further bonus.",
+  "category": "Book",
+  "rarity": "common",
+  "quality": 1,
+  "price": 12,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 28,
+    "y": 352,
+    "width": 237,
+    "height": 174
+  },
+  "iconClip": [
+    {
+      "x": 0.025,
+      "y": 0.28
+    },
+    {
+      "x": 0.73,
+      "y": 0.015
+    },
+    {
+      "x": 1,
+      "y": 0.81
+    },
+    {
+      "x": 0.14,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 0.43
+    }
+  ],
+  "scale": 1,
+  "maxStack": 1,
+  "bonus": {
+    "skill": "barter",
+    "amount": 1
+  },
+  "readable": true,
+  "consumable": true,
+  "skillRequirements": {
+    "barter": 4
+  }
+}

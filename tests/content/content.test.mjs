@@ -22,6 +22,7 @@ test('the complete shipped JSON configuration is valid and all referenced PNG fi
   const input = content()
   validateContent(input)
   const paths = [input.hero.asset.path, input.settings.busStop.path, input.containers.sheet.path,
+    ...Object.values(input.containers.types).flatMap(type => type.sheet ? [type.sheet.path] : []),
     input.ui.itemSheet.path, input.daytime.iconSheet.path, ...input.locations.map(location => location.background.path),
     ...Object.values(input.buildings).flatMap(building => building.sprites.map(sprite => sprite.path)),
     ...Object.values(input.npcs).map(npc => npc.path), ...Object.values(input.taskboards.types).map(board => board.path),

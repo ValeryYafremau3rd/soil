@@ -1,0 +1,19 @@
+{
+  "id": "bronze-bust",
+  "price": 60,
+  "name": "Bronze bust",
+  "description": "A weighty bronze portrait on a square base.",
+  "rarity": "common",
+  "quality": 4,
+  "category": "Valuable",
+  "icon": {
+    "x": 1420,
+    "y": 460,
+    "width": 90,
+    "height": 138
+  },
+  "scale": 1,
+  "skillRequirements": {
+    "barter": 12
+  }
+}

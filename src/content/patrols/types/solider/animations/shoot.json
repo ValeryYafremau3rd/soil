@@ -1,0 +1,62 @@
+{
+  "key": "solider-shoot",
+  "frameRate": 10,
+  "steps": [
+    {
+      "x": 1230,
+      "y": 282,
+      "width": 138,
+      "height": 169,
+      "anchorX": 69,
+      "anchorY": 166,
+      "excludeRegions": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 138,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "x": 1390,
+      "y": 282,
+      "width": 134,
+      "height": 169,
+      "anchorX": 67,
+      "anchorY": 166
+    },
+    {
+      "x": 1554,
+      "y": 282,
+      "width": 124,
+      "height": 169,
+      "anchorX": 62,
+      "anchorY": 166
+    },
+    {
+      "x": 1706,
+      "y": 282,
+      "width": 158,
+      "height": 169,
+      "anchorX": 79,
+      "anchorY": 166
+    },
+    {
+      "x": 1869,
+      "y": 282,
+      "width": 126,
+      "height": 169,
+      "anchorX": 63,
+      "anchorY": 166
+    },
+    {
+      "x": 2026,
+      "y": 282,
+      "width": 122,
+      "height": 169,
+      "anchorX": 61,
+      "anchorY": 166
+    }
+  ]
+}

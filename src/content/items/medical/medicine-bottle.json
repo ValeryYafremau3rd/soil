@@ -1,0 +1,27 @@
+{
+  "id": "medicine-bottle",
+  "name": "Medicine bottle",
+  "description": "Temporary medication. Medicated physique: +2 Physique until four phases pass or you sleep. Medicinal drowsiness: -1 Concentration until four phases pass or you sleep.",
+  "category": "Medical",
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 8,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 638,
+    "y": 192,
+    "width": 88,
+    "height": 154
+  },
+  "scale": 1,
+  "consumable": true,
+  "maxStack": 5,
+  "skillRequirements": {
+    "medicine": 6
+  },
+  "recovery": {}
+}

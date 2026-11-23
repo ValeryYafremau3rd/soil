@@ -10,5 +10,13 @@
   "choose": [
     "enter",
     " "
+  ],
+  "left": [
+    "a",
+    "arrowleft"
+  ],
+  "right": [
+    "d",
+    "arrowright"
   ]
 }

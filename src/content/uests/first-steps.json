@@ -1,0 +1,168 @@
+{
+  "id": "first-steps",
+  "name": "First Steps",
+  "description": "Pavel assigns you room 21 under the district quarantine program. Learn the daily routine before the authorities decide whether you can remain.",
+  "autoStart": true,
+  "stages": [
+    {
+      "id": "ask-clerk",
+      "description": "Ask Pavel Sokolov for help settling in.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "first-steps-ask"
+      },
+      "grantItems": [
+        {
+          "itemId": "key-ring",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "visit-apartment",
+      "description": "Open and enter room 21 in the Living District apartments.",
+      "parallelGroup": "tutorial",
+      "trigger": {
+        "kind": "room",
+        "locationId": "living-district",
+        "buildingId": "apartments",
+        "roomId": "apartment-21"
+      }
+    },
+    {
+      "id": "sleep",
+      "description": "Sleep in a bed.",
+      "parallelGroup": "tutorial",
+      "trigger": {
+        "kind": "action",
+        "action": "sleep"
+      }
+    },
+    {
+      "id": "rest",
+      "description": "Rest on a bench or chair.",
+      "parallelGroup": "tutorial",
+      "trigger": {
+        "kind": "action",
+        "action": "rest"
+      }
+    },
+    {
+      "id": "bus",
+      "description": "Travel to another district by bus.",
+      "parallelGroup": "tutorial",
+      "trigger": {
+        "kind": "action",
+        "action": "bus"
+      }
+    },
+    {
+      "id": "buy-food",
+      "description": "Buy food.",
+      "parallelGroup": "tutorial",
+      "trigger": {
+        "kind": "action",
+        "action": "buy",
+        "itemIds": [
+          "berry-jam",
+          "bread",
+          "canned-fish",
+          "canned-meat",
+          "open-sardines",
+          "tinned-beef",
+          "tinned-chicken"
+        ]
+      }
+    },
+    {
+      "id": "eat-food",
+      "description": "Eat food.",
+      "parallelGroup": "tutorial",
+      "trigger": {
+        "kind": "action",
+        "action": "consume",
+        "itemIds": [
+          "berry-jam",
+          "bread",
+          "canned-fish",
+          "canned-meat",
+          "open-sardines",
+          "tinned-beef",
+          "tinned-chicken"
+        ]
+      }
+    },
+    {
+      "id": "buy-vice",
+      "description": "Buy alcohol or cigarettes.",
+      "parallelGroup": "tutorial",
+      "trigger": {
+        "kind": "action",
+        "action": "buy",
+        "itemIds": [
+          "grey-cigarettes",
+          "red-cigarettes",
+          "beer-bottle",
+          "canned-beer",
+          "cider",
+          "spirits",
+          "vodka",
+          "whiskey",
+          "wine"
+        ]
+      }
+    },
+    {
+      "id": "use-vice",
+      "description": "Drink alcohol or smoke cigarettes.",
+      "parallelGroup": "tutorial",
+      "trigger": {
+        "kind": "action",
+        "action": "consume",
+        "itemIds": [
+          "grey-cigarettes",
+          "red-cigarettes",
+          "beer-bottle",
+          "canned-beer",
+          "cider",
+          "spirits",
+          "vodka",
+          "whiskey",
+          "wine"
+        ]
+      }
+    },
+    {
+      "id": "return-clerk",
+      "description": "Return to Pavel Sokolov for supplies.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "first-steps-report"
+      }
+    }
+  ],
+  "reward": {
+    "items": [
+      {
+        "itemId": "bread",
+        "quantity": 5
+      },
+      {
+        "itemId": "grey-cigarettes",
+        "quantity": 10
+      }
+    ]
+  },
+  "_codex": {
+    "narrativeIntent": "Pavel presents quarantine as a temporary public-health measure. The player learns the city rules, not the conspiracy.",
+    "implementationNotes": [
+      "Room 21 is assigned by Pavel; do not change tutorial triggers.",
+      "Use official notices and Pavel dialogue to establish pills, restricted movement, rationing and curfew."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

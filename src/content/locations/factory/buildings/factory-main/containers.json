@@ -6,7 +6,7 @@
     "floor": 0,
     "items": [
       {
-        "itemId": "athletics-training-magazine",
+        "itemId": "sport-magazine-athletics",
         "quantity": 1
       },
       {
@@ -41,7 +41,7 @@
     "locked": true,
     "items": [
       {
-        "itemId": "charisma-training-pocket-guide",
+        "itemId": "chemistry-erudition",
         "quantity": 1
       },
       {
@@ -49,7 +49,7 @@
         "quantity": 1
       },
       {
-        "itemId": "atomic-physics",
+        "itemId": "chemistry-erudition",
         "quantity": 1
       }
     ],

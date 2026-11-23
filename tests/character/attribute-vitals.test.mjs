@@ -4,7 +4,7 @@ import { attributeVitals } from '../../src/domain/skills/vitals.ts'
 import { resolveDifficulty } from '../../src/domain/character/difficulty.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { applyCarriedBonuses } from '../../src/domain/inventory/items.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { content, contentFiles } from '../helpers/content.mjs'
 

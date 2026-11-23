@@ -1,17 +1,17 @@
 ﻿import assert from 'node:assert/strict'
 import test from 'node:test'
-import { coordinateWindows } from '../../src/app/services/coordinateWindows.ts'
-import { HudService } from '../../src/app/services/HudService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { TravelService } from '../../src/app/services/TravelService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { LockpickingService } from '../../src/app/services/LockpickingService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
+import { coordinateWindows } from '../../src/app/services/session/coordinateWindows.ts'
+import { HudService } from '../../src/app/services/ui/HudService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { TravelService } from '../../src/app/services/world/TravelService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { LockpickingService } from '../../src/app/services/puzzles/LockpickingService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
 
 function setup() {
-  const time = new DayTime()
+  const time = new DayTimeService()
   const services = {
     hud: new HudService(['character', 'map', 'quests']),
     inventory: new InventoryService([{ id: 'bandage', consumable: true, maxStack: 5 }], [{
@@ -19,7 +19,7 @@ function setup() {
     }]),
     travel: new TravelService([{ id: 'test', name: 'Test' }], time),
     dialogue: new DialogueService(), rest: new RestService(time),
-    lockpicking: new LockpickingService(new DayTime(1, 'night'), () => 0, { lockpickingBaseSeconds: 10, lockpickingSecondsPerPoint: 1 }, { has: () => true, consume: () => true }),
+    lockpicking: new LockpickingService(new DayTimeService(1, 'night'), () => 0, { lockpickingBaseSeconds: 10, lockpickingSecondsPerPoint: 1 }, { has: () => true, consume: () => true }),
   }
   services.quests = new QuestService([], services.inventory)
   const dispose = coordinateWindows(services)

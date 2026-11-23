@@ -1,0 +1,53 @@
+{
+  "id": "sport-magazine-stealth",
+  "name": "Sport magazine issue 3: Sneaking",
+  "description": "Read once to permanently gain +1 Sneaking. Duplicate copies give no further bonus.",
+  "category": "Book",
+  "rarity": "common",
+  "quality": 1,
+  "price": 12,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 250,
+    "y": 357,
+    "width": 172,
+    "height": 161
+  },
+  "iconClip": [
+    {
+      "x": 0.02,
+      "y": 0.16
+    },
+    {
+      "x": 0.77,
+      "y": 0.01
+    },
+    {
+      "x": 1,
+      "y": 0.87
+    },
+    {
+      "x": 0.24,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 0.32
+    }
+  ],
+  "scale": 1,
+  "maxStack": 1,
+  "bonus": {
+    "skill": "stealth",
+    "amount": 1
+  },
+  "readable": true,
+  "consumable": true,
+  "skillRequirements": {
+    "stealth": 4
+  }
+}

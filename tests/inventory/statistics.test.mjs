@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { StatisticsService } from '../../src/app/services/StatisticsService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { StatisticsService } from '../../src/app/services/progression/StatisticsService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 
 test('statistics preserve fractional distance, reject invalid increments and restore independently', () => {
   const totals = new StatisticsService()

@@ -1,18 +1,18 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { content } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { buildContainerSeeds } from '../../src/app/content/containerSeeds.ts'
 import { buildVendorSeeds } from '../../src/app/content/vendorSeeds.ts'
-import { refreshContainersEachMorning } from '../../src/app/services/refreshContainersEachMorning.ts'
+import { refreshContainersEachMorning } from '../../src/app/services/inventory/refreshContainersEachMorning.ts'
 import { detectsHero } from '../../src/domain/combat/patrolCombat.ts'
 import { activeQuestStages } from '../../src/domain/quests/quests.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 
 function setup(start = []) {
-  const data=content(),time=new DayTime()
+  const data=content(),time=new DayTimeService()
   let quests
   const seeds=[...buildContainerSeeds(data.containers,data.items),...buildVendorSeeds(data.dialogues,data.items)]
   const inventory=new InventoryService(data.items,seeds,()=>0,start,undefined,undefined,undefined,undefined,()=>99,false,
@@ -27,8 +27,9 @@ function setup(start = []) {
 }
 
 test('acceptance grants regular goods automatically and pays only after deliveries and return',()=>{
-  const {data,inventory,quests,act}=setup()
+  const {data,inventory,quests,act,time}=setup()
   for(let n=1;n<=4;n++){
+    if(n>1)time.nextMorning()
     const id='cashier-'+n,q=data.quests.find(q=>q.id===id)
     assert.equal(quests.acceptFromNpc(id,'cashier'),true)
     assert.equal(quests.acceptFromNpc(id,'cashier'),false)
@@ -49,9 +50,9 @@ test('full inventory rejects acceptance atomically, and failed rewards remain re
   assert.equal(quests.acceptFromNpc('cashier-1','cashier'),false)
   assert.equal(inventory.getSnapshot(),before);assert.equal(quests.isActive('cashier-1'),false)
   inventory.removeItems([{itemId:'rope',quantity:1}]);assert.equal(quests.acceptFromNpc('cashier-1','cashier'),true)
-  assert.equal(act('cashier-1',1),true);inventory.grantItems([{itemId:'old-newspapers',quantity:1}])
+  assert.equal(act('cashier-1',1),true);inventory.grantItems([{itemId:'psychology-barter',quantity:1}])
   assert.equal(act('cashier-1',2),false);assert.equal(quests.isCompleted('cashier-1'),false)
-  inventory.removeItems([{itemId:'old-newspapers',quantity:1}]);assert.equal(act('cashier-1',2),true)
+  inventory.removeItems([{itemId:'psychology-barter',quantity:1}]);assert.equal(act('cashier-1',2),true)
 })
 
 test('saved deadlines expire after four phases and retry never grants replacement goods',()=>{

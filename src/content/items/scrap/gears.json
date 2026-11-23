@@ -1,0 +1,19 @@
+{
+  "id": "gears",
+  "price": 1,
+  "name": "Gears",
+  "description": "A collection of small metal gears with interlocking teeth. Scrap one for a small Scraper-based chance to recover useful equipment.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Scrap",
+  "icon": {
+    "x": 1020,
+    "y": 652,
+    "width": 100,
+    "height": 100
+  },
+  "scale": 1,
+  "scrap": true,
+  "consumable": true,
+  "maxStack": 1
+}

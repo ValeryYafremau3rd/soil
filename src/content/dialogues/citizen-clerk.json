@@ -1,41 +1,149 @@
 {
   "start": "greeting",
+  "openingLines": [
+    "One matter at a time, please. What do you need to discuss?",
+    "We are handling the situation through the proper channels. What is your concern?",
+    "If you have a request, tell me clearly. There is already enough confusion in town."
+  ],
   "nodes": {
     "greeting": {
-      "text": "I'm Pavel Sokolov, the clerk. I handle records, receipts, and delivery paperwork. Someone has to keep track of everything.",
+      "text": "Pavel Sokolov. Representative of the Capital Administration. I supervise records, supply distribution, and compliance with emergency regulations. If you have a request, state it clearly. Unnecessary details delay processing.",
       "choices": [
+        {
+          "id": "last-night-evidence",
+          "text": "[Quest] Compare factory, hospital and government evidence; identify the convoy departure.",
+          "questId": "prologue-last-night",
+          "next": "story-last-night-evidence"
+        },
+        {
+          "id": "prologue-last-night-offer",
+          "text": "[Quest] The Last Night",
+          "acceptQuestId": "prologue-last-night",
+          "next": "greeting"
+        },
+        {
+          "id": "government-exit-depart",
+          "text": "[Quest] Present the exit permit at the district checkpoint.",
+          "questId": "prologue-government-exit",
+          "next": "story-government-exit-depart"
+        },
+        {
+          "id": "government-exit-handoff",
+          "text": "[Quest] Complete the confidential handoff at the military checkpoint.",
+          "questId": "prologue-government-exit",
+          "next": "story-government-exit-handoff"
+        },
+        {
+          "id": "decision-topic-government_exit_bargain",
+          "text": "[Quest] Discuss the evidence and my departure.",
+          "questTopic": "prologue-government-exit",
+          "next": "quest-decision-government_exit_bargain"
+        },
+        {
+          "id": "government-exit-request",
+          "text": "[Quest] Ask Pavel for official permission to leave the district.",
+          "questId": "prologue-government-exit",
+          "next": "quest-decision-government_exit_bargain"
+        },
+        {
+          "id": "prologue-government-exit-offer",
+          "text": "[Quest] Stamped for Departure",
+          "acceptQuestId": "prologue-government-exit",
+          "next": "story-government-exit-request"
+        },
+        {
+          "id": "official-seal-clerk",
+          "text": "[Quest] Question Pavel about the military routing code.",
+          "questId": "clerk-official-seal",
+          "next": "story-official-seal-clerk"
+        },
+        {
+          "id": "shortages-clerk",
+          "text": "[Quest] The bar is out of food and drinks. When will it be resupplied?",
+          "next": "shortages-answer",
+          "questId": "bartender-shortages"
+        },
+        {
+          "id": "supplies-clerk",
+          "text": "[Quest] Why are the factory supplies being held up?",
+          "questId": "factory-supplies",
+          "next": "supplies-arrived"
+        },
+        {
+          "id": "first-steps-ask",
+          "text": "Where am I supposed to stay?",
+          "next": "first-steps-help",
+          "questId": "first-steps"
+        },
+        {
+          "id": "first-steps-report",
+          "text": "I've completed the orientation tasks.",
+          "next": "first-steps-reward",
+          "questId": "first-steps"
+        },
+        {
+          "id": "town-opinions-accept",
+          "text": "Do you have another assignment for me?",
+          "next": "town-opinions-help",
+          "acceptQuestId": "town-opinions"
+        },
+        {
+          "id": "town-opinions-report",
+          "text": "I've gathered the residents' opinions.",
+          "next": "town-opinions-reward",
+          "questId": "town-opinions"
+        },
+        {
+          "id": "apartment-evidence-accept",
+          "text": "[Quest] Is there anything else you need investigated?",
+          "next": "apartment-evidence-instructions",
+          "acceptQuestId": "clerk-apartment-evidence"
+        },
+        {
+          "id": "decision-topic-apartment_evidence_choice",
+          "text": "[Quest] Discuss the suspicious correspondence.",
+          "questTopic": "clerk-apartment-evidence",
+          "next": "quest-decision-apartment_evidence_choice"
+        },
         {
           "questId": "find-work",
           "next": "find-work-contacts",
           "id": "find-work-ask",
-          "text": "I need work and a place to live. Can you help?"
+          "requiresQuest": "first-steps",
+          "text": "Where can I find authorized work?"
         },
         {
           "questId": "find-work",
           "next": "find-work-reward",
           "id": "find-work-report",
-          "text": "I've settled into room 21 and taken work from everyone you suggested."
+          "text": "I've obtained work from all four contacts."
         },
         {
           "id": "courier-pickup",
-          "text": "[Courier] I am here to collect the parcel.",
+          "text": "[Courier] I am here to collect a parcel.",
           "questId": "courier-delivery",
           "next": "courier-pickup-confirmed"
         },
         {
           "id": "courier-deliver",
-          "text": "[Courier] I have your parcel.",
+          "text": "[Courier] I have delivered your parcel.",
           "questId": "courier-delivery",
           "next": "courier-delivery-thanks"
         },
         {
+          "id": "postman-deliver",
+          "text": "[Delivery] Here is your letter.",
+          "questId": "postman",
+          "next": "postman-thanks"
+        },
+        {
           "id": "advice",
-          "text": "[Advice]",
+          "text": "Do you have any practical advice?",
           "next": "advice"
         },
         {
           "id": "about",
-          "text": "Tell about yourself.",
+          "text": "What exactly is your position here?",
           "next": "about"
         },
         {
@@ -45,20 +153,74 @@
         },
         {
           "id": "find-item-start",
-          "text": "[Find item] Tell me about your request.",
+          "text": "[Find item] What item needs to be obtained?",
           "questId": "find-item",
           "next": "find-item-instructions"
         },
         {
           "id": "find-item-deliver",
-          "text": "[Find item] I found the requested item.",
+          "text": "[Find item] I have the requested item.",
           "questId": "find-item",
           "next": "find-item-payment"
+        },
+        {
+          "id": "ask-about",
+          "text": "I have some questions about the administration.",
+          "next": "ask-about"
+        },
+        {
+          "id": "people-menu",
+          "text": "Can you tell me about a specific person?",
+          "next": "people-menu"
+        },
+        {
+          "id": "story-consequence-report",
+          "text": "About what we decided…",
+          "storyConditions": {
+            "dusan_fate": "report"
+          },
+          "next": "story-consequence-report"
+        },
+        {
+          "id": "cashier-4-deliver-0",
+          "text": "[Delivery] Deliver 1 Duct tape to Pavel Sokolov.",
+          "next": "cashier-4-cashier-4-deliver-0",
+          "questId": "cashier-4"
+        }
+      ]
+    },
+    "apartment-evidence-instructions": {
+      "text": "Your interviews have raised concerns about certain residents' reliability. I need evidence, not rumors. Search Milena Vukovic's apartment 11, Nadia Morozova's apartment 22, Zofia Nowak's apartment 41 and Elena Jovanovic's apartment 42 in the Living District. Use a lockpick if a door is locked, and look for suspicious correspondence. If you find evidence, bring it straight to me. Discretion will be rewarded.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "I will look into it.",
+          "close": true
+        }
+      ]
+    },
+    "apartment-evidence-reward": {
+      "text": "Copies of the supply registers, sent beyond the checkpoint without authorization? Yes, this is precisely the sort of correspondence I meant. Leave the letter with me. Here is your payment. You have been useful; keep this matter out of ordinary conversation.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
         }
       ]
     },
     "advice": {
-      "text": "Taskboards offer paid courier work. Accept a notice, collect the parcel from its sender, then deliver it to the named recipient.",
+      "text": "The public notice boards list authorized courier assignments. Register for a task, collect the parcel, and deliver it to the designated recipient. Keep a record of the transaction. Unregistered exchanges create discrepancies, and discrepancies attract attention.",
       "choices": [
         {
           "id": "back",
@@ -73,7 +235,7 @@
       ]
     },
     "about": {
-      "text": "I handle records, receipts, and delivery paperwork. Someone has to keep track of everything. Morning: you can find me in Center's shop. Afternoon: you can find me in the streets of Center. Evening: you can find me in Center's bar. Night: you can find me in apartment 32 in Living District.",
+      "text": "I was assigned here by the capital to oversee administrative matters. Supply registers, correspondence, reports on public order. Nothing particularly interesting. In the morning I can be found at the shop in the Center; in the afternoon, near the Factory; in the evening, in the Living District. After curfew I am at apartment 32 in the Living District. Official business should be conducted during working hours.",
       "choices": [
         {
           "id": "back",
@@ -88,7 +250,7 @@
       ]
     },
     "courier-pickup-confirmed": {
-      "text": "Take this parcel to the recipient named in your journal.",
+      "text": "The parcel has been released to your custody. The recipient is listed in your journal. Deliver it without unnecessary stops.",
       "choices": [
         {
           "id": "back",
@@ -98,7 +260,7 @@
       ]
     },
     "courier-delivery-thanks": {
-      "text": "Thank you. Here is your payment.",
+      "text": "Delivery acknowledged. Here is the approved payment. The transaction is closed.",
       "choices": [
         {
           "id": "back",
@@ -108,7 +270,7 @@
       ]
     },
     "find-item-instructions": {
-      "text": "Find the requested item and take it to the recipient in your journal.",
+      "text": "The required item and designated recipient are recorded in your journal. Obtain the item and complete the delivery. I expect no deviations from the instructions.",
       "choices": [
         {
           "id": "back",
@@ -118,7 +280,7 @@
       ]
     },
     "find-item-payment": {
-      "text": "Exactly what was requested. Here is your payment.",
+      "text": "The item matches the request. Payment authorized. That concludes this matter.",
       "choices": [
         {
           "id": "back",
@@ -128,7 +290,7 @@
       ]
     },
     "find-work-contacts": {
-      "text": "With the town under quarantine, you will need to earn your meals while you stay here. We have a free room: the person who lived there is in hospital in poor medical condition and will not return soon. Here are the apartment and building keys. Room 21 is in the Living District apartment building; go inside and make yourself at home. For work, ask Dusan Markovic, the mechanic, Viktor Petrov, the bartender, Zofia Nowak, the cashier, and Nadia Morozova, the nurse. Take a job from each of them and visit your room, then come back to me.",
+      "text": "You are to contact Dusan Markovic, Viktor Petrov, Zofia Nowak, and Nadia Morozova. Obtain an assignment from each and report back. Productive citizens are less likely to become a burden on the distribution system. If you require accommodation, ask about the initial settlement procedure.",
       "choices": [
         {
           "next": "greeting",
@@ -143,7 +305,7 @@
       ]
     },
     "find-work-reward": {
-      "text": "Good. Now you have some work to keep food on the table while you are stuck here. If you are interested in local news, take this newspaper.",
+      "text": "Your employment contacts have been established. Good. Here is a trading handbook. Learn the approved procedures; shortages are no excuse for disorderly exchange. Keep your work properly recorded; I may eventually be able to help you secure authorization to leave the district.",
       "choices": [
         {
           "next": "greeting",
@@ -154,6 +316,599 @@
           "close": true,
           "id": "goodbye",
           "text": "Goodbye."
+        }
+      ]
+    },
+    "first-steps-help": {
+      "text": "Temporary accommodation has been allocated to you: building access and room 21. The previous occupant is receiving hospital treatment. The room remains available until further notice. Familiarize yourself with the premises: unlock the apartment, sleep in a bed, rest on a bench or chair, use the bus, purchase and consume food, and purchase and use alcohol or cigarettes. Complete these tasks in any order, then return for your initial supplies. Do not inquire about the previous occupant. That matter is under medical jurisdiction.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "first-steps-reward": {
+      "text": "Your initial orientation is complete. One stack of bread and one stack of cigarettes, as allocated. There will be no replacement issue without authorization. Once you have secured work, return to me. I have a further assignment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "town-opinions-help": {
+      "text": "I require an informal assessment of public sentiment. Speak to the other residents about the quarantine, supply conditions, and their confidence in the administration. Encourage them to be candid. Names and exact wording are useful. This is a routine survey, not an investigation. Report your findings directly to me.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "town-opinions-reward": {
+      "text": "I see. Some residents remain cooperative. Others are beginning to confuse temporary hardship with administrative failure. Their remarks will be included in my report, in the appropriate form. Here is a red star amulet for your assistance. You need not discuss this assignment with anyone else.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "supplies-arrived": {
+      "text": "The factory consignment has reached the checkpoint. Release is suspended pending militia inspection and confirmation of the allocation documents. I cannot authorize distribution until the paperwork is complete. Yes, I am aware the factory is waiting.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "shortages-answer": {
+      "text": "The shortage has been documented and forwarded to the capital. A request for supplementary allocations is pending. Until instructions arrive, the current distribution schedule remains in force. Repeating the complaint will not increase the available stock.",
+      "choices": [
+        {
+          "id": "shortages-barter",
+          "text": "[Barter] Who gets priority when food arrives?",
+          "next": "shortages-military",
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 8
+          }
+        },
+        {
+          "id": "back",
+          "text": "I'll inform Viktor.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "shortages-military": {
+      "text": "Security units receive priority allocations under emergency regulation. Their duties require uninterrupted provisions. The civilian quota has therefore been adjusted. You may call it a shortage if you wish; in the reports it is a redistribution of resources. The distinction is important.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about": {
+      "text": "You may ask. I will answer within the limits of my authority. Certain matters are not intended for public discussion.",
+      "choices": [
+        {
+          "id": "ask-about-1",
+          "text": "[Erudition] Why do people keep hearing strange noises at night?",
+          "trustRequirement": 1,
+          "skillRequirement": {
+            "skill": "erudition",
+            "level": 4
+          },
+          "next": "ask-about-answer-1"
+        },
+        {
+          "id": "ask-about-2",
+          "text": "[Diplomacy] Why do so many people disappear without a word?",
+          "trustRequirement": 2,
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 6
+          },
+          "next": "ask-about-answer-2"
+        },
+        {
+          "id": "ask-about-3",
+          "text": "[Barter] Why do the soldiers get supplies while everyone else goes hungry?",
+          "trustRequirement": 3,
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 8
+          },
+          "next": "ask-about-answer-3"
+        },
+        {
+          "id": "ask-about-4",
+          "text": "[Erudition] Why are there so many armed patrols after dark?",
+          "trustRequirement": 4,
+          "skillRequirement": {
+            "skill": "erudition",
+            "level": 10
+          },
+          "next": "ask-about-answer-4"
+        },
+        {
+          "id": "ask-about-5",
+          "text": "[Diplomacy] What is the government really keeping us inside for?",
+          "trustRequirement": 5,
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 12
+          },
+          "next": "ask-about-answer-5"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "escape-permit-lore",
+          "text": "Why can the administration authorize some departures?",
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 8
+          },
+          "next": "escape-permit-lore-answer"
+        }
+      ]
+    },
+    "ask-about-answer-1": {
+      "text": "The Health Department has issued a notice on that subject. Auditory disturbances are a recognized symptom of the illness. Pipes, wind, stray animals—ordinary sounds can seem quite different to an affected person. If you hear anything unusual, take your prescribed medication and remain indoors. Do not attempt to identify the source yourself.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I have some questions about the administration.",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-2": {
+      "text": "People are not \"disappearing.\" Some have been transferred for treatment, others reassigned to essential work. Their records are held by the appropriate departments. Families may submit inquiries, although responses are delayed. I would advise against circulating lists of missing persons. Such lists tend to create unnecessary agitation, particularly when the names are incomplete. Miss Vukovic has submitted repeated inquiries concerning her parents. Those inquiries have been logged. I cannot discuss another citizen’s medical file.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I have some questions about the administration.",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-3": {
+      "text": "Civilian ration allocations have been reduced, yes. Security units require uninterrupted supply to maintain the quarantine perimeter. Their requests include fuel, ammunition, and replacement equipment—not merely food. These are precautionary provisions. I suggest you refrain from asking what they are being used for. You would not find the answer useful. Mrs. Nowak maintains a separate tally at the shop. That is her prerogative, provided it does not interfere with the official register.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I have some questions about the administration.",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-4": {
+      "text": "The patrols are operating under a revised security directive. Their routes, numbers, and equipment are classified. You may have noticed that certain streets are cleared before sunset and that the morning crews are instructed to wait for an all-clear. Those are routine precautions. If you happen to see soldiers returning at dawn, do not approach them, and do not ask them what they encountered. Mrs. Kovalenko has been instructed to keep the factory workforce clear of restricted areas. Her production concerns have been noted.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I have some questions about the administration.",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-5": {
+      "text": "The official purpose of the curfew is to limit exposure and prevent public disorder. That remains the answer I am authorized to give. But consider this: an empty street is easier to secure than one full of frightened civilians. The government does not require every citizen to understand its decisions. It requires them to follow instructions. For your own sake, I recommend you do the same.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I have some questions about the administration.",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-menu": {
+      "text": "I can provide general observations about residents. Personal matters are not public records.",
+      "choices": [
+        {
+          "id": "people-about-elena-jovanovic",
+          "text": "Elena Jovanovic",
+          "next": "people-about-elena-jovanovic"
+        },
+        {
+          "id": "people-about-dusan-markovic",
+          "text": "Dusan Markovic",
+          "next": "people-about-dusan-markovic"
+        },
+        {
+          "id": "people-about-irina-kovalenko",
+          "text": "Irina Kovalenko",
+          "next": "people-about-irina-kovalenko"
+        },
+        {
+          "id": "people-about-viktor-petrov",
+          "text": "Viktor Petrov",
+          "next": "people-about-viktor-petrov"
+        },
+        {
+          "id": "people-about-zofia-nowak",
+          "text": "Zofia Nowak",
+          "next": "people-about-zofia-nowak"
+        },
+        {
+          "id": "people-about-milena-vukovic",
+          "text": "Milena Vukovic",
+          "next": "people-about-milena-vukovic"
+        },
+        {
+          "id": "people-about-nadia-morozova",
+          "text": "Nadia Morozova",
+          "next": "people-about-nadia-morozova"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-elena-jovanovic": {
+      "text": "Mrs. Jovanovic submits regular observations about the residential district. She is conscientious. I do not necessarily endorse her conclusions, but accurate reporting begins with people willing to report.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-dusan-markovic": {
+      "text": "Markovic is technically capable and administratively unreliable. The factory requires his skills. I would prefer he used them without conducting unauthorized excursions after curfew.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-irina-kovalenko": {
+      "text": "Kovalenko is competent, discreet, and exceptionally persistent about discrepancies. I have advised her that not every requisition is intended for factory accounting.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-viktor-petrov": {
+      "text": "Petrov's establishment is a useful indicator of public sentiment. He hears more than he should and repeats less than one might expect. I would not confuse that with loyalty.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-zofia-nowak": {
+      "text": "Nowak understands the chain of authorization. She can be trusted to follow an allocation order without turning it into a public debate. An increasingly rare quality.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-milena-vukovic": {
+      "text": "Miss Vukovic is seeking information about her parents. Her concern is understandable; her methods are not. Speculation about medical transfers is harmful, especially when presented as fact.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-nadia-morozova": {
+      "text": "Morozova has fulfilled her distribution duties. She has requested additional clinical data that this office is not authorized to provide. I trust she will continue treating patients in the meantime.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-official-seal-clerk": {
+      "text": "Emergency redistribution is authorized under the viral containment order. Transport details are restricted to protect treatment sites and public safety.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-government-exit-request": {
+      "text": "Departure needs separate authorization. A courier work pass is not enough. Ask me to arrange an exit, then choose whether to accept my confidential assignment. If we agree, complete the handoff at the military checkpoint on the eastern side of Center to receive a departure permit. If hunting a creature for an old key is your plan, remember that I may be able to arrange a legal departure instead.",
+      "choices": [
+        {
+          "id": "government-exit-request",
+          "text": "[Quest] Ask Pavel for official permission to leave the district.",
+          "questId": "prologue-government-exit",
+          "next": "quest-decision-government_exit_bargain"
+        },
+        {
+          "id": "decision-topic-government_exit_bargain",
+          "text": "[Quest] Discuss the evidence and my departure.",
+          "questTopic": "prologue-government-exit",
+          "next": "quest-decision-government_exit_bargain"
+        },
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-government-exit-negotiate": {
+      "text": "Choose whether to surrender evidence and accept Pavel’s final assignment.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-government-exit-handoff": {
+      "text": "Complete the confidential handoff at the military checkpoint.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-government-exit-depart": {
+      "text": "Present the exit permit at the district checkpoint.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-last-night-evidence": {
+      "text": "Three records point to tonight’s factory convoy: maintenance access, patient transfers and the transport seal. Observe the restricted entrance after dark. We still do not know what is being moved. If you cooperate, I may be able to help you leave through the checkpoint instead of confronting the creature for a gate key.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "decision-apartment_evidence_choice-report": {
+      "text": "The district will review the correspondence under the containment order. Any residence search will be recorded as a public safety measure.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "decision-apartment_evidence_choice-conceal": {
+      "text": "You have brought me no actionable name. I will record the inquiry as inconclusive.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "decision-government_exit_bargain-accept": {
+      "text": "Go to the military checkpoint on the eastern side of Center and complete the confidential handoff. The officer will issue a departure permit; leave one inventory slot free for it. Then present that permit at the departure checkpoint. A courier work pass cannot replace the permit.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "decision-government_exit_bargain-refuse": {
+      "text": "Then I cannot authorize departure. Your work pass permits local duties only. It is not an exit permit.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-consequence-report": {
+      "text": "Dusan’s name is in the containment inquiry. Any detention will be described as a public safety measure. I cannot tell you where he will be held.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "postman-thanks": {
+      "text": "Thank you for bringing my letter.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "cashier-4-cashier-4-deliver-0": {
+      "text": "Thank you. The delivery is recorded.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
+        }
+      ]
+    },
+    "quest-decision-apartment_evidence_choice": {
+      "text": "What should I do with the correspondence from the apartments?",
+      "choices": [
+        {
+          "id": "apartment-evidence-report-conceal",
+          "text": "Conceal the resident’s identity and destroy the report.",
+          "questId": "clerk-apartment-evidence",
+          "questChoiceId": "apartment-evidence-report",
+          "storyDecision": {
+            "id": "apartment_evidence_choice",
+            "value": "conceal"
+          },
+          "next": "decision-apartment_evidence_choice-conceal",
+          "skillRequirement": {
+            "skill": "stealth",
+            "level": 14
+          }
+        },
+        {
+          "id": "apartment-evidence-report",
+          "text": "Submit the suspicious correspondence.",
+          "questId": "clerk-apartment-evidence",
+          "questChoiceId": "apartment-evidence-report",
+          "storyDecision": {
+            "id": "apartment_evidence_choice",
+            "value": "report"
+          },
+          "next": "decision-apartment_evidence_choice-report"
+        }
+      ]
+    },
+    "quest-decision-government_exit_bargain": {
+      "text": "Will you accept Pavel Sokolov's bargain for an authorized departure?",
+      "choices": [
+        {
+          "id": "government-exit-negotiate",
+          "text": "Surrender the evidence and accept the confidential handoff.",
+          "questId": "prologue-government-exit",
+          "questChoiceId": "government-exit-negotiate",
+          "storyDecision": {
+            "id": "government_exit_bargain",
+            "value": "accept"
+          },
+          "next": "decision-government_exit_bargain-accept",
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 14
+          },
+          "requirementFailureText": "I cannot approve this bargain until you can negotiate its terms. Your Barter skill must meet the requirement shown on your reply. You can return later with better skills, or refuse and find another way out."
+        },
+        {
+          "id": "government-exit-negotiate-refuse",
+          "text": "Refuse the bargain. I will find another route.",
+          "questId": "prologue-government-exit",
+          "questChoiceId": "government-exit-negotiate",
+          "storyDecision": {
+            "id": "government_exit_bargain",
+            "value": "refuse"
+          },
+          "next": "decision-government_exit_bargain-refuse"
+        }
+      ]
+    },
+    "escape-permit-lore-answer": {
+      "text": "The quarantine closes ordinary travel, not official transfers. The transport records distinguish the two. A courier pass grants local access; a departure permit names a traveler and destination. I may help with the latter when the evidence is properly resolved.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "ask-about"
         }
       ]
     }

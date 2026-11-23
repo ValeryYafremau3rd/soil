@@ -2,11 +2,12 @@
   "id": "smuggler-4",
   "name": "After dark: the illegal weapon",
   "offeredBy": "citizen-mechanic",
+  "reward": { "items": [{ "itemId": "precision-screwdriver", "quantity": 1 }] },
   "prerequisites": [
     "smuggler-3"
   ],
   "offerText": "One final job: an illegal weapon hidden in an apartment.",
-  "description": "Dusan knows an illegal weapon is hidden in apartment 11, on the ground floor of Living District apartments. Its owner will not report an illegal gun to the militia. At night, pick the apartment door and the safe inside. Loot the service pistol and five pistol bullets. Keep both; collecting them completes the quest without returning to Dusan.",
+  "description": "Dusan knows an illegal weapon is hidden in apartment 11, on the ground floor of Living District apartments. Its owner will not report an illegal gun to the militia. At night, pick the apartment door and the safe inside. Loot the service pistol and five pistol bullets. Keep both; collecting them completes the quest without returning to Dusan and awards a precision screwdriver from the hidden gear.",
   "stages": [
     {
       "id": "collect-pistol",

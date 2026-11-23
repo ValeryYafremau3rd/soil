@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { content } from '../helpers/content.mjs'
 import { buildContainerSeeds } from '../../src/app/content/containerSeeds.ts'
 import { buildVendorSeeds } from '../../src/app/content/vendorSeeds.ts'
@@ -70,7 +70,7 @@ test('ordinary apartment permanent buffs are kept in safes and relocated rewards
     }
   }
   const destinations = new Set()
-  for (const itemId of ['weapons-training-magazine', 'pliers', 'smuggler-lock-guide', 'repair-pliers']) {
+  for (const itemId of ['technical-magazine-weapons', 'pliers', 'smuggler-lock-guide', 'repair-pliers']) {
     const sources = placements.filter(piece => piece.items?.some(stack => stack.itemId === itemId))
     assert.equal(sources.length, 1, `${itemId}: relocation must not duplicate or lose the item`)
     const seed = buildContainerSeeds({ ...data.containers, placements: sources }, data.items)[0]

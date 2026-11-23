@@ -1,0 +1,20 @@
+{
+  "id": "factory-night-shift-log",
+  "price": 1,
+  "name": "Factory Night Shift Log",
+  "description": "A handwritten note from the quarantined town.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Document",
+  "icon": {
+    "x": 495,
+    "y": 455,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "saleable": false,
+  "randomLoot": false,
+  "maxStack": 1,
+  "readingText": "Night Shift — Personal Remarks\n\n22:40 — Pressure dropped in the lower pipes.\n\n23:15 — Knocking reported behind the sealed boiler-room wall.\n\n23:22 — Supervisor ordered us to ignore it.\n\n00:06 — Knocking resumed. Three knocks, then two.\n\n00:11 — Mikhail answered by striking the pipe with his wrench.\n\n00:12 — Something struck back.\n\nMikhail didn't come to work today.\n\nThe supervisor says he was transferred. His coat is still hanging beside mine."
+}

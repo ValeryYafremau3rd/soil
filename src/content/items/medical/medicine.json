@@ -1,0 +1,22 @@
+{
+  "id": "medicine",
+  "price": 5,
+  "name": "Medicine",
+  "description": "Temporary medication. Medicated physique: +2 Physique until four phases pass or you sleep. Medicinal drowsiness: -1 Concentration until four phases pass or you sleep.",
+  "consumable": true,
+  "maxStack": 5,
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Medical",
+  "icon": {
+    "x": 665,
+    "y": 270,
+    "width": 85,
+    "height": 145
+  },
+  "scale": 1,
+  "skillRequirements": {
+    "medicine": 9
+  },
+  "recovery": {}
+}

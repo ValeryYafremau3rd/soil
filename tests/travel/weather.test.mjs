@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { rollWeather } from '../../src/domain/character/weather.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 
 test('weather allocates exactly 15% per effect and 25% clear', () => {
   const counts = {}
@@ -14,7 +14,7 @@ test('weather allocates exactly 15% per effect and 25% clear', () => {
 
 test('night rolls once and weather survives morning and restoration', () => {
   let calls = 0
-  const time = new DayTime(1, 'morning', 'rain', () => { calls++; return 0.4 })
+  const time = new DayTimeService(1, 'morning', 'rain', () => { calls++; return 0.4 })
   time.advance()
   time.advance()
   assert.equal(calls, 0)
@@ -24,14 +24,14 @@ test('night rolls once and weather survives morning and restoration', () => {
   time.nextMorning()
   assert.equal(calls, 1)
   const saved = time.getSnapshot()
-  const restored = new DayTime(saved.day, saved.phase, saved.weather, () => { throw Error('rerolled') })
+  const restored = new DayTimeService(saved.day, saved.phase, saved.weather, () => { throw Error('rerolled') })
   assert.deepEqual(restored.getSnapshot(), saved)
 })
 
 test('sleeping over night rolls once; a new game or legacy save rolls initial weather', () => {
   let calls = 0
   const random = () => { calls++; return 0.99 }
-  const time = new DayTime(1, 'morning', undefined, random)
+  const time = new DayTimeService(1, 'morning', undefined, random)
   assert.equal(calls, 1)
   time.nextMorning()
   assert.equal(calls, 2)

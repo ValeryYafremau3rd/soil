@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { TravelService } from '../../src/app/services/TravelService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { TravelService } from '../../src/app/services/world/TravelService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { content } from '../helpers/content.mjs'
 
@@ -9,7 +9,7 @@ import { content } from '../helpers/content.mjs'
 const locations = content().locations.sort((a, b) => Number(b.id === 'center') - Number(a.id === 'center'))
 
 test('four phases cycle in order and a new morning starts the next day', () => {
-  const time = new DayTime()
+  const time = new DayTimeService()
   assert.deepEqual((({ day, phase }) => ({ day, phase }))(time.getSnapshot()), { day: 1, phase: 'morning' })
   for (const phase of ['afternoon', 'evening', 'night']) {
     time.advance()
@@ -17,13 +17,13 @@ test('four phases cycle in order and a new morning starts the next day', () => {
   }
   time.advance()
   assert.deepEqual((({ day, phase }) => ({ day, phase }))(time.getSnapshot()), { day: 2, phase: 'morning' })
-  const custom = new DayTime(7, 'night')
+  const custom = new DayTimeService(7, 'night')
   custom.advance()
   assert.deepEqual((({ day, phase }) => ({ day, phase }))(custom.getSnapshot()), { day: 8, phase: 'morning' })
 })
 
-test('two accepted trips advance time before arrival; invalid and same-location trips do not count', () => {
-  const time = new DayTime()
+test('bus trips preserve time including invalid and same-location trips', () => {
+  const time = new DayTimeService()
   const travel = new TravelService(locations, time)
   const initial = time.getSnapshot()
   travel.travelTo('factory')
@@ -35,7 +35,7 @@ test('two accepted trips advance time before arrival; invalid and same-location 
   assert.equal(time.getSnapshot(), initial)
   travel.subscribe(() => {
     if (travel.getSnapshot().currentLocationId === 'living-district' && travel.getSnapshot().journey >= 4) {
-      assert.equal(time.getSnapshot().phase, 'afternoon')
+      assert.equal(time.getSnapshot().phase, 'morning')
     }
   })
   travel.openTravel()
@@ -47,21 +47,22 @@ test('two accepted trips advance time before arrival; invalid and same-location 
   travel.travelTo('missing-location')
   travel.openTravel()
   travel.travelTo('living-district')
-  assert.equal(time.getSnapshot().phase, 'afternoon')
+  assert.equal(time.getSnapshot().phase, 'morning')
 })
 
-test('daytime bus phase duration is configurable; night takes three walking trips', () => {
+test('buses preserve time for every interval; night takes three walking trips', () => {
   for (const interval of [1, 2, 3]) {
-    const time = new DayTime()
+    const time = new DayTimeService()
     const travel = new TravelService(locations, time, interval)
     for (let count = 1; count <= interval * 3; count++) {
       travel.openTravel()
       travel.travelTo(count % 2 ? 'factory' : 'living-district')
       assert.deepEqual((({ day, phase }) => ({ day, phase }))(time.getSnapshot()), {
-        day: 1 + Math.floor(count / (interval * 4)),
-        phase: ['morning', 'afternoon', 'evening', 'night'][Math.floor(count / interval) % 4],
+        day: 1,
+        phase: 'morning',
       })
     }
+    time.advance(); time.advance(); time.advance()
     travel.openTravel()
     assert.equal(travel.getSnapshot().menuOpen, false)
     for (let trip = 0; trip < 3; trip++) {
@@ -76,7 +77,7 @@ test('daytime bus phase duration is configurable; night takes three walking trip
 })
 
 test('time snapshots publish once per advance and subscriptions can be released', () => {
-  const time = new DayTime()
+  const time = new DayTimeService()
   const initial = time.getSnapshot()
   let count = 0
   const unsubscribe = time.subscribe(() => count++)
@@ -91,7 +92,7 @@ test('time snapshots publish once per advance and subscriptions can be released'
 
 test('night travel progress survives restore and clears when rest skips the remaining night', () => {
   const locations = [{ id: 'a', connections: { right: 'b' } }, { id: 'b', connections: { left: 'a' } }]
-  const time = new DayTime(1, 'night')
+  const time = new DayTimeService(1, 'night')
   const travel = new TravelService(locations, time)
   travel.openTravel('walk', 'right'); travel.travelTo('b')
   const saved = travel.saveState()
@@ -127,7 +128,7 @@ test('daytime JSON rejects unknown phases, invalid opacity and overflowing icon 
 test('late-night opening reaches Center the next morning only after confirmed walking', () => {
   const data = content()
   const config = data.daytime
-  const time = new DayTime(config.initialDay, config.initialPhase)
+  const time = new DayTimeService(config.initialDay, config.initialPhase)
   const travel = new TravelService(data.locations, time, config.travelsPerPhase, undefined, config.nightDurationMultiplier)
   travel.restoreState({ locationId: config.initialLocationId, phaseTravels: config.initialPhaseTravels })
   assert.equal(travel.getSnapshot().currentLocationId, 'factory')

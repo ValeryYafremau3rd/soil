@@ -1,7 +1,7 @@
 ﻿import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content, catalogue } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { inventoryCapacity } from '../../src/domain/inventory/loot.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 const stack = (itemId, quantity = 1) => ({ itemId, quantity })

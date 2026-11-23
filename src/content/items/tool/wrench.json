@@ -1,0 +1,24 @@
+{
+  "id": "wrench",
+  "price": 30,
+  "name": "Wrench",
+  "description": "A steel wrench with a fixed open jaw.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Tool",
+  "icon": {
+    "x": 15,
+    "y": 635,
+    "width": 110,
+    "height": 145
+  },
+  "scale": 1,
+  "equipmentSlot": "tool",
+  "skillRequirements": {
+    "scraper": 7
+  },
+  "bonus": {
+    "skill": "scraper",
+    "amount": 1
+  }
+}

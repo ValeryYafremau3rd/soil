@@ -1,0 +1,78 @@
+{
+  "key": "solider-walk",
+  "frameRate": 9,
+  "steps": [
+    {
+      "x": 1210,
+      "y": 44,
+      "width": 125,
+      "height": 181,
+      "anchorX": 62,
+      "anchorY": 178,
+      "excludeRegions": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 125,
+          "height": 5
+        }
+      ]
+    },
+    {
+      "x": 1350,
+      "y": 44,
+      "width": 113,
+      "height": 181,
+      "anchorX": 56,
+      "anchorY": 178
+    },
+    {
+      "x": 1470,
+      "y": 44,
+      "width": 120,
+      "height": 181,
+      "anchorX": 60,
+      "anchorY": 178
+    },
+    {
+      "x": 1610,
+      "y": 44,
+      "width": 105,
+      "height": 181,
+      "anchorX": 52,
+      "anchorY": 178
+    },
+    {
+      "x": 1725,
+      "y": 44,
+      "width": 110,
+      "height": 181,
+      "anchorX": 55,
+      "anchorY": 178
+    },
+    {
+      "x": 1840,
+      "y": 44,
+      "width": 105,
+      "height": 181,
+      "anchorX": 52,
+      "anchorY": 178
+    },
+    {
+      "x": 1945,
+      "y": 44,
+      "width": 106,
+      "height": 181,
+      "anchorX": 53,
+      "anchorY": 178
+    },
+    {
+      "x": 2051,
+      "y": 44,
+      "width": 108,
+      "height": 181,
+      "anchorX": 54,
+      "anchorY": 178
+    }
+  ]
+}

@@ -1,40 +1,47 @@
 import type {
-InventoryController,
-InventorySnapshot,
-} from "../../app/contracts/inventory";
+  InventoryController,
+  InventorySnapshot,
+} from "../../app/contracts/inventory"
 import type {
-StatusController,
-StatusSnapshot,
-} from "../../app/contracts/status";
-import { EQUIPMENT_SLOTS } from "../../domain/inventory/items";
-import { INVENTORY_CAPACITY } from '../../domain/inventory/loot';
-import { Modal } from "../components/Modal";
-import "./inventory.css";
-import { ItemDetails } from './ItemDetails';
-import { ItemGrid } from './ItemGrid';
-import { useInventoryWindow } from './useInventoryWindow';
+  StatusController,
+  StatusSnapshot,
+} from "../../app/contracts/status"
+import { EQUIPMENT_SLOTS } from "../../domain/inventory/items"
+import { INVENTORY_CAPACITY } from '../../domain/inventory/loot'
+import { Modal } from "../components/Modal"
+import "./inventory.css"
+import { ItemDetails } from './ItemDetails'
+import { ItemGrid } from './ItemGrid'
+import { useInventoryWindow } from './useInventoryWindow'
+
+/**
+ * Perform inventory window.
+ * @param {{ inventory: InventoryController snapshot: InventorySnapshot vitals: StatusSnapshot status: StatusController }} options - The options supplied to this operation.
+ * @returns {Element} The result described by the TypeScript return signature.
+ */
 export function InventoryWindow({
   inventory,
   snapshot,
   vitals,
   status,
 }: {
-  inventory: InventoryController;
-  snapshot: InventorySnapshot;
-  vitals: StatusSnapshot;
-  status: StatusController;
+  inventory: InventoryController
+  snapshot: InventorySnapshot
+  vitals: StatusSnapshot
+  status: StatusController
 }) {
-const {capacity, container, initialSide, selection, setSelection, grids, containerSlots, selectedItems, tradeQuantity, full, move, transfer} = useInventoryWindow({inventory,snapshot})
-return (
+  const { capacity, container, initialSide, selection, setSelection, grids, containerSlots, selectedItems, tradeQuantity, full, move, transfer } = useInventoryWindow({ inventory, snapshot })
+
+  return (
     <Modal
-      title={container ? `${container.name} ↔ Inventory` : "Inventory"}
+      title={`${container ? `${container.name} ↔ ` : ''}Inventory · Thalers: ${snapshot.money}`}
       onClose={inventory.closeMenu}
-      className={`inventory-modal ${container ? "inventory-modal--exchange" : ""}`}
+      className={`dossier-modal inventory-modal ${container ? "inventory-modal--exchange" : ""}`}
     >
       <div ref={grids} className="inventory-layout">
         <section className="inventory-equipment">
-              <h3>Equipment</h3>
-              <ItemGrid inventory={inventory} label="Equipment" items={EQUIPMENT_SLOTS.map(slot => snapshot.equipment[slot] ? { itemId: snapshot.equipment[slot]!, quantity: 1 } : undefined)} side="equipment" slots={EQUIPMENT_SLOTS.length} selection={selection} onSelect={setSelection} onMove={move} onTransfer={transfer} autofocus={false} />
+          <h3>Equipment</h3>
+          <ItemGrid inventory={inventory} label="Equipment" items={EQUIPMENT_SLOTS.map(slot => snapshot.equipment[slot] ? { itemId: snapshot.equipment[slot]!, quantity: 1 } : undefined)} side="equipment" slots={EQUIPMENT_SLOTS.length} selection={selection} onSelect={setSelection} onMove={move} onTransfer={transfer} autofocus={false} />
         </section>
         <div>
           <div
@@ -57,7 +64,11 @@ return (
                 />
                 {capacity > INVENTORY_CAPACITY && (
                   <fieldset className="inventory-bag-slots">
-                    <legend>Bag slots (+{capacity - INVENTORY_CAPACITY})</legend>
+                    <legend>
+                      {capacity > inventory.getCapacity()
+                        ? 'Overflow slots — make room to store money'
+                        : `Bag slots (+${capacity - INVENTORY_CAPACITY})`}
+                    </legend>
                     <ItemGrid
                       inventory={inventory}
                       label="Bag inventory slots"
@@ -103,10 +114,10 @@ return (
             {container?.lootOnly
               ? "Arrow keys: Select · Enter: Take loot · Escape: Close"
               : container?.vendor
-              ? "Arrow keys: Select across both grids · Enter: Buy or sell one item · Escape: Close"
-              : container
-                ? "Arrow keys: Select across both grids · Enter: Move stack to the other side · Escape: Close"
-                : "Arrow keys: Select · Enter: Equip or use item · Escape: Close"}
+                ? "Arrow keys: Select across both grids · Enter: Buy or sell one item · Escape: Close"
+                : container
+                  ? "Arrow keys: Select across both grids · Enter: Move stack to the other side · Escape: Close"
+                  : "Arrow keys: Select · Enter: Equip or use item · Escape: Close"}
           </p>
         </div>
         <ItemDetails
@@ -122,5 +133,5 @@ return (
         />
       </div>
     </Modal>
-  );
+  )
 }

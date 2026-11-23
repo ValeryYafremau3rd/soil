@@ -1,0 +1,19 @@
+{
+  "id": "work-pass",
+  "skillRequirements": { "persuasion": 2 },
+  "price": 10,
+  "name": "Courier night pass",
+  "description": "An authorized courier document. While carried, human patrols treat you as they do during daytime. Monsters ignore this document.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Document",
+  "icon": {
+    "x": 925,
+    "y": 661,
+    "width": 100,
+    "height": 100
+  },
+  "scale": 1,
+  "patrolPass": true,
+  "randomLoot": false
+}

@@ -2,9 +2,9 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import classes from '../../src/content/classes.json' with { type: 'json' }
 import { content, catalogue } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { LockpickingService } from '../../src/app/services/LockpickingService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { LockpickingService } from '../../src/app/services/puzzles/LockpickingService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { validateClasses } from '../../src/domain/skills/character.ts'
 
@@ -54,7 +54,7 @@ test('using keys opens the list without consumption and exchanges retain their n
 test('carried keys open matching nighttime doors without lockpicks; other doors and containers stay locked', () => {
   const inventory = inventoryFor()
   let consumed = 0
-  const time = new DayTime(1, 'night')
+  const time = new DayTimeService(1, 'night')
   const locks = new LockpickingService(time, () => 0, data.skills, { has: () => true, consume: () => { consumed++; return true } }, () => 0, () => 0, undefined, inventory.hasDoorKey)
   assert.equal(locks.attempt('apartments', 'Apartment building'), true)
   assert.equal(locks.getSnapshot().puzzle, null)

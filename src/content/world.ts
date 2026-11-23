@@ -1,4 +1,4 @@
-﻿import config from './settings.json' with { type: 'json' }
+import config from './settings.json' with { type: 'json' }
 import { HERO_SETTINGS } from './hero.ts'
 import { interiorClearance } from '../domain/buildings/navigation.ts'
 export const WORLD_LAYERS = config.layers

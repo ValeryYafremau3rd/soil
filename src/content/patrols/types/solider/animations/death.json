@@ -1,0 +1,54 @@
+{
+  "key": "solider-death",
+  "frameRate": 8,
+  "steps": [
+    {
+      "x": 1471,
+      "y": 513,
+      "width": 84,
+      "height": 180,
+      "anchorX": 42,
+      "anchorY": 177
+    },
+    {
+      "x": 1589,
+      "y": 513,
+      "width": 87,
+      "height": 180,
+      "anchorX": 43,
+      "anchorY": 177
+    },
+    {
+      "x": 1689,
+      "y": 540,
+      "width": 91,
+      "height": 153,
+      "anchorX": 45,
+      "anchorY": 150
+    },
+    {
+      "x": 1786,
+      "y": 593,
+      "width": 111,
+      "height": 100,
+      "anchorX": 55,
+      "anchorY": 97
+    },
+    {
+      "x": 1896,
+      "y": 625,
+      "width": 107,
+      "height": 68,
+      "anchorX": 53,
+      "anchorY": 65
+    },
+    {
+      "x": 2003,
+      "y": 635,
+      "width": 152,
+      "height": 58,
+      "anchorX": 76,
+      "anchorY": 55
+    }
+  ]
+}

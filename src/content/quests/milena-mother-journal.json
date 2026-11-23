@@ -1,0 +1,35 @@
+{
+  "id": "milena-mother-journal",
+  "name": "Under Watch",
+  "description": "Ask Irina Kovalenko about Milena's mother's belongings, then search the factory rooftop for her journal. A sun amulet among her belongings can be kept with the journal.",
+  "prerequisites": [
+    "milena-mother-letter"
+  ],
+  "offeredBy": "stranger",
+  "reward": { "items": [{ "itemId": "sun-amulet", "quantity": 1 }] },
+  "offerText": "Could you ask Kovalenko about Mother's belongings?",
+  "stages": [
+    {
+      "id": "ask-kovalenko",
+      "description": "Ask Irina Kovalenko where the factory kept Milena's mother's belongings.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "ask-mother-belongings"
+      }
+    },
+    {
+      "id": "find-journal",
+      "description": "Find another way onto the main factory roof and search its toolbox for Milena's mother's journal. Select it in inventory and press Enter to read.",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItems": [
+        {
+          "itemId": "milena-mother-journal",
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}

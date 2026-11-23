@@ -1,0 +1,69 @@
+{
+  "id": "hospital-patient-register",
+  "name": "The Patient Register",
+  "description": "Nadia needs help reconciling missing patient records and tablet deliveries.",
+  "offeredBy": "citizen-nurse",
+  "offerText": "Nadia needs help reconciling missing patient records and tablet deliveries.",
+  "prerequisites": [
+    "nurse-tablet-deliveries",
+    "milena-mother-letter"
+  ],
+  "stages": [
+    {
+      "id": "ask-nadia",
+      "description": "Ask Nadia about discrepancies in the patient register.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-nurse",
+        "choiceId": "hospital-register-start"
+      }
+    },
+    {
+      "id": "check-records",
+      "description": "Review the hospital patient register and note missing transfer entries.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-nurse",
+        "choiceId": "hospital-register-inspect"
+      },
+      "worldInteraction": "hospital-register"
+    },
+    {
+      "id": "ask-milena",
+      "description": "Ask Milena whether her mother appears among the missing entries.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "stranger",
+        "choiceId": "hospital-register-milena"
+      }
+    },
+    {
+      "id": "return-nadia",
+      "description": "Return to Nadia with the mismatched entries.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-nurse",
+        "choiceId": "hospital-register-report"
+      }
+    }
+  ],
+  "_codex": {
+    "narrativeIntent": "Nadia needs help reconciling missing patient records and tablet deliveries.",
+    "implementationNotes": [
+      "Add readable hospital register object; inspection stage requires world interaction or dialogue proxy.",
+      "No supernatural proof; patients may be transferred for claimed specialist care."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [
+      "nurse-tablet-deliveries",
+      "milena-mother-letter"
+    ],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "hospital_missing_records",
+        "value": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "factory-supplies",
+  "name": "The missing supplies",
+  "description": "Find out why the factory supplies have not been delivered.",
+  "offeredBy": "worker",
+  "reward": { "items": [{ "itemId": "work-jacket", "quantity": 1 }] },
+  "offerText": "Ask Pavel Sokolov about the overdue factory supplies.",
+  "prerequisites": [
+    "mechanic-scrap"
+  ],
+  "stages": [
+    {
+      "id": "supplies-clerk",
+      "description": "Ask Pavel Sokolov about the factory supplies.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "supplies-clerk"
+      }
+    },
+    {
+      "id": "supplies-return",
+      "description": "Tell Kovalenko the truck is awaiting militia inspection.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "supplies-return"
+      }
+    },
+    {
+      "id": "supplies-crates",
+      "description": "Inspect the factory truck crates at night or with Stealth 8.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "supplies-crates"
+      }
+    },
+    {
+      "id": "supplies-report",
+      "description": "Tell Kovalenko the crates are empty.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "supplies-report"
+      }
+    }
+  ]
+}

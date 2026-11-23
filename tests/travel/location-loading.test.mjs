@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { LocationLoadingService } from '../../src/app/services/LocationLoadingService.ts'
+import { LocationLoadingService } from '../../src/app/services/session/LocationLoadingService.ts'
 import { content } from '../helpers/content.mjs'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 

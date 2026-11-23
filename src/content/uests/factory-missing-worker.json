@@ -1,0 +1,70 @@
+{
+  "id": "factory-missing-worker",
+  "name": "The Empty Locker",
+  "description": "Irina asks why a worker assigned to a night shift has not returned.",
+  "offeredBy": "worker",
+  "offerText": "Irina asks why a worker assigned to a night shift has not returned.",
+  "prerequisites": [
+    "factory-supplies",
+    "smuggler-2"
+  ],
+  "stages": [
+    {
+      "id": "ask-irina",
+      "description": "Ask Irina about the missing worker and his assigned shift.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "factory-missing-worker-start"
+      }
+    },
+    {
+      "id": "inspect-locker",
+      "description": "Inspect the worker’s locker in the factory changing area; record the maintenance slip.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "factory-missing-worker-locker"
+      },
+      "worldInteraction": "factory-locker"
+    },
+    {
+      "id": "ask-dusan",
+      "description": "Ask Dusan about the maintenance slip and sealed workshop.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "factory-missing-worker-dusan"
+      }
+    },
+    {
+      "id": "report-irina",
+      "description": "Tell Irina what the slip reveals, without claiming the worker is dead.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "factory-missing-worker-report"
+      }
+    }
+  ],
+  "_codex": {
+    "narrativeIntent": "Irina asks why a worker assigned to a night shift has not returned.",
+    "implementationNotes": [
+      "Add interactable factory locker and maintenance-slip quest evidence; inspect-locker is a dialogue-style interaction stub until world-object trigger support exists.",
+      "Implement worker locker interaction to emit the stage choiceId or replace stage trigger with supported inspect trigger.",
+      "Worker is missing, not confirmed dead; Irina wants discretion."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [
+      "factory-supplies",
+      "smuggler-2"
+    ],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "factory_worker_clue",
+        "value": true
+      }
+    ]
+  }
+}

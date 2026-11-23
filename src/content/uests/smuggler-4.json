@@ -1,0 +1,63 @@
+{
+  "id": "smuggler-4",
+  "name": "After dark: the illegal weapon",
+  "offeredBy": "citizen-mechanic",
+  "reward": {
+    "items": [
+      {
+        "itemId": "precision-screwdriver",
+        "quantity": 1
+      }
+    ]
+  },
+  "prerequisites": [
+    "smuggler-3"
+  ],
+  "offerText": "One final job: an illegal weapon hidden in an apartment.",
+  "description": "Dusan knows an illegal weapon is hidden in apartment 11, on the ground floor of Living District apartments. Its owner will not report an illegal gun to the militia. At night, pick the apartment door and the safe inside. Loot the service pistol and five pistol bullets. Earlier loot from this safe counts too, even if equipped, stored or used. Keep both; collecting them completes the quest without returning to Dusan and awards a precision screwdriver from the hidden gear.",
+  "stages": [
+    {
+      "id": "collect-pistol",
+      "description": "At night, pick the door to apartment 11 in Living District, then unlock the safe and loot the service pistol. Buy extra lockpicking tools from Dusan if needed.",
+      "collectedFrom": "smuggler-apartment-safe",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItems": [
+        {
+          "itemId": "service-pistol",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "collect-ammunition",
+      "description": "Loot all five pistol bullets from the apartment 11 safe. Earlier loot from this safe counts, including an equipped pistol or bullets already used; keep the loot.",
+      "collectedFrom": "smuggler-apartment-safe",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItems": [
+        {
+          "itemId": "service-pistol",
+          "quantity": 1
+        },
+        {
+          "itemId": "pistol-ammunition",
+          "quantity": 5
+        }
+      ]
+    }
+  ],
+  "deliveryKind": "smuggler",
+  "_codex": {
+    "narrativeIntent": "The hidden pistol shows how far Dusan’s network has gone to protect itself.",
+    "implementationNotes": [
+      "Apartment 11 is also Milena’s night location; explain access and consequences in dialogue, do not silently relocate either.",
+      "Keep existing pistol/ammunition requirements."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

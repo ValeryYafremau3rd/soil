@@ -1,0 +1,24 @@
+{
+  "id": "flashlight",
+  "price": 15,
+  "name": "Flashlight",
+  "description": "A handheld electric torch.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Tool",
+  "icon": {
+    "x": 380,
+    "y": 645,
+    "width": 100,
+    "height": 130
+  },
+  "scale": 1,
+  "equipmentSlot": "tool",
+  "skillRequirements": {
+    "stealth": 7
+  },
+  "bonus": {
+    "skill": "stealth",
+    "amount": 3
+  }
+}

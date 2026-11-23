@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import test from 'node:test'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
 import { advanceDialogue } from '../../src/domain/dialogue/dialogue.ts'
 import { content } from '../helpers/content.mjs'
 
@@ -21,10 +21,10 @@ test('nested dialogue keeps its own choices and goodbye; intimidation returns on
   dialogue.openDialogue('Trader', menu, 'trader')
   assert.deepEqual(ids(), ['topic', 'intimidate-money', 'goodbye'])
   dialogue.chooseReply('topic')
-  assert.deepEqual(ids(), ['deeper', 'goodbye'])
+  assert.deepEqual(ids(), ['deeper', 'back', 'goodbye'])
   dialogue.chooseReply('intimidate-money')
   assert.equal(paid, 0)
-  assert.deepEqual(ids(), ['deeper', 'goodbye'])
+  assert.deepEqual(ids(), ['deeper', 'back', 'goodbye'])
   dialogue.chooseReply('deeper')
   assert.deepEqual(ids(), ['back', 'goodbye'])
   dialogue.chooseReply('back')
@@ -82,7 +82,7 @@ test('money intimidation checks current skill, pays once per NPC per day, and pe
   assert.equal(available(), true)
   capacity = false
   dialogue.chooseReply('intimidate-money')
-  assert.equal(dialogue.getSnapshot().conversation.text, definition.nodes[definition.start].text)
+  assert.equal(dialogue.getSnapshot().conversation.text, definition.openingLines[1])
   assert.equal(chosen, 0)
   assert.deepEqual(dialogue.saveState(), {})
   capacity = true
@@ -130,13 +130,15 @@ test('money intimidation checks current skill, pays once per NPC per day, and pe
   }
 })
 
-test('the stranger starts with an introduction and offers advice and a routine topic', () => {
+test('the stranger starts with an authored opening and offers advice and a routine topic', () => {
   const dialogue = new DialogueService()
   dialogue.openDialogue('Stranger', definition)
   assert.deepEqual(dialogue.getSnapshot().conversation, {
-    npcName: 'Stranger', trust: 0, text: definition.nodes.greeting.text, choices: [
+    npcName: 'Stranger', trust: 0, text: definition.openingLines[0], choices: [
       { id: 'lost-suitcase', text: 'Have you lost something?' },
-      { id: 'about', text: 'Tell about yourself.' }, { id: 'advice', text: '[Advice]' },
+      { id: 'about', text: 'Tell about yourself.' },
+      { id: 'ask-about', text: 'I want to ask you about...' },
+      { id: 'advice', text: '[Advice]' },
       { id: 'persuade-advice', text: '[Persuade] Please, I need your advice to stay safe.' },
       { id: 'goodbye', text: 'goodbye' },
     ],
@@ -163,7 +165,7 @@ test('goodbye closes the dialogue before or after saying hi', () => {
   }
 })
 
-test('closing and reopening resets the initial NPC phrase', () => {
+test('closing and reopening advances the NPC opening phrase', () => {
   const dialogue = new DialogueService()
   dialogue.openDialogue('Stranger', definition)
   dialogue.chooseReply('advice')
@@ -171,7 +173,7 @@ test('closing and reopening resets the initial NPC phrase', () => {
   dialogue.chooseReply('advice')
   assert.equal(dialogue.getSnapshot().conversation, null)
   dialogue.openDialogue('Stranger', definition)
-  assert.equal(dialogue.getSnapshot().conversation.text, definition.nodes.greeting.text)
+  assert.equal(dialogue.getSnapshot().conversation.text, definition.openingLines[1])
 })
 
 test('unknown replies and broken links do not advance a conversation', () => {
@@ -198,7 +200,7 @@ test('subscribers are notified for dialogue changes and can unsubscribe', () => 
   assert.equal(calls, 3)
 })
 
-test('every resident has a personal introduction, useful advice, and all four schedule phases', () => {
+test('every resident has a personal opening, useful advice, and all four schedule phases', () => {
   const { npcs, dialogues } = content()
   assert.equal(new Set(Object.values(npcs).map(npc => npc.name)).size, 8)
   for (const [id, npc] of Object.entries(npcs)) {
@@ -206,12 +208,12 @@ test('every resident has a personal introduction, useful advice, and all four sc
     const dialogue = new DialogueService()
     dialogue.openDialogue(npc.name, definition, id)
     const greeting = dialogue.getSnapshot().conversation
-    assert.ok(greeting.text.includes(npc.name), id)
+    assert.equal(greeting.text, definition.openingLines[0], id)
     assert.ok(!greeting.choices.some(choice => choice.id.includes('courier-')), 'unaccepted jobs stay hidden')
     dialogue.chooseReply('advice')
     assert.equal(dialogue.getSnapshot().conversation.text, definition.nodes.advice.text)
     dialogue.chooseReply('back')
-    assert.deepEqual(dialogue.getSnapshot().conversation, greeting)
+    assert.deepEqual(dialogue.getSnapshot().conversation, { ...greeting, choices: greeting.choices.map(choice => choice.id === 'advice' ? { ...choice, visited: true } : choice) })
     dialogue.chooseReply('about')
     for (const phase of ['Morning', 'Afternoon', 'Evening', 'Night']) assert.ok(dialogue.getSnapshot().conversation.text.includes(phase), `${id}: ${phase}`)
     for (const place of Object.values(npc.schedule)) {
@@ -246,4 +248,49 @@ test('investigation presents thoughts and actions without NPC effects, and can r
   dialogue.openDialogue('Stranger', definition, 'stranger')
   assert.equal(dialogue.getSnapshot().conversation.kind, undefined)
   assert.equal(talks, 1)
+})
+
+test('every NPC cycles three relevant openings without changing shared content or choices', () => {
+  const data = content()
+  const dialogue = new DialogueService()
+  for (const [npcId, npc] of Object.entries(data.npcs)) {
+    if (!npc.dialogueId) continue
+    const menu = data.dialogues[npc.dialogueId]
+    const original = JSON.stringify(menu)
+    assert.equal(menu.openingLines.length, 3, npcId)
+    assert.equal(new Set(menu.openingLines).size, 3, npcId)
+    let choices
+    for (let index = 0; index < 4; index++) {
+      dialogue.openDialogue(npc.name, menu, npcId)
+      const conversation = dialogue.getSnapshot().conversation
+      assert.equal(conversation.text, menu.openingLines[index % 3])
+      const ids = conversation.choices.map(choice => choice.id)
+      if (choices) assert.deepEqual(ids, choices)
+      choices = ids
+      dialogue.chooseReply('about')
+      if (dialogue.getSnapshot().conversation.choices.some(choice => choice.id === 'back')) {
+        dialogue.chooseReply('back')
+        assert.equal(dialogue.getSnapshot().conversation.text, menu.openingLines[index % 3])
+      }
+      dialogue.closeDialogue()
+    }
+    assert.equal(JSON.stringify(menu), original)
+  }
+})
+
+test('opening rotation is independent per NPC and optional for legacy dialogues', () => {
+  const dialogue = new DialogueService()
+  const menu = {
+    start: 'root', openingLines: ['First.', 'Second.', 'Third.'],
+    nodes: { root: { text: 'Original.', choices: [{ id: 'goodbye', close: true }] } },
+  }
+  dialogue.openDialogue('A', menu, 'a')
+  dialogue.openDialogue('B', menu, 'b')
+  assert.equal(dialogue.getSnapshot().conversation.text, 'First.')
+  dialogue.openDialogue('A', menu, 'a')
+  assert.equal(dialogue.getSnapshot().conversation.text, 'Second.')
+  dialogue.openDialogue('Legacy', { start: menu.start, nodes: menu.nodes })
+  assert.equal(dialogue.getSnapshot().conversation.text, 'Original.')
+  dialogue.openInvestigation(menu)
+  assert.equal(dialogue.getSnapshot().conversation.text, 'Original.')
 })

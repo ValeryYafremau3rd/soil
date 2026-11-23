@@ -163,10 +163,10 @@
   },
   {
     "id": "smoking-focus",
+    "group": "smoking",
     "name": "Nicotine focus",
     "description": "Nicotine focus: +1 Concentration until four phases pass or you sleep.",
     "itemIds": [
-      "red-cigarettes",
       "grey-cigarettes"
     ],
     "attribute": "agility",
@@ -175,14 +175,38 @@
   },
   {
     "id": "smoking-fatigue",
+    "group": "smoking",
     "name": "Nicotine fatigue",
     "description": "Nicotine fatigue: -1 Physique until four phases pass or you sleep.",
     "itemIds": [
-      "red-cigarettes",
       "grey-cigarettes"
     ],
     "attribute": "strength",
     "amount": -1,
+    "durationDays": 1
+  },
+  {
+    "id": "strong-smoking-focus",
+    "group": "smoking",
+    "name": "Strong nicotine focus",
+    "description": "Strong nicotine focus: +2 Concentration until four phases pass or you sleep.",
+    "itemIds": [
+      "red-cigarettes"
+    ],
+    "attribute": "agility",
+    "amount": 2,
+    "durationDays": 1
+  },
+  {
+    "id": "strong-smoking-fatigue",
+    "group": "smoking",
+    "name": "Strong nicotine fatigue",
+    "description": "Strong nicotine fatigue: -2 Physique until four phases pass or you sleep.",
+    "itemIds": [
+      "red-cigarettes"
+    ],
+    "attribute": "strength",
+    "amount": -2,
     "durationDays": 1
   },
   {
@@ -269,6 +293,148 @@
     ],
     "damageResistance": true,
     "amount": 20,
+    "durationDays": 1
+  },
+  {
+    "id": "bandage-roll-support-1",
+    "group": "medicine",
+    "name": "Reinforced dressing",
+    "description": "Reinforced dressing grants +15 maximum Health for four phases or until sleep.",
+    "itemIds": [
+      "bandage-roll"
+    ],
+    "vital": "health",
+    "amount": 15,
+    "durationDays": 1
+  },
+  {
+    "id": "antiseptic-support-1",
+    "group": "medicine",
+    "name": "Protective treatment",
+    "description": "Protective treatment grants +10 maximum Health for four phases or until sleep.",
+    "itemIds": [
+      "antiseptic"
+    ],
+    "vital": "health",
+    "amount": 10,
+    "durationDays": 1
+  },
+  {
+    "id": "antiseptic-bottle-support-1",
+    "group": "medicine",
+    "name": "Lasting treatment",
+    "description": "Lasting treatment grants +20 maximum Health and +10 maximum Energy for four phases or until sleep.",
+    "itemIds": [
+      "antiseptic-bottle"
+    ],
+    "vital": "health",
+    "amount": 20,
+    "durationDays": 1
+  },
+  {
+    "id": "antiseptic-bottle-support-2",
+    "group": "medicine",
+    "name": "Treatment endurance",
+    "description": "Lasting treatment grants +20 maximum Health and +10 maximum Energy for four phases or until sleep.",
+    "itemIds": [
+      "antiseptic-bottle"
+    ],
+    "vital": "energy",
+    "amount": 10,
+    "durationDays": 1
+  },
+  {
+    "id": "first-aid-kit-support-1",
+    "group": "medicine",
+    "name": "Field treatment",
+    "description": "Field treatment grants +25 maximum Health and +15 maximum Energy for four phases or until sleep. Does not restore current Health or Energy.",
+    "itemIds": [
+      "first-aid-kit"
+    ],
+    "vital": "health",
+    "amount": 25,
+    "durationDays": 1
+  },
+  {
+    "id": "first-aid-kit-support-2",
+    "group": "medicine",
+    "name": "Field endurance",
+    "description": "Field treatment grants +25 maximum Health and +15 maximum Energy for four phases or until sleep. Does not restore current Health or Energy.",
+    "itemIds": [
+      "first-aid-kit"
+    ],
+    "vital": "energy",
+    "amount": 15,
+    "durationDays": 1
+  },
+  {
+    "id": "medical-case-support-1",
+    "group": "medicine",
+    "name": "Comprehensive treatment",
+    "description": "Comprehensive treatment grants +30 maximum Health, +20 maximum Energy and +1 Concentration, improving its related skills, for four phases or until sleep. Does not restore current Health or Energy.",
+    "itemIds": [
+      "medical-case"
+    ],
+    "vital": "health",
+    "amount": 30,
+    "durationDays": 1
+  },
+  {
+    "id": "medical-case-support-2",
+    "group": "medicine",
+    "name": "Comprehensive endurance",
+    "description": "Comprehensive treatment grants +30 maximum Health, +20 maximum Energy and +1 Concentration, improving its related skills, for four phases or until sleep. Does not restore current Health or Energy.",
+    "itemIds": [
+      "medical-case"
+    ],
+    "vital": "energy",
+    "amount": 20,
+    "durationDays": 1
+  },
+  {
+    "id": "medical-case-support-3",
+    "group": "medicine",
+    "name": "Clinical focus",
+    "description": "Comprehensive treatment grants +30 maximum Health, +20 maximum Energy and +1 Concentration, improving its related skills, for four phases or until sleep. Does not restore current Health or Energy.",
+    "itemIds": [
+      "medical-case"
+    ],
+    "attribute": "agility",
+    "amount": 1,
+    "durationDays": 1
+  },
+  {
+    "id": "matches-focus",
+    "name": "Matchlight focus",
+    "description": "Matches grant +1 Concentration for four phases or until sleep.",
+    "itemIds": [
+      "matches"
+    ],
+    "attribute": "agility",
+    "amount": 1,
+    "durationDays": 1
+  },
+  {
+    "id": "matches-visible",
+    "name": "Visible matchlight",
+    "description": "Matchlight reduces Sneaking by 2 for four phases or until sleep.",
+    "itemIds": [
+      "matches"
+    ],
+    "skill": "stealth",
+    "amount": -2,
+    "durationDays": 1
+  },
+  {
+    "id": "tablet-sanity",
+    "group": "medicine",
+    "name": "Mental balance",
+    "description": "White tablets grant +15 maximum Sanity for four phases or until sleep.",
+    "itemIds": [
+      "white-tablets"
+    ],
+    "vital": "sanity",
+    "amount": 15,
     "durationDays": 1
   }
 ]

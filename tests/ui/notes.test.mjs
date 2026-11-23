@@ -1,6 +1,6 @@
 ﻿import test from 'node:test'
 import assert from 'node:assert/strict'
-import { NotesService } from '../../src/app/services/NotesService.ts'
+import { NotesService } from '../../src/app/services/progression/NotesService.ts'
 
 const catalogue = { locations: ['home', 'center'], people: ['viktor'], items: ['scrap', 'tool'] }
 

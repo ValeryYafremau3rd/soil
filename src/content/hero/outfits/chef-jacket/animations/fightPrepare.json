@@ -1,0 +1,24 @@
+{
+  "steps": [
+    {
+      "x": 1124,
+      "y": 339,
+      "width": 96,
+      "height": 174,
+      "anchorX": 48,
+      "anchorY": 173,
+      "scale": 0.69425287,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 1273,
+      "y": 340,
+      "width": 138,
+      "height": 171,
+      "anchorX": 69,
+      "anchorY": 170,
+      "scale": 0.70643275,
+      "keepLargestComponent": true
+    }
+  ]
+}

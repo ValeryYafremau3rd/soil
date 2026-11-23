@@ -7,17 +7,17 @@ import { fearDamage } from '../../src/domain/combat/patrolCombat.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { attributeVitals } from '../../src/domain/skills/vitals.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
-import { PerksService } from '../../src/app/services/PerksService.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
+import { PerksService } from '../../src/app/services/character/PerksService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
 
 const { ui, items } = content()
 const definitions = ui.perks
 
 test('alcohol grants day-long fear resistance, refreshes without stacking and preserves other buffs', () => {
-  const time = new DayTime(1, 'night')
+  const time = new DayTimeService(1, 'night')
   const perks = new PerksService(definitions, time, { drain() {} }, undefined, undefined, ui.consumableBuffs)
   const resistance = () => buffFearResistance(perks.getSnapshot(), ui.consumableBuffs)
   assert.equal(resistance(), 0)
@@ -41,7 +41,7 @@ test('alcohol grants day-long fear resistance, refreshes without stacking and pr
 })
 
 test('steroids require training, spend one unit and refresh both day-long bonuses without stacking', () => {
-  const time = new DayTime(1, 'night')
+  const time = new DayTimeService(1, 'night')
   const status = new StatusService()
   const perks = new PerksService(definitions, time, status, undefined, undefined, ui.consumableBuffs)
   status.setItemEffects(perks)
@@ -79,7 +79,7 @@ test('steroids require training, spend one unit and refresh both day-long bonuse
 })
 
 test('addiction boost lasts four phases across morning; repeat use refreshes it; legacy values normalize', () => {
-  const time = new DayTime(1, 'night')
+  const time = new DayTimeService(1, 'night')
   const perks = new PerksService(definitions, time, { drain() {} })
   for (let n = 0; n < 10; n++) perks.consumed('spirits', { sanity: 25 })
   time.nextMorning()
@@ -98,7 +98,7 @@ test('addiction boost lasts four phases across morning; repeat use refreshes it;
 })
 
 test('consumable buffs coexist, refresh without stacking, expire through sleep and restore remaining duration', () => {
-  const time = new DayTime(1, 'night')
+  const time = new DayTimeService(1, 'night')
   const status = new StatusService()
   const perks = new PerksService(definitions, time, status, undefined, undefined, ui.consumableBuffs)
   status.setItemEffects(perks)
@@ -122,7 +122,7 @@ test('consumable buffs coexist, refresh without stacking, expire through sleep a
   time.advance()
   time.advance()
   const saved = JSON.parse(JSON.stringify(perks.getSnapshot()))
-  const restoredTime = new DayTime(2, 'evening')
+  const restoredTime = new DayTimeService(2, 'evening')
   const restored = new PerksService(definitions, restoredTime, { drain() {} }, saved, undefined, ui.consumableBuffs)
   restoredTime.advance()
   assert.deepEqual(restored.getSnapshot().buffs.map(buff => buff.id), ['calm', 'tablet-fatigue'])
@@ -138,7 +138,7 @@ test('consumable buffs coexist, refresh without stacking, expire through sleep a
 
 test('food buffs raise Health/Energy caps without filling them, refresh as a group and clamp on expiry', () => {
   const status = new StatusService()
-  const time = new DayTime()
+  const time = new DayTimeService()
   const perks = new PerksService(definitions, time, status, undefined, undefined, ui.consumableBuffs)
   perks.subscribe(() => status.setLimits(buffVitals(ui.stats, perks.getSnapshot(), ui.consumableBuffs)))
   perks.consumed('tinned-beef', { energy: 15, sanity: 3 })
@@ -162,7 +162,7 @@ test('food buffs raise Health/Energy caps without filling them, refresh as a gro
 
 test('buff items can be used at full vitals only with requirements met, and spend one unit', () => {
   const status = new StatusService()
-  const time = new DayTime()
+  const time = new DayTimeService()
   const perks = new PerksService(definitions, time, status, undefined, undefined, ui.consumableBuffs)
   status.setItemEffects(perks)
   let medicine = 0
@@ -230,7 +230,7 @@ test('withdrawal waits a full day, repeats once daily, handles skipped phases an
 test('failed requirements do not count; full-status substance use spends one; previews and Medicine scale once', () => {
   const status = new StatusService(undefined, () => 1.5)
   status.restoreState({ health: 100, energy: 100, sanity: 100 })
-  const time = new DayTime()
+  const time = new DayTimeService()
   const perks = new PerksService(definitions, time, status)
   status.setItemEffects(perks)
   let education = 0
@@ -257,7 +257,7 @@ test('failed requirements do not count; full-status substance use spends one; pr
 test('vendor-bought spirits work at full Sanity; ordinary recovery stays unchanged; dead heroes cannot consume', () => {
   const status = new StatusService()
   status.restoreState({ health: 100, energy: 100, sanity: 100 })
-  const time = new DayTime()
+  const time = new DayTimeService()
   const perks = new PerksService(definitions, time, status)
   status.setItemEffects(perks)
   const inventory = new InventoryService(items, [{ id: 'shop', name: 'Shop', locationId: 'test', vendor: true,
@@ -284,12 +284,12 @@ test('vendor-bought spirits work at full Sanity; ordinary recovery stays unchang
 })
 
 test('saved progress resumes without granting duplicates or delaying withdrawal after reload', () => {
-  const time = new DayTime(1, 'evening')
+  const time = new DayTimeService(1, 'evening')
   const penalties = []
   let perks = new PerksService(definitions, time, { drain: value => penalties.push(value.sanity) })
   for (let n = 0; n < 10; n++) perks.consumed('spirits', { sanity: 25 })
   const saved = JSON.parse(JSON.stringify(perks.getSnapshot()))
-  const restoredTime = new DayTime(2, 'afternoon')
+  const restoredTime = new DayTimeService(2, 'afternoon')
   perks = new PerksService(definitions, restoredTime, { drain: value => penalties.push(value.sanity) }, saved)
   restoredTime.advance()
   assert.deepEqual(penalties, [12.5])
@@ -302,7 +302,7 @@ test('matching use sets Willpower +1 without stacking; a full day resets to norm
   const character = createCharacter({ id: 'test', name: 'Test', attributes: {
     strength: 3, agility: 3, intelligence: 3, willpower: 3, charisma: 3,
   }, startingItems: [] })
-  const time = new DayTime()
+  const time = new DayTimeService()
   const status = new StatusService()
   const perks = new PerksService(definitions, time, status)
   const effective = () => perkCharacter(character, perks.getSnapshot())
@@ -335,7 +335,7 @@ test('matching use sets Willpower +1 without stacking; a full day resets to norm
 
 
 test('consumable tradeoffs refresh, clamp attributes, and completed sleep clears all effects but not addictions', () => {
-  const time = new DayTime()
+  const time = new DayTimeService()
   const status = new StatusService()
   const perks = new PerksService(definitions, time, status, undefined, undefined, ui.consumableBuffs)
   status.setItemEffects(perks)
@@ -355,13 +355,15 @@ test('consumable tradeoffs refresh, clamp attributes, and completed sleep clears
   assert.equal(status.getSnapshot().health, 80, 'advanced medicine does not heal')
   assert.equal(effective().strength, 0)
   assert.equal(perks.getSnapshot().counts['alcohol-addiction'], 1)
+  const activeBuffs = perks.getSnapshot().buffs
+  assert.ok(activeBuffs.some(buff => buff.id === 'tablet-sanity'))
   const rest = new RestService(time, status, { rest: 0, sleep: 0 }, perks.clearTimedEffects)
   rest.open('sleep', 'Bed')
   rest.close()
-  assert.equal(perks.getSnapshot().buffs.length, 5, 'cancel preserves effects')
+  assert.deepEqual(perks.getSnapshot().buffs, activeBuffs, 'cancel preserves effects')
   rest.open('rest', 'Bench')
   rest.confirm(1)
-  assert.equal(perks.getSnapshot().buffs.length, 5, 'rest preserves effects')
+  assert.deepEqual(perks.getSnapshot().buffs, activeBuffs, 'rest preserves effects')
   rest.open('sleep', 'Bed')
   rest.confirm(1)
   assert.deepEqual(perks.getSnapshot().buffs, [])
@@ -372,15 +374,29 @@ test('consumable tradeoffs refresh, clamp attributes, and completed sleep clears
 })
 
 test('cigarettes favor concentration over physique; food provides small immediate health recovery', () => {
-  const time = new DayTime()
+  const time = new DayTimeService()
   const perks = new PerksService(definitions, time, { drain() {} }, undefined, undefined, ui.consumableBuffs)
   const character = createCharacter({ id: 'test', name: 'Test', attributes: {
     strength: 3, agility: 3, intelligence: 3, willpower: 3, charisma: 3,
   }, startingItems: [] })
-  for (const id of ['red-cigarettes', 'grey-cigarettes']) perks.consumed(id, { sanity: 8 })
+  for (const [id, sanity, agility, strength] of [
+    ['red-cigarettes', 32, 5, 1], ['red-cigarettes', 32, 5, 1],
+    ['grey-cigarettes', 16, 4, 2], ['red-cigarettes', 32, 5, 1],
+    ['grey-cigarettes', 16, 4, 2],
+  ]) {
+    assert.equal(items.find(item => item.id === id).recovery.sanity, sanity)
+    perks.consumed(id, { sanity })
+    const current = perkCharacter(character, perks.getSnapshot(), ui.consumableBuffs)
+    assert.equal(current.attributes.agility, agility, id)
+    assert.equal(current.attributes.strength, strength, id)
+    assert.equal(perks.getSnapshot().buffs.length, 2)
+  }
   const effective = perkCharacter(character, perks.getSnapshot(), ui.consumableBuffs)
   assert.equal(effective.attributes.agility, 4)
   assert.equal(effective.attributes.strength, 2)
   assert.equal(perks.getSnapshot().buffs.length, 2)
-  for (const item of items.filter(item => item.category === 'Food' && item.recovery)) assert.equal(item.recovery.health, 3)
+  for (const item of items.filter(item => item.category === 'Food' && item.recovery)) {
+    assert.equal(item.recovery.health, 6)
+    assert.equal(item.recovery.energy, item.id === 'bread' ? 20 : item.id === 'canned-meat' ? 30 : 15)
+  }
 })

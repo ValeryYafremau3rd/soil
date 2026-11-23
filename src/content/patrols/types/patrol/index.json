@@ -5,8 +5,8 @@
     "detectionRadius": 520,
     "hitFlashMs": 180,
     "chaseStopRatio": 0.8,
-    "health": 200,
-    "meleeDamage": 40,
+    "health": 100,
+    "meleeDamage": 15,
     "meleeRange": 60,
     "attackCooldownMs": 1000,
     "reactionDelayMs": 600,
@@ -14,7 +14,7 @@
     "chaseSpeed": 320,
     "levelTolerance": 20,
     "ranged": {
-      "damage": 30,
+      "damage": 20,
       "range": 520,
       "heightTolerance": 120
     }
@@ -24,8 +24,7 @@
   "path": "assets/characters/npc/patrol.png?v=2e2edc51",
   "referenceWidth": 2172,
   "background": "dark",
-  "backgroundThreshold": 24,
-  "backgroundMinGreenRed": 0,
+  "backgroundThreshold": 6,
   "keepLargestComponent": true,
   "displayHeight": 100,
   "frameSize": {
@@ -43,21 +42,5 @@
     "minPauseMs": 900,
     "maxPauseMs": 2600
   },
-  "corpseLoot": [
-    {
-      "min": 0,
-      "max": 1,
-      "itemId": "red-cigarettes"
-    },
-    {
-      "min": 0,
-      "max": 2,
-      "itemId": "pistol-ammunition"
-    },
-    {
-      "min": 0,
-      "max": 2,
-      "itemId": "bandage"
-    }
-  ]
+  "corpseLootTable": "patrol"
 }

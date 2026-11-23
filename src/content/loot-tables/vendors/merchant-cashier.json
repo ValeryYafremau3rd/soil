@@ -1,0 +1,514 @@
+{
+  "categories": [
+    "Tool",
+    "Medical",
+    "Material",
+    "Supply",
+    "Electronics",
+    "Clothing",
+    "Book",
+    "Document"
+  ],
+  "minItems": 3,
+  "maxItems": 4,
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "offers": [
+    {
+      "itemId": "adjustable-wrench",
+      "chance": 0.2
+    },
+    {
+      "itemId": "anatomy-athletics",
+      "chance": 0.15
+    },
+    {
+      "itemId": "anatomy-martialArts",
+      "chance": 0.15
+    },
+    {
+      "itemId": "anatomy-stealth",
+      "chance": 0.15
+    },
+    {
+      "itemId": "banknotes",
+      "chance": 0.34
+    },
+    {
+      "itemId": "barbed-bat",
+      "chance": 0.2
+    },
+    {
+      "itemId": "batteries",
+      "chance": 0.27
+    },
+    {
+      "itemId": "beer-bottle",
+      "chance": 0.45
+    },
+    {
+      "itemId": "bent-nails",
+      "chance": 0.92
+    },
+    {
+      "itemId": "berry-jam",
+      "chance": 0.45
+    },
+    {
+      "itemId": "blowtorch",
+      "chance": 0.1
+    },
+    {
+      "itemId": "brass-knuckles",
+      "chance": 0.21
+    },
+    {
+      "itemId": "bread",
+      "chance": 0.45
+    },
+    {
+      "itemId": "briefcase",
+      "chance": 1
+    },
+    {
+      "itemId": "bronze-bust",
+      "chance": 0.08
+    },
+    {
+      "itemId": "canned-beer",
+      "chance": 0.45
+    },
+    {
+      "itemId": "canned-fish",
+      "chance": 0.45
+    },
+    {
+      "itemId": "canned-meat",
+      "chance": 0.43
+    },
+    {
+      "itemId": "certificate",
+      "chance": 0.71
+    },
+    {
+      "itemId": "chef-jacket",
+      "chance": 0.2
+    },
+    {
+      "itemId": "chemistry-erudition",
+      "chance": 0.15
+    },
+    {
+      "itemId": "cider",
+      "chance": 0.43
+    },
+    {
+      "itemId": "cloth",
+      "chance": 0.86
+    },
+    {
+      "itemId": "coins",
+      "chance": 0.34
+    },
+    {
+      "itemId": "compact-pistol",
+      "chance": 0.06
+    },
+    {
+      "itemId": "compass",
+      "chance": 0.21
+    },
+    {
+      "itemId": "cooking-pot",
+      "chance": 0.23
+    },
+    {
+      "itemId": "copper-wire",
+      "chance": 0.92
+    },
+    {
+      "itemId": "crowbar",
+      "chance": 0.23
+    },
+    {
+      "itemId": "detective-book",
+      "chance": 0.18
+    },
+    {
+      "itemId": "duct-tape",
+      "chance": 0.28
+    },
+    {
+      "itemId": "enamel-mug",
+      "chance": 0.29
+    },
+    {
+      "itemId": "factory-badge",
+      "chance": 0.16
+    },
+    {
+      "itemId": "fantasy-book",
+      "chance": 0.18
+    },
+    {
+      "itemId": "film-reel",
+      "chance": 0.16
+    },
+    {
+      "itemId": "flashlight",
+      "chance": 0.21
+    },
+    {
+      "itemId": "flask",
+      "chance": 0.75
+    },
+    {
+      "itemId": "flat-cap",
+      "chance": 0.25
+    },
+    {
+      "itemId": "frying-pan",
+      "chance": 0.24
+    },
+    {
+      "itemId": "gears",
+      "chance": 0.92
+    },
+    {
+      "itemId": "grey-cigarettes",
+      "chance": 0.89
+    },
+    {
+      "itemId": "hammer",
+      "chance": 0.38
+    },
+    {
+      "itemId": "hatchet",
+      "chance": 0.2
+    },
+    {
+      "itemId": "horseshoe-charm",
+      "chance": 0.15
+    },
+    {
+      "itemId": "knife",
+      "chance": 0.23
+    },
+    {
+      "itemId": "kvass-bottle",
+      "chance": 0.45
+    },
+    {
+      "itemId": "leather-belt",
+      "chance": 0.24
+    },
+    {
+      "itemId": "leather-boots",
+      "chance": 0.16
+    },
+    {
+      "itemId": "leather",
+      "chance": 0.25
+    },
+    {
+      "itemId": "letter",
+      "chance": 0.68
+    },
+    {
+      "itemId": "light-bulb",
+      "chance": 0.29
+    },
+    {
+      "itemId": "lighter",
+      "chance": 0.42
+    },
+    {
+      "itemId": "lockpick",
+      "chance": 0.29
+    },
+    {
+      "itemId": "loose-nuts",
+      "chance": 0.92
+    },
+    {
+      "itemId": "map",
+      "chance": 0.59
+    },
+    {
+      "itemId": "matchbox",
+      "chance": 0.31
+    },
+    {
+      "itemId": "matches",
+      "chance": 0.92
+    },
+    {
+      "itemId": "mechanics-lockpicking",
+      "chance": 0.15
+    },
+    {
+      "itemId": "mechanics-scraper",
+      "chance": 0.15
+    },
+    {
+      "itemId": "mechanics-weapons",
+      "chance": 0.15
+    },
+    {
+      "itemId": "medal",
+      "chance": 0.1
+    },
+    {
+      "itemId": "metal-bars",
+      "chance": 0.92
+    },
+    {
+      "itemId": "military-coat",
+      "chance": 0.1
+    },
+    {
+      "itemId": "multimeter",
+      "chance": 0.11
+    },
+    {
+      "itemId": "needles",
+      "chance": 0.92
+    },
+    {
+      "itemId": "newspaper-barter",
+      "chance": 0.68
+    },
+    {
+      "itemId": "newspaper-intimidation",
+      "chance": 0.68
+    },
+    {
+      "itemId": "newspaper-persuasion",
+      "chance": 0.68
+    },
+    {
+      "itemId": "nuts-and-bolts",
+      "chance": 0.92
+    },
+    {
+      "itemId": "oil",
+      "chance": 0.81
+    },
+    {
+      "itemId": "old-ashtray",
+      "chance": 0.92
+    },
+    {
+      "itemId": "old-pistol",
+      "chance": 0.48
+    },
+    {
+      "itemId": "open-sardines",
+      "chance": 0.45
+    },
+    {
+      "itemId": "photographs",
+      "chance": 0.71
+    },
+    {
+      "itemId": "pipe-wrench",
+      "chance": 0.22
+    },
+    {
+      "itemId": "pliers",
+      "chance": 0.24
+    },
+    {
+      "itemId": "pocket-watch",
+      "chance": 0.08
+    },
+    {
+      "itemId": "portrait",
+      "chance": 0.16
+    },
+    {
+      "itemId": "postcard",
+      "chance": 0.75
+    },
+    {
+      "itemId": "precision-screwdriver",
+      "chance": 0.21
+    },
+    {
+      "itemId": "psychology-barter",
+      "chance": 0.15
+    },
+    {
+      "itemId": "psychology-intimidation",
+      "chance": 0.15
+    },
+    {
+      "itemId": "psychology-persuasion",
+      "chance": 0.15
+    },
+    {
+      "itemId": "radio-meter",
+      "chance": 0.07
+    },
+    {
+      "itemId": "red-cigarettes",
+      "chance": 0.89
+    },
+    {
+      "itemId": "red-star",
+      "chance": 0.17
+    },
+    {
+      "itemId": "repair-pliers",
+      "chance": 0.2
+    },
+    {
+      "itemId": "revolver",
+      "chance": 0.05
+    },
+    {
+      "itemId": "romance-book",
+      "chance": 0.18
+    },
+    {
+      "itemId": "rusty-gears",
+      "chance": 0.92
+    },
+    {
+      "itemId": "sci-fi-book",
+      "chance": 0.18
+    },
+    {
+      "itemId": "screwdriver",
+      "chance": 0.4
+    },
+    {
+      "itemId": "sealed-documents",
+      "chance": 0.1
+    },
+    {
+      "itemId": "sealed-envelope",
+      "chance": 0.16
+    },
+    {
+      "itemId": "service-pistol",
+      "chance": 0.05
+    },
+    {
+      "itemId": "shotgun-shells",
+      "chance": 0.29
+    },
+    {
+      "itemId": "smuggler-lock-guide",
+      "chance": 0.26
+    },
+    {
+      "itemId": "soldering-iron",
+      "chance": 0.16
+    },
+    {
+      "itemId": "spirits",
+      "chance": 0.42
+    },
+    {
+      "itemId": "sport-magazine-athletics",
+      "chance": 0.68
+    },
+    {
+      "itemId": "sport-magazine-martialArts",
+      "chance": 0.68
+    },
+    {
+      "itemId": "sport-magazine-stealth",
+      "chance": 0.68
+    },
+    {
+      "itemId": "sun-amulet",
+      "chance": 0.11
+    },
+    {
+      "itemId": "suspenders",
+      "chance": 0.25
+    },
+    {
+      "itemId": "technical-magazine-lockpicking",
+      "chance": 0.68
+    },
+    {
+      "itemId": "technical-magazine-scraper",
+      "chance": 0.68
+    },
+    {
+      "itemId": "technical-magazine-weapons",
+      "chance": 0.68
+    },
+    {
+      "itemId": "tinned-beef",
+      "chance": 0.45
+    },
+    {
+      "itemId": "tinned-chicken",
+      "chance": 0.45
+    },
+    {
+      "itemId": "tool-roll",
+      "chance": 0.19
+    },
+    {
+      "itemId": "trainers",
+      "chance": 0.13
+    },
+    {
+      "itemId": "triquetra-pendant",
+      "chance": 0.06
+    },
+    {
+      "itemId": "vacuum-tube",
+      "chance": 0.79
+    },
+    {
+      "itemId": "vodka",
+      "chance": 0.26
+    },
+    {
+      "itemId": "water-bottle",
+      "chance": 0.46
+    },
+    {
+      "itemId": "wax-candle",
+      "chance": 0.3
+    },
+    {
+      "itemId": "whiskey",
+      "chance": 0.19
+    },
+    {
+      "itemId": "wine",
+      "chance": 0.27
+    },
+    {
+      "itemId": "wire-coil",
+      "chance": 0.92
+    },
+    {
+      "itemId": "wool-socks",
+      "chance": 0.27
+    },
+    {
+      "itemId": "work-gloves",
+      "chance": 0.25
+    },
+    {
+      "itemId": "work-jacket",
+      "chance": 0.18
+    },
+    {
+      "itemId": "work-pass",
+      "chance": 0.71
+    },
+    {
+      "itemId": "wrench",
+      "chance": 0.16
+    }
+  ]
+}

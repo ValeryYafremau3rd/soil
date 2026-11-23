@@ -1,17 +1,80 @@
 {
   "start": "greeting",
+  "openingLines": [
+    "I spent years watching the railway. Now I watch these streets. Are you finding your way?",
+    "You look as though you have questions. I may still know a useful thing or two.",
+    "A town feels different when nobody can leave. Come, tell me what is on your mind."
+  ],
   "nodes": {
     "greeting": {
-      "text": "I'm Milena Vukovic, the retired railway worker. I used to keep the railway running. These days I watch the streets and help newcomers find their way.",
+      "text": "I'm Milena Vukovic. I came home from university to find my father missing and my mother locked away in a hospital. They say the virus damaged her mind. Funny how every question in this town gets the same answer. Can I help you with something?",
       "choices": [
         {
+          "id": "hospital-register-milena",
+          "text": "[Quest] Ask Milena whether her mother appears among the missing entries.",
+          "questId": "hospital-patient-register",
+          "next": "story-hospital-register-milena"
+        },
+        {
+          "id": "decision-topic-patient_records_fate",
+          "text": "[Quest] Discuss the transfer records.",
+          "questTopic": "hospital-no-visitors",
+          "next": "quest-decision-patient_records_fate"
+        },
+        {
+          "id": "hospital-no-visitors-journal",
+          "text": "[Quest] Compare Milena’s mother’s journal with hospital transfer dates.",
+          "questId": "hospital-no-visitors",
+          "next": "story-hospital-no-visitors-journal"
+        },
+        {
+          "id": "hospital-no-visitors-offer",
+          "text": "[Quest] No Visitors Allowed",
+          "acceptQuestId": "hospital-no-visitors",
+          "next": "greeting"
+        },
+        {
+          "id": "mother-room",
+          "text": "Did someone in room 21 know your mother?",
+          "requiresQuest": "first-steps",
+          "next": "mother-room"
+        },
+        {
+          "id": "return-mother-letter",
+          "text": "I found your mother's letter in the safe.",
+          "questId": "milena-mother-letter",
+          "next": "mother-thanks"
+        },
+        {
+          "id": "mother-factory",
+          "text": "Could your mother have left something at the factory?",
+          "requiresQuest": "milena-mother-letter",
+          "next": "mother-factory"
+        },
+        {
+          "id": "mother-safe-weapon",
+          "text": "[Weapons] Why would your mother keep a pistol?",
+          "requiresQuest": "milena-mother-letter",
+          "skillRequirement": {
+            "skill": "weapons",
+            "level": 2
+          },
+          "next": "mother-weapon"
+        },
+        {
+          "id": "town-opinion",
+          "text": "[Town situation] Do you believe the official story?",
+          "next": "town-opinion",
+          "questId": "town-opinions"
+        },
+        {
           "id": "lost-suitcase",
-          "text": "Have you lost something?",
+          "text": "Is there something you need help finding?",
           "next": "lost-suitcase"
         },
         {
           "id": "return-family-photo",
-          "text": "I found your family photo.",
+          "text": "I found your family photograph.",
           "questId": "milena-family-photo",
           "next": "photo-thanks"
         },
@@ -28,18 +91,24 @@
           "next": "courier-delivery-thanks"
         },
         {
+          "id": "postman-deliver",
+          "text": "[Delivery] Here is your letter.",
+          "questId": "postman",
+          "next": "postman-thanks"
+        },
+        {
           "id": "advice",
           "text": "[Advice]",
           "next": "advice"
         },
         {
           "id": "about",
-          "text": "Tell about yourself.",
+          "text": "What brought you back to town?",
           "next": "about"
         },
         {
           "id": "persuade-advice",
-          "text": "[Persuade] Please, I need your advice to stay safe.",
+          "text": "[Persuade] How can I get around safely?",
           "approach": "persuasion",
           "next": "advice"
         },
@@ -59,11 +128,34 @@
           "text": "[Find item] I found the requested item.",
           "questId": "find-item",
           "next": "find-item-payment"
+        },
+        {
+          "id": "ask-about",
+          "text": "Can I ask you about the strange things happening here?",
+          "next": "ask-about"
+        },
+        {
+          "id": "people-menu",
+          "text": "Can you tell me about a specific person?",
+          "next": "people-menu"
+        },
+        {
+          "id": "apartment-eleven",
+          "text": "Why is there a pistol in apartment 11?",
+          "next": "apartment-eleven"
+        },
+        {
+          "id": "story-consequence-pavel",
+          "text": "About what we decided…",
+          "storyConditions": {
+            "patient_records_fate": "pavel"
+          },
+          "next": "story-consequence-pavel"
         }
       ]
     },
     "advice": {
-      "text": "Walking between districts is free. The bus costs Thalers and does not run at night.",
+      "text": "You can walk between districts without paying, and the bus costs Thalers. It stops running at night. I know the curfew is supposed to protect us, but if you must go out, please be careful. People have been disappearing.",
       "choices": [
         {
           "id": "back",
@@ -78,7 +170,7 @@
       ]
     },
     "about": {
-      "text": "I used to keep the railway running. These days I watch the streets and help newcomers find their way. Morning: you can find me in the streets of Living District. Afternoon: you can find me in the streets of Center. Evening: you can find me in the streets of Living District. Night: you can find me in apartment 11 in Living District.",
+      "text": "I was studying away from home when everything happened. I came back for my parents. Father had vanished, and Mother was taken to the hospital for what they called severe virus-related damage. Nobody will tell me where Father went or let me speak to her. I'm still learning what's happened here. In the morning I'm on the streets of Living District; in the afternoon, Center; in the evening, Living District again. At night I stay in apartment 11 in Living District.",
       "choices": [
         {
           "id": "back",
@@ -93,7 +185,7 @@
       ]
     },
     "courier-pickup-confirmed": {
-      "text": "Take this parcel to the recipient named in your journal.",
+      "text": "Here's the parcel. The recipient is written in your journal. Please make sure it reaches them. People are depending on these little deliveries now.",
       "choices": [
         {
           "id": "back",
@@ -103,7 +195,7 @@
       ]
     },
     "courier-delivery-thanks": {
-      "text": "Thank you. Here is your payment.",
+      "text": "You brought it! Thank you. Here's your payment. It's good to know some things still get where they're meant to go.",
       "choices": [
         {
           "id": "back",
@@ -113,7 +205,7 @@
       ]
     },
     "find-item-instructions": {
-      "text": "Find the requested item and take it to the recipient in your journal.",
+      "text": "The item and its recipient are in your journal. If you can find it, please take it to them. I know what it's like to be waiting for something that never comes.",
       "choices": [
         {
           "id": "back",
@@ -123,7 +215,7 @@
       ]
     },
     "find-item-payment": {
-      "text": "Exactly what was requested. Here is your payment.",
+      "text": "That's exactly it. Thank you. Here's what I promised you.",
       "choices": [
         {
           "id": "back",
@@ -133,7 +225,7 @@
       ]
     },
     "lost-suitcase": {
-      "text": "I lost my suitcase near the bus stop in Living District, and I cannot find it anywhere. There is a photograph of my family inside. It is very dear to me. You can keep everything else in the suitcase, but please bring me that photo. I have an Athletics magazine for you if you find it.",
+      "text": "I lost my suitcase near the bus stop in Living District. It has a family photograph inside—one of the few pictures I have of us together, before Father disappeared and they took Mother away. If you find it, please bring me the photo. Keep anything else. I can give you an Athletics magazine for your trouble.",
       "choices": [
         {
           "id": "accept-photo-quest",
@@ -149,7 +241,7 @@
       ]
     },
     "photo-accepted": {
-      "text": "Thank you. Please bring the family photo back to me. The rest is yours.",
+      "text": "Thank you. It's the photograph I care about, not the suitcase. I just want to remember how we looked before all this.",
       "choices": [
         {
           "id": "goodbye",
@@ -159,12 +251,531 @@
       ]
     },
     "photo-thanks": {
-      "text": "My family! I thought I had lost this photo forever. Thank you for bringing it back. Here is the Athletics magazine I promised you.",
+      "text": "That's us. Look—Father's smiling. I almost forgot what that looked like. Thank you, really. Here's the Athletics magazine I promised. I wish I could give you more.",
       "choices": [
         {
           "id": "goodbye",
           "text": "Take care, Milena.",
           "close": true
+        }
+      ]
+    },
+    "town-opinion": {
+      "text": "They tell us the quarantine is necessary, the pills work, and anyone who sees strange things is sick. Then why won't they tell us where the missing people go? I'm not saying I know the answer. I don't. But 'trust the authorities' isn't an answer either. If we stop asking questions, who will look for them?",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "mother-room": {
+      "text": "You're staying in room 21? Mother lived there when she worked at the factory. She kept a safe, and I still have the key. They won't let me see her at the hospital, so even an old note would mean something. Would you check the safe and bring me anything she left?",
+      "choices": [
+        {
+          "id": "accept-mother-letter",
+          "text": "I’ll check the safe for you.",
+          "acceptQuestId": "milena-mother-letter",
+          "next": "mother-accepted"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "mother-accepted": {
+      "text": "Here's the key to the safe in room 21. Please bring back anything written by Mother. I'm trying to piece together what happened before they took her.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "mother-thanks": {
+      "text": "It's her handwriting... She was frightened. She never told me things had gotten this bad. They called it severe damage from the virus, but this letter raises more questions than it answers. Thank you. Please take this romance novel and some Thalers. Mother worked at the factory; maybe she left something there too. Irina Kovalenko might know.",
+      "choices": [
+        {
+          "id": "mother-factory",
+          "text": "Could your mother have left something at the factory?",
+          "requiresQuest": "milena-mother-letter",
+          "next": "mother-factory"
+        },
+        {
+          "id": "mother-safe-weapon",
+          "text": "[Weapons] Do you know about the weapon in the safe?",
+          "requiresQuest": "milena-mother-letter",
+          "skillRequirement": {
+            "skill": "weapons",
+            "level": 2
+          },
+          "next": "mother-weapon"
+        },
+        {
+          "id": "goodbye",
+          "text": "Take care, Milena.",
+          "close": true
+        }
+      ]
+    },
+    "mother-weapon": {
+      "text": "Keep the pistol. Please. I don't want to know why Mother had it, but I don't want you defenseless either. Just don't tell anyone where you found it.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "mother-factory": {
+      "text": "Mother worked at the factory before they took her to the hospital. Maybe some of her papers are still there. Would you ask Irina Kovalenko what happened to the old workers' belongings? I'm afraid they'll throw away the one thing that explains what happened.",
+      "choices": [
+        {
+          "id": "accept-mother-journal",
+          "text": "I will ask Kovalenko.",
+          "acceptQuestId": "milena-mother-journal",
+          "next": "mother-factory-accepted"
+        },
+        {
+          "id": "back",
+          "text": "Maybe later.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "mother-factory-accepted": {
+      "text": "Thank you. Irina still works at the factory. If you find a notebook or a letter, please don't hand it to an official first. Bring it to me. I just want to know what Mother was trying to say.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "I will see what I can find.",
+          "close": true
+        }
+      ]
+    },
+    "ask-about": {
+      "text": "Ask me. I don't know everything about this town anymore, but I've been trying to find out.",
+      "choices": [
+        {
+          "id": "ask-about-1",
+          "text": "[Diplomacy] Why are people afraid to talk about the missing?",
+          "trustRequirement": 1,
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 4
+          },
+          "next": "ask-about-answer-1"
+        },
+        {
+          "id": "ask-about-2",
+          "text": "[Erudition] Are trains still carrying people out of town?",
+          "trustRequirement": 2,
+          "skillRequirement": {
+            "skill": "erudition",
+            "level": 6
+          },
+          "next": "ask-about-answer-2"
+        },
+        {
+          "id": "ask-about-3",
+          "text": "[Athletics] What happened to the factory after dark?",
+          "trustRequirement": 3,
+          "skillRequirement": {
+            "skill": "athletics",
+            "level": 8
+          },
+          "next": "ask-about-answer-3"
+        },
+        {
+          "id": "ask-about-4",
+          "text": "[Sneaking] What have you noticed about night patrols?",
+          "trustRequirement": 4,
+          "skillRequirement": {
+            "skill": "stealth",
+            "level": 10
+          },
+          "next": "ask-about-answer-4"
+        },
+        {
+          "id": "ask-about-5",
+          "text": "[Diplomacy] What do you think is behind the visions and disappearances?",
+          "trustRequirement": 5,
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 12
+          },
+          "next": "ask-about-answer-5"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-1": {
+      "text": "When I got back, the streets felt wrong. People lower their voices whenever a patrol passes. One neighbor told me not to ask about Father in public. Another slipped me a piece of bread and said she was sorry. I think people know more than they dare say. If you hear about someone who's disappeared, please don't ignore it. Elena says I should stop asking questions in public. I think she means to protect the neighborhood, but she scares people into silence.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have you found out?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-2": {
+      "text": "The railway used to be how I came home from university. Now they say the blockade means no one can leave. I asked whether patients are being transferred out by train. The clerk said there were no departures, then told me medical transport was classified. Which is it? Maybe it's ordinary bureaucracy. But why can't families get a straight answer? Pavel Sokolov says my requests are being processed. Every time I ask what that means, he tells me to be patient.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have you found out?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-3": {
+      "text": "Mother worked long shifts at the factory. She used to come home exhausted, but lately the workers talk about damage that appears overnight and repairs nobody remembers making. I heard someone say the loading doors were bent outward. I haven't seen them myself. It could be machinery—or something they're not telling us. I want to ask Irina before I decide. Irina said she would help me look for her belongings at the factory. She did not promise answers, but at least she looked me in the eye.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have you found out?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-4": {
+      "text": "I watched a patrol seal off a street before sunset. Later someone said they heard gunfire and a sound like metal being dragged along the pavement. By morning the street was washed clean. Officials call these stories hallucinations. But if everyone's imagining the same things, shouldn't somebody investigate? Sometimes I wonder whether they're observing us to see how we react.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have you found out?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-5": {
+      "text": "I'll tell you what scares me most. Father vanished, Mother was declared unwell, and everyone tells me to accept it. I've heard rumors of a huge shape near the factory at night—something taller than the gates. I don't know if it's real, a shared hallucination, or something done to us. Maybe the pills, maybe an experiment. Those are guesses, and I won't pretend otherwise. But I won't stop looking for my parents. If people help each other, we might find out what happened. Nadia listens when I ask about the hospital, even when she cannot tell me anything. I think she is frightened by what she has seen in her own records.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have you found out?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-menu": {
+      "text": "I will tell you what I know. Just remember I have not been back in town very long.",
+      "choices": [
+        {
+          "id": "people-about-elena-jovanovic",
+          "text": "Elena Jovanovic",
+          "next": "people-about-elena-jovanovic"
+        },
+        {
+          "id": "people-about-pavel-sokolov",
+          "text": "Pavel Sokolov",
+          "next": "people-about-pavel-sokolov"
+        },
+        {
+          "id": "people-about-dusan-markovic",
+          "text": "Dusan Markovic",
+          "next": "people-about-dusan-markovic"
+        },
+        {
+          "id": "people-about-irina-kovalenko",
+          "text": "Irina Kovalenko",
+          "next": "people-about-irina-kovalenko"
+        },
+        {
+          "id": "people-about-viktor-petrov",
+          "text": "Viktor Petrov",
+          "next": "people-about-viktor-petrov"
+        },
+        {
+          "id": "people-about-zofia-nowak",
+          "text": "Zofia Nowak",
+          "next": "people-about-zofia-nowak"
+        },
+        {
+          "id": "people-about-nadia-morozova",
+          "text": "Nadia Morozova",
+          "next": "people-about-nadia-morozova"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-elena-jovanovic": {
+      "text": "Elena keeps asking whether I've taken my pills. I know she thinks she's helping, but she repeats everything to the authorities. I can't tell whether she's lonely or frightened of being wrong.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-pavel-sokolov": {
+      "text": "Pavel Sokolov says my mother's hospital transfer was 'properly documented.' Then why won't anyone let me see the record? He answers every question except the one I ask.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-dusan-markovic": {
+      "text": "Dusan scares people because he doesn't soften anything. I think he's seen something real, but he won't tell me all of it. He says I'm too reckless. Maybe he's right about that part.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-irina-kovalenko": {
+      "text": "Irina is helping me look for my mother's things at the factory. She doesn't promise miracles, which makes me trust her more. I wish she'd let me help her in return.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-viktor-petrov": {
+      "text": "Viktor lets me ask questions at the bar, though he always tells me to keep my voice down. He pretends not to care. Then he slips food to someone who can't pay.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-zofia-nowak": {
+      "text": "Zofia keeps saying the capital knows best. I asked how she could be sure. She got angry before I'd even finished. I think she's afraid the answer might be 'we don't know.'",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-nadia-morozova": {
+      "text": "Nadia has treated people who describe the same strange sights. She tries to explain them medically, and I respect that. But what if the symptoms are evidence of something happening to us?",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-hospital-no-visitors-journal": {
+      "text": "The journal dates match the transfers. Mother wrote about shifts and patients, but she did not know where they were being sent.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-hospital-no-visitors-decision": {
+      "text": "Choose whether to keep copies, expose the transfers, or hand the papers to Pavel.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-hospital-register-milena": {
+      "text": "My mother’s date is among those entries. There was no receiving signature on her letter either. That is all I can confirm.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "decision-patient_records_fate-copy": {
+      "text": "We can compare the dates without naming the staff. These entries are evidence of transfers, not proof of what happened afterward.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "decision-patient_records_fate-expose": {
+      "text": "I will ask the administration in public. If they take me away, Nadia has a copy of the dates.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "decision-patient_records_fate-pavel": {
+      "text": "Then the administration will have the originals. I thought we were trying to find my mother, not give them our only account.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "apartment-eleven": {
+      "text": "Elena lets me sleep there. Dusan left a locked pistol cache before I moved in. He says it belongs to an old delivery job. I have not moved it, and I do not carry it. Sharing an address does not mean we share a plan.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "I understand.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-consequence-pavel": {
+      "text": "You handed them our records. I will still tell you what my mother wrote, but I will not trust the administration with another original.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "postman-thanks": {
+      "text": "Thank you for bringing my letter.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "quest-decision-patient_records_fate": {
+      "text": "What should we do with the missing transfer records?",
+      "choices": [
+        {
+          "id": "hospital-no-visitors-decision",
+          "text": "Keep quiet copies of the transfer records.",
+          "questId": "hospital-no-visitors",
+          "questChoiceId": "hospital-no-visitors-decision",
+          "storyDecision": {
+            "id": "patient_records_fate",
+            "value": "copy"
+          },
+          "next": "decision-patient_records_fate-copy",
+          "skillRequirement": {
+            "skill": "erudition",
+            "level": 16
+          }
+        },
+        {
+          "id": "hospital-no-visitors-decision-pavel",
+          "text": "Hand the transfer papers to Pavel.",
+          "questId": "hospital-no-visitors",
+          "questChoiceId": "hospital-no-visitors-decision",
+          "storyDecision": {
+            "id": "patient_records_fate",
+            "value": "pavel"
+          },
+          "next": "decision-patient_records_fate-pavel",
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 12
+          }
+        },
+        {
+          "id": "hospital-no-visitors-decision-expose",
+          "text": "Expose the missing transfer entries publicly.",
+          "questId": "hospital-no-visitors",
+          "questChoiceId": "hospital-no-visitors-decision",
+          "storyDecision": {
+            "id": "patient_records_fate",
+            "value": "expose"
+          },
+          "next": "decision-patient_records_fate-expose"
         }
       ]
     }

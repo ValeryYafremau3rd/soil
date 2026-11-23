@@ -1,0 +1,70 @@
+{
+  "id": "smuggler-2",
+  "name": "After dark: the central drop",
+  "offeredBy": "citizen-mechanic",
+  "prerequisites": [
+    "smuggler-1"
+  ],
+  "offerText": "You did well. There is another night job waiting.",
+  "description": "Dusan admits he is a smuggler. Retrieve a sealed ledger from the new crate near the shop in Center at night, then return it to him. He says nobody will notice if something small disappears from the factory warehouse.",
+  "reward": {
+    "money": 12,
+    "items": [
+      {
+        "itemId": "lockpick",
+        "quantity": 3
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "collect",
+      "description": "At night, collect the Sealed ledger from the crate near Center's shop.",
+      "trigger": {
+        "kind": "loot",
+        "containerId": "cashier-5-crate"
+      },
+      "requiredItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ],
+      "phases": [
+        "night"
+      ]
+    },
+    {
+      "id": "deliver",
+      "description": "Return to Dusan Markovic and hand over the Sealed ledger.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "smuggler-2-deliver"
+      },
+      "requiredItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "smuggler-parcel",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "deliveryKind": "smuggler",
+  "deliveryItemId": "smuggler-parcel",
+  "_codex": {
+    "narrativeIntent": "The second delivery suggests industrial supplies are being diverted through unofficial routes.",
+    "implementationNotes": [
+      "Preserve original pickup and reward."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

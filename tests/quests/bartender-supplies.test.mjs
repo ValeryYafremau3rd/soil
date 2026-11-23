@@ -1,9 +1,9 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { content } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
 
 const id = 'bartender-supplies'
 const stack = itemId => ({ itemId, quantity: 1 })
@@ -54,7 +54,7 @@ for (const [first, second, objective] of [['wine', 'bread', 'collect-alcohol'], 
 test('already carried supplies count; full rewards reject hand-in atomically and allow retry', () => {
   const { inventory, quests, deliver, progress } = setup([
     { itemId: 'bread', quantity: 2 }, stack('wine'), stack('rope'), stack('matchbox'),
-    stack('leather-journal'), stack('red-cigarettes'),
+    stack('chemistry-erudition'), stack('red-cigarettes'),
   ])
   assert.equal(quests.acceptFromNpc(id, 'bartender'), true)
   assert.equal(progress().stageIndex, 2)

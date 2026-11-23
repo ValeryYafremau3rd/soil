@@ -1,0 +1,11 @@
+{
+  "start": "topic",
+  "nodes": {
+    "topic": { "text": "Where can I find...", "choices": [{ "id": "list", "text": "Where can I find...", "next": "list" }] },
+    "list": { "text": "Who are you looking for?", "choices": [{ "id": "back", "text": "Something else...", "next": "topic" }] },
+    "outdoors": { "text": "{name} is outside in {location} right now.", "choices": [{ "id": "back", "text": "Where is someone else?", "next": "list" }] },
+    "building": { "text": "{name} is in {building}, in {location} right now.", "choices": [{ "id": "back", "text": "Where is someone else?", "next": "list" }] },
+    "room": { "text": "{name} is in {room}, {building}, in {location} right now.", "choices": [{ "id": "back", "text": "Where is someone else?", "next": "list" }] },
+    "unavailable": { "text": "I don't know where {name} is right now.", "choices": [{ "id": "back", "text": "Where is someone else?", "next": "list" }] }
+  }
+}

@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { TravelService } from '../../src/app/services/TravelService.ts'
-import { refreshContainersEachMorning } from '../../src/app/services/refreshContainersEachMorning.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { TravelService } from '../../src/app/services/world/TravelService.ts'
+import { refreshContainersEachMorning } from '../../src/app/services/inventory/refreshContainersEachMorning.ts'
 import { rollLoot } from '../../src/domain/inventory/loot.ts'
 import { buildContainerSeeds } from '../../src/app/content/containerSeeds.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
@@ -20,7 +20,7 @@ const definitions = [
 ]
 
 test('rest restores 15 energy, sleep restores 50; cancel and repeat do nothing', () => {
-  const status = new StatusService(halfVitals()), time = new DayTime()
+  const status = new StatusService(halfVitals()), time = new DayTimeService()
   const rest = new RestService(time, status, content().ui.rest.energyRecovery)
   rest.open('rest', 'Bench')
   rest.close()
@@ -39,7 +39,7 @@ test('rest restores 15 energy, sleep restores 50; cancel and repeat do nothing',
 })
 
 test('custom recovery amounts are honored independently of the defaults', () => {
-  const status = new StatusService(halfVitals()), rest = new RestService(new DayTime(), status,
+  const status = new StatusService(halfVitals()), rest = new RestService(new DayTimeService(), status,
     { rest: { health: 99, energy: 3, sanity: 99 }, sleep: { health: 99, energy: 7, sanity: 99 } })
   rest.open('rest', 'Chair'); rest.confirm()
   rest.open('sleep', 'Bed'); rest.confirm()
@@ -125,7 +125,7 @@ test('swaps update deposit ownership and safe storage in a manual empty containe
 test('random loot rerolls only on new mornings from rest, sleep or travel; reopening does not reroll', () => {
   for (const action of ['rest', 'sleep', 'travel']) {
     let randomCalls = 0
-    const time = new DayTime(7, 'night')
+    const time = new DayTimeService(7, 'night')
     const inventory = new InventoryService(definitions, [{ id: 'crate', name: 'Crate', locationId: 'test',
       loot: { itemIds: ['med', 'gem'], minItems: 1, maxItems: 1 } }], () => { randomCalls++; return randomCalls <= 2 ? 0 : 0.999 })
     const unsubscribe = refreshContainersEachMorning(time, inventory)

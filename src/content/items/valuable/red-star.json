@@ -1,0 +1,25 @@
+{
+  "id": "red-star",
+  "price": 25,
+  "name": "Red star badge",
+  "description": "A red star emblem with a metal backing.",
+  "rarity": "common",
+  "quality": 3,
+  "category": "Valuable",
+  "icon": {
+    "x": 1255,
+    "y": 475,
+    "width": 95,
+    "height": 100
+  },
+  "scale": 1,
+  "fearResistance": 5,
+  "equipmentSlot": "amulet",
+  "bonus": {
+    "skill": "intimidation",
+    "amount": 1
+  },
+  "skillRequirements": {
+    "intimidation": 2
+  }
+}

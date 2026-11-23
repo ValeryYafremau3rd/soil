@@ -3,8 +3,17 @@ import type { Character } from '../../domain/skills/character'
 import type { ReactNode } from 'react'
 import './character.css'
 
-export function CharacterDetails({ character, children }: { character: Character; children?: ReactNode }) {
+/**
+ * Perform character details.
+ * @param {{ character: Character children?: ReactNode }} options - The options supplied to this operation.
+ * @returns {Element} The result described by the TypeScript return signature.
+ */
+export function CharacterDetails({ character, children }: {
+  character: Character
+  children?: ReactNode
+}) {
   const baseSkills = calculateSkills(character.baseAttributes)
+
   return <div className="character-details">
     <h2>{character.className}</h2>
     <div className="character-details__stats">

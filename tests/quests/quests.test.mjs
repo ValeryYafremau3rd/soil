@@ -1,15 +1,26 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { content, catalogue } from '../helpers/content.mjs'
+import { strapQuestCatalogue as catalogue } from '../helpers/strapQuest.mjs'
+import { content } from '../helpers/content.mjs'
 import { validateContent } from '../../src/app/content/validateContent.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
-import { MessageService } from '../../src/app/services/MessageService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
+import { MessageService } from '../../src/app/services/ui/MessageService.ts'
 
 const questId = 'a-fraying-strap'
-function setup(startingItems = []) {
+
+test('retired strap quest and its dialogue are absent from playable content', () => {
   const data = content()
+  assert.equal(data.quests.some(quest => quest.id === questId), false)
+  const nodes = data.dialogues.bartender.nodes
+  assert.equal(nodes['delivery-request'], undefined)
+  assert.equal(nodes['delivery-thanks'], undefined)
+  assert.equal(Object.values(nodes).some(node =>
+    node.choices.some(choice => choice.questId === questId)), false)
+})
+function setup(startingItems = []) {
+  const { data } = catalogue()
   const messages = new MessageService()
   const inventory = new InventoryService(data.items, [], () => 0, startingItems, undefined, undefined, undefined, messages.show)
   const quests = new QuestService(data.quests, inventory, messages.show)
@@ -128,6 +139,6 @@ test('authored quests validate NPC, dialogue choice, item references and invento
   ]) {
     const { data, sources } = catalogue()
     patch(data.quests[0])
-    assert.throws(() => validateContent(data, sources), /src\/content\/quests\/a-fraying-strap.json/)
+    assert.throws(() => validateContent(data, sources), /src\/content\/uests\/a-fraying-strap.json/)
   }
 })

@@ -1,0 +1,79 @@
+{
+  "id": "mechanic-scrap",
+  "name": "Steel for Tomorrow",
+  "description": "Dusan needs scrap to keep essential equipment running. Official deliveries are late, and the factory cannot wait for another inspection.",
+  "offeredBy": "worker",
+  "offerText": "The factory needs scrap. Can you help?",
+  "stages": [
+    {
+      "id": "collect-scrap",
+      "description": "Find one piece of scrap. Check trash bins at night, before the morning cleanup.",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItemGroups": [
+        [
+          "bent-nails",
+          "copper-wire",
+          "gears",
+          "loose-nuts",
+          "metal-bars",
+          "needles",
+          "nuts-and-bolts",
+          "old-ashtray",
+          "rusty-gears",
+          "shotgun-shells",
+          "small-key",
+          "vacuum-tube",
+          "wire-coil"
+        ]
+      ]
+    },
+    {
+      "id": "deliver-scrap",
+      "description": "Return to Irina Kovalenko with one piece of scrap for the factory.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "deliver-scrap"
+      },
+      "requiredItemGroups": [
+        [
+          "bent-nails",
+          "copper-wire",
+          "gears",
+          "loose-nuts",
+          "metal-bars",
+          "needles",
+          "nuts-and-bolts",
+          "old-ashtray",
+          "rusty-gears",
+          "shotgun-shells",
+          "small-key",
+          "vacuum-tube",
+          "wire-coil"
+        ]
+      ],
+      "removeRequiredItemGroups": true
+    }
+  ],
+  "reward": {
+    "money": 10,
+    "items": [
+      {
+        "itemId": "work-gloves",
+        "quantity": 1
+      }
+    ]
+  },
+  "_codex": {
+    "narrativeIntent": "Dusan needs metal because official shipments are diverted; he hides suspicion behind ordinary repair work.",
+    "implementationNotes": [
+      "Keep original scrap requirements.",
+      "After completion Irina can discuss delayed factory parts."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

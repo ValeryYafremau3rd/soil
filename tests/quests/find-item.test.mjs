@@ -1,15 +1,15 @@
-﻿import assert from 'node:assert/strict'
+import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content, catalogue, contentFiles } from '../helpers/content.mjs'
 import { assembleContent } from '../../src/app/content/assembleContent.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { resolveFindItemRewards } from '../../src/domain/quests/quests.ts'
 const stack=(itemId,quantity=1)=>({itemId,quantity})
-function setup(start=[]){const data=content(),time=new DayTime(),inventory=new InventoryService(data.items,[],()=>0,start),quests=new QuestService(data.quests,inventory,undefined,time,()=>0);return {data,time,inventory,quests}}
+function setup(start=[]){const data=content(),time=new DayTimeService(),inventory=new InventoryService(data.items,[],()=>0,start),quests=new QuestService(data.quests,inventory,undefined,time,()=>0);return {data,time,inventory,quests}}
 test('find-item uses one template with NPC/item parameters and displays exactly one affordable board request',()=>{
  const {data,quests}=setup();assert.equal(data.quests.filter(q=>q.findItem).length,1)
  const offers=()=>quests.getBoardQuests().filter(q=>q.findItem),q=offers()[0]
@@ -53,7 +53,7 @@ test('find-item parameters survive reload, and later runs reuse the same quest I
  assert.equal(restored.getBoardQuests().some(q=>q.findItem),false);time.nextMorning();assert.equal(restored.getBoardQuests().filter(q=>q.findItem).length,1)
 })
 test('catalogue discovery adds eligible item options rather than additional quests',()=>{
- const files=contentFiles();files['./items/test-tool.json']={...files['./items/screwdriver.json'],id:'test-tool',name:'Test tool'};files['./items/protected-tool.json']={...files['./items/screwdriver.json'],id:'protected-tool',saleable:false}
+ const files=contentFiles();files['./items/test-tool.json']={...files['./items/tool/screwdriver.json'],id:'test-tool',name:'Test tool'};files['./items/protected-tool.json']={...files['./items/tool/screwdriver.json'],id:'protected-tool',saleable:false}
  const {data,sources}=assembleContent(files);validateContent(data,sources)
  assert.equal(data.quests.filter(q=>q.findItem).length,1)
  assert.ok(data.quests.find(q=>q.findItem).findItemOptions.some(i=>i.id==='test-tool'))

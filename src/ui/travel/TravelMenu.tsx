@@ -4,17 +4,27 @@ import { Modal } from '../components/Modal'
 import { SelectionList } from '../components/SelectionList'
 import './travel.css'
 
-export function TravelMenu({ travel }: { travel: TravelController }) {
+/**
+ * Perform travel menu.
+ * @param {{ travel: TravelController }} options - The options supplied to this operation.
+ * @returns {Element | null} The result described by the TypeScript return signature.
+ */
+export function TravelMenu({ travel }: {
+  travel: TravelController
+}) {
   const snapshot = useSyncExternalStore(travel.subscribe, travel.getSnapshot)
   if (!snapshot.menuOpen) return null
+
   if (snapshot.mode === 'walk') {
     const destination = snapshot.locations.find(location => location.id === snapshot.destinationId)
     if (!destination) return null
+
     return <Modal title="Travel" onClose={travel.closeTravel} className="travel-menu" hideHeader>
       <SelectionList label="Travel destination" items={[{ id: destination.id, label: `Travel to ${destination.name}` }]}
         onChoose={travel.travelTo} />
     </Modal>
   }
+
   return <Modal title="Bus routes" onClose={travel.closeTravel} className="travel-menu" hideHeader>
     <SelectionList label="Destinations" items={snapshot.locations
       .filter(location => location.id !== snapshot.currentLocationId)

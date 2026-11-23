@@ -1,0 +1,35 @@
+{
+  "id": "work-jacket",
+  "name": "Work jacket",
+  "category": "Clothing",
+  "damageResistance": 15,
+  "stealthModifier": -1,
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 22,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 45,
+    "y": 520,
+    "width": 201,
+    "height": 159
+  },
+  "scale": 1,
+  "description": "Work jacket.",
+  "equipmentSlot": "armor",
+  "skillRequirements": { "scraper": 7 },
+  "bonus": {
+    "skill": "scraper",
+    "amount": 3
+  },
+  "bonuses": [
+    {
+      "skill": "athletics",
+      "amount": 1
+    }
+  ]
+}

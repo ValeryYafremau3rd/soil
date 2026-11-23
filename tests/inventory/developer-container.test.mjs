@@ -2,14 +2,15 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content } from '../helpers/content.mjs'
 import { buildContainerSeeds } from '../../src/app/content/containerSeeds.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { roomContainerPlacements } from '../../src/app/content/roomContainerPlacements.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 
-test('developer container includes the whole catalogue, stays available and replenishes each morning', () => {
+test('developer safe in the top-floor hall includes the whole catalogue and stays depleted after use', () => {
   const data = content()
-  const placements = roomContainerPlacements(data.locations, data.buildings, data.rooms)
+  const placements = data.containers.placements
   const placement = placements.find(placement => placement.developerStock)
-  assert.equal(placement.roomId, 'apartment-51')
+  assert.equal(placement.roomId, undefined)
+  assert.equal(placement.floor, 4)
+  assert.equal(placement.type, 'safe')
   const seeds = buildContainerSeeds({ ...data.containers, placements }, data.items)
   const seed = seeds.find(seed => seed.id === placement.id)
   assert.equal(seed.locationId, 'living-district')
@@ -29,8 +30,8 @@ test('developer container includes the whole catalogue, stays available and repl
   inventory.refreshContainers('night')
   assert.ok(!stock().some(item => item.itemId === 'bread'))
   inventory.refreshContainers('morning')
-  assert.equal(stock().find(item => item.itemId === 'bread').quantity, data.items.find(item => item.id === 'bread').maxStack)
+  assert.ok(!stock().some(item => item.itemId === 'bread'))
   assert.equal(stock().find(item => item.itemId === 'money').quantity, 100)
   inventory.refreshContainers('morning')
-  assert.equal(stock().length, data.items.length)
+  assert.equal(stock().length, data.items.length - 1)
 })

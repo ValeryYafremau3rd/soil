@@ -1,4 +1,6 @@
 {
   "fadeMs": 200,
+  "readyFrames": 4,
+  "readyFrameMaxMs": 100,
   "label": "Loading"
 }

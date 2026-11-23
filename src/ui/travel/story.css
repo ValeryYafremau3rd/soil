@@ -1,0 +1,98 @@
+.story-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  overflow: auto;
+  background: #000;
+  color: #f3dfbd;
+  animation: story-fade-in var(--story-fade) ease-out both;
+}
+
+.story-slide {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  animation: story-fade-in var(--story-fade) ease-out both;
+}
+
+.story-slide img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Let the black overlay cover gameplay before revealing the opening illustration. */
+.story-slide--opening { animation-delay: var(--story-fade); }
+
+.story-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(#100e0b99, transparent 30%, #100e0bbf 65%, #100e0bf5);
+}
+
+.story-title,
+.story-counter {
+  position: absolute;
+  top: max(28px, env(safe-area-inset-top));
+  margin: 0;
+  text-shadow: 0 2px 5px #000;
+}
+.story-title {
+  left: max(28px, env(safe-area-inset-left));
+  max-width: calc(100% - 120px);
+  font-size: clamp(26px, 4vw, 38px);
+}
+.story-counter {
+  right: max(28px, env(safe-area-inset-right));
+  color: #dfc9a7;
+  font-size: 14px;
+}
+.story-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 100px;
+}
+
+.story-caption {
+  width: min(760px, 100%);
+  box-sizing: border-box;
+  padding: 32px 28px max(32px, env(safe-area-inset-bottom));
+  text-shadow: 0 2px 5px #000;
+}
+
+.story-caption p { margin: 0; font-size: clamp(16px, 2vw, 19px); line-height: 1.65; white-space: pre-line; }
+.story-actions {
+  display: flex;
+  gap: 12px;
+  margin: 0 max(28px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) auto;
+}
+
+.story-actions button {
+  display: block;
+  padding: 12px 30px;
+  border: 1px solid #b99a67;
+  background: #322719;
+  color: #f3dfbd;
+  font: inherit;
+  cursor: pointer;
+}
+.story-actions button:disabled { opacity: 0.45; cursor: default; }
+.story-actions button:focus-visible { outline: 2px solid #f3dfbd; outline-offset: 4px; }
+@keyframes story-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .story-overlay,
+  .story-slide { animation: none; }
+}

@@ -1,0 +1,107 @@
+{
+  "name": "Elena Jovanovic",
+  "sourceKey": "caretaker-source",
+  "textureKey": "citizen-caretaker",
+  "path": "assets/characters/npc/caretaker.png",
+  "idleAnimation": "citizen-caretaker-idle",
+  "referenceWidth": 2172,
+  "frameRate": 3,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "background": "none",
+  "scale": 0.9,
+  "repeat": -1,
+  "frameSize": {
+    "width": 420,
+    "height": 690,
+    "referenceHeight": 668
+  },
+  "idleSteps": [
+    {
+      "x": 40,
+      "y": 25,
+      "width": 290,
+      "height": 668,
+      "anchorX": 101.5,
+      "anchorY": 668
+    },
+    {
+      "x": 410,
+      "y": 25,
+      "width": 285,
+      "height": 668,
+      "anchorX": 99,
+      "anchorY": 668
+    },
+    {
+      "x": 775,
+      "y": 25,
+      "width": 290,
+      "height": 667,
+      "anchorX": 103,
+      "anchorY": 667
+    },
+    {
+      "x": 1125,
+      "y": 25,
+      "width": 290,
+      "height": 668,
+      "anchorX": 103,
+      "anchorY": 668
+    },
+    {
+      "x": 1500,
+      "y": 25,
+      "width": 290,
+      "height": 668,
+      "anchorX": 101,
+      "anchorY": 668
+    },
+    {
+      "x": 1860,
+      "y": 25,
+      "width": 295,
+      "height": 669,
+      "anchorX": 103,
+      "anchorY": 669
+    }
+  ],
+  "dialogueId": "citizen-caretaker",
+  "schedule": {
+    "morning": {
+      "locationId": "living-district",
+      "x": 800
+    },
+    "afternoon": {
+      "locationId": "factory",
+      "x": 800
+    },
+    "evening": {
+      "locationId": "center",
+      "x": 800
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-42",
+      "x": 306
+    }
+  },
+  "_codex": {
+    "character": "Elena Jovanovic",
+    "arc": "civilian witness",
+    "questLinks": [
+      "nurse-tablet-deliveries",
+      "town-opinions"
+    ],
+    "dialogueImplementation": "NPC file is a sprite/schedule configuration, not a dialogue tree. Extend dialogue system using quest stage choiceIds from linked quests; do not overwrite animation/schedule fields. Use conditional options by quest state and flags.",
+    "scheduleOverrides": [],
+    "dialogueBeats": [
+      "Trusts government pills; may describe unusually heavy cleanup without understanding why."
+    ]
+  },
+  "portraitIndex": 6,
+  "portraitBackgroundThreshold": 45
+}

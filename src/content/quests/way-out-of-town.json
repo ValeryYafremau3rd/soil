@@ -1,5 +1,6 @@
 {
   "id": "way-out-of-town",
+  "reward": { "items": [{ "itemId": "compass", "quantity": 1 }] },
   "autoStart": true,
   "name": "Find a way out of the town",
   "description": "There must be a way out of this town. Search for a clue.",

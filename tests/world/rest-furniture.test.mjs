@@ -1,14 +1,14 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import test from 'node:test'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
 import { DAY_PHASES } from '../../src/app/contracts/daytime.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { catalogue, content } from '../helpers/content.mjs'
 
 test('rest advances one phase only after confirmation; cancel and duplicate confirm do not change time', () => {
-  const time = new DayTime(), rest = new RestService(time)
+  const time = new DayTimeService(), rest = new RestService(time)
   const initial = time.getSnapshot()
   rest.open('rest', 'Bench')
   assert.equal(time.getSnapshot(), initial)
@@ -29,7 +29,7 @@ test('beds and sofas skip to the next morning from every phase with a single tim
     const definition = types[type]
     assert.equal(definition.action, 'sleep')
     for (const phase of DAY_PHASES) {
-      const time = new DayTime(3, phase), rest = new RestService(time)
+      const time = new DayTimeService(3, phase), rest = new RestService(time)
       let notifications = 0
       time.subscribe(() => notifications++)
       rest.open(definition.action, definition.name)
@@ -41,7 +41,7 @@ test('beds and sofas skip to the next morning from every phase with a single tim
 })
 
 test('rest subscriptions are stable and can be released', () => {
-  const rest = new RestService(new DayTime())
+  const rest = new RestService(new DayTimeService())
   let notifications = 0
   const unsubscribe = rest.subscribe(() => notifications++)
   rest.close()

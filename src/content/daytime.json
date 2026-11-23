@@ -21,8 +21,8 @@
     "max": 1
   },
   "statCostsPerPhase": {
-    "energy": 2.5,
-    "sanity": 0.01
+    "energy": 5,
+    "sanity": 5
   },
   "iconSheet": {
     "path": "assets/ui/icons/daytime.png",
@@ -39,8 +39,8 @@
         "height": 440
       },
       "filter": {
-        "color": 13133136,
-        "alpha": 0.28
+        "color": 8355711,
+        "alpha": 0.58
       }
     },
     "afternoon": {
@@ -52,8 +52,8 @@
         "height": 440
       },
       "filter": {
-        "color": 15123594,
-        "alpha": 0.14
+        "color": 9211020,
+        "alpha": 0.42
       }
     },
     "evening": {
@@ -65,8 +65,8 @@
         "height": 440
       },
       "filter": {
-        "color": 2637705,
-        "alpha": 0.44
+        "color": 6052956,
+        "alpha": 0.54
       }
     },
     "night": {
@@ -78,8 +78,8 @@
         "height": 440
       },
       "filter": {
-        "color": 331045,
-        "alpha": 0.62
+        "color": 2105376,
+        "alpha": 0.68
       }
     }
   },

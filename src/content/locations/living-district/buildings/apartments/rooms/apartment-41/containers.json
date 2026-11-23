@@ -1,5 +1,17 @@
 [
   {
+    "id": "clerk-evidence-suitcase",
+    "type": "suitcase",
+    "x": 180,
+    "scale": 0.6875,
+    "locked": false,
+    "restock": false,
+    "questId": "clerk-apartment-evidence",
+    "items": [
+      { "itemId": "suspicious-correspondence", "quantity": 1 }
+    ]
+  },
+  {
     "id": "dusan-apartment-41-loot",
     "type": "suitcase",
     "x": 277.2,

@@ -1,0 +1,44 @@
+{
+  "id": "well-trained",
+  "reward": { "items": [{ "itemId": "medal", "quantity": 1 }] },
+  "name": "Well Trained",
+  "description": "Defeat enemies with a gun and melee attacks, and hide behind an object. Reward: a commemorative medal, +1 Weapons, +1 Martial Arts, +1 Sneaking.",
+  "autoStart": true,
+  "stages": [
+    {
+      "id": "ask-for-work",
+      "description": "Ask the clerk where to find work.",
+      "trigger": {
+        "kind": "action",
+        "action": "workAsked"
+      }
+    },
+    {
+      "id": "gun",
+      "description": "Defeat an enemy with a gun.",
+      "parallelGroup": "training",
+      "trigger": {
+        "kind": "action",
+        "action": "gunDefeat"
+      }
+    },
+    {
+      "id": "melee",
+      "description": "Defeat an enemy with melee attacks.",
+      "parallelGroup": "training",
+      "trigger": {
+        "kind": "action",
+        "action": "meleeDefeat"
+      }
+    },
+    {
+      "id": "hide",
+      "description": "Hide behind any object.",
+      "parallelGroup": "training",
+      "trigger": {
+        "kind": "action",
+        "action": "objectHidden"
+      }
+    }
+  ]
+}

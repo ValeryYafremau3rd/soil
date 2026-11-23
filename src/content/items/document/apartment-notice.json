@@ -1,0 +1,20 @@
+{
+  "id": "apartment-notice",
+  "price": 1,
+  "name": "The Apartment Notice",
+  "description": "A handwritten note from the quarantined town.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Document",
+  "icon": {
+    "x": 495,
+    "y": 455,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "saleable": false,
+  "randomLoot": false,
+  "maxStack": 1,
+  "readingText": "To the residents of Stairwell B\n\nWhoever keeps knocking on the third-floor doors after midnight, please stop.\n\nI know it isn't the children. The children were evacuated last Tuesday.\n\nLast night, something knocked on my door and spoke in my husband's voice. My husband has been in the hospital for eleven days.\n\nI have pushed the wardrobe against the entrance.\n\nIf anyone from the housing office reads this, please send someone before dark."
+}

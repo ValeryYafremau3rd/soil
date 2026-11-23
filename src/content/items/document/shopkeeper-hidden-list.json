@@ -1,0 +1,20 @@
+{
+  "id": "shopkeeper-hidden-list",
+  "price": 1,
+  "name": "The Shopkeeper's Hidden List",
+  "description": "A handwritten note from the quarantined town.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Document",
+  "icon": {
+    "x": 495,
+    "y": 455,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "saleable": false,
+  "randomLoot": false,
+  "maxStack": 1,
+  "readingText": "Not for the official inventory\n\nApartment 11 — Extra bread. Girl lives alone.\n\nApartment 23 — Two tins. Father hasn't returned from factory.\n\nApartment 34 — No answer for four days.\n\nHospital — Three boxes of biscuits. Deliver after closing.\n\nElena — Medicine missing from shipment. Ask Pavel again.\n\nSomeone has been taking food from the storage room at night.\n\nI changed the lock yesterday.\n\nThis morning, another tin was gone.\n\nThe door was still locked."
+}

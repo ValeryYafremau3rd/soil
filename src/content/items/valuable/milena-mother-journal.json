@@ -1,0 +1,20 @@
+{
+  "id": "milena-mother-journal",
+  "skillRequirements": { "barter": 1 },
+  "price": 12,
+  "name": "Milena's mother's journal",
+  "description": "A worn journal among the old factory belongings. Press Enter to read.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Valuable",
+  "icon": {
+    "x": 495,
+    "y": 455,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "randomLoot": false,
+  "saleable": false,
+  "readingText": "I keep seeing the same militia men outside the factory. When I leave, one of them is always watching. Yesterday I saw a uniform across the street from my room. Perhaps I am imagining it, but I no longer feel alone, even with the curtains closed.\n\nToday the militia came to my home with two doctors. They asked about my condition: whether I still heard voices, whether I saw things that were not there, and whether I had trouble sleeping. They wanted to know when it began and if anyone else at the factory felt the same.\n\nI asked why the militia needed to be there for a medical visit. Nobody answered. One doctor wrote down everything I said while a militiaman stood by the door. They told me to stay available for another examination.\n\nNow every footstep on the stairs makes me stop writing. I cannot tell whether they are watching because I am ill, or whether they know something about what is happening to me."
+}

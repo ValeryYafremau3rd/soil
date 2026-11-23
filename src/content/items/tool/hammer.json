@@ -1,0 +1,25 @@
+{
+  "id": "hammer",
+  "price": 8,
+  "name": "Hammer",
+  "description": "A sturdy hammer with a worn handle.",
+  "rarity": "common",
+  "quality": 2,
+  "category": "Tool",
+  "icon": {
+    "x": 210,
+    "y": 645,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "equipmentSlot": "tool",
+  "skillRequirements": {
+    "martialArts": 4
+  },
+  "bonus": {
+    "skill": "martialArts",
+    "amount": 1
+  },
+  "damageMultiplier": 1
+}

@@ -1,0 +1,19 @@
+{
+  "id": "matches",
+  "consumable": true,
+  "maxStack": 5,
+  "recovery": {},
+  "price": 1,
+  "name": "Matches",
+  "description": "Wooden matches grant +1 Concentration and -2 Sneaking for four phases or until sleep. Reuse refreshes the effects without stacking.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Supply",
+  "icon": {
+    "x": 1335,
+    "y": 825,
+    "width": 190,
+    "height": 155
+  },
+  "scale": 1
+}

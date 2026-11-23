@@ -1,8 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
 
 test('sleep restores percentages of each vital limit for every selected tick', () => {
   for (const phases of [1, 2, 3, 4]) {
@@ -11,7 +11,7 @@ test('sleep restores percentages of each vital limit for every selected tick', (
       { id: 'energy', value: 0, max: 80 },
       { id: 'sanity', value: 10, max: 150 },
     ])
-    const rest = new RestService(new DayTime(1, 'night'), status)
+    const rest = new RestService(new DayTimeService(1, 'night'), status)
     assert.deepEqual(rest.getRecovery('sleep'), { health: 20, energy: 40, sanity: 15 })
     rest.open('sleep', 'Bed'); rest.confirm(phases)
     assert.deepEqual(status.getSnapshot(), {
@@ -25,7 +25,7 @@ test('sleep restores percentages of each vital limit for every selected tick', (
 for (const kind of ['rest', 'sleep']) {
   test(`${kind} skips the chosen phases across midnight and recovers/saves once`, () => {
     for (const phases of [1, 2, 3, 4]) {
-      const time = new DayTime(3, 'evening')
+      const time = new DayTimeService(3, 'evening')
       let recoveries = 0, saves = 0, elapsed = 0
       const rest = new RestService(time, { recover: () => { recoveries++ } },
         { rest: 3, sleep: 7 }, () => { saves++ })
@@ -52,7 +52,7 @@ for (const kind of ['rest', 'sleep']) {
 }
 
 test('invalid durations and cancelled choices do not consume time or recover', () => {
-  const time = new DayTime()
+  const time = new DayTimeService()
   let recoveries = 0
   const rest = new RestService(time, { recover: () => { recoveries++ } })
   rest.open('sleep', 'Bed')

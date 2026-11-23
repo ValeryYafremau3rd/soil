@@ -5,14 +5,14 @@ import { content } from '../helpers/content.mjs'
 import { DAY_PHASES } from '../../src/app/contracts/daytime.ts'
 import { resolveNpcPlacements } from '../../src/app/content/resolveNpcPlacements.ts'
 
-test('all four citizen rows have six anchored poses within the supplied sheet', () => {
+test('all citizens have six anchored poses within the supplied sheet', () => {
   const { npcs } = content()
   const citizens = Object.entries(npcs).filter(([id]) => id.startsWith('citizen-'))
   assert.equal(citizens.length, 4)
-  const png = readFileSync(new URL('../../public/assets/characters/npc/citizens.png', import.meta.url))
   const rows = []
   for (const [id, npc] of citizens) {
-    assert.equal(npc.path, 'assets/characters/npc/citizens.png')
+    assert.equal(npc.path, `assets/characters/npc/${id === 'citizen-caretaker' ? 'caretaker' : 'citizens'}.png`)
+    const png = readFileSync(new URL(`../../public/${npc.path}`, import.meta.url))
     assert.equal(npc.idleSteps.length, 6, id)
     const ratio = png.readUInt32BE(16) / npc.referenceWidth
     for (const frame of npc.idleSteps) {
@@ -20,7 +20,7 @@ test('all four citizen rows have six anchored poses within the supplied sheet', 
       assert.ok((frame.y + frame.height) * ratio <= png.readUInt32BE(20), id)
       assert.ok(frame.anchorY <= frame.height && frame.anchorX <= frame.width, id)
     }
-    rows.push(npc.idleSteps[0].y)
+    rows.push(`${npc.path}:${npc.idleSteps[0].y}`)
     assert.equal(Object.keys(npc.schedule).length, DAY_PHASES.length)
   }
   assert.equal(new Set(rows).size, 4)

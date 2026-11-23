@@ -1,16 +1,16 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { LockpickingService } from '../../src/app/services/LockpickingService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { LockpickingService } from '../../src/app/services/puzzles/LockpickingService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { matchesLock } from '../../src/domain/buildings/lockpicking.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { content } from '../helpers/content.mjs'
 import classes from '../../src/content/classes.json' with { type: 'json' }
-import { MessageService } from '../../src/app/services/MessageService.ts'
+import { MessageService } from '../../src/app/services/ui/MessageService.ts'
 
 function setup(skill = 0, random = () => 0) {
   let now = 1000
-  const time = new DayTime(1, 'night')
+  const time = new DayTimeService(1, 'night')
   const messages = new MessageService()
   const inventory = new InventoryService([{ id: 'lockpick', consumable: true, maxStack: 3 }], [], () => 0, [{ itemId: 'lockpick', quantity: 3 }])
   const locks = new LockpickingService(time, () => skill, { lockpickingBaseSeconds: 10, lockpickingSecondsPerPoint: 1 },
@@ -24,7 +24,7 @@ test('lockpicks require education or practical training and remain intact on rej
   const messages = []
   const inventory = new InventoryService([pick], [], () => 0, [{ itemId: 'lockpick', quantity: 2 }],
     undefined, undefined, undefined, text => messages.push(text), () => erudition, false, undefined, undefined, () => ({ lockpicking: 1 }))
-  const locks = new LockpickingService(new DayTime(1, 'night'), () => 0,
+  const locks = new LockpickingService(new DayTimeService(1, 'night'), () => 0,
     { lockpickingBaseSeconds: 10, lockpickingSecondsPerPoint: 1 },
     { has: () => true, canUse: () => inventory.canUseItem('lockpick'), consume: () => inventory.consumeItem('lockpick') })
   locks.attempt('door', 'Door')
@@ -51,7 +51,7 @@ test('Safecracker starts with three consumable lockpicks without a skill bonus; 
   assert.equal(pliers.maxStack, undefined)
   const safecracker = classes[1]
   assert.equal(safecracker.id, 'safecracker')
-  assert.deepEqual(safecracker.startingItems, ['lockpick', 'lockpicking-training-magazine', 'red-cigarettes', 'key-ring', 'money'])
+  assert.deepEqual(safecracker.startingItems, ['lockpick', 'technical-magazine-lockpicking', 'red-cigarettes', 'key-ring', 'money'])
   const inventory = new InventoryService(items, [], () => 0,
     safecracker.startingItems.map(itemId => ({ itemId, quantity: safecracker.startingItemQuantities?.[itemId] ?? 1 })))
   assert.deepEqual(inventory.getSnapshot().items.filter(item => item.itemId === 'lockpick'), [{ itemId: 'lockpick', quantity: 3 }])

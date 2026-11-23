@@ -1,16 +1,16 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content, catalogue } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { buildContainerSeeds } from '../../src/app/content/containerSeeds.ts'
-import { refreshContainersEachMorning } from '../../src/app/services/refreshContainersEachMorning.ts'
+import { refreshContainersEachMorning } from '../../src/app/services/inventory/refreshContainersEachMorning.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 const stack=(itemId,quantity=1)=>({itemId,quantity})
-const fillers=['old-newspapers','wrench','pliers','cloth','letter','postcard'].map(id=>stack(id))
+const fillers=['psychology-barter','wrench','pliers','cloth','letter','postcard'].map(id=>stack(id))
 function setup(start=[],roll=0){
- const data=content(),time=new DayTime(),messages=[];let quests
+ const data=content(),time=new DayTimeService(),messages=[];let quests
  const inventory=new InventoryService(data.items,buildContainerSeeds(data.containers,data.items),()=>0,start,undefined,undefined,undefined,text=>messages.push(text),()=>20,false,()=>true,()=>10,()=>({weapons:10,medicine:10}),undefined,undefined,(id,itemId)=>quests.canTakeDeliveryItem(id,itemId))
  quests=new QuestService(data.quests,inventory,text=>messages.push(text),time,()=>roll)
  refreshContainersEachMorning(time,inventory)

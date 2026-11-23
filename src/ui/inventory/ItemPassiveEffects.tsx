@@ -1,9 +1,16 @@
-import type { InventoryItemDefinition } from '../../domain/inventory/items';
-import { scaleItemBuff } from '../../domain/skills/effects';
-import { ItemBonusText } from './ItemBonusText';
+import type { InventoryItemDefinition } from '../../domain/inventory/items'
+import { scaleItemBuff } from '../../domain/skills/effects'
+import { ItemBonusText } from './ItemBonusText'
 
+/**
+ * Perform item passive effects.
+ * @param {{ item: InventoryItemDefinition multiplier: number className?: string }} options - The options supplied to this operation.
+ * @returns {Element} The result described by the TypeScript return signature.
+ */
 export function ItemPassiveEffects({ item, multiplier, className }: {
-  item: InventoryItemDefinition; multiplier: number; className?: string
+  item: InventoryItemDefinition
+  multiplier: number
+  className?: string
 }) {
   return <>
     {(item.bonus || item.bonuses?.length) && <p className={className}>

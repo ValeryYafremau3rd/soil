@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
-import { PerksService } from '../../src/app/services/PerksService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
+import { PerksService } from '../../src/app/services/character/PerksService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { buildVendorSeeds, vendorItemPool } from '../../src/app/content/vendorSeeds.ts'
 import { resolveSkillEffects } from '../../src/domain/skills/effects.ts'
 import { itemHasStats } from '../../src/domain/inventory/items.ts'
@@ -136,7 +136,7 @@ test('legendary scrap failures award bullets repeatedly while successful item re
 })
 
 test('Erudition item recovery and Medicine recovery each apply once and previews match actual healing',()=>{
- const time=new DayTime(),medicine=resolveSkillEffects({medicine:15},data.skills).recovery
+ const time=new DayTimeService(),medicine=resolveSkillEffects({medicine:15},data.skills).recovery
  const status=new StatusService(undefined,()=>medicine),perks=new PerksService(data.ui.perks,time,status,undefined,undefined,data.ui.consumableBuffs,()=>1.5)
  status.setItemEffects(perks);status.restoreState({health:1,energy:100,sanity:100})
  const bandage=data.items.find(item=>item.id==='bandage'),expected=status.getRecovery(status.getItemRecovery(bandage.recovery,bandage.id)).health

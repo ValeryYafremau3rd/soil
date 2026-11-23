@@ -1,0 +1,19 @@
+{
+  "id": "courier-parcel",
+  "saleable": false,
+  "price": 10,
+  "randomLoot": false,
+  "name": "Courier parcel",
+  "description": "A sealed parcel for the active courier job.",
+  "rarity": "uncommon",
+  "quality": 1,
+  "category": "Quest",
+  "icon": {
+    "x": 385,
+    "y": 470,
+    "width": 125,
+    "height": 115
+  },
+  "scale": 1,
+  "maxStack": 1
+}

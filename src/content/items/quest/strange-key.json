@@ -1,0 +1,19 @@
+{
+  "id": "strange-key",
+  "name": "Strange key",
+  "description": "An unusual metal key found on a Titan. What could it open?",
+  "saleable": false,
+  "randomLoot": false,
+  "price": 1,
+  "rarity": "rare",
+  "quality": 1,
+  "category": "Quest",
+  "maxStack": 1,
+  "icon": {
+    "x": 760,
+    "y": 650,
+    "width": 55,
+    "height": 120
+  },
+  "scale": 1
+}

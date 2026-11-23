@@ -1,0 +1,20 @@
+{
+  "id": "soldier-pocket-note",
+  "price": 1,
+  "name": "The Soldier's Pocket Note",
+  "description": "A handwritten note from the quarantined town.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Document",
+  "icon": {
+    "x": 495,
+    "y": 455,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "saleable": false,
+  "randomLoot": false,
+  "maxStack": 1,
+  "readingText": "If anyone finds this, tell my brother I didn't run.\n\nWe were ordered to hold the western road until morning. At two o'clock, the radio stopped working. At three, the lieutenant ordered us to turn off our lights.\n\nWe could hear something moving between the buildings.\n\nIt passed our position twice without attacking.\n\nThen someone behind us began calling out the names of our men.\n\nThe lieutenant knew not to answer.\n\nI wish he had told us why."
+}

@@ -1,0 +1,54 @@
+{
+  "key": "solider-attack",
+  "frameRate": 10,
+  "steps": [
+    {
+      "x": 262,
+      "y": 527,
+      "width": 132,
+      "height": 166,
+      "anchorX": 66,
+      "anchorY": 163
+    },
+    {
+      "x": 400,
+      "y": 503,
+      "width": 113,
+      "height": 190,
+      "anchorX": 56,
+      "anchorY": 187,
+      "excludeRegions": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 94,
+          "height": 9
+        }
+      ]
+    },
+    {
+      "x": 514,
+      "y": 527,
+      "width": 151,
+      "height": 166,
+      "anchorX": 75,
+      "anchorY": 163
+    },
+    {
+      "x": 658,
+      "y": 533,
+      "width": 136,
+      "height": 160,
+      "anchorX": 68,
+      "anchorY": 157
+    },
+    {
+      "x": 787,
+      "y": 531,
+      "width": 119,
+      "height": 162,
+      "anchorX": 59,
+      "anchorY": 159
+    }
+  ]
+}

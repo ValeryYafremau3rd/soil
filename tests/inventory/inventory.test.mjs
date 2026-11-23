@@ -2,7 +2,7 @@
 import { content } from '../helpers/content.mjs'
 import { buildContainerSeeds } from '../../src/app/content/containerSeeds.ts'
 import test from 'node:test'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { INVENTORY_CAPACITY, rollLoot, swapItems, transferItem } from '../../src/domain/inventory/loot.ts'
 const config = content().containers
 const CONTAINER_PLACEMENTS = config.placements.filter(placement => placement.enabled !== false)

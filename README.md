@@ -1,6 +1,6 @@
 # My Game
 
-Minimal Phaser + React + TypeScript + Vite setup. Only a boot screen is implemented.
+A browser-based 2D platformer/shooter/RPG built with Phaser, React, TypeScript and Vite.
 
 ## Run
 
@@ -41,8 +41,11 @@ bumps so those saves cannot silently load after a compatibility break.
 
 ## Structure and Codex workflow
 
-See docs/architecture/README.md for folder responsibilities. Every requested folder
-is present; empty folders have .gitkeep files. React is retained for future DOM UI.
+See [the architecture guide](docs/architecture/README.md) for folder responsibilities.
+Phaser scenes, entities and rendering live in `src/game`; pure gameplay rules live
+in `src/domain`. Persistent systems are grouped by responsibility under
+`src/app/services`, authored JSON lives in `src/content`, and React overlays live
+in `src/ui`. Bootstrap composes systems through typed contracts.
 
 You own architecture, contracts, dependency choices, and final integration. Use one
 chat per bounded task: gameplay, UI, or content/assets. Role briefs are in .codex/agents.

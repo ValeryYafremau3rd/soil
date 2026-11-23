@@ -1,0 +1,54 @@
+{
+  "steps": [
+    {
+      "x": 1589,
+      "y": 99,
+      "width": 92,
+      "height": 124,
+      "anchorX": 46,
+      "anchorY": 123,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 1708,
+      "y": 65,
+      "width": 95,
+      "height": 145,
+      "anchorX": 47.5,
+      "anchorY": 144,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 1814,
+      "y": 32,
+      "width": 101,
+      "height": 127,
+      "anchorX": 50.5,
+      "anchorY": 126,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 1937,
+      "y": 34,
+      "width": 90,
+      "height": 130,
+      "anchorX": 45,
+      "anchorY": 129,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 2043,
+      "y": 103,
+      "width": 93,
+      "height": 120,
+      "anchorX": 46.5,
+      "anchorY": 119,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    }
+  ]
+}

@@ -4,10 +4,10 @@ import { resolveSkillEffects } from '../../src/domain/skills/effects.ts'
 import { tradePrice } from '../../src/domain/inventory/trade.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { applyCarriedBonuses } from '../../src/domain/inventory/items.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { resolveDifficulty } from '../../src/domain/character/difficulty.ts'
 import { detectsHero } from '../../src/domain/combat/patrolCombat.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
@@ -17,11 +17,11 @@ const data = content(), rates = data.skills
 
 test('skill effects use configured rates and capped linear barter sale prices', () => {
   const effects = resolveSkillEffects({ athletics: 10, weapons: 6, martialArts: 8, stealth: 5, medicine: 4, barter: 2 }, rates)
-  assert.deepEqual(effects, { movement: 1.5, rangedDamage: 1.3, meleeDamage: 1.4, detection: 0.75,
+  assert.deepEqual(effects, { movement: 1.5, rangedDamage: 1.3, meleeDamage: 1.4, detection: 1 - 5 / 60,
     recovery: 1.2, buyPrice: 1, sellPrice: 0.1 })
   assert.deepEqual(resolveSkillEffects({}, rates), { movement: 1, rangedDamage: 1, meleeDamage: 1, detection: 1,
     recovery: 1, buyPrice: 1, sellPrice: 0 })
-  assert.equal(detectsHero({ x: 200, y: 0 }, { x: 0, y: 0, available: true }, 260 * effects.detection, true), false)
+  assert.equal(detectsHero({ x: 250, y: 0 }, { x: 0, y: 0, available: true }, 260 * effects.detection, true), false)
 })
 
 test('barter sale prices use full item value, floor per unit and respect the purchase cap', () => {
@@ -84,7 +84,7 @@ test('Medicine applies once to difficulty-scaled items, rest/sleep and direct re
     const preview = status.getRecovery(status.getItemRecovery(item.recovery))
     inventory.openInventory(); inventory.useItem(0)
     assert.deepEqual(status.getSnapshot(), { ...preview, sanity: preview.sanity + 1 })
-    const time = new DayTime(), rest = new RestService(time, status, rules.recovery)
+    const time = new DayTimeService(), rest = new RestService(time, status, rules.recovery)
     for (const kind of ['rest', 'sleep']) {
       reset()
       const expected = rest.getRecovery(kind).energy

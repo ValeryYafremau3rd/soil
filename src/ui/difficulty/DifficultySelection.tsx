@@ -13,38 +13,74 @@ import { scaleRecovery } from '../../domain/character/difficulty'
 import { attributeVitals } from '../../domain/skills/vitals'
 import { conditionedCharacter } from '../../domain/skills/condition'
 import '../components/components.css'
+import '../components/dossier.css'
 import './difficulty.css'
 
-export function DifficultySelection({ classId, onSelect, onBack }: {
-  classId: string; onSelect: (difficultyId: string) => void; onBack: () => void
+/**
+ * Perform difficulty selection.
+ * @param {{ classId: string onSelect: (difficultyId: string) => void onBack: () => void }} options - The options supplied to this operation.
+ * @returns {Element} The result described by the TypeScript return signature.
+ */
+export function DifficultySelection({ classId, onSelect, onBack, initialId }: {
+  initialId?: string
+  classId: string
+  onSelect: (difficultyId: string) => void
+  onBack: () => void
 }) {
-  const [difficultyId, setDifficultyId] = useState(DIFFICULTIES.defaultId)
+  const [difficultyId, setDifficultyId] = useState(initialId ?? DIFFICULTIES.defaultId)
   const ref = useModalDialog()
   const submitted = useRef(false)
   const rules = difficultyRules(difficultyId)
   const definition = CLASSES.find(entry => entry.id === classId)!
   const className = definition.name
-  const bonuses = activeBonusItems(definition.startingItems.map(itemId => ({ itemId, quantity: definition.startingItemQuantities?.[itemId] ?? 1 })), {}, ITEM_BY_ID)
+  const bonuses = activeBonusItems(
+    definition.startingItems.map(itemId => ({ itemId, quantity: definition.startingItemQuantities?.[itemId] ?? 1 })),
+    {},
+    ITEM_BY_ID
+  )
   const character = applyCarriedBonuses(createCharacter(definition), bonuses, ITEM_BY_ID)
   const stats = attributeVitals(rules.stats, character.attributes)
-  const initial = (id: 'energy' | 'sanity') => Math.min(stats.find(stat => stat.id === id)!.value, stats.find(stat => stat.id === id)!.max)
-  const effective = conditionedCharacter(createCharacter(definition), bonuses, ITEM_BY_ID,
+
+  /**
+   * Perform initial.
+   * @param {"energy" | "sanity"} id - The id supplied to this operation.
+   * @returns {number} The calculated numeric result.
+   */
+  const initial = (id: 'energy' | 'sanity') => Math.min(
+    stats.find(stat => stat.id === id)!.value,
+    stats.find(stat => stat.id === id)!.max
+  )
+  const effective = conditionedCharacter(
+    createCharacter(definition),
+    bonuses,
+    ITEM_BY_ID,
     { energy: initial('energy'), sanity: initial('sanity') },
-    { energy: stats.find(stat => stat.id === 'energy')!.max, sanity: stats.find(stat => stat.id === 'sanity')!.max })
+    {
+      energy: stats.find(stat => stat.id === 'energy')!.max,
+      sanity: stats.find(stat => stat.id === 'sanity')!.max
+    }
+  )
   const effects = resolveSkillEffects(effective.skills, SKILL_EFFECT_CONFIG)
-  return <dialog ref={ref} className="difficulty-selection" aria-labelledby="difficulty-title"
+
+  return <dialog ref={ref} className="ui-modal dossier-modal difficulty-selection"
+    aria-labelledby="difficulty-title"
     onCancel={event => event.preventDefault()}
-    onKeyDown={event => { if (event.key === 'Escape') event.preventDefault() }}
+    onKeyDown={event => {
+      if (event.key === 'Escape') event.preventDefault()
+    }}
     onKeyDownCapture={event => {
       if (event.key !== 'Enter' || event.nativeEvent.isComposing || event.ctrlKey || event.altKey || event.metaKey) return
+
       if (event.target instanceof HTMLElement && event.target.closest('button[type="button"]')) return
+
       event.preventDefault()
       event.stopPropagation()
       if (!event.repeat) ref.current?.querySelector('form')?.requestSubmit()
     }}>
-    <form onSubmit={event => {
+    <form className="ui-panel" onSubmit={event => {
       event.preventDefault()
       if (submitted.current) return
+
       submitted.current = true
       onSelect(difficultyId)
     }}>

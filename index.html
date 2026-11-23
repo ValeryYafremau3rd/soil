@@ -3,9 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>my-game</title>
+    <title>SOIL</title>
+    <link rel="preload" as="image" href="%BASE_URL%assets/background/loading_small.png" fetchpriority="high" />
+    <style>
+      html, body { margin: 0; background: #141820; }
+      /* This shell paints before the application bundle has loaded. */
+      /* The small image remains visible underneath while the full image loads. */
+      #startup-screen { position: fixed; inset: 0; z-index: 15; background-color: #141820; background-image: url('%BASE_URL%assets/background/factory_loading.png'), url('%BASE_URL%assets/background/loading_small.png'); background-position: center; background-size: cover; background-repeat: no-repeat; }
+      #startup-screen[hidden], #startup-screen[data-loading="false"] .startup-spinner { display: none; }
+      .startup-spinner { position: absolute; right: max(24px, env(safe-area-inset-right)); bottom: max(36px, env(safe-area-inset-bottom)); width: 32px; height: 32px; border: 3px solid #ffffff40; border-top-color: #eee7da; border-radius: 50%; animation: startup-spin 0.9s linear infinite; }
+      @keyframes startup-spin { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) { .startup-spinner { animation: none; } }
+    </style>
   </head>
   <body>
+    <div id="startup-screen" data-loading="true">
+      <span class="startup-spinner" role="status" aria-label="Loading game"></span>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

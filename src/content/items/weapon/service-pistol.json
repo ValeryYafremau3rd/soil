@@ -1,0 +1,38 @@
+{
+  "damageMultiplier": 1.5,
+  "id": "service-pistol",
+  "price": 90,
+  "name": "Service pistol",
+  "rarity": "legendary",
+  "quality": 5,
+  "category": "Weapon",
+  "firearm": {
+    "ammunitionId": "pistol-ammunition"
+  },
+  "icon": {
+    "x": 45,
+    "y": 95,
+    "width": 175,
+    "height": 140
+  },
+  "scale": 1,
+  "description": "Service pistol.",
+  "skillRequirements": {
+    "weapons": 12
+  },
+  "equipmentSlot": "ranged",
+  "bonus": {
+    "attribute": "agility",
+    "amount": 1
+  },
+  "bonuses": [
+    {
+      "skill": "weapons",
+      "amount": 3
+    },
+    {
+      "skill": "persuasion",
+      "amount": 1
+    }
+  ]
+}

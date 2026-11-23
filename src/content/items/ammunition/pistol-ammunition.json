@@ -1,0 +1,22 @@
+{
+  "id": "pistol-ammunition",
+  "price": 3,
+  "name": "Pistol ammunition",
+  "description": "A small supply of cartridges for a pistol.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Ammunition",
+  "ammunition": true,
+  "consumable": true,
+  "maxStack": 6,
+  "icon": {
+    "x": 40,
+    "y": 280,
+    "width": 180,
+    "height": 130
+  },
+  "scale": 1,
+  "skillRequirements": {
+    "weapons": 4
+  }
+}

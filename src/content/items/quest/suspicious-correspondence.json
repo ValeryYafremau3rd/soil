@@ -1,0 +1,15 @@
+{
+  "id": "suspicious-correspondence",
+  "name": "Suspicious letter",
+  "description": "An unsigned letter about the administration. Press Enter to read.",
+  "price": 1,
+  "rarity": "common",
+  "quality": 1,
+  "category": "Quest",
+  "saleable": false,
+  "randomLoot": false,
+  "maxStack": 1,
+  "icon": { "x": 495, "y": 455, "width": 105, "height": 145 },
+  "scale": 1,
+  "readingText": "Do not believe the reports sent to the capital. The shelves are empty, yet the administration insists that every delivery has arrived. Someone is altering the supply registers.\n\nKeep copies of the original records. When we have enough proof, we will send them beyond the checkpoint without Sokolov's approval. Until then, speak only to people you trust.\n\nDo not sign your next letter."
+}

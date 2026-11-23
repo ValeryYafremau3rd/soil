@@ -1,0 +1,93 @@
+{
+  "id": "hospital-no-visitors",
+  "name": "No Visitors Allowed",
+  "description": "Trace military-authorized patient transfers without endangering hospital staff.",
+  "offeredBy": "stranger",
+  "offerText": "Trace military-authorized patient transfers without endangering hospital staff.",
+  "prerequisites": [
+    "hospital-patient-register",
+    "milena-mother-journal",
+    "cashier-5"
+  ],
+  "stages": [
+    {
+      "id": "compare-journal",
+      "description": "Compare Milena’s mother’s journal with hospital transfer dates.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "stranger",
+        "choiceId": "hospital-no-visitors-journal"
+      }
+    },
+    {
+      "id": "request-authorization",
+      "description": "Ask Nadia about the military authorization code on the transfer forms.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-nurse",
+        "choiceId": "hospital-no-visitors-nadia"
+      }
+    },
+    {
+      "id": "decide-records",
+      "description": "Choose whether to keep copies, expose the transfers, or hand the papers to Pavel.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "stranger",
+        "choiceId": "hospital-no-visitors-decision"
+      }
+    }
+  ],
+  "_codex": {
+    "narrativeIntent": "Trace military-authorized patient transfers without endangering hospital staff.",
+    "implementationNotes": [
+      "Create patient transfer form as quest evidence; keep original journal item unchanged.",
+      "Choice expose: Milena publicly challenges officials; after one day she is detained/transferred, leaving an optional rescue hook.",
+      "Choice hand over: Nadia retains job, records confiscated, Milena distrusts player.",
+      "Choice copy: maintain quiet investigation, no immediate disappearance."
+    ],
+    "decisions": [
+      {
+        "id": "patient_records_fate",
+        "options": [
+          {
+            "value": "copy",
+            "effects": [
+              "milena_status=normal",
+              "hospital_evidence_copy=true"
+            ]
+          },
+          {
+            "value": "expose",
+            "effects": [
+              "milena_status=detained next day",
+              "district_alert +1",
+              "unlock optional rescue lead"
+            ]
+          },
+          {
+            "value": "pavel",
+            "effects": [
+              "milena_trust -2",
+              "government_trust +1",
+              "hospital_evidence_copy=false"
+            ]
+          }
+        ],
+        "defaultIfLegacy": "copy"
+      }
+    ],
+    "crossQuestHooks": [
+      "hospital-patient-register",
+      "milena-mother-journal",
+      "cashier-5"
+    ],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "hospital_transfer_evidence",
+        "value": true
+      }
+    ]
+  }
+}

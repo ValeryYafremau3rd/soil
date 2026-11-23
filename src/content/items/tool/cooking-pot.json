@@ -1,0 +1,27 @@
+{
+  "id": "cooking-pot",
+  "name": "Cooking pot",
+  "description": "Cooking pot recovered from the district.",
+  "category": "Tool",
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 12,
+  "skillRequirements": { "medicine": 2 },
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 1219,
+    "y": 22,
+    "width": 144,
+    "height": 161
+  },
+  "scale": 1,
+  "equipmentSlot": "tool",
+  "bonus": {
+    "skill": "medicine",
+    "amount": 1
+  }
+}

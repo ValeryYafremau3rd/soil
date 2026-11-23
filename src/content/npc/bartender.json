@@ -1,0 +1,116 @@
+{
+  "name": "Viktor Petrov",
+  "sourceKey": "vendors-source",
+  "textureKey": "bartender",
+  "path": "assets/characters/npc/vendors.png",
+  "idleAnimation": "bartender-idle",
+  "referenceWidth": 2170,
+  "frameRate": 6,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "idleSteps": [
+    {
+      "x": 422,
+      "y": 5,
+      "width": 143,
+      "height": 259,
+      "anchorX": 75,
+      "anchorY": 259
+    },
+    {
+      "x": 668,
+      "y": 5,
+      "width": 146,
+      "height": 259,
+      "anchorX": 76.5,
+      "anchorY": 259
+    },
+    {
+      "x": 912,
+      "y": 5,
+      "width": 147,
+      "height": 259,
+      "anchorX": 76.5,
+      "anchorY": 259
+    },
+    {
+      "x": 1138,
+      "y": 5,
+      "width": 145,
+      "height": 259,
+      "anchorX": 79,
+      "anchorY": 259
+    },
+    {
+      "x": 1366,
+      "y": 5,
+      "width": 148,
+      "height": 259,
+      "anchorX": 82.5,
+      "anchorY": 259
+    },
+    {
+      "x": 1598,
+      "y": 5,
+      "width": 151,
+      "height": 259,
+      "anchorX": 79.5,
+      "anchorY": 259
+    }
+  ],
+  "frameSize": {
+    "width": 180,
+    "height": 267,
+    "referenceHeight": 259
+  },
+  "dialogueId": "bartender",
+  "scale": 0.9,
+  "background": "none",
+  "repeat": -1,
+  "schedule": {
+    "morning": {
+      "locationId": "center",
+      "buildingId": "center-bar",
+      "scale": 0.8,
+      "x": 280
+    },
+    "afternoon": {
+      "locationId": "center",
+      "buildingId": "center-bar",
+      "scale": 0.8,
+      "x": 280
+    },
+    "evening": {
+      "locationId": "center",
+      "buildingId": "center-bar",
+      "scale": 0.8,
+      "x": 280
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-51",
+      "x": 187
+    }
+  },
+  "_codex": {
+    "character": "Viktor Petrov",
+    "arc": "government investigation",
+    "questLinks": [
+      "bartender-supplies",
+      "bartender-shortages",
+      "bartender-letter",
+      "clerk-official-seal"
+    ],
+    "dialogueImplementation": "NPC file is a sprite/schedule configuration, not a dialogue tree. Extend dialogue system using quest stage choiceIds from linked quests; do not overwrite animation/schedule fields. Use conditional options by quest state and flags.",
+    "scheduleOverrides": [],
+    "dialogueBeats": [
+      "Cynical but not omniscient; hears military gossip.",
+      "Letter evidence starts as rationing scandal, later reveals transport routing code."
+    ]
+  },
+  "portraitIndex": 5,
+  "portraitBackgroundThreshold": 45
+}

@@ -2,10 +2,10 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content, catalogue } from '../helpers/content.mjs'
 import { chooseAdvice } from '../../src/domain/dialogue/dialogue.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
-import { PerksService } from '../../src/app/services/PerksService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { PerksService } from '../../src/app/services/character/PerksService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { emptyPerks, perkCharacter } from '../../src/domain/character/perks.ts'
 
@@ -85,7 +85,7 @@ test('advice is once per NPC per day across all reply paths, cancellation, reope
 test('ten actual advice requests earn Nerd and ten successful intimidations earn Punk with exact skill changes', () => {
   for (const [id, action, expected] of [['nerd', 'adviceAsked', { erudition: 2, intimidation: -1, martialArts: -1 }],
     ['punk', 'intimidated', { erudition: -1, persuasion: -1, martialArts: 1, athletics: 1 }]]) {
-    const perks = new PerksService(data.ui.perks, new DayTime(), { drain() {} })
+    const perks = new PerksService(data.ui.perks, new DayTimeService(), { drain() {} })
     let day = 1
     const dialogue = new DialogueService(undefined, undefined, undefined,
       choice => { if (choice.approach === 'intimidation') perks.recordAction('intimidated') },

@@ -1,0 +1,99 @@
+{
+  "id": "way-out-of-town",
+  "reward": {
+    "items": [
+      {
+        "itemId": "compass",
+        "quantity": 1
+      }
+    ]
+  },
+  "autoStart": true,
+  "name": "Find a way out of the town",
+  "description": "Find a way beyond the quarantine perimeter. Follow Viktor Petrov and Irina Kovalenko's accounts of a missing guard and the old service-gate key, or seek official help from Pavel Sokolov.",
+  "stages": [
+    {
+      "id": "run-east",
+      "description": "Run east to Center. Avoid patrols and whatever else lurks in the night.",
+      "trigger": {
+        "kind": "location",
+        "locationId": "center"
+      }
+    },
+    {
+      "id": "guard-key-clue",
+      "description": "Ask Viktor Petrov about the guard who carried a key to the old service gate.",
+      "parallelGroup": "escape-clues",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "escape-guard-key"
+      }
+    },
+    {
+      "id": "night-shadow-clue",
+      "description": "Ask Irina Kovalenko about the shadow and scream when the guard disappeared.",
+      "parallelGroup": "escape-clues",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "escape-night-shadow"
+      }
+    },
+    {
+      "id": "find-a-clue",
+      "description": "Defeat the huge creature at the factory at night and search its remains for the missing guard's service-gate key. Pavel Sokolov may instead help arrange an authorized departure.",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItems": [
+        {
+          "itemId": "strange-key",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "strange-key",
+      "description": "You recovered a strange key. Try the old service gate at the factory perimeter, or pursue Pavel Sokolov's authorized checkpoint route.",
+      "trigger": {
+        "kind": "pending"
+      }
+    }
+  ],
+  "_codex": {
+    "narrativeIntent": "Long-term escape objective: discover a service-gate key from the Titan OR earn a government exit permit.",
+    "implementationNotes": [
+      "Retain existing run-east and Titan-key progression for old saves.",
+      "Existing strange-key stage uses pending: implement gate interaction and a parallel official-permit completion route via runtime extension.",
+      "Never require the Titan kill for the official route."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "escapeCompletion": {
+      "unlockAfter": "prologue-last-night",
+      "anyOf": [
+        {
+          "route": "illegal",
+          "requirements": [
+            "strange-key",
+            "escape_routes_unlocked"
+          ],
+          "worldInteraction": "factory-perimeter-service-gate",
+          "endingFlag": "illegal"
+        },
+        {
+          "route": "official",
+          "requirements": [
+            "prologue-government-exit",
+            "official_exit_ready"
+          ],
+          "worldInteraction": "district-official-checkpoint",
+          "endingFlag": "official"
+        }
+      ],
+      "implementation": "Replace pending with a runtime completion handler that checks either route; do not add both as sequential stages. On exit set prologue_complete, ending_route and transition to next district. Preserve original strange-key pickup for older saves."
+    }
+  }
+}

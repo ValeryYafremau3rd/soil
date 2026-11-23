@@ -1,0 +1,24 @@
+{
+  "id": "blowtorch",
+  "price": 40,
+  "name": "Blowtorch",
+  "description": "A handheld torch with a metal fuel canister.",
+  "rarity": "rare",
+  "quality": 4,
+  "category": "Tool",
+  "icon": {
+    "x": 300,
+    "y": 635,
+    "width": 105,
+    "height": 140
+  },
+  "scale": 1,
+  "equipmentSlot": "tool",
+  "skillRequirements": {
+    "intimidation": 7
+  },
+  "bonus": {
+    "skill": "intimidation",
+    "amount": 3
+  }
+}

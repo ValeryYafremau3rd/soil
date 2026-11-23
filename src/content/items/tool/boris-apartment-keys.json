@@ -1,0 +1,32 @@
+{
+  "id": "boris-apartment-keys",
+  "saleable": false,
+  "price": 30,
+  "name": "Dusan apartment keys",
+  "description": "Dusan's apartment 12 key attaches to your existing key ring, along with building access.",
+  "maxStack": 1,
+  "randomLoot": false,
+  "keys": [
+    {
+      "id": "boris-31",
+      "name": "Dusan apartment 12 key - Living District",
+      "doorId": "apartments:apartment-12"
+    },
+    {
+      "id": "boris-building",
+      "name": "Apartment building key - Living District",
+      "doorId": "apartments"
+    }
+  ],
+  "rarity": "uncommon",
+  "quality": 1,
+  "category": "Tool",
+  "icon": {
+    "x": 665,
+    "y": 634,
+    "width": 115,
+    "height": 140
+  },
+  "scale": 1,
+  "attachToKeyRing": true
+}

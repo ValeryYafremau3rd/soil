@@ -2,11 +2,11 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { fallDamage, FallTracker } from '../../src/domain/movement/fallDamage.ts'
 import { beginJump, jumpGravity, restingAt, stepVertical } from '../../src/domain/movement/platforms.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
-import { TravelService } from '../../src/app/services/TravelService.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { drainStatusWithTime } from '../../src/app/services/drainStatusWithTime.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
+import { TravelService } from '../../src/app/services/world/TravelService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { drainStatusWithTime } from '../../src/app/services/character/drainStatusWithTime.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { catalogue, content } from '../helpers/content.mjs'
 
@@ -73,7 +73,7 @@ test('teleport and staircase resets discard the old airborne peak', () => {
 })
 
 test('time costs count elapsed phases, including sleep skips, without an initial charge', () => {
-  const time = new DayTime(), status = new StatusService()
+  const time = new DayTimeService(), status = new StatusService()
   const unsubscribe = drainStatusWithTime(time, status, data.daytime.statCostsPerPhase)
   assert.deepEqual(status.getSnapshot(), { health: 50, energy: 50, sanity: 50 })
   time.advance()
@@ -92,7 +92,7 @@ test('time costs count elapsed phases, including sleep skips, without an initial
 })
 
 test('travel, rest and sleep spend the same game time, while canceled actions spend nothing', () => {
-  const time = new DayTime(), status = new StatusService()
+  const time = new DayTimeService(), status = new StatusService()
   const travel = new TravelService([{ id: 'a' }, { id: 'b' }], time, 2)
   const rest = new RestService(time, status)
   drainStatusWithTime(time, status, data.daytime.statCostsPerPhase, () => rest.isAdvancingTime)
@@ -110,7 +110,7 @@ test('travel, rest and sleep spend the same game time, while canceled actions sp
 })
 
 test('custom time costs and zero costs work; invalid values do not increase stats', () => {
-  const time = new DayTime(4, 'night'), status = new StatusService()
+  const time = new DayTimeService(4, 'night'), status = new StatusService()
   const unsubscribe = drainStatusWithTime(time, status, { energy: 2, sanity: 0 })
   time.advance()
   assert.deepEqual(status.getSnapshot(), { health: 50, energy: 48, sanity: 50 })

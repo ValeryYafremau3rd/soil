@@ -2,11 +2,11 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { resolveDamageResistance } from '../../src/domain/inventory/items.ts'
 import { buffDamageResistance, consumeForBuffs, emptyPerks, expirePerks } from '../../src/domain/character/perks.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { PerksService } from '../../src/app/services/PerksService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { PerksService } from '../../src/app/services/character/PerksService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { catalogue } from '../helpers/content.mjs'
 
@@ -56,7 +56,7 @@ test('content caps clothing resistance at 20 and consumable resistance at 30', (
 })
 test('painkillers reduce incoming damage by 30 percent, refresh, expire and clear on sleep',()=>{
  const {data}=catalogue();const buffs=data.ui.consumableBuffs
- const time=new DayTime()
+ const time=new DayTimeService()
  const status=new StatusService(undefined,undefined,()=>buffDamageResistance(perks.getSnapshot(),buffs))
  const perks=new PerksService(data.ui.perks,time,status,undefined,undefined,buffs)
  status.setItemEffects(perks)

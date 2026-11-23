@@ -1,0 +1,102 @@
+{
+  "categories": [
+    "Food",
+    "Drink",
+    "Supply",
+    "Book"
+  ],
+  "minItems": 1,
+  "maxItems": 2,
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "offers": [
+    {
+      "itemId": "beer-bottle",
+      "chance": 0.45
+    },
+    {
+      "itemId": "berry-jam",
+      "chance": 0.45
+    },
+    {
+      "itemId": "bread",
+      "chance": 0.45
+    },
+    {
+      "itemId": "canned-beer",
+      "chance": 0.45
+    },
+    {
+      "itemId": "canned-fish",
+      "chance": 0.45
+    },
+    {
+      "itemId": "canned-meat",
+      "chance": 0.43
+    },
+    {
+      "itemId": "chef-jacket",
+      "chance": 0.2
+    },
+    {
+      "itemId": "cider",
+      "chance": 0.43
+    },
+    {
+      "itemId": "cooking-pot",
+      "chance": 0.23
+    },
+    {
+      "itemId": "enamel-mug",
+      "chance": 0.29
+    },
+    {
+      "itemId": "flask",
+      "chance": 0.75
+    },
+    {
+      "itemId": "frying-pan",
+      "chance": 0.24
+    },
+    {
+      "itemId": "grey-cigarettes",
+      "chance": 0.89
+    },
+    {
+      "itemId": "kvass-bottle",
+      "chance": 0.45
+    },
+    {
+      "itemId": "lighter",
+      "chance": 0.42
+    },
+    {
+      "itemId": "matches",
+      "chance": 0.92
+    },
+    {
+      "itemId": "open-sardines",
+      "chance": 0.45
+    },
+    {
+      "itemId": "tinned-chicken",
+      "chance": 0.45
+    },
+    {
+      "itemId": "vodka",
+      "chance": 0.26
+    },
+    {
+      "itemId": "water-bottle",
+      "chance": 0.46
+    },
+    {
+      "itemId": "whiskey",
+      "chance": 0.19
+    },
+    {
+      "itemId": "wine",
+      "chance": 0.27
+    }
+  ]
+}

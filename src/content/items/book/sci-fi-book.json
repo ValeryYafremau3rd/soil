@@ -1,0 +1,33 @@
+{
+  "id": "sci-fi-book",
+  "eruditionRequired": 4,
+  "price": 22,
+  "name": "Sci fi novel",
+  "quality": 3,
+  "category": "Book",
+  "icon": {
+    "x": 20,
+    "y": 450,
+    "width": 145,
+    "height": 155
+  },
+  "scale": 1,
+  "rarity": "epic",
+  "description": "Read once to permanently gain +2 Education, +1 Scraper, +1 Medicine. Duplicate copies give no further bonus.",
+  "readable": true,
+  "consumable": true,
+  "bonuses": [
+    {
+      "skill": "erudition",
+      "amount": 2
+    },
+    {
+      "skill": "scraper",
+      "amount": 1
+    },
+    {
+      "skill": "medicine",
+      "amount": 1
+    }
+  ]
+}

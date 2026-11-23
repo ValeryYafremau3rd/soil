@@ -1,8 +1,13 @@
 {
   "start": "greeting",
+  "openingLines": [
+    "We cannot keep the factory running on promises. Have you heard anything useful?",
+    "Another shift, another wait for supplies. What brings you here?",
+    "The workers notice when something is missing, even if the paperwork says otherwise. What do you need?"
+  ],
   "nodes": {
     "find-service-pistol-thanks": {
-      "text": "You found a service pistol. Hard to come by these days. As promised, here's double its listed price.",
+      "text": "You actually found one. I won't ask where. I promised twice the listed price, and I keep my promises. Please don't tell anyone you brought it to me.",
       "choices": [
         {
           "id": "back",
@@ -12,44 +17,121 @@
       ]
     },
     "greeting": {
-      "text": "I'm Irina Kovalenko, the factory worker. I work the factory shift. If it rattles, leaks, or needs carrying, they send me.",
+      "text": "Irina Kovalenko. I manage the factory work plan—shifts, repairs, what little material we have left. Lately the machines aren't the only things keeping people awake. But we still have to turn up in the morning.",
       "choices": [
         {
+          "id": "last-night-incident",
+          "text": "[Quest] Survive the military operation and discover a route beyond the district.",
+          "questId": "prologue-last-night",
+          "next": "story-last-night-incident"
+        },
+        {
+          "id": "last-night-factory",
+          "text": "[Quest] Reach the restricted factory area during the convoy operation.",
+          "questId": "prologue-last-night",
+          "next": "story-last-night-factory"
+        },
+        {
+          "id": "factory-missing-worker-report",
+          "text": "[Quest] Tell Irina what the slip reveals, without claiming the worker is dead.",
+          "questId": "factory-missing-worker",
+          "next": "story-factory-missing-worker-report"
+        },
+        {
+          "id": "factory-missing-worker-locker",
+          "text": "[Quest] Inspect the worker’s locker in the factory changing area; record the maintenance slip.",
+          "questId": "factory-missing-worker",
+          "next": "story-factory-missing-worker-locker"
+        },
+        {
+          "id": "factory-missing-worker-start",
+          "text": "[Quest] Ask Irina about the missing worker and his assigned shift.",
+          "questId": "factory-missing-worker",
+          "next": "story-factory-missing-worker-start"
+        },
+        {
+          "id": "factory-missing-worker-offer",
+          "text": "[Quest] The Empty Locker",
+          "acceptQuestId": "factory-missing-worker",
+          "next": "greeting"
+        },
+        {
+          "id": "decision-topic-dusan_fate",
+          "text": "[Quest] Discuss the workshop report.",
+          "questTopic": "factory-locked-workshop",
+          "next": "quest-decision-dusan_fate"
+        },
+        {
+          "id": "supplies-offer",
+          "text": "[Quest] Has the factory shipment arrived?",
+          "next": "supplies-request"
+        },
+        {
+          "id": "supplies-return",
+          "text": "[Quest] The truck is here, but the militia are inspecting it.",
+          "questId": "factory-supplies",
+          "next": "supplies-concern"
+        },
+        {
+          "id": "supplies-report",
+          "text": "[Quest] I checked the truck. The crates are empty.",
+          "questId": "factory-supplies",
+          "next": "supplies-empty"
+        },
+        {
+          "id": "ask-mother-belongings",
+          "text": "[Quest] Milena is searching for her mother’s belongings. Did the factory keep anything?",
+          "questId": "milena-mother-journal",
+          "next": "mother-rooftop"
+        },
+        {
+          "id": "town-opinion",
+          "text": "[Town situation] Do you think the quarantine is justified?",
+          "next": "town-opinion",
+          "questId": "town-opinions"
+        },
+        {
           "id": "ask-about-materials",
-          "text": "[Quest] Does the factory need help?",
+          "text": "[Quest] Is there anything I can do for the factory?",
           "next": "scrap-request"
         },
         {
           "id": "deliver-scrap",
-          "text": "[Quest] I found scrap for the factory.",
+          "text": "[Quest] I brought you some scrap metal.",
           "questId": "mechanic-scrap",
           "next": "scrap-thanks"
         },
         {
           "id": "courier-pickup",
-          "text": "[Courier] I am here to collect the parcel.",
+          "text": "[Courier] I’m here to collect a parcel.",
           "questId": "courier-delivery",
           "next": "courier-pickup-confirmed"
         },
         {
           "id": "courier-deliver",
-          "text": "[Courier] I have your parcel.",
+          "text": "[Courier] I have a parcel for you.",
           "questId": "courier-delivery",
           "next": "courier-delivery-thanks"
         },
         {
+          "id": "postman-deliver",
+          "text": "[Delivery] Here is your letter.",
+          "questId": "postman",
+          "next": "postman-thanks"
+        },
+        {
           "id": "advice",
-          "text": "[Advice]",
+          "text": "[Advice] Any advice for getting by?",
           "next": "advice"
         },
         {
           "id": "about",
-          "text": "Tell about yourself.",
+          "text": "Tell me about yourself.",
           "next": "about"
         },
         {
           "id": "cashier-4-deliver-1",
-          "text": "[Delivery] Deliver 1 Water bottle to Irina Kovalenko.",
+          "text": "[Delivery] I have a water bottle for Irina Kovalenko.",
           "next": "cashier-4-cashier-4-deliver-1",
           "questId": "cashier-4"
         },
@@ -60,36 +142,53 @@
         },
         {
           "id": "find-item-start",
-          "text": "[Find item] Tell me about your request.",
+          "text": "[Find item] What do you need me to find?",
           "questId": "find-item",
           "next": "find-item-instructions"
         },
         {
           "id": "find-item-deliver",
-          "text": "[Find item] I found the requested item.",
+          "text": "[Find item] I found what you asked for.",
           "questId": "find-item",
           "next": "find-item-payment"
+        },
+        {
+          "id": "ask-about",
+          "text": "Can I ask you a few things?",
+          "next": "ask-about"
+        },
+        {
+          "id": "people-menu",
+          "text": "Can you tell me about a specific person?",
+          "next": "people-menu"
+        },
+        {
+          "id": "escape-night-shadow",
+          "text": "[Quest] What happened when the factory guard disappeared?",
+          "questId": "way-out-of-town",
+          "next": "escape-night-shadow-account",
+          "requiresQuest": "factory-locked-workshop"
         }
       ]
     },
     "scrap-request": {
-      "text": "The factory is running low on materials. With the city under blockade, we have to use whatever we can find. Bring me one piece of scrap. Check the trash bins at night: the caretaker cleans them out in the morning, but before that you can find materials in them. I'll pay you 10 Thalers and give you a pair of work gloves.",
+      "text": "We're down to salvaging metal from rubbish bins. It isn't much of a production plan, but it's what we have. Bring me one piece of scrap and I'll pay you 10 Thalers and give you work gloves. The caretaker empties the bins in the morning, so you'll have better luck after dark. Please be careful out there.",
       "choices": [
         {
           "id": "accept-scrap",
-          "text": "I'll find some scrap.",
+          "text": "I’ll bring you a piece of scrap.",
           "acceptQuestId": "mechanic-scrap",
           "next": "scrap-instructions"
         },
         {
           "id": "back",
-          "text": "Maybe later.",
+          "text": "I’ll think about it.",
           "next": "greeting"
         }
       ]
     },
     "scrap-instructions": {
-      "text": "One piece of scrap will help. Search the trash bins after dark, and bring it back before you scrap it for parts yourself.",
+      "text": "Just one usable piece of scrap. The bins are worth checking after dark, before the caretaker clears them in the morning. Don't take unnecessary risks. A factory can wait for metal; a person can't be replaced so easily.",
       "choices": [
         {
           "id": "goodbye",
@@ -99,7 +198,7 @@
       ]
     },
     "scrap-thanks": {
-      "text": "This will help keep the factory running. Here are your 10 Thalers and a pair of work gloves. You may need them if you're not afraid of work.",
+      "text": "This is good metal. I can put it to use today. Here—10 Thalers and the work gloves I promised. Thank you. You have no idea how much a small thing like this helps.",
       "choices": [
         {
           "id": "back",
@@ -109,7 +208,7 @@
       ]
     },
     "advice": {
-      "text": "A bench lets you rest for one phase and recover Energy. A bed or sofa lets you sleep until morning.",
+      "text": "If you're exhausted, sit on a bench to rest for one phase and recover Energy. A bed or sofa will let you sleep until morning. And please, get some proper sleep. People make dangerous mistakes when they're worn out.",
       "choices": [
         {
           "id": "back",
@@ -124,7 +223,7 @@
       ]
     },
     "about": {
-      "text": "I work the factory shift. If it rattles, leaks, or needs carrying, they send me. Morning: find me outside the factory. Afternoon: I am outside the factory too. Evening: I spend time in Center. Night: I stay in apartment 31 in Living District.",
+      "text": "I organize shifts and repairs at the factory. In the morning and afternoon, you'll find me outside the factory; in the evening, I'm in Center. At night, I stay in apartment 31 in Living District. I've heard things moving in the street after curfew—heavy steps, sometimes a sound like metal being dragged. I don't look out. The authorities say to keep our windows shut, and on that point I'm happy to listen.",
       "choices": [
         {
           "id": "back",
@@ -139,7 +238,7 @@
       ]
     },
     "cashier-4-cashier-4-deliver-1": {
-      "text": "Thank you. The delivery is recorded.",
+      "text": "A water bottle? Thank you. I'll record the delivery. There are workers who need it more than I do.",
       "choices": [
         {
           "id": "back",
@@ -154,7 +253,7 @@
       ]
     },
     "courier-pickup-confirmed": {
-      "text": "Take this parcel to the recipient named in your journal.",
+      "text": "Here's the parcel. The recipient is listed in your journal. Please make sure it reaches the right person—replacing anything these days is difficult.",
       "choices": [
         {
           "id": "back",
@@ -164,7 +263,7 @@
       ]
     },
     "courier-delivery-thanks": {
-      "text": "Thank you. Here is your payment.",
+      "text": "Everything's here. Thank you for seeing it through. Here's your payment, as agreed.",
       "choices": [
         {
           "id": "back",
@@ -174,7 +273,7 @@
       ]
     },
     "find-item-instructions": {
-      "text": "Find the requested item and take it to the recipient in your journal.",
+      "text": "The item we need is listed in your journal, along with the recipient. Please take it to them when you find it. These little requests matter more than they used to.",
       "choices": [
         {
           "id": "back",
@@ -184,12 +283,535 @@
       ]
     },
     "find-item-payment": {
-      "text": "Exactly what was requested. Here is your payment.",
+      "text": "Yes, that's exactly what was needed. Thank you. Here's your payment.",
       "choices": [
         {
           "id": "back",
           "text": "Back.",
           "next": "greeting"
+        }
+      ]
+    },
+    "town-opinion": {
+      "text": "I know people are frightened. I hear the same noises at night that everyone else does, and I worry when a familiar face stops appearing at work. But I believe the government is trying to protect us. Dusan says the tablets are dangerous and the soldiers are lying about everything. I don't agree. Suspicion isn't evidence. Still, if a neighbor needs food or shelter, I'm not going to report them for knocking on my door after curfew.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "mother-rooftop": {
+      "text": "Milena's mother's belongings may still be in a toolbox on the main factory roof. The soldiers have closed the roof access; they say they need an observation post. I understand that, though I don't understand why they watch the factory yard all night. I can't authorize you to go up. If you find another way onto the main roof, check the toolbox. I won't ask how you got there.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "I’ll see if there’s another way up.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "supplies-request": {
+      "text": "The shipment was due days ago. I've rearranged the work plan three times, and soon there won't be any work left to rearrange. Pavel Sokolov handles the paperwork. Could you ask him what's happened to our supplies? He may give you a clearer answer than he's given me.",
+      "choices": [
+        {
+          "id": "accept-supplies",
+          "text": "I’ll speak to Pavel.",
+          "acceptQuestId": "factory-supplies",
+          "next": "supplies-instructions"
+        },
+        {
+          "id": "back",
+          "text": "Not right now.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "supplies-instructions": {
+      "text": "Pavel Sokolov is responsible for the delivery records. Please ask him where the factory shipment is. I need a date I can actually plan around.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "supplies-concern": {
+      "text": "The militia are inspecting the shipment? That's procedure, yes. But why do they keep the truck beside the factory until night? Please check the crates outside. You can approach at night or use Stealth 8 to avoid being noticed. I know what I'm asking. If you go after dark, don't linger in the yard, whatever you hear.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "supplies-empty": {
+      "text": "Empty? Every crate? Then what have the soldiers been guarding all this time? I've promised those materials to people who can barely feed their families. I'll raise the discrepancy through the proper channels. And I'll find another way to keep the workers paid. Thank you for taking the risk. Take this spare work jacket from our stores. It's little enough for what you've done.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "I hope you find a solution.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "supplies-inspected": {
+      "text": "There's nothing in the crates. Not a single part.",
+      "choices": [
+        {
+          "id": "supplies-crates",
+          "text": "The supply crates were empty.",
+          "questId": "factory-supplies",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about": {
+      "text": "You can ask. I won't repeat rumors as facts, but I won't pretend I haven't noticed things either.",
+      "choices": [
+        {
+          "id": "ask-about-1",
+          "text": "[Athletics] Why does everyone hear footsteps and voices after curfew?",
+          "trustRequirement": 1,
+          "skillRequirement": {
+            "skill": "athletics",
+            "level": 4
+          },
+          "next": "ask-about-answer-1"
+        },
+        {
+          "id": "ask-about-2",
+          "text": "[Scraper] What made those enormous marks on the factory doors?",
+          "trustRequirement": 2,
+          "skillRequirement": {
+            "skill": "scraper",
+            "level": 6
+          },
+          "next": "ask-about-answer-2"
+        },
+        {
+          "id": "ask-about-3",
+          "text": "[Barter] Why are soldiers bringing weapons and floodlights to the factory?",
+          "trustRequirement": 3,
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 8
+          },
+          "next": "ask-about-answer-3"
+        },
+        {
+          "id": "ask-about-4",
+          "text": "[Erudition] If the night shift ended, who is using the factory after dark?",
+          "trustRequirement": 4,
+          "skillRequirement": {
+            "skill": "erudition",
+            "level": 10
+          },
+          "next": "ask-about-answer-4"
+        },
+        {
+          "id": "ask-about-5",
+          "text": "[Diplomacy] Has anyone seen what's really in the factory at night?",
+          "trustRequirement": 5,
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 14
+          },
+          "next": "ask-about-answer-5"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "escape-night-shadow-lore-topic",
+          "text": "Could someone have moved through the yard unseen?",
+          "skillRequirement": {
+            "skill": "stealth",
+            "level": 8
+          },
+          "next": "escape-night-shadow-lore-answer",
+          "requiresQuest": "factory-locked-workshop"
+        }
+      ]
+    },
+    "ask-about-answer-1": {
+      "text": "The morning crew comes in looking as if they haven't slept for a week. They talk about dragging sounds, a strange cry, and footsteps that stop beneath their windows. One man swears he heard his dead brother calling him from the street. The doctors say the infection can cause hallucinations. Perhaps it can. But I heard something heavy pass my own building last night, and my neighbor heard it too. We kept the lights off until morning.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "Can I ask something else?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-2": {
+      "text": "The loading doors have deep gouges above head height. The steel is bent inward, as though something pushed against it from the yard. I checked the measurements myself. Dusan says no machine in the factory could have made those marks. He thinks something comes here after dark. I told him not to frighten the workers with stories. Then I found the same marks on the inside of the yard gate. I haven't mentioned those to anyone. I have asked Dusan to stop telling the younger workers what he thinks made them. He says I should stop pretending the marks are ordinary damage.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "Can I ask something else?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-3": {
+      "text": "The military gets fuel, floodlights, ammunition and welding supplies while we're counting screws. I know the patrols need protection. But their trucks arrive after sunset, and by morning some have smashed lamps, torn panels, even blood on the steps. They don't let our mechanics touch them. Last week a soldier asked me whether the factory's heavy doors could be reinforced from the inside. He wouldn't say why. I approved the steel anyway.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "Can I ask something else?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-4": {
+      "text": "The official log says the night shift was suspended months ago. Yet the factory's electricity use rises sharply after curfew, and someone keeps signing out welding rods and replacement chains. I checked twice. The signatures belong to men who aren't on our payroll. When I asked Pavel about it, he told me the records were classified and suggested I concentrate on production. I still think there must be a reason. I just don't think they're telling us what it is. Zofia insists the allocation ledger is correct, while Pavel calls the discrepancies classified. Neither answer gets a machine running.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "Can I ask something else?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-5": {
+      "text": "A worker named Anya stopped coming in after she said she'd seen a shape moving between the factory buildings. She described it as taller than the loading doors. I assumed she was exhausted, perhaps hallucinating. Then the soldiers came for her, and I was ordered to strike her name from the roster. I refused to mark her as dismissed. Her job is still waiting. Listen, I have never seen a creature, and I won't tell you one exists. But on some nights the factory siren sounds once, very briefly, and then the whole district goes quiet. If you hear that siren, please don't go anywhere near the factory. Promise me. Milena asked me about her mother’s old belongings. I promised to look, though I have enough missing workers on my conscience already.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "Can I ask something else?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-menu": {
+      "text": "I know some of them through work. I can tell you what I have seen, not what I cannot prove.",
+      "choices": [
+        {
+          "id": "people-about-elena-jovanovic",
+          "text": "Elena Jovanovic",
+          "next": "people-about-elena-jovanovic"
+        },
+        {
+          "id": "people-about-pavel-sokolov",
+          "text": "Pavel Sokolov",
+          "next": "people-about-pavel-sokolov"
+        },
+        {
+          "id": "people-about-dusan-markovic",
+          "text": "Dusan Markovic",
+          "next": "people-about-dusan-markovic"
+        },
+        {
+          "id": "people-about-viktor-petrov",
+          "text": "Viktor Petrov",
+          "next": "people-about-viktor-petrov"
+        },
+        {
+          "id": "people-about-zofia-nowak",
+          "text": "Zofia Nowak",
+          "next": "people-about-zofia-nowak"
+        },
+        {
+          "id": "people-about-milena-vukovic",
+          "text": "Milena Vukovic",
+          "next": "people-about-milena-vukovic"
+        },
+        {
+          "id": "people-about-nadia-morozova",
+          "text": "Nadia Morozova",
+          "next": "people-about-nadia-morozova"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-elena-jovanovic": {
+      "text": "Elena cleans our streets and notices everything. I appreciate the work. I wish she were more careful about passing on what she hears; an innocent remark can ruin someone's life here.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-pavel-sokolov": {
+      "text": "Mr. Sokolov approves our allocations. He's always polite, always precise, and somehow never able to explain where the missing crates went. I keep copies of my figures.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-dusan-markovic": {
+      "text": "Dusan can repair machinery nobody else will touch. He also makes a point of provoking the authorities. I rely on his hands, not his theories. I worry he'll get himself taken away.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-viktor-petrov": {
+      "text": "Viktor sometimes lets exhausted workers eat on credit. He jokes about everything, even things that aren't funny. I think that's how he manages to keep opening the bar.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-zofia-nowak": {
+      "text": "Zofia follows the allocation sheets as written. We both work with the same shortages, but she thinks questioning a number is questioning the capital. I think it's simply doing the job properly.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-milena-vukovic": {
+      "text": "Milena asked about her mother's factory belongings. She deserves an answer, and I'll help where I can. She's brave, but she doesn't always understand what a careless question costs.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-nadia-morozova": {
+      "text": "Nadia does more with a little medicine than most people could do with a full clinic. She's been asking about factory injuries. I haven't told her everything I've noticed; I don't want to burden her with guesses.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-factory-workshop-report": {
+      "text": "Tell Irina about the military equipment without exposing Dusan.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-factory-missing-worker-start": {
+      "text": "He never returned from the night shift. Check his locker for the maintenance slip. Please do not tell people he is dead; I do not know that.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-factory-missing-worker-locker": {
+      "text": "Inspect the worker’s locker in the factory changing area; record the maintenance slip.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-factory-missing-worker-report": {
+      "text": "Then we have a destination, not an answer. We should follow the maintenance trail quietly.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-last-night-factory": {
+      "text": "Reach the restricted factory area during the convoy operation.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-last-night-incident": {
+      "text": "Survive the military operation and discover a route beyond the district.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "decision-dusan_fate-warn": {
+      "text": "Tell him to keep his head down. The maintenance passage is still usable.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "decision-dusan_fate-report": {
+      "text": "Pavel will have his name. I cannot promise what an inquiry will mean for him.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "postman-thanks": {
+      "text": "Thank you for bringing my letter.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "quest-decision-dusan_fate": {
+      "text": "What should I tell Pavel Sokolov about Dusan Markovic?",
+      "choices": [
+        {
+          "id": "factory-workshop-report",
+          "text": "Warn Dusan and keep his name out of the report.",
+          "questId": "factory-locked-workshop",
+          "questChoiceId": "factory-workshop-report",
+          "storyDecision": {
+            "id": "dusan_fate",
+            "value": "warn"
+          },
+          "next": "decision-dusan_fate-warn",
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 14
+          }
+        },
+        {
+          "id": "factory-workshop-report-report",
+          "text": "Tell Pavel that Dusan kept the ledger.",
+          "questId": "factory-locked-workshop",
+          "questChoiceId": "factory-workshop-report",
+          "storyDecision": {
+            "id": "dusan_fate",
+            "value": "report"
+          },
+          "next": "decision-dusan_fate-report"
+        }
+      ]
+    },
+    "escape-night-shadow-account": {
+      "text": "On the night the guard disappeared, I saw a huge shadow cross the factory yard and heard a scream; I never saw him leave. Whatever it was still moves near the factory after dark. I cannot tell you whether the guard survived.",
+      "choices": [
+        {
+          "id": "escape-night-shadow-lore",
+          "text": "Could someone have moved through the yard unseen?",
+          "skillRequirement": {
+            "skill": "stealth",
+            "level": 8
+          },
+          "next": "escape-night-shadow-lore-answer",
+          "requiresQuest": "factory-locked-workshop"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "escape-night-shadow-lore-answer": {
+      "text": "The convoy lamps face the road, leaving the maintenance yard in darkness. Something large could cross behind the workshops without entering a beam. The military calls every night incident a machinery failure, but machines do not leave tracks like those.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
+          "close": true
         }
       ]
     }

@@ -1,0 +1,95 @@
+{
+  "id": "bartender-supplies",
+  "name": "Running Low",
+  "description": "Viktor is running out of basic food and drink. The ration system keeps promising deliveries, but the bar cannot survive on promises.",
+  "offeredBy": "bartender",
+  "offerText": "Looking for work? My supplies are running low.",
+  "stages": [
+    {
+      "id": "collect-food",
+      "description": "Collect one food item.",
+      "parallelGroup": "supplies",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItemGroups": [
+        [
+          "berry-jam",
+          "bread",
+          "canned-fish",
+          "canned-meat",
+          "open-sardines",
+          "tinned-beef",
+          "tinned-chicken"
+        ]
+      ]
+    },
+    {
+      "id": "collect-alcohol",
+      "description": "Collect one alcoholic drink.",
+      "parallelGroup": "supplies",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItemGroups": [
+        [
+          "vodka",
+          "whiskey",
+          "beer-bottle",
+          "canned-beer",
+          "cider",
+          "wine",
+          "spirits"
+        ]
+      ]
+    },
+    {
+      "id": "deliver-supplies",
+      "description": "Bring one food item and one alcoholic drink to Viktor at the bar.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "deliver-supplies"
+      },
+      "requiredItemGroups": [
+        [
+          "berry-jam",
+          "bread",
+          "canned-fish",
+          "canned-meat",
+          "open-sardines",
+          "tinned-beef",
+          "tinned-chicken"
+        ],
+        [
+          "vodka",
+          "whiskey",
+          "beer-bottle",
+          "canned-beer",
+          "cider",
+          "wine",
+          "spirits"
+        ]
+      ],
+      "removeRequiredItemGroups": true
+    }
+  ],
+  "reward": {
+    "money": 10,
+    "items": [
+      {
+        "itemId": "frying-pan",
+        "quantity": 1
+      }
+    ]
+  },
+  "_codex": {
+    "narrativeIntent": "Viktor’s shortages begin as a mundane food problem, not a conspiracy.",
+    "implementationNotes": [
+      "Preserve food and alcohol item groups."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

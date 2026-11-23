@@ -48,6 +48,23 @@
     "groundScreenRatio": 1
   },
   "interaction": {
+    "storyGlow": {
+      "label": "!",
+      "offsetY": 80,
+      "periodMs": 1600,
+      "minAlpha": 0.55,
+      "maxAlpha": 1,
+      "selectedScale": 1.2,
+      "shadowColor": "#ffd078",
+      "shadowBlur": 16,
+      "style": {
+        "fontFamily": "Georgia, serif",
+        "fontSize": "36px",
+        "color": "#ffda91",
+        "stroke": "#5b3c1a",
+        "strokeThickness": 2
+      }
+    },
     "verticalTolerance": 30,
     "hintWidth": 280,
     "hintGap": 8,

@@ -4,12 +4,12 @@ import { content } from '../helpers/content.mjs'
 import { emptyPerks, progressForAction, perkCharacter } from '../../src/domain/character/perks.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { conditionedCharacter } from '../../src/domain/skills/condition.ts'
-import { PerksService } from '../../src/app/services/PerksService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
-import { LockpickingService } from '../../src/app/services/LockpickingService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
+import { PerksService } from '../../src/app/services/character/PerksService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
+import { LockpickingService } from '../../src/app/services/puzzles/LockpickingService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 
 const data = content()
@@ -54,15 +54,18 @@ test('both alignment bonuses survive carried gear and conditions without stackin
     const resolve = character => conditionedCharacter(character, [{ itemId: 'badge', quantity: 1 }], { badge: { id: 'badge', bonuses: [{ skill: 'persuasion', amount: 1 }] } }, { energy: 20, sanity: 20 }, { energy: 100, sanity: 100 })
     const normal = resolve(base), modified = resolve(effective)
     const sign = id === 'lawful' ? 1 : -1
-    assert.equal(modified.skills.persuasion, normal.skills.persuasion + 2 * sign)
-    assert.equal(modified.skills.intimidation, normal.skills.intimidation - 2 * sign)
+    // Alignment modifiers are part of the skill total reduced by Sanity.
+    const beforeSanity = Math.floor(4 * 0.4) * 3 + 1
+    assert.equal(normal.skills.persuasion, Math.max(1, Math.floor(beforeSanity * 0.4)))
+    assert.equal(modified.skills.persuasion, Math.max(1, Math.floor((beforeSanity + 2 * sign) * 0.4)))
+    assert.equal(modified.skills.intimidation, Math.max(1, Math.floor((beforeSanity - 1 - 2 * sign) * 0.4)))
     assert.deepEqual(resolve(perkCharacter(effective, state, [], definitions)).skills, modified.skills)
     assert.equal(base.skills.persuasion, 12)
   }
 })
 
 test('alignment service reloads progress, notifies once and never causes withdrawal', () => {
-  const time = new DayTime(1, 'night'), notices = []
+  const time = new DayTimeService(1, 'night'), notices = []
   const service = new PerksService(definitions, time, { drain() { assert.fail('alignment has no withdrawal') } }, undefined, message => notices.push(message))
   for (let i = 0; i < 9; i++) service.recordAction('lockPicked')
   const restored = new PerksService(definitions, time, { drain() { assert.fail('alignment has no withdrawal') } }, JSON.parse(JSON.stringify(service.getSnapshot())), message => notices.push(message))
@@ -126,7 +129,7 @@ test('a rejected sale payment awards no points and preserves inventory', () => {
 
 test('cancelled and failed locks award nothing; a successful puzzle awards once', () => {
   let picked = 0
-  const locks = new LockpickingService(new DayTime(1, 'night'), () => 10, data.skills, { has: () => true, consume: () => true }, () => 0, () => 0, undefined, undefined, () => picked++)
+  const locks = new LockpickingService(new DayTimeService(1, 'night'), () => 10, data.skills, { has: () => true, consume: () => true }, () => 0, () => 0, undefined, undefined, () => picked++)
   locks.attempt('door', 'Door')
   locks.close()
   assert.equal(picked, 0)

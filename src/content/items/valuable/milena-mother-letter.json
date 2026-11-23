@@ -1,0 +1,20 @@
+{
+  "id": "milena-mother-letter",
+  "skillRequirements": { "barter": 1 },
+  "price": 12,
+  "name": "Milena’s mother’s letter",
+  "description": "A letter left by Milena’s mother. Press Enter to read.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Valuable",
+  "icon": {
+    "x": 495,
+    "y": 455,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "randomLoot": false,
+  "saleable": false,
+  "readingText": "My dear Milena,\nI have not been feeling well since I started working at the factory. I hear voices even when I am alone in this room. Shadows move where nobody is standing, and I see people who vanish when I turn on the light. I cannot tell what is real anymore. I have put this letter in the safe in room 21. If I cannot explain what happened, please remember that I love you.\nMother"
+}

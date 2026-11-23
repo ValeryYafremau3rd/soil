@@ -1,0 +1,24 @@
+{
+  "id": "rope",
+  "price": 8,
+  "name": "Rope",
+  "description": "A coil of coarse, tightly twisted rope.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Tool",
+  "icon": {
+    "x": 15,
+    "y": 810,
+    "width": 190,
+    "height": 180
+  },
+  "scale": 1,
+  "equipmentSlot": "tool",
+  "skillRequirements": {
+    "athletics": 2
+  },
+  "bonus": {
+    "skill": "athletics",
+    "amount": 1
+  }
+}

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content } from '../helpers/content.mjs'
-import { PerksService } from '../../src/app/services/PerksService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { PerksService } from '../../src/app/services/character/PerksService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { buffFearResistance, normalizeConsumableGroups, emptyPerks } from '../../src/domain/character/perks.ts'
 
 const {ui}=content()
@@ -14,7 +14,7 @@ test('legacy stacked effects keep the newest category bundle without dropping ot
  assert.deepEqual(normalizeConsumableGroups(normalized,ui.consumableBuffs),normalized)
 })
 test('food, alcohol and medicine each replace their own effect bundle and preserve other categories',()=>{
- const time=new DayTime(),perks=new PerksService(ui.perks,time,{drain(){}},undefined,undefined,ui.consumableBuffs)
+ const time=new DayTimeService(),perks=new PerksService(ui.perks,time,{drain(){}},undefined,undefined,ui.consumableBuffs)
  const active=group=>perks.getSnapshot().buffs.filter(active=>ui.consumableBuffs.find(buff=>buff.id===active.id)?.group===group).map(buff=>buff.id).sort()
  const expected=item=>ui.consumableBuffs.filter(buff=>buff.itemIds.includes(item)).map(buff=>buff.id).sort()
  perks.consumed('bread',{});perks.consumed('spirits',{});perks.consumed('steroids',{})

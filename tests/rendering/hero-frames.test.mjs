@@ -6,7 +6,7 @@ import { validateContent } from '../../src/app/content/validateContent.ts'
 
 test('every hero crop fits the updated sheet with valid anchors and horizontal canvas margins', () => {
   const { hero } = content()
-  const png = readFileSync(new URL('../../public/assets/characters/hero.png', import.meta.url))
+  const png = readFileSync(new URL(`../../public/${hero.asset.path}`, import.meta.url))
   const ratio = png.readUInt32BE(16) / hero.asset.referenceWidth
   const sheetHeight = png.readUInt32BE(20)
   for (const [action, key] of Object.entries(hero.actions)) {

@@ -27,9 +27,9 @@
     },
     {
       "id": "bed",
-      "type": "mattress-striped",
-      "x": 384,
-      "scale": 0.75
+      "type": "sofa-green",
+      "x": 350,
+      "scale": 1
     }
   ]
 }

@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { assembleContent } from '../../src/app/content/assembleContent.ts'
-import { locationFiles } from '../../src/app/content/locationFiles.ts'
+import { expandLocationFiles } from '../../src/app/content/expandLocationFiles.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { PlacedObjectManager } from '../../src/game/interactive/PlacedObjectManager.ts'
-import { HudService } from '../../src/app/services/HudService.ts'
+import { HudService } from '../../src/app/services/ui/HudService.ts'
 import { catalogue, contentFiles as authoredFiles } from '../helpers/content.mjs'
 
-function contentFiles() { return locationFiles(authoredFiles(), new Map()) }
+function contentFiles() { return expandLocationFiles(authoredFiles(), new Map()) }
 
 test('locations own taskboard placements with reusable street and wall definitions', () => {
   const files = contentFiles()

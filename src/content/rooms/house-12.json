@@ -22,12 +22,12 @@
     {
       "id": "chair",
       "type": "chair-padded",
-      "x": 210,
+      "x": 250,
       "scale": 1
     },
     {
       "id": "bed",
-      "type": "mattress-quilted",
+      "type": "sofa",
       "x": 130,
       "scale": 1
     }

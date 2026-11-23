@@ -7,7 +7,12 @@
     "heightOffset": 80.6,
     "scale": 0.5,
     "locked": false,
-    "items": [],
+    "items": [
+      {
+        "itemId": "nurse-unsent-letter",
+        "quantity": 1
+      }
+    ],
     "restock": false
   },
   {
@@ -28,15 +33,15 @@
     "heightOffset": 153.45,
     "items": [
       {
-        "itemId": "barter-training-magazine",
+        "itemId": "newspaper-barter",
         "quantity": 1
       },
       {
-        "itemId": "athletics-training-handbook",
+        "itemId": "anatomy-athletics",
         "quantity": 1
       },
       {
-        "itemId": "medicine-training-handbook",
+        "itemId": "chemistry-medicine",
         "quantity": 1
       },
       {
@@ -83,25 +88,25 @@
   {
     "id": "living-district-bus-roof-reward",
     "type": "toolbox",
-    "x": 1500,
+    "x": 720,
     "space": "outside",
     "scale": 0.6,
     "locked": false,
     "items": [
       {
-        "itemId": "stealth-training-magazine",
+        "itemId": "sport-magazine-stealth",
         "quantity": 1
       },
       {
-        "itemId": "intimidation-training-handbook",
+        "itemId": "psychology-intimidation",
         "quantity": 1
       },
       {
-        "itemId": "willpower-training-handbook",
+        "itemId": "chemistry-erudition",
         "quantity": 1
       }
     ],
-    "heightOffset": 185.12,
+    "heightOffset": 150,
     "restock": false
   },
   {
@@ -123,7 +128,7 @@
         "quantity": 1
       },
       {
-        "itemId": "leather-journal",
+        "itemId": "chemistry-erudition",
         "quantity": 1
       },
       {

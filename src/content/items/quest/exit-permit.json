@@ -1,0 +1,18 @@
+{
+  "id": "exit-permit",
+  "price": 1,
+  "name": "District exit permit",
+  "description": "A named authorization for the military departure checkpoint. Issued after the confidential handoff and confiscated on departure.",
+  "category": "Quest",
+  "rarity": "common",
+  "quality": 1,
+  "icon": {
+    "x": 925,
+    "y": 661,
+    "width": 100,
+    "height": 100
+  },
+  "scale": 1,
+  "saleable": false,
+  "randomLoot": false
+}

@@ -1,88 +1,85 @@
 {
   "name": "Elena Jovanovic",
-  "sourceKey": "citizens-source",
+  "sourceKey": "caretaker-source",
   "textureKey": "citizen-caretaker",
-  "path": "assets/characters/npc/citizens.png",
+  "path": "assets/characters/npc/caretaker.png",
   "idleAnimation": "citizen-caretaker-idle",
-  "referenceWidth": 2048,
+  "referenceWidth": 2172,
   "frameRate": 3,
   "displayHeight": 108,
   "depth": 6,
   "interactionRadius": 65,
-  "background": "light",
+  "background": "none",
   "scale": 0.9,
   "repeat": -1,
   "frameSize": {
-    "width": 112,
-    "height": 180,
-    "referenceHeight": 172
+    "width": 420,
+    "height": 690,
+    "referenceHeight": 668
   },
   "idleSteps": [
     {
-      "x": 70,
-      "y": 508,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 172
+      "x": 40,
+      "y": 25,
+      "width": 290,
+      "height": 668,
+      "anchorX": 101.5,
+      "anchorY": 668
     },
     {
-      "x": 252,
-      "y": 508,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 172
+      "x": 410,
+      "y": 25,
+      "width": 285,
+      "height": 668,
+      "anchorX": 99,
+      "anchorY": 668
     },
     {
-      "x": 434,
-      "y": 508,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 172
+      "x": 775,
+      "y": 25,
+      "width": 290,
+      "height": 667,
+      "anchorX": 103,
+      "anchorY": 667
     },
     {
-      "x": 616,
-      "y": 508,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 172
+      "x": 1125,
+      "y": 25,
+      "width": 290,
+      "height": 668,
+      "anchorX": 103,
+      "anchorY": 668
     },
     {
-      "x": 798,
-      "y": 508,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 172
+      "x": 1500,
+      "y": 25,
+      "width": 290,
+      "height": 668,
+      "anchorX": 101,
+      "anchorY": 668
     },
     {
-      "x": 980,
-      "y": 508,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 172
+      "x": 1860,
+      "y": 25,
+      "width": 295,
+      "height": 669,
+      "anchorX": 103,
+      "anchorY": 669
     }
   ],
   "dialogueId": "citizen-caretaker",
   "schedule": {
     "morning": {
-      "locationId": "center",
+      "locationId": "living-district",
       "x": 800
     },
     "afternoon": {
-      "locationId": "living-district",
+      "locationId": "factory",
       "x": 800
     },
     "evening": {
-      "locationId": "living-district",
-      "buildingId": "living-barracks",
-      "scale": 0.8,
-      "floor": 0,
-      "x": 1000
+      "locationId": "center",
+      "x": 800
     },
     "night": {
       "locationId": "living-district",

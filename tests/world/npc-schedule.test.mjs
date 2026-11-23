@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { DAY_PHASES } from '../../src/app/contracts/daytime.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { TravelService } from '../../src/app/services/TravelService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { TravelService } from '../../src/app/services/world/TravelService.ts'
 import { resolveNpcPlacements } from '../../src/app/content/resolveNpcPlacements.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { catalogue, content } from '../helpers/content.mjs'
@@ -71,7 +71,7 @@ test('arrival resolves the new time before spawning characters', () => {
     evening: { locationId: 'center', x: 1800 },
     night: { locationId: 'living-district', x: 720 },
   }
-  const time = new DayTime()
+  const time = new DayTimeService()
   const travel = new TravelService(locations, time)
   const expected = [['factory', 'afternoon', 1520], ['center', 'evening', 1800], ['living-district', 'night', 720]]
   for (const [destination, phase, x] of expected) {
@@ -97,7 +97,7 @@ test('invalid schedule entries report the NPC file and phase', () => {
     const { data, sources } = catalogue()
     mutate(data.npcs.stranger)
     assert.throws(() => validateContent(data, sources), error => {
-      assert.match(error.message, /src\/content\/npcs\/stranger.json/)
+      assert.match(error.message, /src\/content\/npc\/stranger.json/)
       assert.match(error.message, pattern)
       return true
     })

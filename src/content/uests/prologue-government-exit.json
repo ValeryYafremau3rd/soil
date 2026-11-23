@@ -1,0 +1,101 @@
+{
+  "id": "prologue-government-exit",
+  "name": "Stamped for Departure",
+  "description": "Negotiate an authorized departure with Pavel Sokolov, complete the confidential handoff at the military checkpoint on the eastern side of Center, then present the exit permit there. The acceptance reply shows the required Barter skill. A courier work pass is not an exit permit.",
+  "offeredBy": "citizen-clerk",
+  "offerText": "Pavel offers a controlled exit in return for the evidence and a confidential delivery.",
+  "prerequisites": [
+    "prologue-last-night",
+    "clerk-official-seal"
+  ],
+  "stages": [
+    {
+      "id": "request-permit",
+      "description": "Ask Pavel for official permission to leave the district.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "government-exit-request"
+      }
+    },
+    {
+      "id": "negotiate",
+      "description": "Choose whether to surrender evidence and accept Pavel’s final assignment.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "government-exit-negotiate"
+      }
+    },
+    {
+      "id": "handoff",
+      "description": "Complete the confidential handoff at the military checkpoint on the eastern side of Center. Leave one inventory slot free to receive the exit permit.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "government-exit-handoff"
+      },
+      "worldInteraction": "checkpoint-handoff",
+      "grantItems": [
+        {
+          "itemId": "exit-permit",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "leave-checkpoint",
+      "description": "Present the exit permit at the district checkpoint.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "government-exit-depart"
+      },
+      "worldInteraction": "district-official-checkpoint"
+    }
+  ],
+  "_codex": {
+    "narrativeIntent": "Pavel offers a controlled exit in return for the evidence and a confidential delivery.",
+    "implementationNotes": [
+      "Add exit-permit item ONLY after creating item registry entry; never reuse cashier work-pass.",
+      "Official exit can be achieved without Titan fight or strange-key.",
+      "Gate/checkpoint interaction should trigger prologue completion and save ending=official.",
+      "If government trust is low, allow a costly evidence handoff or extra assignment rather than softlock.",
+      "Permit is confiscated at exit, and authorities record player identity."
+    ],
+    "decisions": [
+      {
+        "id": "government_exit_bargain",
+        "options": [
+          {
+            "value": "accept",
+            "effects": [
+              "surrender evidence to Pavel",
+              "receive exit-permit after handoff",
+              "ending=official"
+            ]
+          },
+          {
+            "value": "refuse",
+            "effects": [
+              "permit route paused",
+              "illegal route remains available"
+            ]
+          }
+        ],
+        "defaultIfLegacy": "refuse"
+      }
+    ],
+    "crossQuestHooks": [
+      "prologue-last-night",
+      "clerk-official-seal"
+    ],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "official_exit_ready",
+        "value": true
+      }
+    ]
+  }
+}

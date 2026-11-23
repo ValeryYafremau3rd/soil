@@ -1,0 +1,34 @@
+{
+  "damageMultiplier": 1.3,
+  "id": "revolver",
+  "price": 80,
+  "name": "Revolver",
+  "rarity": "epic",
+  "quality": 5,
+  "category": "Weapon",
+  "firearm": {
+    "ammunitionId": "pistol-ammunition"
+  },
+  "icon": {
+    "x": 215,
+    "y": 95,
+    "width": 170,
+    "height": 140
+  },
+  "scale": 1,
+  "description": "Revolver.",
+  "equipmentSlot": "ranged",
+  "skillRequirements": {
+    "weapons": 7
+  },
+  "bonus": {
+    "skill": "weapons",
+    "amount": 3
+  },
+  "bonuses": [
+    {
+      "skill": "erudition",
+      "amount": 1
+    }
+  ]
+}

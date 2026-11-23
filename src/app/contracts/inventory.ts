@@ -3,11 +3,40 @@ import type { InventoryItemDefinition } from '../../domain/inventory/items'
 import type { unmetItemRequirements } from '../../domain/inventory/items'
 import type { itemRequirementStates } from '../../domain/inventory/items'
 
-export interface LootPickup { containerId: string; items: readonly ItemStack[] }
+/**
+ * Container identifier and item stacks reported by a loot or deposit event.
+ */
+export interface LootPickup {
+  containerId: string
+  items: readonly ItemStack[]
+}
 
-export type InventoryMenu = { kind: 'inventory' } | { kind: 'container'; containerId: string } | { kind: 'keys'; itemId: string }
+export type InventoryMenu =
+  {
+    kind: 'inventory'
+  } |
+  {
+    kind: 'container'
+    containerId: string
+  } |
+  {
+    kind: 'keys'
+    itemId: string
+    quickSlot?: boolean
+  } |
+  {
+    kind: 'reading'
+    itemId: string
+    text: string
+    title: string
+    quickSlot?: boolean
+  }
 
+/**
+ * Observable inventory state exposed to service subscribers.
+ */
 export interface InventorySnapshot {
+  readonly readBooks: readonly string[]
   readonly equipment: import('../../domain/inventory/items').Equipment
   readonly money: number
   readonly keyItems: readonly string[]
@@ -16,6 +45,9 @@ export interface InventorySnapshot {
   readonly menu: InventoryMenu | null
 }
 
+/**
+ * Typed inventory actions and queries exposed across application layers.
+ */
 export interface InventoryController {
   getSnapshot(): InventorySnapshot
   subscribe(listener: () => void): () => void
@@ -38,12 +70,16 @@ export interface InventoryController {
   unequip(slot: import('../../domain/inventory/items').EquipmentSlot): void
   syncLegendaryStock(): void
   getSkills(): import('../../domain/inventory/items').ItemSkills
-  getBonusItems(): readonly ItemStack[]
+  getBonusItems(): readonly import('../../domain/inventory/items').ItemBonusSource[]
   getEquippedItems(): readonly ItemStack[]
   useItem(slot: number): void
   consumeItem(itemId: string): boolean
   removeItems(items: readonly ItemStack[]): boolean
-  tryExchangeItems(remove: readonly ItemStack[], add: readonly ItemStack[], money?: number): boolean
+  tryExchangeItems(
+    remove: readonly ItemStack[],
+    add: readonly ItemStack[],
+    money?: number
+  ): boolean
   tryShoot(itemId?: string): boolean
   canShoot(itemId?: string): boolean
   getWeaponDamageMultiplier(kind: 'melee' | 'shot', itemId?: string): number

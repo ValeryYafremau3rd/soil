@@ -2,39 +2,69 @@
   "type": "patrol",
   "emptyInteriorSpawn": {
     "type": "octopus",
-    "chance": 0.1
+    "chance": 0.5,
+    "buildings": [
+      {
+        "buildingId": "center-shop",
+        "chance": 0.3,
+        "types": [
+          "octopus",
+          "fly"
+        ]
+      }
+    ]
   },
   "counts": {
-    "morning": 2,
-    "afternoon": 2,
-    "evening": 2,
-    "night": 3
+    "morning": 0,
+    "afternoon": 0,
+    "evening": 0,
+    "night": 0
   },
   "bounds": {
     "left": 0.04,
     "right": 0.96
   },
   "scale": 1,
-  "nightEncounters": [
+  "outdoorSpawns": [
     {
-      "count": 3,
-      "weight": 40,
-      "type": "patrol"
+      "type": "solider",
+      "counts": {
+        "morning": 2,
+        "afternoon": 2,
+        "evening": 2,
+        "night": 2
+      },
+      "chance": 1
     },
     {
-      "count": 2,
-      "weight": 30,
-      "type": "patrol"
+      "type": "patrol",
+      "counts": {
+        "morning": 1,
+        "afternoon": 1,
+        "evening": 1,
+        "night": 1
+      },
+      "chance": 1
     },
     {
-      "count": 1,
-      "weight": 20,
-      "type": "fly"
+      "type": "octopus",
+      "counts": {
+        "morning": 0,
+        "afternoon": 0,
+        "evening": 0,
+        "night": 3
+      },
+      "chance": 0.5
     },
     {
-      "count": 3,
-      "weight": 10,
-      "type": "octopus"
+      "type": "fly",
+      "counts": {
+        "morning": 0,
+        "afternoon": 0,
+        "evening": 0,
+        "night": 1
+      },
+      "chance": 0.5
     }
   ]
 }

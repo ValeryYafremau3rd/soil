@@ -1,5 +1,15 @@
 [
   {
+    "id": "center-post",
+    "type": "post",
+    "x": 1900,
+    "space": "outside",
+    "scale": 1,
+    "locked": false,
+    "items": [],
+    "restock": false
+  },
+  {
     "id": "center-locker-box",
     "type": "crate",
     "x": 2533,
@@ -7,7 +17,12 @@
     "heightOffset": 117,
     "scale": 0.6,
     "locked": false,
-    "items": [],
+    "items": [
+      {
+        "itemId": "shopkeeper-hidden-list",
+        "quantity": 1
+      }
+    ],
     "restock": false
   },
   {
@@ -77,7 +92,7 @@
         "quantity": 1
       },
       {
-        "itemId": "weapons-training-handbook",
+        "itemId": "mechanics-weapons",
         "quantity": 1
       }
     ],
@@ -92,7 +107,7 @@
     "locked": false,
     "items": [
       {
-        "itemId": "encyclopedia",
+        "itemId": "sci-fi-book",
         "quantity": 1
       },
       {
@@ -120,15 +135,15 @@
     "locked": false,
     "items": [
       {
-        "itemId": "intimidation-training-magazine",
+        "itemId": "newspaper-intimidation",
         "quantity": 1
       },
       {
-        "itemId": "chemistry-book",
+        "itemId": "chemistry-medicine",
         "quantity": 1
       },
       {
-        "itemId": "scraper-training-handbook",
+        "itemId": "mechanics-scraper",
         "quantity": 1
       },
       {
@@ -152,11 +167,11 @@
         "quantity": 1
       },
       {
-        "itemId": "martialArts-training-handbook",
+        "itemId": "anatomy-martialArts",
         "quantity": 1
       },
       {
-        "itemId": "botany-guide",
+        "itemId": "chemistry-medicine",
         "quantity": 1
       }
     ],

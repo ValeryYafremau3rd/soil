@@ -14,37 +14,49 @@
       "x": 120,
       "y": 40,
       "width": 215,
-      "height": 595
+      "height": 595,
+      "anchorX": 108,
+      "anchorY": 595
     },
     {
       "x": 445,
       "y": 40,
       "width": 215,
-      "height": 595
+      "height": 595,
+      "anchorX": 110.5,
+      "anchorY": 595
     },
     {
       "x": 770,
       "y": 40,
       "width": 215,
-      "height": 595
+      "height": 595,
+      "anchorX": 112.5,
+      "anchorY": 595
     },
     {
       "x": 1090,
       "y": 40,
       "width": 215,
-      "height": 595
+      "height": 595,
+      "anchorX": 121.5,
+      "anchorY": 595
     },
     {
       "x": 1415,
       "y": 40,
       "width": 215,
-      "height": 595
+      "height": 595,
+      "anchorX": 128,
+      "anchorY": 595
     },
     {
       "x": 1740,
       "y": 40,
       "width": 215,
-      "height": 595
+      "height": 595,
+      "anchorX": 137,
+      "anchorY": 595
     }
   ],
   "dialogueId": "worker",
@@ -71,5 +83,10 @@
       "roomId": "apartment-31",
       "x": 187
     }
+  },
+  "frameSize": {
+    "width": 300,
+    "height": 605,
+    "referenceHeight": 595
   }
 }

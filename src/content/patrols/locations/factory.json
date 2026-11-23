@@ -2,13 +2,23 @@
   "type": "patrol",
   "emptyInteriorSpawn": {
     "type": "octopus",
-    "chance": 0.1
+    "chance": 0.5,
+    "buildings": [
+      {
+        "buildingId": "factory-main",
+        "chance": 0.3,
+        "types": [
+          "octopus",
+          "fly"
+        ]
+      }
+    ]
   },
   "counts": {
-    "morning": 1,
-    "afternoon": 1,
-    "evening": 1,
-    "night": 2
+    "morning": 0,
+    "afternoon": 0,
+    "evening": 0,
+    "night": 0
   },
   "bounds": {
     "left": 0.04,
@@ -34,26 +44,58 @@
       "scale": 1
     }
   ],
-  "nightEncounters": [
+  "outdoorSpawns": [
     {
-      "count": 1,
-      "weight": 70,
-      "type": "titan"
+      "type": "solider",
+      "counts": {
+        "morning": 2,
+        "afternoon": 2,
+        "evening": 2,
+        "night": 0
+      },
+      "chance": 1
     },
     {
-      "count": 1,
-      "weight": 10,
-      "type": "fly"
+      "type": "titan",
+      "counts": {
+        "morning": 0,
+        "afternoon": 0,
+        "evening": 0,
+        "night": 1
+      },
+      "chance": 1
     },
     {
-      "count": 3,
-      "weight": 10,
-      "type": "octopus"
+      "type": "patrol",
+      "counts": {
+        "morning": 1,
+        "afternoon": 1,
+        "evening": 1,
+        "night": 0
+      },
+      "chance": 1
     },
     {
-      "count": 3,
-      "weight": 10,
-      "type": "patrol"
+      "type": "solider",
+      "counts": {
+        "morning": 0,
+        "afternoon": 0,
+        "evening": 0,
+        "night": 1
+      },
+      "chance": 0.1,
+      "chanceGroup": "night-human-patrol"
+    },
+    {
+      "type": "patrol",
+      "counts": {
+        "morning": 0,
+        "afternoon": 0,
+        "evening": 0,
+        "night": 1
+      },
+      "chance": 0.1,
+      "chanceGroup": "night-human-patrol"
     }
   ]
 }

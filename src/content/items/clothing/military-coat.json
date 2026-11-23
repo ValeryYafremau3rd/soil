@@ -1,0 +1,39 @@
+{
+  "id": "military-coat",
+  "name": "Military coat",
+  "category": "Clothing",
+  "damageResistance": 20,
+  "stealthModifier": -2,
+  "rarity": "epic",
+  "quality": 4,
+  "price": 40,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 448,
+    "y": 520,
+    "width": 195,
+    "height": 159
+  },
+  "scale": 1,
+  "description": "Military coat.",
+  "equipmentSlot": "armor",
+  "skillRequirements": { "weapons": 14 },
+  "bonus": {
+    "attribute": "willpower",
+    "amount": 3
+  },
+  "bonuses": [
+    {
+      "skill": "weapons",
+      "amount": 3
+    },
+    {
+      "skill": "intimidation",
+      "amount": 1
+    }
+  ]
+}

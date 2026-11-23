@@ -3,7 +3,7 @@ import test from 'node:test'
 import { content } from '../helpers/content.mjs'
 import { isContainerObserved } from '../../src/domain/inventory/looting.ts'
 import { resolveNpcPlacements } from '../../src/app/content/resolveNpcPlacements.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 
 test('witnesses block the same room or shared building interior without seeing through private rooms', () => {
   const room = { space: 'inside', buildingId: 'house', roomId: 'room-21' }

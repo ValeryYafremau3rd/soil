@@ -1,0 +1,34 @@
+{
+  "id": "clerk-apartment-evidence",
+  "name": "Behind Closed Doors",
+  "description": "Investigate four residents' apartments for evidence of disloyal activity and report to Pavel Sokolov.",
+  "offeredBy": "citizen-clerk",
+  "offerText": "There is a confidential matter that requires your attention.",
+  "prerequisites": ["town-opinions"],
+  "stages": [
+    {
+      "id": "find-evidence",
+      "description": "Search apartments 11, 22, 41 and 42 in the Living District for suspicious correspondence. Use a lockpick to enter locked rooms. Bring any evidence you find to the clerk.",
+      "trigger": { "kind": "inventory" },
+      "requiredItems": [
+        { "itemId": "suspicious-correspondence", "quantity": 1 }
+      ]
+    },
+    {
+      "id": "report-clerk",
+      "description": "Bring the suspicious letter to Pavel Sokolov.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "apartment-evidence-report"
+      },
+      "requiredItems": [
+        { "itemId": "suspicious-correspondence", "quantity": 1 }
+      ],
+      "removeItems": [
+        { "itemId": "suspicious-correspondence", "quantity": 1 }
+      ]
+    }
+  ],
+  "reward": { "money": 30 }
+}

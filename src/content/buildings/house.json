@@ -1,5 +1,6 @@
 {
   "corridorLights": false,
+  "corridorTint": 10925210,
   "outer": {
     "key": "house-outer",
     "groundY": 1008,

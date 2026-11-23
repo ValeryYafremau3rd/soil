@@ -1,12 +1,31 @@
 ﻿import assert from 'node:assert/strict'
 import test from 'node:test'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { EQUIPMENT_SLOTS, applyCarriedBonuses } from '../../src/domain/inventory/items.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { content } from '../helpers/content.mjs'
 import classes from '../../src/content/classes.json' with { type: 'json' }
 const definitions = [{id:'hammer',equipmentSlot:'tool',bonus:{skill:'scraper',amount:2}},{id:'wrench',equipmentSlot:'tool'}, {id:'bag',equipmentSlot:'bag',inventorySlots:3}, {id:'gun',equipmentSlot:'ranged',firearm:{ammunitionId:'ammo'}}, {id:'ammo',ammunition:true,maxStack:5}]
 const stack = itemId => ({itemId,quantity:1})
+
+test('the enamel mug grants Willpower only while equipped and survives save restoration', () => {
+  const { items } = content()
+  const byId = Object.fromEntries(items.map(item => [item.id, item]))
+  const character = createCharacter(classes[0])
+  const inventory = new InventoryService(items, [], () => 0, [stack('enamel-mug')])
+  const willpower = () => applyCarriedBonuses(character,
+    inventory.getEquippedItems(), byId).attributes.willpower
+  const base = willpower()
+  inventory.openInventory()
+  inventory.useItem(0)
+  assert.equal(inventory.getSnapshot().equipment.tool, 'enamel-mug')
+  assert.equal(willpower(), base + 1)
+  const saved = inventory.saveState()
+  inventory.unequip('tool')
+  assert.equal(willpower(), base)
+  inventory.restoreState(saved)
+  assert.equal(willpower(), base + 1)
+})
 test('equipment swaps atomically, unequips, and round trips saves',()=>{
  const inventory=new InventoryService(definitions,[],()=>0,['hammer','wrench'].map(stack))
  inventory.openInventory();inventory.useItem(0)
@@ -54,18 +73,20 @@ test('unmet requirements and invalid selections preserve items; invalid saved sl
  assert.equal(inventory.getSnapshot(),before)
 })
 
-test('carried magazines apply once per type alongside equipped gear and stop on removal',()=>{
+test('learned magazines apply alongside equipped gear and survive removal of the duplicate',()=>{
  const data=content();const byId=Object.fromEntries(data.items.map(item=>[item.id,item]));const character=createCharacter(classes[0])
- const id='stealth-training-magazine';assert.equal(byId[id].equipmentSlot,undefined)
+ const id='sport-magazine-stealth';assert.equal(byId[id].equipmentSlot,undefined)
  const inventory=new InventoryService(data.items,[],()=>0,[stack(id),stack(id),stack('hammer')],undefined,undefined,undefined,undefined,()=>20)
  const effective=()=>applyCarriedBonuses(character,inventory.getBonusItems(),byId)
  const base=applyCarriedBonuses(character,[],byId)
- assert.equal(effective().skills.stealth,base.skills.stealth+byId[id].bonus.amount)
+ assert.equal(effective().skills.stealth,base.skills.stealth)
  assert.equal(effective().skills.scraper,base.skills.scraper)
  inventory.openInventory();inventory.useItem(2)
- assert.equal(effective().skills.scraper,base.skills.scraper+byId.hammer.bonus.amount)
+ assert.equal(effective().skills.martialArts,base.skills.martialArts+byId.hammer.bonus.amount)
+ inventory.useItem(0)
+ assert.equal(effective().skills.stealth,base.skills.stealth+1)
  const before=inventory.getSnapshot();inventory.useItem(0);assert.equal(inventory.getSnapshot(),before)
- inventory.removeItems([{itemId:id,quantity:2}]);assert.equal(effective().skills.stealth,base.skills.stealth)
+ inventory.removeItems([{itemId:id,quantity:1}]);assert.equal(effective().skills.stealth,base.skills.stealth+1)
  inventory.unequip('tool');assert.equal(effective().skills.scraper,base.skills.scraper)
 })
 test('previously equipped magazines return to inventory when restoring a save',()=>{
@@ -73,7 +94,7 @@ test('previously equipped magazines return to inventory when restoring a save',(
  const saved=inventory.saveState();saved.equipment={tool:'stealth-training-magazine'}
  inventory.restoreState(saved)
  assert.deepEqual(inventory.getSnapshot().equipment,{})
- assert.deepEqual(inventory.getSnapshot().items,[stack('stealth-training-magazine')])
+ assert.deepEqual(inventory.getSnapshot().items,[stack('sport-magazine-stealth')])
  assert.deepEqual(saved.equipment,{tool:'stealth-training-magazine'})
 })
 test('shoes follow armor and socks swap with footwear without replacing body armor',()=>{

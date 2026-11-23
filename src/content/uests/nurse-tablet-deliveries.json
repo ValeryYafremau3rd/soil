@@ -1,0 +1,97 @@
+{
+  "id": "nurse-tablet-deliveries",
+  "name": "A Dose of Kindness",
+  "description": "Nadia needs tablets delivered to residents who cannot easily reach the clinic. Their conflicting reactions make her question whether the treatment is helping.",
+  "offeredBy": "citizen-nurse",
+  "offerText": "Could you help me deliver medicine?",
+  "stages": [
+    {
+      "id": "receive-tablets",
+      "description": "Receive two white tablets from Nadia.",
+      "trigger": {
+        "kind": "accept"
+      },
+      "grantItems": [
+        {
+          "itemId": "white-tablets",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "visit-caretaker",
+      "description": "Deliver one white tablet to Elena Jovanovic.",
+      "parallelGroup": "patients",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-caretaker",
+        "choiceId": "nurse-tablet-deliver"
+      },
+      "requiredItems": [
+        {
+          "itemId": "white-tablets",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "white-tablets",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "visit-dusan",
+      "description": "Offer Dusan Markovic a white tablet.",
+      "parallelGroup": "patients",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "nurse-tablet-offer"
+      },
+      "requiredItems": [
+        {
+          "itemId": "white-tablets",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "report-to-nurse",
+      "description": "Return to Nadia after speaking to Elena and Dusan. Tell Nadia how Elena and Dusan responded to the prescribed tablets.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-nurse",
+        "choiceId": "nurse-tablet-report"
+      }
+    }
+  ],
+  "reward": {
+    "items": [
+      {
+        "itemId": "white-tablets",
+        "quantity": 1
+      },
+      {
+        "itemId": "health-magazine-medicine",
+        "quantity": 1
+      }
+    ]
+  },
+  "_codex": {
+    "narrativeIntent": "Nadia tests whether government tablets are reaching residents; Elena trusts them while Dusan doubts them.",
+    "implementationNotes": [
+      "Keep delivery counts and recipients unchanged.",
+      "On report set hospital_tablet_discrepancy; do not declare pills proven ineffective."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "hospital_tablet_discrepancy",
+        "value": true
+      }
+    ]
+  }
+}

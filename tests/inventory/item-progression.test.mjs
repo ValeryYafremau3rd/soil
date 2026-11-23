@@ -4,39 +4,36 @@ import classes from '../../src/content/classes.json' with { type: 'json' }
 import { content } from '../helpers/content.mjs'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { applyCarriedBonuses } from '../../src/domain/inventory/items.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
 
-test('a six-slot medical learning path unlocks specialist treatment and removing training blocks repeated use', () => {
-  const data = content(), definition = classes[0], base = createCharacter(definition)
+test('reading unlocks specialist medicine permanently, including after duplicate books are removed', () => {
+  const data = content(), base = createCharacter(classes[0])
   const definitions = Object.fromEntries(data.items.map(item => [item.id, item]))
+  const required = definitions['medical-case'].skillRequirements.medicine
+  base.skillModifiers = { medicine: required - 3 - base.skills.medicine }
   const status = new StatusService([{ id: 'health', value: 40, max: 100 },
     { id: 'energy', value: 100, max: 100 }, { id: 'sanity', value: 100, max: 100 }])
   let inventory
-  const effective = () => applyCarriedBonuses(base, inventory?.getSnapshot().items ?? [], definitions)
-  const initial = definition.startingItems.map(itemId => ({ itemId, quantity: definition.startingItemQuantities?.[itemId] ?? 1 }))
-  inventory = new InventoryService(data.items, [], () => 0, initial, status, undefined, undefined,
-    () => {}, () => effective().skills.erudition, false, undefined, undefined, () => effective().skills)
-  assert.equal(inventory.removeItems([{ itemId: 'canned-meat', quantity: 2 }, { itemId: 'stealth-training-magazine', quantity: 1 }, { itemId: 'crowbar', quantity: 1 }]), true)
-  inventory.grantItems([{ itemId: 'medical-case', quantity: 2 }, { itemId: 'medicine-training-handbook', quantity: 1 }])
-  assert.equal(effective().skills.medicine, 8, 'advanced book bonus applies immediately while carried')
+  const effective = () => applyCarriedBonuses(base, inventory?.getBonusItems() ?? [], definitions)
+  inventory = new InventoryService(data.items, [], () => 0,
+    [{ itemId: 'medical-case', quantity: 2 }, { itemId: 'health-magazine-medicine', quantity: 1 }, { itemId: 'chemistry-medicine', quantity: 1 }],
+    status, undefined, undefined, undefined, () => 10, false, undefined, undefined, () => effective().skills)
   inventory.openInventory()
-  const useCase = () => inventory.useItem(inventory.getSnapshot().items.findIndex(item => item.itemId === 'medical-case'))
-  useCase(); useCase()
+  const use = id => inventory.useItem(inventory.getSnapshot().items.findIndex(item => item.itemId === id))
+  use('medical-case')
   assert.equal(status.getSnapshot().health, 40)
-  assert.equal(inventory.getSnapshot().items.find(item => item.itemId === 'medical-case').quantity, 2)
-  inventory.grantItems([{ itemId: 'medicine-training-magazine', quantity: 1 }, { itemId: 'agriculture-guide', quantity: 1 }])
-  assert.equal(inventory.getSnapshot().items.length, 6)
-  assert.equal(effective().skills.medicine, 12)
-  assert.equal(effective().skills.erudition, 4, 'practical skill route works below the education gate')
-  useCase()
-  assert.equal(status.getSnapshot().health, 100)
-  assert.equal(inventory.getSnapshot().items.find(item => item.itemId === 'medical-case').quantity, 1)
-  assert.equal(inventory.removeItems([{ itemId: 'medicine-training-magazine', quantity: 1 },
-    { itemId: 'medicine-training-handbook', quantity: 1 }]), true)
-  assert.equal(effective().skills.medicine, 6)
+  use('health-magazine-medicine')
+  use('medical-case')
+  assert.equal(status.getSnapshot().health, 40)
+  use('chemistry-medicine')
+  assert.equal(effective().skills.medicine, required)
+  use('medical-case')
+  assert.equal(status.getSnapshot().health, Math.min(100, 40 + definitions['medical-case'].recovery.health))
+  inventory.grantItems([{ itemId: 'chemistry-medicine', quantity: 1 }])
+  inventory.removeItems([{ itemId: 'chemistry-medicine', quantity: 1 }])
   status.takeDamage(10)
-  useCase()
-  assert.equal(status.getSnapshot().health, 90)
-  assert.equal(inventory.getSnapshot().items.find(item => item.itemId === 'medical-case').quantity, 1)
+  use('medical-case')
+  assert.equal(status.getSnapshot().health, 100)
+  assert.ok(!inventory.getSnapshot().items.some(item => item.itemId === 'medical-case'))
 })

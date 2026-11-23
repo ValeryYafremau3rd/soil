@@ -4,67 +4,67 @@
   "textureKey": "citizen-mechanic",
   "path": "assets/characters/npc/citizens.png",
   "idleAnimation": "citizen-mechanic-idle",
-  "referenceWidth": 2048,
+  "referenceWidth": 2172,
   "frameRate": 3,
   "displayHeight": 108,
   "depth": 6,
   "interactionRadius": 65,
-  "background": "light",
+  "background": "none",
   "scale": 0.9,
   "repeat": -1,
   "frameSize": {
-    "width": 112,
-    "height": 180,
-    "referenceHeight": 170
+    "width": 128,
+    "height": 229,
+    "referenceHeight": 221
   },
   "idleSteps": [
     {
-      "x": 70,
-      "y": 0,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 170
+      "x": 302,
+      "y": 8,
+      "width": 89,
+      "height": 221,
+      "anchorX": 51.5,
+      "anchorY": 221
     },
     {
-      "x": 252,
-      "y": 0,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 170
+      "x": 470,
+      "y": 8,
+      "width": 89,
+      "height": 220,
+      "anchorX": 53.5,
+      "anchorY": 220
     },
     {
-      "x": 434,
-      "y": 0,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 170
+      "x": 630,
+      "y": 8,
+      "width": 87,
+      "height": 221,
+      "anchorX": 51,
+      "anchorY": 221
     },
     {
-      "x": 616,
-      "y": 0,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 170
+      "x": 800,
+      "y": 8,
+      "width": 85,
+      "height": 220,
+      "anchorX": 42,
+      "anchorY": 220
     },
     {
-      "x": 798,
-      "y": 0,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 170
+      "x": 954,
+      "y": 8,
+      "width": 91,
+      "height": 220,
+      "anchorX": 53,
+      "anchorY": 220
     },
     {
-      "x": 980,
-      "y": 0,
-      "width": 96,
-      "height": 174,
-      "anchorX": 48,
-      "anchorY": 170
+      "x": 1122,
+      "y": 8,
+      "width": 86,
+      "height": 220,
+      "anchorX": 49.5,
+      "anchorY": 220
     }
   ],
   "dialogueId": "citizen-mechanic",

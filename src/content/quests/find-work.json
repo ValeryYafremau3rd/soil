@@ -1,21 +1,15 @@
 {
   "id": "find-work",
-  "name": "Find work and a place to live",
+  "name": "Find work",
   "stages": [
     {
-      "description": "Ask Pavel Sokolov, the clerk, for work and a place to live.",
+      "description": "Ask the clerk where to find work.",
       "id": "ask-clerk",
       "trigger": {
         "npcId": "citizen-clerk",
         "choiceId": "find-work-ask",
         "kind": "dialogue"
-      },
-      "grantItems": [
-        {
-          "quantity": 1,
-          "itemId": "key-ring"
-        }
-      ]
+      }
     },
     {
       "description": "Accept a job from Dusan Markovic, the mechanic.",
@@ -54,18 +48,16 @@
       }
     },
     {
-      "description": "Enter room 21 in the Living District apartment building.",
+      "description": "Accept work from all four contacts.",
       "parallelGroup": "employers",
       "id": "visit-apartment",
       "trigger": {
-        "locationId": "living-district",
-        "buildingId": "apartments",
-        "roomId": "apartment-21",
-        "kind": "room"
+        "kind": "questAccepted",
+        "npcId": "citizen-nurse"
       }
     },
     {
-      "description": "You have visited room 21 and accepted work from all four contacts. Return to Pavel Sokolov, the clerk.",
+      "description": "Return to the clerk after accepting work from all four contacts.",
       "id": "return-clerk",
       "trigger": {
         "npcId": "citizen-clerk",
@@ -74,13 +66,13 @@
       }
     }
   ],
-  "description": "The town is under quarantine. You need work to afford food and a place to stay. Ask the clerk for help.",
+  "description": "Ask the clerk for work and accept jobs from his four contacts.",
   "autoStart": true,
   "reward": {
     "items": [
       {
         "quantity": 1,
-        "itemId": "old-newspapers"
+        "itemId": "psychology-barter"
       }
     ]
   }

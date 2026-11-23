@@ -1,0 +1,48 @@
+{
+  "id": "bartender-shortages",
+  "name": "Nothing to serve",
+  "description": "Trace the missing food and drink deliveries for Viktor.",
+  "offeredBy": "bartender",
+  "offerText": "Ask Zofia when food and drinks will arrive.",
+  "prerequisites": [
+    "bartender-supplies"
+  ],
+  "stages": [
+    {
+      "id": "shortages-cashier",
+      "description": "Ask Zofia when food and drinks will arrive.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "cashier",
+        "choiceId": "shortages-cashier"
+      }
+    },
+    {
+      "id": "shortages-clerk",
+      "description": "Ask Pavel about the shortages.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "shortages-clerk"
+      }
+    },
+    {
+      "id": "shortages-report",
+      "description": "Return to Viktor with the answer.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "shortages-report"
+      }
+    }
+  ],
+  "reward": {
+    "money": 12,
+    "items": [
+      {
+        "itemId": "enamel-mug",
+        "quantity": 1
+      }
+    ]
+  }
+}

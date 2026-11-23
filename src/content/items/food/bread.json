@@ -1,0 +1,22 @@
+{
+  "id": "bread",
+  "price": 2,
+  "name": "Bread",
+  "description": "A small loaf with a firm, dark crust.",
+  "consumable": true,
+  "maxStack": 5,
+  "recovery": {
+    "energy": 20,
+    "health": 6
+  },
+  "rarity": "common",
+  "quality": 2,
+  "category": "Food",
+  "icon": {
+    "x": 880,
+    "y": 295,
+    "width": 120,
+    "height": 110
+  },
+  "scale": 1
+}

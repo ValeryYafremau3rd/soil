@@ -69,7 +69,7 @@ test('octopuses spawn only at night inside the factory and barracks without chan
     assert.equal(populations[0].location.buildingId,location==='factory'?'factory-main':'living-barracks')
   }
   assert.deepEqual(resolveIndoorPatrolPopulations(config,'center','night'),[])
-  assert.equal(resolvePatrolPopulation(config,'factory','night').count,2)
+  assert.equal(resolvePatrolPopulation(config,'factory','night'), undefined)
   const disabled=structuredClone(config)
   disabled.locations.factory.interiors[0].enabled=false
   assert.deepEqual(resolveIndoorPatrolPopulations(disabled,'factory','night'),[])
@@ -102,8 +102,16 @@ test('monster fear follows monster difficulty scaling for radius and damage', ()
   }
 })
 
-test('districts roll their own night encounters and preserve daytime populations', () => {
-  const config = data.patrols
+test('legacy weighted encounters remain supported', () => {
+  const config = structuredClone(data.patrols)
+  for (const [id, location] of Object.entries(config.locations)) {
+    location.counts.night = 1
+    location.nightEncounters = id === 'factory'
+      ? [{ type: 'titan', count: 1, weight: 70 }, { type: 'fly', count: 1, weight: 10 }, { type: 'octopus', count: 3, weight: 10 }, { type: 'patrol', count: 3, weight: 10 }]
+      : id === 'center'
+        ? [{ type: 'patrol', count: 3, weight: 40 }, { type: 'patrol', count: 2, weight: 30 }, { type: 'fly', count: 1, weight: 20 }, { type: 'octopus', count: 3, weight: 10 }]
+        : [{ type: 'patrol', count: 2, weight: 50 }, { type: 'patrol', count: 1, weight: 30 }, { type: 'fly', count: 1, weight: 10 }, { type: 'octopus', count: 2, weight: 10 }]
+  }
   const expected = location => location === 'center' ? [['patrol', 3, 400], ['patrol', 2, 300], ['fly', 1, 200], ['octopus', 3, 100]] : [['patrol', 2, 500], ['patrol', 1, 300], ['fly', 1, 100], ['octopus', 2, 100]]
   const noRoll = () => { throw new Error('unexpected roll') }
   for (const location of Object.keys(config.locations)) {
@@ -146,6 +154,7 @@ test('monster content rejects missing fear, short aura radii, and invalid interi
     data=>{data.patrols.locations.factory.nightEncounters[0].type='missing'},
   ]) {
     const {data,sources}=catalogue()
+    data.patrols.locations.factory.nightEncounters = [{ type: 'titan', count: 1, weight: 1 }]
     mutate(data)
     assert.throws(()=>validateContent(data,sources),/patrols/)
   }

@@ -1,28 +1,34 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content, catalogue } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { rollCorpseLoot } from '../../src/domain/combat/patrolCombat.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 
 const data = content()
-const drops = data.patrols.types.patrol.corpseLoot
 const body = { id: 'corpse:center:1', name: 'Militia corpse', locationId: 'center', items: [
   { itemId: 'pistol-ammunition', quantity: 2 }, { itemId: 'bandage', quantity: 2 },
 ] }
 
-test('Militia corpse drops use inclusive independent ranges and omit zero stacks', () => {
-  assert.equal(data.patrols.types.patrol.name, 'Militia')
-  assert.deepEqual(drops, [{ itemId: 'red-cigarettes', min: 0, max: 1 },
-    { itemId: 'pistol-ammunition', min: 0, max: 2 }, { itemId: 'bandage', min: 0, max: 2 }])
-  assert.deepEqual(rollCorpseLoot(drops, () => 0), [])
-  assert.deepEqual(rollCorpseLoot(drops, () => 1), [{ itemId: 'red-cigarettes', quantity: 1 }, ...body.items])
-  const rolls = [0, 0.34, 0.99]
-  assert.deepEqual(rollCorpseLoot(drops, () => rolls.shift()), [
-    { itemId: 'pistol-ammunition', quantity: 1 }, { itemId: 'bandage', quantity: 2 },
-  ])
+test('human corpse drops use independent configured probabilities', () => {
+  const expected = [
+    ['pistol-ammunition', 0.5], ['bandage', 0.5], ['red-cigarettes', 0.5],
+    ['red-star', 0.05], ['leather-belt', 0.05], ['leather-boots', 0.05],
+  ].map(([itemId, chance]) => ({ itemId, min: 1, max: 1, chance }))
+  for (const type of ['patrol', 'solider']) {
+    const drops = data.patrols.types[type].corpseLoot
+    assert.deepEqual(drops, expected)
+    assert.deepEqual(rollCorpseLoot(drops, () => 0), expected.map(({ itemId }) => ({ itemId, quantity: 1 })))
+    assert.deepEqual(rollCorpseLoot(drops, () => 0.5), [])
+    assert.deepEqual(rollCorpseLoot(drops, () => 0.05), expected.slice(0, 3).map(({ itemId }) => ({ itemId, quantity: 1 })))
+    for (const drop of drops) {
+      assert.equal(rollCorpseLoot([drop], () => drop.chance - 0.0001).length, 1)
+      assert.deepEqual(rollCorpseLoot([drop], () => drop.chance), [])
+    }
+  }
+  assert.deepEqual(rollCorpseLoot([{ itemId: 'bandage', min: 0, max: 2 }], () => 1),
+    [{ itemId: 'bandage', quantity: 2 }], 'legacy quantity rolls remain supported')
 })
-
 test('corpse pickup respects partial stacks and capacity, pays nothing and cannot duplicate or refill', () => {
   const messages = []
   const inventory = new InventoryService(data.items, [], () => 0, [

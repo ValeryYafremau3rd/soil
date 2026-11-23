@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
 import { normalizeStacks, transferItem } from '../../src/domain/inventory/loot.ts'
-import { applyCarriedBonuses } from '../../src/domain/inventory/items.ts'
+import { applyCarriedBonuses, itemBonuses } from '../../src/domain/inventory/items.ts'
 import { createCharacter, calculateSkills } from '../../src/domain/skills/character.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { catalogue } from '../helpers/content.mjs'
@@ -19,14 +19,18 @@ test('authored weapons grant carried bonuses and retain active-use requirements'
     const skill = item.firearm ? 'weapons' : 'martialArts'
     const damage = item.firearm ? 'rangedDamage' : 'meleeDamage'
     assert.ok(item.skillRequirements[skill] > 1, id)
-    assert.ok(item.bonus.skill === skill || item.bonus.attribute === 'agility', id)
+    assert.ok(itemBonuses(item).length > 0, id)
     const definitions = { [id]: item }
     const below = { ...trained, baseAttributes: { ...trained.baseAttributes, strength: 1, agility: 1, intelligence: 2, willpower: 1 } }
     const untrained = applyCarriedBonuses(below, [], definitions, 0.2)
     assert.ok(applyCarriedBonuses(below, [stack(id)], definitions, 0.2).skills[skill] >= untrained.skills[skill])
     const boosted = applyCarriedBonuses(trained, [stack(id), stack(id)], definitions)
-    assert.equal(boosted.skills[skill], item.bonus.attribute ? calculateSkills({ ...trained.attributes, [item.bonus.attribute]: trained.attributes[item.bonus.attribute] + item.bonus.amount })[skill] : trained.skills[skill] + item.bonus.amount, id)
-    assert.ok(resolveSkillEffects(boosted.skills, rates)[damage] > resolveSkillEffects(trained.skills, rates)[damage], id)
+    const expectedAttributes = { ...trained.attributes }
+    for (const bonus of itemBonuses(item)) if (bonus.attribute) expectedAttributes[bonus.attribute] += bonus.amount
+    const expectedSkills = calculateSkills(expectedAttributes)
+    for (const bonus of itemBonuses(item)) if (bonus.skill) expectedSkills[bonus.skill] += bonus.amount
+    assert.deepEqual(boosted.skills, expectedSkills, id)
+    assert.ok(resolveSkillEffects(boosted.skills, rates)[damage] >= resolveSkillEffects(trained.skills, rates)[damage], id)
     assert.deepEqual(applyCarriedBonuses(boosted, [], definitions), trained, `${id} bonus ends on removal`)
   }
 })

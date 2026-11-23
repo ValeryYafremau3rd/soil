@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { TravelService } from '../../src/app/services/TravelService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { TravelService } from '../../src/app/services/world/TravelService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { content } from '../helpers/content.mjs'
 import { legendarySkill } from '../../src/domain/skills/effects.ts'
 
 test('legendary barter waives fares without money, reevaluates eligibility and preserves time and night limits', () => {
-  const data = content(), time = new DayTime()
+  const data = content(), time = new DayTimeService()
   let barter = data.skills.legendary.threshold
   let payments = 0
   const travel = new TravelService(data.locations, time, 2, {
@@ -24,7 +24,7 @@ test('legendary barter waives fares without money, reevaluates eligibility and p
   travel.travelTo(a.id)
   assert.equal(travel.getSnapshot().currentLocationId, b.id)
   travel.openTravel(); travel.travelTo(a.id)
-  assert.equal(time.getSnapshot().phase, 'afternoon')
+  assert.equal(time.getSnapshot().phase, 'morning')
   assert.equal(payments, 0)
   travel.openTravel()
   barter--
@@ -39,7 +39,7 @@ test('legendary barter waives fares without money, reevaluates eligibility and p
   assert.equal(travel.getSnapshot().currentLocationId, b.id)
   assert.equal(payments, 1)
   travel.openTravel()
-  time.advance(); time.advance()
+  time.advance(); time.advance(); time.advance()
   travel.travelTo(a.id)
   assert.equal(travel.getSnapshot().menuOpen, false)
   assert.equal(travel.getSnapshot().currentLocationId, b.id)
@@ -48,7 +48,7 @@ test('legendary barter waives fares without money, reevaluates eligibility and p
 })
 
 test('bus trips charge one; canceled, invalid, current-district and walking trips are free', () => {
-  const data = content(), time = new DayTime()
+  const data = content(), time = new DayTimeService()
   data.locations.sort((a, b) => Number(b.id === 'living-district') - Number(a.id === 'living-district'))
   const inventory = new InventoryService(['item'], [])
   inventory.grantItems([], 2)
@@ -66,7 +66,7 @@ test('bus trips charge one; canceled, invalid, current-district and walking trip
   assert.equal(inventory.getSnapshot().money, 1, 'duplicate confirmation cannot charge')
   travel.openTravel(); travel.travelTo(a.id)
   assert.equal(inventory.getSnapshot().money, 0)
-  assert.equal(time.getSnapshot().phase, 'afternoon')
+  assert.equal(time.getSnapshot().phase, 'morning')
   travel.openTravel()
   const before = travel.getSnapshot(), beforeTime = time.getSnapshot()
   travel.travelTo(b.id)
@@ -78,7 +78,7 @@ test('bus trips charge one; canceled, invalid, current-district and walking trip
   travel.closeTravel(); travel.openTravel('walk'); travel.travelTo('center')
   assert.equal(travel.getSnapshot().currentLocationId, 'center')
   assert.equal(inventory.getSnapshot().money, 0)
-  assert.equal(time.getSnapshot().phase, 'evening')
+  assert.equal(time.getSnapshot().phase, 'afternoon')
 })
 
 test('wallet rejects invalid payments without changing the balance', () => {
@@ -91,7 +91,7 @@ test('wallet rejects invalid payments without changing the balance', () => {
 })
 
 test('night closes bus service before payment, while walking and morning bus routes still work', () => {
-  const data = content(), time = new DayTime(1, 'evening')
+  const data = content(), time = new DayTimeService(1, 'evening')
   data.locations.sort((a, b) => Number(b.id === 'living-district') - Number(a.id === 'living-district'))
   const inventory = new InventoryService(['item'], [])
   inventory.grantItems([], 3)

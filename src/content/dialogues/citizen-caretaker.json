@@ -1,94 +1,13 @@
 {
   "start": "greeting",
+  "openingLines": [
+    "Keep the pavement clean and your papers in order. That is how we get through this.",
+    "Morning. Have you taken your prescribed tablets?",
+    "The patrols are protecting us. Please do not interfere with their work."
+  ],
   "nodes": {
-    "greeting": {
-      "text": "I'm Elena Jovanovic, the caretaker. I look after the apartments and barracks. A clean corridor and a sound door save a lot of trouble.",
-      "choices": [
-        {
-          "id": "nurse-tablet-deliver",
-          "text": "[Medicine] Nadia sent me with a white tablet for you.",
-          "questId": "nurse-tablet-deliveries",
-          "next": "tablet-response"
-        },
-        {
-          "id": "courier-pickup",
-          "text": "[Courier] I am here to collect the parcel.",
-          "questId": "courier-delivery",
-          "next": "courier-pickup-confirmed"
-        },
-        {
-          "id": "courier-deliver",
-          "text": "[Courier] I have your parcel.",
-          "questId": "courier-delivery",
-          "next": "courier-delivery-thanks"
-        },
-        {
-          "id": "advice",
-          "text": "[Advice]",
-          "next": "advice"
-        },
-        {
-          "id": "about",
-          "text": "Tell about yourself.",
-          "next": "about"
-        },
-        {
-          "id": "cashier-4-deliver-0",
-          "text": "[Delivery] Deliver 1 Duct tape to Elena Jovanovic.",
-          "next": "cashier-4-cashier-4-deliver-0",
-          "questId": "cashier-4"
-        },
-        {
-          "id": "goodbye",
-          "text": "Goodbye.",
-          "close": true
-        },
-        {
-          "id": "find-item-start",
-          "text": "[Find item] Tell me about your request.",
-          "questId": "find-item",
-          "next": "find-item-instructions"
-        },
-        {
-          "id": "find-item-deliver",
-          "text": "[Find item] I found the requested item.",
-          "questId": "find-item",
-          "next": "find-item-payment"
-        }
-      ]
-    },
-    "advice": {
-      "text": "It is worth checking the trash bins at night. You can find useful things, but we clean them out in the morning, so do your scavenging before sunrise. Watch out for patrols while you are outside.",
-      "choices": [
-        {
-          "id": "back",
-          "text": "Something else...",
-          "next": "greeting"
-        },
-        {
-          "id": "goodbye",
-          "text": "Goodbye.",
-          "close": true
-        }
-      ]
-    },
-    "about": {
-      "text": "I look after the apartments and barracks. A clean corridor and a sound door save a lot of trouble. Morning: you can find me in the streets of Center. Afternoon: you can find me in the streets of Living District. Evening: you can find me in the barracks. Night: you can find me in apartment 42 in Living District.",
-      "choices": [
-        {
-          "id": "back",
-          "text": "Something else...",
-          "next": "greeting"
-        },
-        {
-          "id": "goodbye",
-          "text": "Goodbye.",
-          "close": true
-        }
-      ]
-    },
-    "cashier-4-cashier-4-deliver-0": {
-      "text": "Thank you. The delivery is recorded.",
+    "tablet-response": {
+      "text": "Thank you very much, kind sir. Please give Nadia my heartfelt thanks as well. It is a great comfort to know that someone is looking out for us.",
       "choices": [
         {
           "id": "back",
@@ -142,18 +61,305 @@
         }
       ]
     },
-    "tablet-response": {
-      "text": "Thank you very much, kind sir. Please give Nadia my heartfelt thanks as well. It is a great comfort to know that someone is looking out for us.",
+    "greeting": {
+      "text": "Elena Jovanovic. I clean the streets and look after the buildings. There is enough work without people spreading rumors. What do you need? Nadia keeps telling me to take my tablets, and I do. There is no shame in following medical advice.",
       "choices": [
         {
-          "id": "back",
-          "text": "Something else...",
-          "next": "greeting"
+          "id": "nurse-tablet-deliver",
+          "text": "[Medicine] Nadia sent me with a white tablet for you.",
+          "questId": "nurse-tablet-deliveries",
+          "next": "tablet-response"
+        },
+        {
+          "id": "courier-pickup",
+          "text": "[Courier] I am here to collect the parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-pickup-confirmed"
+        },
+        {
+          "id": "courier-deliver",
+          "text": "[Courier] I have your parcel.",
+          "questId": "courier-delivery",
+          "next": "courier-delivery-thanks"
+        },
+        {
+          "id": "postman-deliver",
+          "text": "[Delivery] Here is your letter.",
+          "questId": "postman",
+          "next": "postman-thanks"
+        },
+        {
+          "id": "find-item-start",
+          "text": "[Find item] Tell me about your request.",
+          "questId": "find-item",
+          "next": "find-item-instructions"
+        },
+        {
+          "id": "find-item-deliver",
+          "text": "[Find item] I found the requested item.",
+          "questId": "find-item",
+          "next": "find-item-payment"
+        },
+        {
+          "id": "town-opinion",
+          "text": "What do you think of the quarantine?",
+          "next": "town-opinion",
+          "questId": "town-opinions"
+        },
+        {
+          "id": "tablet",
+          "text": "Did you receive your tablets from Nadia?",
+          "next": "tablet"
+        },
+        {
+          "id": "about",
+          "text": "Tell me about yourself.",
+          "next": "about"
+        },
+        {
+          "id": "ask-about",
+          "text": "I want to ask about something strange.",
+          "next": "ask-about"
         },
         {
           "id": "goodbye",
           "text": "Goodbye.",
           "close": true
+        },
+        {
+          "id": "people-menu",
+          "text": "Can you tell me about a specific person?",
+          "next": "people-menu"
+        }
+      ]
+    },
+    "town-opinion": {
+      "text": "The capital has sent soldiers and medicine. That is more than enough proof they mean to help us. People who complain should try keeping these streets clean for a week. That student Milena keeps asking after her parents. I feel sorry for the girl, but shouting at officials will not bring anyone home.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "tablet": {
+      "text": "Of course I took mine. Nadia works hard to bring them. People who refuse treatment only make things worse for their neighbors.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "about": {
+      "text": "I have spent years sweeping these streets. I know who keeps their steps tidy and who leaves trouble behind. I go home before curfew, as everyone should.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about": {
+      "text": "Strange? There is nothing strange about a town under medical quarantine. But go on.",
+      "choices": [
+        {
+          "id": "night",
+          "text": "Have you ever seen anything unusual after dark?",
+          "next": "night"
+        },
+        {
+          "id": "disappear",
+          "text": "What about people who have disappeared?",
+          "next": "disappear"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "night": {
+      "text": "Once I thought I saw something tall between the buildings. But it was dark, and I had missed a tablet. Nadia says the illness can deceive the eyes. I stay inside at night now.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "disappear": {
+      "text": "If someone has been taken for treatment, it is for their own good. Do you think the soldiers enjoy doing that? I do not ask questions that might interfere with their duty.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-menu": {
+      "text": "Who? I know most of the people in this town. Some better than they would like.",
+      "choices": [
+        {
+          "id": "people-about-pavel-sokolov",
+          "text": "Pavel Sokolov",
+          "next": "people-about-pavel-sokolov"
+        },
+        {
+          "id": "people-about-dusan-markovic",
+          "text": "Dusan Markovic",
+          "next": "people-about-dusan-markovic"
+        },
+        {
+          "id": "people-about-irina-kovalenko",
+          "text": "Irina Kovalenko",
+          "next": "people-about-irina-kovalenko"
+        },
+        {
+          "id": "people-about-viktor-petrov",
+          "text": "Viktor Petrov",
+          "next": "people-about-viktor-petrov"
+        },
+        {
+          "id": "people-about-zofia-nowak",
+          "text": "Zofia Nowak",
+          "next": "people-about-zofia-nowak"
+        },
+        {
+          "id": "people-about-milena-vukovic",
+          "text": "Milena Vukovic",
+          "next": "people-about-milena-vukovic"
+        },
+        {
+          "id": "people-about-nadia-morozova",
+          "text": "Nadia Morozova",
+          "next": "people-about-nadia-morozova"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-pavel-sokolov": {
+      "text": "Mr. Sokolov came from the capital. He knows what needs doing, and he has more patience than this town deserves. I tell him when people spread dangerous nonsense. It's a civic duty, not gossip.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-dusan-markovic": {
+      "text": "Dusan? Always complaining, always smelling of spirits. He won't take the tablets, then wonders why he sees things in the dark. I keep an eye on him. Someone has to.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-irina-kovalenko": {
+      "text": "Irina works hard at the factory. A respectable woman, though she asks too many questions about missing materials. The capital has its reasons for every allocation.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-viktor-petrov": {
+      "text": "Viktor serves people who ought to be home resting. His bar is where rumors breed. He can be kind, I suppose, but kindness isn't an excuse for encouraging disobedience.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-zofia-nowak": {
+      "text": "Zofia keeps a proper shop. She follows the distribution notices exactly, and she doesn't indulge every complaint. We need more people like her.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-milena-vukovic": {
+      "text": "That university girl, Milena, came back full of questions. Her parents' troubles are sad, truly. But accusing the authorities won't bring them home. I wish she'd listen.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-nadia-morozova": {
+      "text": "Nadia is a blessing. She brings our tablets even when people insult her for it. I told her I saw a figure outside once; she said the illness can play tricks. That settled it for me.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "postman-thanks": {
+      "text": "Thank you for bringing my letter.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
         }
       ]
     }

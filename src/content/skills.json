@@ -1,5 +1,15 @@
 {
+  "doorLocks": {
+    "apartments": {
+      "locked": false
+    }
+  },
   "persuasionTrustPoints": 5,
+  "questMoneyWeights": {
+    "barter": 1,
+    "intimidation": 0.5,
+    "persuasion": 0.5
+  },
   "attributeWeights": {
     "weapons": {
       "strength": 0,
@@ -81,7 +91,7 @@
   },
   "conditionPenaltyThreshold": 0.5,
   "sanityPenaltyThreshold": 0.5,
-  "sanityPenaltyStrength": 0.5,
+  "sanityPenaltyStrength": 1,
   "lockpickingMaxSumByRarity": {
     "common": 12,
     "uncommon": 20,
@@ -91,7 +101,7 @@
   },
   "scrapping": {
     "baseChance": 0.04,
-    "chancePerPoint": 0.02,
+    "chancePerPoint": 0.04,
     "maxChance": 0.9,
     "rarityWeights": {
       "common": 80,
@@ -128,15 +138,183 @@
       {
         "itemId": "service-pistol",
         "quantity": 1
+      },
+      {
+        "itemId": "adjustable-wrench",
+        "quantity": 1
+      },
+      {
+        "itemId": "barbed-bat",
+        "quantity": 1
+      },
+      {
+        "itemId": "blowtorch",
+        "quantity": 1
+      },
+      {
+        "itemId": "brass-knuckles",
+        "quantity": 1
+      },
+      {
+        "itemId": "briefcase",
+        "quantity": 1
+      },
+      {
+        "itemId": "canvas-backpack",
+        "quantity": 1
+      },
+      {
+        "itemId": "chef-jacket",
+        "quantity": 1
+      },
+      {
+        "itemId": "compact-pistol",
+        "quantity": 1
+      },
+      {
+        "itemId": "compass",
+        "quantity": 1
+      },
+      {
+        "itemId": "cooking-pot",
+        "quantity": 1
+      },
+      {
+        "itemId": "crowbar",
+        "quantity": 1
+      },
+      {
+        "itemId": "duffel-bag",
+        "quantity": 1
+      },
+      {
+        "itemId": "flat-cap",
+        "quantity": 1
+      },
+      {
+        "itemId": "frying-pan",
+        "quantity": 1
+      },
+      {
+        "itemId": "hammer",
+        "quantity": 1
+      },
+      {
+        "itemId": "hatchet",
+        "quantity": 1
+      },
+      {
+        "itemId": "horseshoe-charm",
+        "quantity": 1
+      },
+      {
+        "itemId": "knife",
+        "quantity": 1
+      },
+      {
+        "itemId": "leather-belt",
+        "quantity": 1
+      },
+      {
+        "itemId": "leather-boots",
+        "quantity": 1
+      },
+      {
+        "itemId": "lighter",
+        "quantity": 1
+      },
+      {
+        "itemId": "medal",
+        "quantity": 1
+      },
+      {
+        "itemId": "medical-coat",
+        "quantity": 1
+      },
+      {
+        "itemId": "military-coat",
+        "quantity": 1
+      },
+      {
+        "itemId": "old-pistol",
+        "quantity": 1
+      },
+      {
+        "itemId": "pipe-wrench",
+        "quantity": 1
+      },
+      {
+        "itemId": "pliers",
+        "quantity": 1
+      },
+      {
+        "itemId": "precision-screwdriver",
+        "quantity": 1
+      },
+      {
+        "itemId": "red-star",
+        "quantity": 1
+      },
+      {
+        "itemId": "repair-pliers",
+        "quantity": 1
+      },
+      {
+        "itemId": "revolver",
+        "quantity": 1
+      },
+      {
+        "itemId": "rope",
+        "quantity": 1
+      },
+      {
+        "itemId": "soldering-iron",
+        "quantity": 1
+      },
+      {
+        "itemId": "sun-amulet",
+        "quantity": 1
+      },
+      {
+        "itemId": "suspenders",
+        "quantity": 1
+      },
+      {
+        "itemId": "tool-roll",
+        "quantity": 1
+      },
+      {
+        "itemId": "trainers",
+        "quantity": 1
+      },
+      {
+        "itemId": "triquetra-pendant",
+        "quantity": 1
+      },
+      {
+        "itemId": "wool-socks",
+        "quantity": 1
+      },
+      {
+        "itemId": "work-gloves",
+        "quantity": 1
+      },
+      {
+        "itemId": "work-jacket",
+        "quantity": 1
+      },
+      {
+        "itemId": "wrench",
+        "quantity": 1
       }
     ]
   },
-  "lockpickingBaseSeconds": 0.5,
+  "lockpickingBaseSeconds": 5.5,
   "lockpickingSecondsPerPoint": 0.5,
   "athletics": 0.05,
   "weapons": 0.05,
   "martialArts": 0.05,
-  "stealth": 0.05,
+  "stealth": 0.016666666666666666,
   "medicine": 0.05,
   "barter": 0.05,
   "legendary": {
@@ -144,12 +322,17 @@
     "rangedMultiplier": 1.5,
     "sneakMultiplier": 2,
     "enemyAttackSpeed": 0.8,
-    "itemBuffMultiplier": 1.5,
+    "itemBuffMultiplier": 1,
     "barter": {
+      "freeCategories": ["Food", "Drink", "Medical"],
+      "freeItemIds": ["red-cigarettes", "grey-cigarettes", "matches"],
       "minItems": 3,
       "maxItems": 6,
       "vendorId": "merchant:worker-basic",
-      "ammunition": { "itemId": "pistol-ammunition", "quantity": 6 }
+      "ammunition": {
+        "itemId": "pistol-ammunition",
+        "quantity": 6
+      }
     },
     "perks": [
       {
@@ -166,7 +349,7 @@
       },
       {
         "skill": "scraper",
-        "description": "Scrapping has a 50% chance to recover a useful non-ammo item. Failed recovery returns 1–3 bullets instead, provided the result fits in inventory."
+        "description": "Scrapping is always successful: recover a useful non-ammo item or, if recovery fails, receive one bullet instead, provided the result fits in inventory."
       },
       {
         "skill": "lockpicking",
@@ -182,7 +365,7 @@
       },
       {
         "skill": "erudition",
-        "description": "Book bonuses are 50% stronger, rounded down."
+        "description": "Gain +1 to every skill."
       },
       {
         "skill": "intimidation",
@@ -190,16 +373,41 @@
       },
       {
         "skill": "persuasion",
-        "description": "Enemies stay peaceful until you start a fight."
+        "description": "Human patrols stay peaceful until you start a fight. Monsters remain hostile."
       },
       {
         "skill": "barter",
-        "description": "Bus travel is free. Dusan sells bullets and a daily selection of stat items. Stock rerolls every morning."
+        "description": "Bus travel is free. Money takes no inventory slots. Buy and sell all food, drinks, cigarettes, matches and medicine for 0."
       }
     ],
     "scrapping": {
-      "itemChance": 0.5,
-      "fallbackReward": { "itemId": "pistol-ammunition", "minQuantity": 1, "maxQuantity": 3 }
-    }
+      "bonusChance": 0,
+      "fallbackReward": {
+        "itemId": "pistol-ammunition",
+        "minQuantity": 1,
+        "maxQuantity": 1
+      }
+    },
+    "allSkillsBonus": 1
+  },
+  "educationRequirementReduction": 0.05,
+  "vehicleSearch": {
+    "stealth": 8,
+    "lockpicking": 6,
+    "athletics": 8,
+    "scraper": 8,
+    "barter": 8,
+    "parts": [
+      {
+        "itemId": "copper-wire",
+        "quantity": 1
+      }
+    ],
+    "valuables": [
+      {
+        "itemId": "pocket-watch",
+        "quantity": 1
+      }
+    ]
   }
 }

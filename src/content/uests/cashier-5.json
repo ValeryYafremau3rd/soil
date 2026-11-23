@@ -1,0 +1,95 @@
+{
+  "id": "cashier-5",
+  "name": "Through the Night",
+  "description": "Zofia trusts you with a night courier run: retrieve a bandage from the Center crate and deliver it to Nadia by morning. The shipment carries an unusual routing stamp.",
+  "prerequisites": [
+    "cashier-4"
+  ],
+  "offeredBy": "cashier",
+  "offerText": "Ask about night work.",
+  "retryStage": 1,
+  "stages": [
+    {
+      "id": "cashier-5-brief",
+      "description": "Accept the night delivery. Take the goods from the courier crate in Center at night.",
+      "trigger": {
+        "kind": "accept"
+      }
+    },
+    {
+      "id": "collect",
+      "description": "At night, take bandage from the courier crate near the Center shop.",
+      "trigger": {
+        "kind": "loot",
+        "containerId": "cashier-5-crate"
+      },
+      "phases": [
+        "night"
+      ],
+      "deadlinePhases": 2,
+      "requiredItems": [
+        {
+          "itemId": "bandage",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "cashier-5-deliver",
+      "description": "Deliver 1 Bandage to Nadia Morozova in the morning. Nadia notices a special transport stamp on the bandage delivery.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-nurse",
+        "choiceId": "cashier-5-deliver"
+      },
+      "requiredItems": [
+        {
+          "itemId": "bandage",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "bandage",
+          "quantity": 1
+        }
+      ],
+      "phases": [
+        "morning"
+      ]
+    },
+    {
+      "id": "cashier-5-return",
+      "description": "Return to Zofia for payment before afternoon.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "cashier",
+        "choiceId": "cashier-5-return"
+      }
+    }
+  ],
+  "reward": {
+    "money": 18,
+    "items": [
+      {
+        "itemId": "leather-boots",
+        "quantity": 1
+      }
+    ]
+  },
+  "retryTrigger": {
+    "npcId": "cashier",
+    "choiceId": "cashier-5-retry"
+  },
+  "deliveryKind": "courier",
+  "_codex": {
+    "narrativeIntent": "A nighttime bandage delivery exposes special military medical priorities.",
+    "implementationNotes": [
+      "Keep existing center crate, bandage, morning delivery and deadline.",
+      "Nadia notices an unusual routing stamp."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

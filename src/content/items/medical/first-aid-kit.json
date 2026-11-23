@@ -1,0 +1,22 @@
+{
+  "id": "first-aid-kit",
+  "price": 14,
+  "name": "First aid kit",
+  "description": "Field treatment grants +25 maximum Health and +15 maximum Energy for four phases or until sleep. Does not restore current Health or Energy.",
+  "consumable": true,
+  "maxStack": 5,
+  "recovery": {},
+  "rarity": "rare",
+  "quality": 4,
+  "category": "Medical",
+  "icon": {
+    "x": 375,
+    "y": 270,
+    "width": 170,
+    "height": 145
+  },
+  "scale": 1,
+  "skillRequirements": {
+    "medicine": 12
+  }
+}

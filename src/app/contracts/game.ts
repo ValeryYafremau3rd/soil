@@ -16,7 +16,15 @@ import type { OptionsController } from './save'
 import type { LoadingController } from './loading'
 import type { NotesController } from './notes'
 
+/**
+ * Composed typed service capabilities shared with game and UI consumers.
+ */
 export interface GameServices {
+  story: import('./story').StoryController
+  vehicles: {
+    open(vehicleId: string): void
+  }
+  audio: import('./audio').AudioController
   statistics: import('./statistics').StatisticsController
   perks: import('./perks').PerksController
   notes: NotesController

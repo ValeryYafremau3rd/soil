@@ -1,4 +1,5 @@
-{
+
+make{
   "id": "medical-crate",
   "type": "crate",
   "x": 1700,

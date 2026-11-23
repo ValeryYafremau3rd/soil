@@ -1,0 +1,67 @@
+{
+  "categories": [
+    "Medical"
+  ],
+  "minItems": 1,
+  "maxItems": 2,
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "offers": [
+    {
+      "itemId": "canvas-backpack",
+      "chance": 1
+    },
+    {
+      "itemId": "antiseptic-bottle",
+      "chance": 0.26
+    },
+    {
+      "itemId": "balm-tin",
+      "chance": 0.27
+    },
+    {
+      "itemId": "bandage-roll",
+      "chance": 0.27
+    },
+    {
+      "itemId": "chemistry-medicine",
+      "chance": 0.15
+    },
+    {
+      "itemId": "first-aid-kit",
+      "chance": 0.16
+    },
+    {
+      "itemId": "health-magazine-erudition",
+      "chance": 0.68
+    },
+    {
+      "itemId": "health-magazine-medicine",
+      "chance": 0.68
+    },
+    {
+      "itemId": "medical-case",
+      "chance": 0.14
+    },
+    {
+      "itemId": "medical-coat",
+      "chance": 0.19
+    },
+    {
+      "itemId": "medicine-bottle",
+      "chance": 0.25
+    },
+    {
+      "itemId": "red-tablets",
+      "chance": 0.26
+    },
+    {
+      "itemId": "steroids",
+      "chance": 0.2
+    },
+    {
+      "itemId": "white-tablets",
+      "chance": 0.26
+    }
+  ]
+}

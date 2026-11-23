@@ -1,0 +1,58 @@
+{
+  "id": "bartender-shortages",
+  "name": "Nothing to Serve",
+  "description": "Viktor suspects the shortage is not an accident. Ask Zofia and Pavel why official supply manifests no longer match what arrives.",
+  "offeredBy": "bartender",
+  "offerText": "Ask Zofia when food and drinks will arrive.",
+  "prerequisites": [
+    "bartender-supplies"
+  ],
+  "stages": [
+    {
+      "id": "shortages-cashier",
+      "description": "Ask Zofia when food and drinks will arrive.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "cashier",
+        "choiceId": "shortages-cashier"
+      }
+    },
+    {
+      "id": "shortages-clerk",
+      "description": "Ask Pavel about the shortages. Ask why the official inventory calls the missing goods an emergency redistribution.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "shortages-clerk"
+      }
+    },
+    {
+      "id": "shortages-report",
+      "description": "Return to Viktor with the answer.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "shortages-report"
+      }
+    }
+  ],
+  "reward": {
+    "money": 12,
+    "items": [
+      {
+        "itemId": "enamel-mug",
+        "quantity": 1
+      }
+    ]
+  },
+  "_codex": {
+    "narrativeIntent": "Zofia and Pavel give different bureaucratic explanations for the missing deliveries.",
+    "implementationNotes": [
+      "Preserve dialogue IDs and order.",
+      "Pavel uses phrase administrative redistribution; Viktor is unconvinced."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

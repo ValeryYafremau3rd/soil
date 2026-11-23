@@ -1,17 +1,17 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { BoundaryTravel } from '../../src/game/interactive/BoundaryTravel.ts'
-import { TravelService } from '../../src/app/services/TravelService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { TravelService } from '../../src/app/services/world/TravelService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { content } from '../helpers/content.mjs'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 
 // These edge scenarios begin at the eastern end of the route.
 const locations = content().locations.sort((a, b) => Number(b.id === 'living-district') - Number(a.id === 'living-district'))
 
-test('both outdoor boundaries open walking travel once until the hero leaves the edge', () => {
+test('both outdoor boundaries trigger walking travel once until the hero leaves the edge', () => {
   const modes = []
-  const edge = new BoundaryTravel({ openTravel: (mode, direction) => { modes.push([mode, direction]); return true } })
+  const edge = new BoundaryTravel({ walkToBoundary: direction => { modes.push(['walk', direction]); return true } })
   const bounds = { left: 40, right: 2840 }
   assert.equal(edge.update(400, bounds), false)
   assert.equal(edge.update(40, bounds), true)
@@ -25,23 +25,24 @@ test('both outdoor boundaries open walking travel once until the hero leaves the
 
 test('interior walls and disabled boundary checks do not open travel', () => {
   const modes = []
-  const edge = new BoundaryTravel({ openTravel: mode => modes.push(mode) })
+  const edge = new BoundaryTravel({ walkToBoundary: direction => modes.push(direction) })
   assert.equal(edge.update(40, { left: 40, right: 500 }, false), false)
   assert.equal(edge.update(500, { left: 40, right: 500 }, false), false)
   assert.deepEqual(modes, [])
 })
 
-test('walking costs a full phase and preserves partial bus progress across day rollover', () => {
-  const time = new DayTime()
+test('walking costs a full phase while buses preserve time across day rollover', () => {
+  const time = new DayTimeService()
   const travel = new TravelService(locations, time)
   const trips = [
     ['bus', 'factory', 1, 'morning'],
     ['walk', 'center', 1, 'afternoon'],
-    ['bus', 'living-district', 1, 'evening'],
-    ['walk', 'center', 1, 'night'],
+    ['bus', 'living-district', 1, 'afternoon'],
+    ['walk', 'center', 1, 'evening'],
     ['walk', 'factory', 1, 'night'],
     ['walk', 'center', 1, 'night'],
-    ['walk', 'living-district', 2, 'morning'],
+    ['walk', 'living-district', 1, 'night'],
+    ['walk', 'center', 2, 'morning'],
   ]
   for (const [mode, destination, day, phase] of trips) {
     const current = travel.getSnapshot().locations.find(location => location.id === travel.getSnapshot().currentLocationId)
@@ -52,7 +53,7 @@ test('walking costs a full phase and preserves partial bus progress across day r
 })
 
 test('canceling, invalid destinations and choosing the current district do not charge walking time', () => {
-  const time = new DayTime()
+  const time = new DayTimeService()
   const travel = new TravelService(locations, time)
   const initial = time.getSnapshot()
   travel.openTravel('walk')
@@ -69,7 +70,7 @@ test('canceling, invalid destinations and choosing the current district do not c
 })
 
 test('unconnected outer edges do nothing and connected edges only offer their configured neighbor', () => {
-  const time = new DayTime()
+  const time = new DayTimeService()
   const travel = new TravelService(locations, time)
   const bounds = { left: 40, right: 2840 }
   const edge = new BoundaryTravel(travel)
@@ -78,10 +79,7 @@ test('unconnected outer edges do nothing and connected edges only offer their co
   assert.equal(travel.getSnapshot(), initial)
   edge.update(400, bounds)
   assert.equal(edge.update(bounds.left, bounds), true)
-  assert.equal(travel.getSnapshot().destinationId, 'center')
-  travel.travelTo('factory')
-  assert.equal(travel.getSnapshot().currentLocationId, 'living-district', 'cannot bypass Center')
-  travel.travelTo('center')
+  assert.equal(travel.getSnapshot().menuOpen, false)
   assert.equal(travel.getSnapshot().currentLocationId, 'center')
   travel.openTravel('walk', 'left')
   assert.equal(travel.getSnapshot().destinationId, 'factory')
@@ -93,22 +91,24 @@ test('unconnected outer edges do nothing and connected edges only offer their co
   assert.equal(travel.getSnapshot().destinationId, 'center')
 })
 
-test('canceling an edge confirmation does not reopen until the hero leaves and reaches that edge again', () => {
-  const time = new DayTime()
+test('edge travel loads automatically without publishing confirmation or repeating at the same edge', () => {
+  const time = new DayTimeService()
   const travel = new TravelService(locations, time)
   const edge = new BoundaryTravel(travel)
   const bounds = { left: 40, right: 2840 }
-  const before = time.getSnapshot()
-  edge.update(bounds.left, bounds)
-  travel.closeTravel()
+  const snapshots = []
+  travel.subscribe(() => snapshots.push(travel.getSnapshot()))
+  assert.equal(edge.update(bounds.left, bounds), true)
+  assert.equal(travel.getSnapshot().currentLocationId, 'center')
+  assert.equal(travel.getSnapshot().arrivalEdge, 'right')
+  assert.equal(time.getSnapshot().phase, 'afternoon')
   assert.equal(edge.update(bounds.left, bounds), false)
-  assert.equal(travel.getSnapshot().menuOpen, false)
-  assert.equal(time.getSnapshot(), before)
+  assert.equal(travel.getSnapshot().journey, 1)
+  assert.ok(snapshots.every(snapshot => !snapshot.menuOpen))
   edge.update(100, bounds)
   assert.equal(edge.update(bounds.left, bounds), true)
-  assert.equal(travel.getSnapshot().destinationId, 'center')
+  assert.equal(travel.getSnapshot().currentLocationId, 'factory')
 })
-
 test('location connections validate known IDs, reject self-links, and require reciprocal edges', () => {
   for (const value of ['missing', 'factory', 'living-district']) {
     const data = content()
@@ -118,7 +118,7 @@ test('location connections validate known IDs, reject self-links, and require re
 })
 
 test('walking arrives at the opposite connected edge, bus travel uses its stop, and load restores its own position', () => {
-  const time = new DayTime()
+  const time = new DayTimeService()
   const travel = new TravelService(locations, time)
   assert.equal(travel.getSnapshot().arrivalEdge, null)
   travel.openTravel('walk', 'left')

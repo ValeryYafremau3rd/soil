@@ -2,21 +2,53 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content } from '../helpers/content.mjs'
 import classes from '../../src/content/classes.json' with { type: 'json' }
-import { OptionsService } from '../../src/app/services/OptionsService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { TravelService } from '../../src/app/services/TravelService.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
-import { LockpickingService } from '../../src/app/services/LockpickingService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { drainStatusWithTime } from '../../src/app/services/drainStatusWithTime.ts'
-import { refreshContainersEachMorning } from '../../src/app/services/refreshContainersEachMorning.ts'
+import { OptionsService } from '../../src/app/services/session/OptionsService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { TravelService } from '../../src/app/services/world/TravelService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
+import { LockpickingService } from '../../src/app/services/puzzles/LockpickingService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { drainStatusWithTime } from '../../src/app/services/character/drainStatusWithTime.ts'
+import { refreshContainersEachMorning } from '../../src/app/services/inventory/refreshContainersEachMorning.ts'
 import { buildContainerSeeds } from '../../src/app/content/containerSeeds.ts'
 import { buildVendorSeeds } from '../../src/app/content/vendorSeeds.ts'
 import { roomContainerPlacements } from '../../src/app/content/roomContainerPlacements.ts'
 import { validateSave } from '../../src/app/persistence/validateSave.ts'
 import { GAME_VERSION, SaveCompatibilityError } from '../../src/app/version.ts'
+
+test('retired strap quest progress is removed without changing rewards or other progress', () => {
+  for (const stageIndex of [0, 1, 2, 3]) {
+    const { save, references } = setup()
+    const previousQuests = structuredClone(save.quests)
+    save.quests.push({ questId: 'a-fraying-strap', stageIndex })
+    const migrated = validateSave(save, references)
+    assert.deepEqual(migrated.quests, previousQuests)
+    assert.deepEqual(migrated.inventory, save.inventory)
+    assert.deepEqual(validateSave(migrated, references), migrated)
+    assert.ok(save.quests.some(quest => quest.questId === 'a-fraying-strap'))
+  }
+})
+
+test('slotless currency saves allow extra money stacks but never extra ordinary items', () => {
+  const { save, references } = setup()
+  save.inventory.items = [
+    ...Array.from({ length: 6 }, () => ({ itemId: 'cloth', quantity: 1 })),
+    { itemId: 'money', quantity: 100 },
+    { itemId: 'money', quantity: 100 },
+    { itemId: 'money', quantity: 5 },
+  ]
+  save.inventory.currencyInInventory = true
+  save.inventory.slotlessMoney = true
+  save.inventory.money = 205
+  assert.equal(validateSave(save, references).inventory.money, 205)
+  save.inventory.slotlessMoney = false
+  assert.throws(() => validateSave(save, references))
+  save.inventory.slotlessMoney = true
+  save.inventory.items.push({ itemId: 'cloth', quantity: 1 })
+  assert.throws(() => validateSave(save, references))
+})
 
 test('removed barracks toolbox migrates stored items, deposits and cache progress to the taskboard suitcase', () => {
   const { save, references } = setup()
@@ -113,9 +145,9 @@ function setup() {
   const references = { optionalContainerIds: seeds.filter(seed => seed.questId || seed.questIds?.length || seed.requiresQuest || seed.id === 'merchant:citizen-nurse').map(seed=>seed.id), npcIds: Object.keys(data.npcs), classIds: classes.map(entry => entry.id), difficultyIds: data.difficulty.presets.map(entry => entry.id), locations: data.locations,
     items: data.items, quests: data.quests, buildings: data.buildings, rooms: data.rooms, containerIds: seeds.map(seed => seed.id), travelsPerPhase: data.daytime.travelsPerPhase }
   const position = { locationId: 'living-district', buildingId: 'apartments', roomId: 'apartment-21', floor: 1, x: 500, y: 500 }
-  const save = { version: 1, openingVersion: 1, savedAt: '2026-11-10T12:00:00.000Z', classId: 'safecracker', difficultyId: data.difficulty.defaultId,
+  const save = { version: 1, openingVersion: 1, escapeCluesVersion: 1, savedAt: '2026-11-10T12:00:00.000Z', classId: 'safecracker', difficultyId: data.difficulty.defaultId,
     daytime: { day: 2, phase: 'evening' }, status: { health: 42, energy: 31, sanity: 27 },
-    inventory: inventory.saveState(), quests: [{ questId: data.quests[0].id, stageIndex: 2 }],
+    inventory: inventory.saveState(), quests: [{ questId: 'way-out-of-town', stageIndex: 0 }],
     travel: { locationId: 'living-district', phaseTravels: 1 }, unlockedDoors: ['2:apartments:apartment-22'], position }
   return { data, seeds, inventory, references, position, save }
 }
@@ -264,7 +296,7 @@ test('weather survives save validation, legacy saves work, and unknown effects a
 
 test('sleep autosaves settled morning state once; bench rest and cancellation do not overwrite it', () => {
   const { save, references, data, inventory, position } = setup()
-  const time = new DayTime(2, 'night')
+  const time = new DayTimeService(2, 'night')
   const status = new StatusService(['health', 'energy', 'sanity'].map(id => ({ id, value: 40, max: 100 })))
   const quests = new QuestService(data.quests, inventory, undefined, time, () => 0)
   let raw = null, writes = 0, loaded = null
@@ -451,13 +483,14 @@ test('restored finished quests do not repeat rewards; stats, bus progress, and d
   const inventory = new InventoryService(data.items, seeds)
   const quests = new QuestService(data.quests, inventory)
   const before = inventory.getSnapshot()
-  quests.restoreState([{ questId: data.quests[0].id, stageIndex: 3 }])
-  assert.equal(quests.advanceDialogue(data.quests[0].id, 'bartender', 'deliver-rope'), false)
+  const quest = data.quests.find(entry => entry.id === 'bartender-supplies')
+  quests.restoreState([{ questId: quest.id, stageIndex: quest.stages.length }])
+  assert.equal(quests.advanceDialogue(quest.id, 'bartender', 'deliver-supplies'), false)
   assert.equal(inventory.getSnapshot(), before)
   const status = new StatusService()
   status.restoreState(save.status)
   assert.deepEqual(status.getSnapshot(), save.status)
-  const time = new DayTime(2, 'evening')
+  const time = new DayTimeService(2, 'evening')
   const travel = new TravelService(data.locations, time)
   travel.restoreState(save.travel)
   travel.openTravel()
@@ -531,11 +564,41 @@ test('retired smuggler and Dusan shipment crates merge into district crates with
 test('previous tool-slot magazines migrate to carried items during save validation',()=>{
   const {save,references}=setup()
   save.inventory.equipment={tool:'stealth-training-magazine'}
-  const previousCount=save.inventory.items.filter(item=>item.itemId==='stealth-training-magazine').length
+  const previousCount=save.inventory.items.filter(item=>item.itemId==='sport-magazine-stealth').length
   const restored=validateSave(save,references)
   assert.equal(restored.inventory.equipment.tool,undefined)
-  assert.equal(restored.inventory.items.filter(item=>item.itemId==='stealth-training-magazine').length,previousCount+1)
+  assert.equal(restored.inventory.items.filter(item=>item.itemId==='sport-magazine-stealth').length,previousCount+1)
   assert.equal(save.inventory.equipment.tool,'stealth-training-magazine')
+})
+
+test('reading records survive validation and reject duplicate, unknown and non-reading identities', () => {
+  const { save, references } = setup()
+  save.inventory.readBooks = ['health-magazine-medicine', 'chemistry-medicine', 'sci-fi-book']
+  assert.deepEqual(validateSave(save, references).inventory.readBooks, save.inventory.readBooks)
+  for (const readBooks of [['unknown'], ['bread'], ['sci-fi-book', 'sci-fi-book']]) {
+    assert.throws(() => validateSave({ ...save, inventory: { ...save.inventory, readBooks } }, references))
+  }
+  const legacy = structuredClone(save)
+  delete legacy.inventory.readBooks
+  assert.deepEqual(validateSave(legacy, references).inventory.readBooks, [])
+})
+
+test('old developer safe stock, deposits and reading notes migrate without replenishing taken books', () => {
+  const { save, references } = setup()
+  const oldSafe = 'living-district:apartments:apartment-51:developer-container'
+  const newSafe = 'living-district:apartments:apartment-21:developer-container'
+  delete save.inventory.containers[newSafe]
+  save.inventory.containers[oldSafe] = { items: [{ itemId: 'leather-journal', quantity: 1 }], locked: false }
+  save.inventory.deposits[oldSafe] = [{ itemId: 'leather-journal', quantity: 1 }]
+  save.inventory.lootedCaches = [oldSafe]
+  save.notes = { locations: [], people: [], items: ['encyclopedia', 'leather-journal'] }
+  const migrated = validateSave(save, references)
+  assert.deepEqual(migrated.inventory.containers[newSafe].items, [{ itemId: 'chemistry-erudition', quantity: 1 }])
+  assert.deepEqual(migrated.inventory.deposits[newSafe], [{ itemId: 'chemistry-erudition', quantity: 1 }])
+  assert.deepEqual(migrated.notes.items, ['chemistry-erudition'])
+  assert.deepEqual(migrated.inventory.lootedCaches, [newSafe])
+  assert.deepEqual(migrated.inventory.readBooks, [])
+  assert.deepEqual(validateSave(migrated, references), migrated)
 })
 test('shoes save alongside armor and old armor-slot footwear migrates',()=>{
  const {save,references}=setup()
@@ -552,15 +615,15 @@ test('bottle stack limits migrate old drinks without merging indexed ammunition 
  const id=Object.keys(save.inventory.containers)[0]
  save.inventory.containers[id].items=[{itemId:'beer-bottle',quantity:5}]
  const loaded=validateSave(save,references)
- assert.deepEqual(loaded.inventory.items.map(item=>item.quantity),[1,1,1,5,1,10])
- assert.equal(loaded.inventory.containers[id].items.length,5)
+ assert.deepEqual(loaded.inventory.items.map(item=>item.quantity),[3,5,1,10])
+ assert.deepEqual(loaded.inventory.containers[id].items.map(item=>item.quantity),[3,2])
  assert.equal(save.inventory.items[0].quantity,3)
- save.inventory.items.push({itemId:'letter',quantity:1})
+ save.inventory.items.push(...['letter','rope','cloth'].map(itemId=>({itemId,quantity:1})))
  assert.throws(()=>validateSave(save,references),/incompatible content/)
 })
 test('generic quest parameters and pending crate return survive saves; invalid destinations and requested items are rejected',()=>{
  const {data,save,references,inventory}=setup()
- const time=new DayTime(save.daytime.day,save.daytime.phase),quests=new QuestService(data.quests,inventory,undefined,time,()=>0)
+ const time=new DayTimeService(save.daytime.day,save.daytime.phase),quests=new QuestService(data.quests,inventory,undefined,time,()=>0)
  const finished=[1,2,3,4].map(n=>({questId:`smuggler-${n}`,stageIndex:data.quests.find(q=>q.id===`smuggler-${n}`).stages.length}))
  quests.restoreState(finished)
  quests.acceptFromNpc('smuggler-delivery','citizen-mechanic')
@@ -596,9 +659,10 @@ test('legacy escape stages migrate once while current saves retain the opening o
   for (const stageIndex of [0, 1, 2]) {
     const legacy = structuredClone(save)
     delete legacy.openingVersion
+    delete legacy.escapeCluesVersion
     legacy.quests = [{ questId: 'way-out-of-town', stageIndex }]
     const migrated = validateSave(legacy, references)
-    assert.equal(migrated.quests[0].stageIndex, stageIndex + 1)
+    assert.equal(migrated.quests[0].stageIndex, [1, 4, 5][stageIndex])
     assert.deepEqual(validateSave(migrated, references), migrated)
     assert.equal(legacy.quests[0].stageIndex, stageIndex)
   }

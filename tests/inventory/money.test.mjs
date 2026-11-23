@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { content } from '../helpers/content.mjs'
 
 const stack = (itemId, quantity = 1) => ({ itemId, quantity })

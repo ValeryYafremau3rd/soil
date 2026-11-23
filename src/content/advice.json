@@ -15,7 +15,7 @@
     { "id": "bags", "rarity": "uncommon", "level": 5, "text": "A canvas backpack, duffel bag or briefcase adds carrying space, though the bag itself takes a slot." },
     { "id": "duplicate-bags", "rarity": "uncommon", "level": 5, "text": "Two bags of the same kind do not give twice the space. Different bag types are more useful together." },
     { "id": "item-requirements", "rarity": "uncommon", "level": 5, "text": "Read an item's requirements before buying it. Owning a tool does not mean you know how to use it." },
-    { "id": "training-books", "rarity": "uncommon", "level": 6, "text": "Training books improve your skills while you carry them. Put a book away and its bonus ends." },
+    { "id": "training-books", "rarity": "uncommon", "level": 6, "text": "Read books once for permanent bonuses." },
     { "id": "vendor-profit", "rarity": "uncommon", "level": 6, "text": "A trader pays less than they charge. Check the offered price before selling something you might need again." },
     { "id": "save-sleep", "rarity": "uncommon", "level": 6, "text": "Sleeping saves your progress once you wake. Resting on a bench does not." },
     { "id": "fresh-stock", "rarity": "uncommon", "level": 7, "text": "Traders and renewable indoor supplies refresh in the morning. Coming back the same afternoon will not refill them." },

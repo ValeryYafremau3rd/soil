@@ -1,0 +1,89 @@
+{
+  "id": "find-work",
+  "name": "Useful Citizens",
+  "stages": [
+    {
+      "description": "Complete First Steps, then ask Pavel where to find authorized work.",
+      "id": "ask-clerk",
+      "trigger": {
+        "npcId": "citizen-clerk",
+        "choiceId": "find-work-ask",
+        "kind": "dialogue"
+      }
+    },
+    {
+      "description": "Accept a job from Dusan Markovic.",
+      "parallelGroup": "employers",
+      "id": "work-citizen-mechanic",
+      "trigger": {
+        "kind": "questAccepted",
+        "npcId": "citizen-mechanic"
+      }
+    },
+    {
+      "description": "Accept a job from Viktor Petrov.",
+      "parallelGroup": "employers",
+      "id": "work-bartender",
+      "trigger": {
+        "kind": "questAccepted",
+        "npcId": "bartender"
+      }
+    },
+    {
+      "description": "Accept a job from Zofia Nowak.",
+      "parallelGroup": "employers",
+      "id": "work-cashier",
+      "trigger": {
+        "kind": "questAccepted",
+        "npcId": "cashier"
+      }
+    },
+    {
+      "description": "Accept a job from Nadia Morozova.",
+      "parallelGroup": "employers",
+      "id": "work-citizen-nurse",
+      "trigger": {
+        "kind": "questAccepted",
+        "npcId": "citizen-nurse"
+      }
+    },
+    {
+      "description": "Accept work from all four contacts.",
+      "parallelGroup": "employers",
+      "id": "visit-apartment",
+      "trigger": {
+        "kind": "questAccepted",
+        "npcId": "citizen-nurse"
+      }
+    },
+    {
+      "description": "Return to Pavel Sokolov after accepting work from all four contacts.",
+      "id": "return-clerk",
+      "trigger": {
+        "npcId": "citizen-clerk",
+        "choiceId": "find-work-report",
+        "kind": "dialogue"
+      }
+    }
+  ],
+  "description": "Pavel expects every resident to contribute. Meet his four approved contacts; each is struggling with a different consequence of the quarantine.",
+  "autoStart": true,
+  "reward": {
+    "items": [
+      {
+        "quantity": 1,
+        "itemId": "psychology-barter"
+      }
+    ]
+  },
+  "_codex": {
+    "narrativeIntent": "Pavel introduces four employers whose practical problems will become three separate investigations.",
+    "implementationNotes": [
+      "Keep all four employer acceptance objectives; introduce Irina through Dusan and factory work.",
+      "Do not reveal connections between factory, hospital and government yet."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

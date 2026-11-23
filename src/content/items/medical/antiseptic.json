@@ -1,0 +1,22 @@
+{
+  "id": "antiseptic",
+  "price": 4,
+  "name": "Antiseptic",
+  "description": "Protective treatment grants +10 maximum Health for four phases or until sleep.",
+  "consumable": true,
+  "maxStack": 5,
+  "recovery": {},
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Medical",
+  "icon": {
+    "x": 1320,
+    "y": 255,
+    "width": 85,
+    "height": 165
+  },
+  "scale": 1,
+  "skillRequirements": {
+    "medicine": 4
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "cloth",
+  "price": 3,
+  "name": "Cloth",
+  "description": "A folded piece of plain, sturdy fabric.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Material",
+  "icon": {
+    "x": 1340,
+    "y": 642,
+    "width": 100,
+    "height": 125
+  },
+  "scale": 1
+}

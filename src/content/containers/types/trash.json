@@ -8,5 +8,10 @@
   "displayHeight": 75,
   "scale": 1,
   "groundOrigin": 0.9166666666666666,
+  "platform": {
+    "left": 0.1,
+    "right": 0.9,
+    "top": 0.18
+  },
   "quality": 1
 }

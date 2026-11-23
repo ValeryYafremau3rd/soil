@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
 
 test('effective persuasion adds trust in five-point steps and shares the quest cap', () => {
   let persuasion = 0

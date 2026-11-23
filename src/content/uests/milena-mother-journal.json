@@ -1,0 +1,59 @@
+{
+  "id": "milena-mother-journal",
+  "name": "Under Watch",
+  "description": "Milena’s mother left a journal near the factory rooftop. Irina may know where her belongings were stored, but the factory is watched.",
+  "prerequisites": [
+    "milena-mother-letter",
+    "nurse-tablet-deliveries"
+  ],
+  "offeredBy": "stranger",
+  "reward": {
+    "items": [
+      {
+        "itemId": "sun-amulet",
+        "quantity": 1
+      }
+    ]
+  },
+  "offerText": "Could you ask Kovalenko about Mother's belongings?",
+  "stages": [
+    {
+      "id": "ask-kovalenko",
+      "description": "Ask Irina Kovalenko where the factory kept Milena's mother's belongings.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "ask-mother-belongings"
+      }
+    },
+    {
+      "id": "find-journal",
+      "description": "Find another way onto the main factory roof and search its toolbox for Milena's mother's journal. Select it in inventory and press Enter to read. The journal mentions a restricted shift and an unexplained transfer.",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItems": [
+        {
+          "itemId": "milena-mother-journal",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "_codex": {
+    "narrativeIntent": "The rooftop journal describes troubling factory shifts and a reference to patient movement, without directly revealing monsters.",
+    "implementationNotes": [
+      "Keep the factory roof toolbox and journal item.",
+      "Set hospital_journal_found on completion; preserve sun-amulet reward."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "hospital_journal_found",
+        "value": true
+      }
+    ]
+  }
+}

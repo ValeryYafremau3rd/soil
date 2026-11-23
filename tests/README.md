@@ -79,8 +79,8 @@ Run only the scenarios affected by the current change. Existing Chrome/CDP helpe
   next morning and day number update, room/position remain, and outdoor actors
   reflect the new phase. Verify outdoor cover uses jump frame 0 behind the prop;
   Enter again restores the front layer/idle, and movement is blocked while hidden.
-- Verify patrol populations by phase: Center 2/2/2/3, Factory 1/1/1/2,
-  Living District 0/0/0/1. Watch walk/idle transitions and boundary turns;
+- Verify patrol populations by phase: Center and Living District always 2 Soldiers + 1 Militia; Factory daytime 2 Soldiers + 1 Militia,
+  nighttime Titan plus a 10% roll for 2 Soldiers + 1 Militia. Center/Living District each roll 50% for 3 Octopuses and 50% for 1 Fly at night. Watch walk/idle transitions and boundary turns;
   officers pause in menus, hide indoors and never provide jump surfaces.
 - Approach street taskboards and press Enter to list available quests. Accept with Enter, use up/down for quests and left/right for journal tabs. Enter
   each building: street boards hide and its wall board becomes visible. Verify

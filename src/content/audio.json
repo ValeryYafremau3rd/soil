@@ -1,0 +1,139 @@
+{
+  "masterVolume": 0.8,
+  "tracks": {
+    "chase": {
+      "path": "combat/chase.mp3",
+      "volume": 0.55
+    },
+    "fight": {
+      "path": "combat/fight.mp3",
+      "volume": 0.55
+    },
+    "miss": {
+      "path": "combat/miss.mp3",
+      "volume": 0.7
+    },
+    "punch": {
+      "path": "combat/punch.mp3",
+      "volume": 0.7
+    },
+    "shot": {
+      "path": "combat/shot.mp3",
+      "volume": 0.7
+    },
+    "spotted": {
+      "path": "combat/spotted.mp3",
+      "volume": 0.7
+    },
+    "titanSpotted": {
+      "path": "combat/titan_spotted.mp3",
+      "volume": 0.7
+    },
+    "city": {
+      "path": "ambient/city_ambient.mp3",
+      "volume": 0.4
+    },
+    "factoryInside": {
+      "path": "ambient/factory_inside.mp3",
+      "volume": 0.4
+    },
+    "factory": {
+      "path": "ambient/factory.mp3",
+      "volume": 0.4
+    },
+    "horror": {
+      "path": "ambient/horror_ambient.mp3",
+      "volume": 0.4
+    },
+    "door": {
+      "path": "items/door.mp3",
+      "volume": 0.7
+    },
+    "calm": {
+      "path": "music/calm_music.mp3",
+      "volume": 0.3
+    },
+    "calm2": {
+      "path": "music/calm_music_2.mp3",
+      "volume": 0.3
+    },
+    "theme": {
+      "path": "music/theme.mp3",
+      "volume": 0.4
+    },
+    "ui": {
+      "path": "ui/ui.mp3",
+      "volume": 0.125
+    },
+    "newDay": {
+      "path": "other/new_day.mp3",
+      "volume": 0.7
+    },
+    "running": {
+      "path": "action/running.mp3",
+      "volume": 0.4
+    }
+  },
+  "events": {
+    "shot": "shot",
+    "meleeHit": "punch",
+    "meleeMiss": "miss",
+    "door": "door",
+    "ui": "ui",
+    "wake": "newDay",
+    "death": "newDay"
+  },
+  "music": {
+    "loading": "theme",
+    "ending": "theme",
+    "daytime": [
+      "calm",
+      "calm2"
+    ],
+    "night": []
+  },
+  "pursuit": {
+    "human": "chase",
+    "monster": "fight"
+  },
+  "spotted": {
+    "monster": "spotted",
+    "titan": "titanSpotted"
+  },
+  "locations": {
+    "center": [
+      {
+        "track": "city",
+        "outside": 1,
+        "inside": 0.25
+      }
+    ],
+    "living-district": [
+      {
+        "track": "city",
+        "outside": 1,
+        "inside": 0.25
+      }
+    ],
+    "factory": [
+      {
+        "track": "factory",
+        "outside": 1,
+        "inside": 0.25
+      },
+      {
+        "track": "factoryInside",
+        "outside": 0.2,
+        "inside": 1
+      }
+    ]
+  },
+  "nightAmbient": [
+    {
+      "track": "horror",
+      "outside": 1,
+      "inside": 0.35
+    }
+  ],
+  "running": "running"
+}

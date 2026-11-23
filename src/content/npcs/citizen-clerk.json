@@ -4,67 +4,67 @@
   "textureKey": "citizen-clerk",
   "path": "assets/characters/npc/citizens.png",
   "idleAnimation": "citizen-clerk-idle",
-  "referenceWidth": 2048,
+  "referenceWidth": 2172,
   "frameRate": 3,
   "displayHeight": 108,
   "depth": 6,
   "interactionRadius": 65,
-  "background": "light",
+  "background": "none",
   "scale": 0.9,
   "repeat": -1,
   "frameSize": {
-    "width": 112,
-    "height": 180,
-    "referenceHeight": 152
+    "width": 128,
+    "height": 248,
+    "referenceHeight": 240
   },
   "idleSteps": [
     {
-      "x": 70,
-      "y": 352,
-      "width": 96,
-      "height": 156,
-      "anchorX": 48,
-      "anchorY": 152
+      "x": 301,
+      "y": 469,
+      "width": 100,
+      "height": 239,
+      "anchorX": 58,
+      "anchorY": 239
     },
     {
-      "x": 252,
-      "y": 352,
-      "width": 96,
-      "height": 156,
-      "anchorX": 48,
-      "anchorY": 152
+      "x": 468,
+      "y": 469,
+      "width": 99,
+      "height": 240,
+      "anchorX": 56.5,
+      "anchorY": 240
     },
     {
-      "x": 434,
-      "y": 352,
-      "width": 96,
-      "height": 156,
-      "anchorX": 48,
-      "anchorY": 152
+      "x": 625,
+      "y": 469,
+      "width": 110,
+      "height": 240,
+      "anchorX": 58,
+      "anchorY": 240
     },
     {
-      "x": 616,
-      "y": 352,
-      "width": 96,
-      "height": 156,
-      "anchorX": 48,
-      "anchorY": 152
+      "x": 789,
+      "y": 469,
+      "width": 106,
+      "height": 240,
+      "anchorX": 57.5,
+      "anchorY": 240
     },
     {
-      "x": 798,
-      "y": 352,
-      "width": 96,
-      "height": 156,
-      "anchorX": 48,
-      "anchorY": 152
+      "x": 957,
+      "y": 469,
+      "width": 97,
+      "height": 240,
+      "anchorX": 57,
+      "anchorY": 240
     },
     {
-      "x": 980,
-      "y": 352,
-      "width": 96,
-      "height": 156,
-      "anchorX": 48,
-      "anchorY": 152
+      "x": 1117,
+      "y": 469,
+      "width": 98,
+      "height": 240,
+      "anchorX": 57,
+      "anchorY": 240
     }
   ],
   "dialogueId": "citizen-clerk",
@@ -77,15 +77,12 @@
       "x": 700
     },
     "afternoon": {
-      "locationId": "center",
+      "locationId": "factory",
       "x": 1500
     },
     "evening": {
-      "locationId": "center",
-      "buildingId": "center-bar",
-      "scale": 0.8,
-      "floor": 0,
-      "x": 300
+      "locationId": "living-district",
+      "x": 1000
     },
     "night": {
       "locationId": "living-district",

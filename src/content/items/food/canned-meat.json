@@ -1,0 +1,22 @@
+{
+  "id": "canned-meat",
+  "price": 3,
+  "name": "Canned meat",
+  "description": "A sealed tin of preserved meat.",
+  "consumable": true,
+  "maxStack": 5,
+  "recovery": {
+    "health": 6,
+    "energy": 30
+  },
+  "rarity": "common",
+  "quality": 2,
+  "category": "Food",
+  "icon": {
+    "x": 755,
+    "y": 280,
+    "width": 125,
+    "height": 135
+  },
+  "scale": 1
+}

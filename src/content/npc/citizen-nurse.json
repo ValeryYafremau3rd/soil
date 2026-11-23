@@ -1,0 +1,115 @@
+{
+  "name": "Nadia Morozova",
+  "sourceKey": "citizens-source",
+  "textureKey": "citizen-nurse",
+  "path": "assets/characters/npc/citizens.png",
+  "idleAnimation": "citizen-nurse-idle",
+  "referenceWidth": 2172,
+  "frameRate": 3,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "background": "none",
+  "scale": 0.9,
+  "repeat": -1,
+  "frameSize": {
+    "width": 128,
+    "height": 224,
+    "referenceHeight": 216
+  },
+  "idleSteps": [
+    {
+      "x": 309,
+      "y": 240,
+      "width": 82,
+      "height": 216,
+      "anchorX": 48,
+      "anchorY": 216
+    },
+    {
+      "x": 475,
+      "y": 240,
+      "width": 82,
+      "height": 216,
+      "anchorX": 48.5,
+      "anchorY": 216
+    },
+    {
+      "x": 634,
+      "y": 240,
+      "width": 93,
+      "height": 216,
+      "anchorX": 47.5,
+      "anchorY": 216
+    },
+    {
+      "x": 792,
+      "y": 240,
+      "width": 84,
+      "height": 216,
+      "anchorX": 49.5,
+      "anchorY": 216
+    },
+    {
+      "x": 958,
+      "y": 240,
+      "width": 82,
+      "height": 216,
+      "anchorX": 48,
+      "anchorY": 216
+    },
+    {
+      "x": 1126,
+      "y": 240,
+      "width": 82,
+      "height": 216,
+      "anchorX": 47,
+      "anchorY": 216
+    }
+  ],
+  "dialogueId": "citizen-nurse",
+  "schedule": {
+    "morning": {
+      "locationId": "living-district",
+      "buildingId": "living-barracks",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 520
+    },
+    "afternoon": {
+      "locationId": "living-district",
+      "buildingId": "living-barracks",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 520
+    },
+    "evening": {
+      "locationId": "center",
+      "x": 1900
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-22",
+      "x": 306
+    }
+  },
+  "_codex": {
+    "character": "Nadia Morozova",
+    "arc": "hospital investigation",
+    "questLinks": [
+      "nurse-tablet-deliveries",
+      "hospital-patient-register",
+      "hospital-no-visitors"
+    ],
+    "dialogueImplementation": "NPC file is a sprite/schedule configuration, not a dialogue tree. Extend dialogue system using quest stage choiceIds from linked quests; do not overwrite animation/schedule fields. Use conditional options by quest state and flags.",
+    "scheduleOverrides": [],
+    "dialogueBeats": [
+      "Treats patients sincerely; doubts results but seeks ordinary medical explanations.",
+      "Records decision influences her willingness to share future information."
+    ]
+  },
+  "portraitIndex": 3,
+  "portraitBackgroundThreshold": 45
+}

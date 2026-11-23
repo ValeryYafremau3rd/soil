@@ -1,0 +1,100 @@
+{
+  "choices": [
+    {
+      "id": "delivery-notice",
+      "text": "[Quest] I saw your delivery notice.",
+      "questId": "a-fraying-strap",
+      "next": "delivery-request"
+    },
+    {
+      "id": "deliver-rope",
+      "text": "[Quest] Here is a rope for your delivery.",
+      "questId": "a-fraying-strap",
+      "next": "delivery-thanks"
+    }
+  ],
+  "nodes": {
+    "delivery-request": {
+      "text": "The strap on my delivery crate snapped. I need one length of rope before the whole lot ends up on the floor. Zofia's shop across the street sometimes has it. Otherwise, try the containers. Nothing gets thrown away for good these days.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "I'll find you a rope.",
+          "close": true
+        }
+      ]
+    },
+    "delivery-thanks": {
+      "text": "That'll hold. Here's the service pistol and five bullets I promised. Don't wave it around in here. The soldiers are jumpy enough without encouragement.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "Glad I could help.",
+          "close": true
+        }
+      ]
+    }
+  },
+  "quest": {
+    "id": "a-fraying-strap",
+    "name": "A fraying strap",
+    "description": "The Bartender in Center needs help securing a delivery. Ask him about the notice.",
+    "reward": {
+      "items": [
+        {
+          "itemId": "service-pistol",
+          "quantity": 1
+        },
+        {
+          "itemId": "pistol-ammunition",
+          "quantity": 5
+        }
+      ]
+    },
+    "stages": [
+      {
+        "id": "ask-bartender",
+        "description": "Talk to the Bartender in Center's bar about the delivery notice. He works there during the day.",
+        "trigger": {
+          "kind": "dialogue",
+          "npcId": "bartender",
+          "choiceId": "delivery-notice"
+        }
+      },
+      {
+        "id": "find-rope",
+        "description": "Find one Rope. Search containers or buy one from the Cashier in Center's shop.",
+        "trigger": {
+          "kind": "inventory"
+        },
+        "requiredItems": [
+          {
+            "itemId": "rope",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "id": "deliver-rope",
+        "description": "Bring one Rope to the Bartender and offer it to secure his delivery.",
+        "trigger": {
+          "kind": "dialogue",
+          "npcId": "bartender",
+          "choiceId": "deliver-rope"
+        },
+        "requiredItems": [
+          {
+            "itemId": "rope",
+            "quantity": 1
+          }
+        ],
+        "removeItems": [
+          {
+            "itemId": "rope",
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  }
+}

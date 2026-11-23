@@ -1,0 +1,24 @@
+{
+  "id": "smuggler-lock-guide",
+  "price": 25,
+  "name": "Practical lock notes",
+  "description": "Dusan's practical notes on simple lock mechanisms.",
+  "rarity": "uncommon",
+  "quality": 2,
+  "category": "Document",
+  "equipmentSlot": "tool",
+  "icon": {
+    "x": 145,
+    "y": 450,
+    "width": 140,
+    "height": 160
+  },
+  "scale": 1,
+  "skillRequirements": {
+    "lockpicking": 4
+  },
+  "bonus": {
+    "skill": "lockpicking",
+    "amount": 2
+  }
+}

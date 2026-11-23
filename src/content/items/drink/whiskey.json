@@ -1,0 +1,27 @@
+{
+  "id": "whiskey",
+  "name": "Whiskey",
+  "description": "A bottle of whiskey. Drink to recover Sanity.",
+  "category": "Drink",
+  "rarity": "rare",
+  "quality": 4,
+  "price": 8,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 913,
+    "y": 22,
+    "width": 101,
+    "height": 161
+  },
+  "scale": 1,
+  "consumable": true,
+  "maxStack": 3,
+  "recovery": {
+    "sanity": 80,
+    "energy": 15
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "milena-family-photo",
+  "name": "A family keepsake",
+  "description": "Milena lost her suitcase near the Living District bus stop. Keep the other contents, but return her treasured family photo for an Athletics magazine.",
+  "offeredBy": "stranger",
+  "offerText": "Have you seen my suitcase near the bus stop?",
+  "stages": [
+    {
+      "id": "find-photo",
+      "description": "Find Milena's family photo in the suitcase near the Living District bus stop.",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItems": [
+        {
+          "itemId": "milena-family-photo",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "return-photo",
+      "description": "Return the family photo to Milena Vukovic.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "stranger",
+        "choiceId": "return-family-photo"
+      },
+      "requiredItems": [
+        {
+          "itemId": "milena-family-photo",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "milena-family-photo",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "reward": {
+    "items": [
+      {
+        "itemId": "sport-magazine-athletics",
+        "quantity": 1
+      }
+    ]
+  },
+  "_codex": {
+    "narrativeIntent": "The family photograph gives Milena emotional depth and can affect trust without becoming mandatory.",
+    "implementationNotes": [
+      "Keep optional.",
+      "Completing grants narrative trust, not required progression."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "portrait",
+  "price": 30,
+  "name": "Family portrait",
+  "description": "A portrait preserved in a small frame.",
+  "rarity": "common",
+  "quality": 3,
+  "category": "Valuable",
+  "icon": {
+    "x": 705,
+    "y": 465,
+    "width": 100,
+    "height": 120
+  },
+  "scale": 1,
+  "skillRequirements": {
+    "barter": 9
+  }
+}

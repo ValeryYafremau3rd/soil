@@ -1,0 +1,78 @@
+{
+  "id": "milena-mother-letter",
+  "name": "What Mother Left Behind",
+  "description": "Milena believes her mother left something in room 21 before being moved from the district. Help her recover a trace of her family.",
+  "prerequisites": [
+    "first-steps"
+  ],
+  "offeredBy": "stranger",
+  "offerText": "Could you check the safe in your room?",
+  "stages": [
+    {
+      "id": "key",
+      "description": "Take Milena’s safe key.",
+      "trigger": {
+        "kind": "accept"
+      },
+      "grantItems": [
+        {
+          "itemId": "mother-safe-key",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "find-letter",
+      "description": "Find the letter in the room 21 safe.",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItems": [
+        {
+          "itemId": "milena-mother-letter",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "return-letter",
+      "description": "Bring the letter to Milena.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "stranger",
+        "choiceId": "return-mother-letter"
+      },
+      "requiredItems": [
+        {
+          "itemId": "milena-mother-letter",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "milena-mother-letter",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "reward": {
+    "items": [
+      {
+        "itemId": "romance-book",
+        "quantity": 1
+      }
+    ],
+    "money": 20
+  },
+  "_codex": {
+    "narrativeIntent": "Milena discovers her mother previously lived in the player’s room; the personal clue begins a separate family investigation.",
+    "implementationNotes": [
+      "Preserve room 21 and original letter item.",
+      "Letter suggests mother was moved without clear notice, not that she knew the whole conspiracy."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

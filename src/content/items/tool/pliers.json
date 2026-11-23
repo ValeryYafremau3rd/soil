@@ -1,0 +1,24 @@
+{
+  "id": "pliers",
+  "price": 10,
+  "name": "Pliers",
+  "description": "Steel pliers with narrow gripping jaws.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Tool",
+  "icon": {
+    "x": 110,
+    "y": 638,
+    "width": 85,
+    "height": 145
+  },
+  "scale": 1,
+  "equipmentSlot": "tool",
+  "skillRequirements": {
+    "lockpicking": 4
+  },
+  "bonus": {
+    "skill": "lockpicking",
+    "amount": 2
+  }
+}

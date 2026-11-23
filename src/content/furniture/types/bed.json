@@ -12,7 +12,7 @@
     "width": 240,
     "height": 340
   },
-  "displayHeight": 60,
+  "displayHeight": 85,
   "action": "sleep",
   "prompt": "Enter · Sleep",
   "platform": {

@@ -7,5 +7,10 @@
   "height": 327,
   "displayHeight": 50,
   "scale": 1,
+  "platform": {
+    "left": 0.08,
+    "right": 0.92,
+    "top": 0.14
+  },
   "quality": 4
 }

@@ -1,0 +1,74 @@
+{
+  "id": "factory-supplies",
+  "name": "The Empty Crates",
+  "description": "Irina is waiting for materials needed to keep the factory running. Pavel claims the truck is delayed by militia inspection, but the crates tell another story.",
+  "offeredBy": "worker",
+  "reward": {
+    "items": [
+      {
+        "itemId": "work-jacket",
+        "quantity": 1
+      }
+    ]
+  },
+  "offerText": "Ask Pavel Sokolov about the overdue factory supplies.",
+  "prerequisites": [
+    "mechanic-scrap",
+    "town-opinions"
+  ],
+  "stages": [
+    {
+      "id": "supplies-clerk",
+      "description": "Ask Pavel Sokolov about the factory supplies.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "supplies-clerk"
+      }
+    },
+    {
+      "id": "supplies-return",
+      "description": "Tell Kovalenko the truck is awaiting militia inspection.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "supplies-return"
+      }
+    },
+    {
+      "id": "supplies-crates",
+      "description": "Inspect the factory truck crates at night or with Stealth 8.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "supplies-crates"
+      }
+    },
+    {
+      "id": "supplies-report",
+      "description": "Tell Kovalenko the crates are empty. Irina fears that reporting the missing crates could put her workers under suspicion.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "supplies-report"
+      }
+    }
+  ],
+  "_codex": {
+    "narrativeIntent": "Irina finds empty factory delivery crates; Pavel blames a routine militia inspection.",
+    "implementationNotes": [
+      "At supplies-crates inspect the EXISTING factory truck at night or with Stealth 8; do not invent a new container.",
+      "At supplies-report set factory_empty_crates_seen.",
+      "Irina worries about workers; Dusan suspects military diversion."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "factory_empty_crates_seen",
+        "value": true
+      }
+    ]
+  }
+}

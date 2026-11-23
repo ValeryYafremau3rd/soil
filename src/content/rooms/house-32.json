@@ -27,8 +27,8 @@
     },
     {
       "id": "bed",
-      "type": "mattress-quilted",
-      "x": 90,
+      "type": "sofa",
+      "x": 100,
       "scale": 1
     }
   ]

@@ -1,0 +1,20 @@
+{
+  "id": "nurse-unsent-letter",
+  "price": 1,
+  "name": "The Nurse's Unsent Letter",
+  "description": "A handwritten note from the quarantined town.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Document",
+  "icon": {
+    "x": 495,
+    "y": 455,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "saleable": false,
+  "randomLoot": false,
+  "maxStack": 1,
+  "readingText": "Dear Anya,\n\nI don't know why I'm writing. They won't let us send letters anymore.\n\nYesterday, six patients were transferred from the second ward. This morning, their beds were already occupied. The register says those six patients never existed.\n\nOne of them was a little boy who kept asking for his mother.\n\nI still have his drawing in my pocket.\n\nThe chief doctor says I'm exhausted and should take an extra tablet.\n\nI haven't swallowed one in three days."
+}

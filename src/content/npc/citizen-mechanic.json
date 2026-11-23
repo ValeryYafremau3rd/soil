@@ -1,0 +1,130 @@
+{
+  "name": "Dusan Markovic",
+  "sourceKey": "citizens-source",
+  "textureKey": "citizen-mechanic",
+  "path": "assets/characters/npc/citizens.png",
+  "idleAnimation": "citizen-mechanic-idle",
+  "referenceWidth": 2172,
+  "frameRate": 3,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "background": "none",
+  "scale": 0.9,
+  "repeat": -1,
+  "frameSize": {
+    "width": 128,
+    "height": 229,
+    "referenceHeight": 221
+  },
+  "idleSteps": [
+    {
+      "x": 302,
+      "y": 8,
+      "width": 89,
+      "height": 221,
+      "anchorX": 51.5,
+      "anchorY": 221
+    },
+    {
+      "x": 470,
+      "y": 8,
+      "width": 89,
+      "height": 220,
+      "anchorX": 53.5,
+      "anchorY": 220
+    },
+    {
+      "x": 630,
+      "y": 8,
+      "width": 87,
+      "height": 221,
+      "anchorX": 51,
+      "anchorY": 221
+    },
+    {
+      "x": 800,
+      "y": 8,
+      "width": 85,
+      "height": 220,
+      "anchorX": 42,
+      "anchorY": 220
+    },
+    {
+      "x": 954,
+      "y": 8,
+      "width": 91,
+      "height": 220,
+      "anchorX": 53,
+      "anchorY": 220
+    },
+    {
+      "x": 1122,
+      "y": 8,
+      "width": 86,
+      "height": 220,
+      "anchorX": 49.5,
+      "anchorY": 220
+    }
+  ],
+  "dialogueId": "citizen-mechanic",
+  "schedule": {
+    "morning": {
+      "locationId": "factory",
+      "buildingId": "factory-main",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 350
+    },
+    "afternoon": {
+      "locationId": "factory",
+      "buildingId": "factory-main",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 1040
+    },
+    "evening": {
+      "locationId": "center",
+      "buildingId": "center-bar",
+      "scale": 0.8,
+      "floor": 0,
+      "x": 120
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-12",
+      "x": 306
+    }
+  },
+  "_codex": {
+    "character": "Dusan Markovic",
+    "arc": "factory investigation",
+    "questLinks": [
+      "mechanic-scrap",
+      "smuggler-1",
+      "smuggler-2",
+      "smuggler-3",
+      "factory-missing-worker",
+      "factory-locked-workshop"
+    ],
+    "dialogueImplementation": "NPC file is a sprite/schedule configuration, not a dialogue tree. Extend dialogue system using quest stage choiceIds from linked quests; do not overwrite animation/schedule fields. Use conditional options by quest state and flags.",
+    "scheduleOverrides": [
+      {
+        "when": "dusan_status=arrested",
+        "effect": "suppress all normal schedule spawns; workshop sealed; leave note and confiscation notice"
+      },
+      {
+        "when": "dusan_status=normal",
+        "effect": "use original schedule"
+      }
+    ],
+    "dialogueBeats": [
+      "Dislikes military requisitions; knows factory shortcuts; distrusts pills.",
+      "If warned, reveals service tunnel; if betrayed, disappear after next day boundary."
+    ]
+  },
+  "portraitIndex": 0,
+  "portraitBackgroundThreshold": 45
+}

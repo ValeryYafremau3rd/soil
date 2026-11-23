@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { itemWeaponKind } from '../../src/domain/inventory/items.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { catalogue } from '../helpers/content.mjs'
@@ -78,7 +78,7 @@ test('authored weapon multipliers stay in range and training books never trigger
   assert.equal(weapons.length, 9)
   assert.equal(Math.min(...weapons.map(item => item.damageMultiplier)), 1)
   assert.equal(Math.max(...weapons.map(item => item.damageMultiplier)), 1.5)
-  assert.equal(itemWeaponKind(data.items.find(item => item.id === 'martialArts-training-handbook')), undefined)
+  assert.equal(itemWeaponKind(data.items.find(item => item.id === 'anatomy-martialArts')), undefined)
   for (const id of ['knife', 'compact-pistol']) {
     for (const value of [0.9, 0.99, 1.6, undefined]) {
       const invalid = structuredClone(data)
@@ -115,4 +115,47 @@ test('automatic attacks choose the strongest eligible weapon and spend its match
   assert.equal(inventory.getWeaponDamageMultiplier('shot'), 0.9)
   assert.equal(inventory.tryShoot(), true)
   assert.equal(inventory.tryShoot(), false)
+})
+
+test('numbered key slots open their list without consumption and leave container menus alone', () => {
+  const inventory = new InventoryService([
+    { id: 'test-key', keys: [{ id: 'door-key', name: 'Door key', doorId: 'door' }] },
+  ], [{ id: 'storage', name: 'Storage', locationId: 'test' }], () => 0,
+  [{ itemId: 'test-key', quantity: 1 }])
+  const items = inventory.getSnapshot().items
+  inventory.useItem(0)
+  assert.deepEqual(inventory.getSnapshot().menu, { kind: 'keys', itemId: 'test-key', quickSlot: true })
+  inventory.useItem(0)
+  assert.equal(inventory.getSnapshot().items, items)
+  inventory.closeMenu()
+  assert.equal(inventory.getSnapshot().menu, null)
+  inventory.openContainer('storage')
+  inventory.useItem(0)
+  assert.deepEqual(inventory.getSnapshot().menu, { kind: 'container', containerId: 'storage' })
+})
+
+test('numbered text slots open journals and letters without consuming or replacing an open view', () => {
+  const definitions = ['journal', 'letter'].map(id => ({ id, name: id, readingText: `${id} text` }))
+  const inventory = new InventoryService(definitions,
+    [{ id: 'storage', name: 'Storage', locationId: 'test' }], () => 0,
+    definitions.map(item => ({ itemId: item.id, quantity: 1 })))
+  const items = inventory.getSnapshot().items
+  for (const slot of [0, 1]) {
+    inventory.useItem(slot)
+    assert.deepEqual(inventory.getSnapshot().menu, {
+      kind: 'reading', itemId: definitions[slot].id, title: 'Letter',
+      text: definitions[slot].readingText, quickSlot: true,
+    })
+    const opened = inventory.getSnapshot()
+    inventory.useItem(1 - slot)
+    assert.equal(inventory.getSnapshot(), opened)
+    inventory.closeMenu()
+    assert.equal(inventory.getSnapshot().items, items)
+  }
+  inventory.openInventory()
+  inventory.useItem(0)
+  assert.equal(inventory.getSnapshot().menu.quickSlot, undefined)
+  inventory.openContainer('storage')
+  inventory.useItem(1)
+  assert.deepEqual(inventory.getSnapshot().menu, { kind: 'container', containerId: 'storage' })
 })

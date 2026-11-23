@@ -1,8 +1,13 @@
 {
   "start": "greeting",
+  "openingLines": [
+    "Things keep breaking, but spare parts do not grow on trees. What do you need?",
+    "Got something worth trading, or a job that needs careful hands?",
+    "Keep your voice down. Some business is better discussed quietly."
+  ],
   "nodes": {
     "find-screwdriver-thanks": {
-      "text": "That's the screwdriver I needed. Here is your payment, with a little extra for finding it.",
+      "text": "That's the one. Thought I'd never see a decent screwdriver again. Here's your money, and a little extra. Keep quiet about where you got it.",
       "choices": [
         {
           "id": "back",
@@ -12,99 +17,135 @@
       ]
     },
     "greeting": {
-      "text": "I'm Dusan Markovic, the mechanic. I keep the factory machinery alive. Finding the right part is usually harder than fitting it.",
+      "text": "Dusan Markovic. I keep the factory machines running, when there's anything left to run them with. Need a repair, a trade, or something that doesn't go in the official books? Keep your voice down.",
       "choices": [
         {
+          "id": "factory-missing-worker-dusan",
+          "text": "[Quest] Ask Dusan about the maintenance slip and sealed workshop.",
+          "questId": "factory-missing-worker",
+          "next": "story-factory-missing-worker-dusan"
+        },
+        {
+          "id": "factory-workshop-inspect",
+          "text": "[Quest] Use the service route to enter the restricted workshop and inspect reinforced doors.",
+          "questId": "factory-locked-workshop",
+          "next": "story-factory-workshop-inspect"
+        },
+        {
+          "id": "factory-workshop-ledger",
+          "text": "[Quest] Compare the sealed ledger with the maintenance slip at Dusan’s workshop.",
+          "questId": "factory-locked-workshop",
+          "next": "story-factory-workshop-ledger"
+        },
+        {
+          "id": "factory-locked-workshop-offer",
+          "text": "[Quest] The Locked Workshop",
+          "acceptQuestId": "factory-locked-workshop",
+          "next": "greeting"
+        },
+        {
+          "id": "town-opinion",
+          "text": "[Town situation] What do you think about the quarantine?",
+          "next": "town-opinion",
+          "questId": "town-opinions"
+        },
+        {
           "id": "nurse-tablet-offer",
-          "text": "[Medicine] Nadia sent me with a white tablet for you.",
+          "text": "[Medicine] Nadia asked me to bring you a white tablet.",
           "questId": "nurse-tablet-deliveries",
           "next": "tablet-response"
         },
         {
           "id": "smuggler-delivery-offer",
-          "text": "[Smuggler] Do you have a delivery job?",
+          "text": "[Smuggler] Got any deliveries that need handling quietly?",
           "acceptQuestId": "smuggler-delivery",
           "next": "smuggler-delivery-instructions"
         },
         {
           "id": "smuggler-delivery-report",
-          "text": "[Smuggler] The parcel is in the destination crate.",
+          "text": "[Smuggler] The parcel's in the destination crate.",
           "questId": "smuggler-delivery",
           "next": "smuggler-delivery-thanks"
         },
         {
           "id": "courier-pickup",
-          "text": "[Courier] I am here to collect the parcel.",
+          "text": "[Courier] I'm here to pick up a parcel.",
           "questId": "courier-delivery",
           "next": "courier-pickup-confirmed"
         },
         {
           "id": "courier-deliver",
-          "text": "[Courier] I have your parcel.",
+          "text": "[Courier] I've got your parcel.",
           "questId": "courier-delivery",
           "next": "courier-delivery-thanks"
         },
         {
+          "id": "postman-deliver",
+          "text": "[Delivery] Here is your letter.",
+          "questId": "postman",
+          "next": "postman-thanks"
+        },
+        {
           "id": "smuggler-1-offer",
-          "text": "[Quest] A quiet job?",
+          "text": "[Quest] Got a quiet job for me?",
           "acceptQuestId": "smuggler-1",
           "next": "smuggler-1-instructions"
         },
         {
           "id": "smuggler-1-deliver",
-          "text": "[Quest] I brought the parts parcel.",
+          "text": "[Quest] I've got the parts parcel.",
           "questId": "smuggler-1",
           "next": "smuggler-1-thanks"
         },
         {
           "id": "smuggler-2-offer",
-          "text": "[Quest] Another night delivery?",
+          "text": "[Quest] Another night job?",
           "acceptQuestId": "smuggler-2",
           "next": "smuggler-2-instructions"
         },
         {
           "id": "smuggler-2-deliver",
-          "text": "[Quest] I brought the sealed ledger.",
+          "text": "[Quest] Here's the sealed ledger.",
           "questId": "smuggler-2",
           "next": "smuggler-2-thanks"
         },
         {
           "id": "smuggler-3-offer",
-          "text": "[Quest] The warehouse job?",
+          "text": "[Quest] Tell me about the warehouse job.",
           "acceptQuestId": "smuggler-3",
           "next": "smuggler-3-instructions"
         },
         {
           "id": "smuggler-3-deliver",
-          "text": "[Quest] I brought the precision core.",
+          "text": "[Quest] I've brought the precision core.",
           "questId": "smuggler-3",
           "next": "smuggler-3-thanks"
         },
         {
           "id": "smuggler-4-offer",
-          "text": "[Quest] One final job?",
+          "text": "[Quest] What's the last job?",
           "acceptQuestId": "smuggler-4",
           "next": "smuggler-4-instructions"
         },
         {
           "id": "smuggler-trade",
-          "text": "[Barter]",
+          "text": "[Barter] Show me what you've got.",
           "barter": true,
           "barterId": "merchant:worker-basic"
         },
         {
           "id": "advice",
-          "text": "[Advice]",
+          "text": "Got any useful advice?",
           "next": "advice"
         },
         {
           "id": "about",
-          "text": "Tell about yourself.",
+          "text": "Tell me about yourself.",
           "next": "about"
         },
         {
           "id": "cashier-3-deliver-0",
-          "text": "[Delivery] Deliver 1 Batteries to Dusan Markovic.",
+          "text": "[Delivery] I've brought you the batteries.",
           "next": "cashier-3-cashier-3-deliver-0",
           "questId": "cashier-3"
         },
@@ -115,20 +156,30 @@
         },
         {
           "id": "find-item-start",
-          "text": "[Find item] Tell me about your request.",
+          "text": "[Find item] What do you need me to find?",
           "questId": "find-item",
           "next": "find-item-instructions"
         },
         {
           "id": "find-item-deliver",
-          "text": "[Find item] I found the requested item.",
+          "text": "[Find item] I've got the item you wanted.",
           "questId": "find-item",
           "next": "find-item-payment"
+        },
+        {
+          "id": "ask-about",
+          "text": "I want to ask about some things happening in town.",
+          "next": "ask-about"
+        },
+        {
+          "id": "people-menu",
+          "text": "Can you tell me about a specific person?",
+          "next": "people-menu"
         }
       ]
     },
     "advice": {
-      "text": "Carried tools can improve your skills, but you must meet their Erudition requirement to receive the bonus.",
+      "text": "Keep your tools on you. A good set can make a hard job easier, provided you know how to use it. You've got to have the Erudition for it, though. And never throw away a working part. Not in this town.",
       "choices": [
         {
           "id": "back",
@@ -143,7 +194,7 @@
       ]
     },
     "about": {
-      "text": "I keep the factory machinery alive. Finding the right part is usually harder than fitting it. Morning: you can find me in the factory. Afternoon: you can find me in the factory. Evening: you can find me in the bar in Center. Night: you can find me in apartment 12 in Living District.",
+      "text": "Mechanic at the factory. Morning and afternoon, that's where you'll find me, patching up machines with scraps. Evenings I'm usually at the bar in Center. Nights, I'm supposed to be in apartment 12 in Living District. Supposed to be. And if anyone asks, that's exactly where I am. I make a little moonshine on the side. Better than swallowing whatever the state hands out.",
       "choices": [
         {
           "id": "back",
@@ -158,7 +209,7 @@
       ]
     },
     "smuggler-1-instructions": {
-      "text": "At night, look for the new crate beside the Living District barracks. Bring me the sealed parts parcel. I work inside the factory on the ground floor in the morning and afternoon.",
+      "text": "After dark, there's a new crate beside the Living District barracks. Inside is a sealed parcel of parts. Bring it to me. I'm on the factory ground floor mornings and afternoons. Keep out of the patrols' sight. And if you hear something moving where nobody ought to be, don't stop to look.",
       "choices": [
         {
           "id": "back",
@@ -173,7 +224,7 @@
       ]
     },
     "smuggler-1-thanks": {
-      "text": "Good work. I am a smuggler, and I can use someone discreet. Take this flashlight and 8 Thalers. I will now sell you tools, factory supplies, and lockpicking equipment. Another job is waiting. Nobody will notice if something small disappears from this warehouse.",
+      "text": "Not bad. You've got the nerve for this work. Yeah, I move goods that aren't exactly on the books. Here's a flashlight and 8 Thalers. I'll trade you tools, factory supplies, and lockpicking gear now. Got another job too. The warehouse loses a little stock every day. Nobody bothers counting the small stuff until it's too late.",
       "choices": [
         {
           "id": "back",
@@ -183,7 +234,7 @@
       ]
     },
     "smuggler-2-instructions": {
-      "text": "Pick up the sealed ledger from the new crate near the shop in Center. Go at night, then bring it back. Nobody will notice if something small disappears from this warehouse.",
+      "text": "There's a sealed ledger in a new crate near the shop in Center. Go at night and bring it back unopened. That book's worth more than the goods it lists. Don't linger out there, and don't mistake every sound for a patrol. Some things don't wear boots.",
       "choices": [
         {
           "id": "back",
@@ -198,7 +249,7 @@
       ]
     },
     "smuggler-2-thanks": {
-      "text": "The ledger is intact. Take three lockpicks and 12 Thalers. If you are not skilled in lockpicking, buy additional tools from my Barter stock. Carry pliers and a precision screwdriver to improve your Lockpicking. The warehouse job is waiting.",
+      "text": "Good. Seal's intact. Three lockpicks and 12 Thalers, as promised. If locks give you trouble, I've got tools for trade. Pliers and a precision screwdriver help if you know what you're doing. Next job's in the warehouse. And don't ask me whose names are in that ledger.",
       "choices": [
         {
           "id": "back",
@@ -208,7 +259,7 @@
       ]
     },
     "smuggler-3-instructions": {
-      "text": "The shipment is in an unlocked crate on the ground floor inside the factory warehouse, only at night. Bring lockpicks for the factory entrance door. If you are not skilled in lockpicking, buy additional tools from my Barter stock: carried pliers and a precision screwdriver improve your Lockpicking. Anyone can use these tools. Take the precision core, then return it to me.",
+      "text": "Factory warehouse, ground floor. An unlocked crate appears there at night. The factory entrance is locked, so bring lockpicks. If you're short on skill, buy tools from my barter stock: pliers and a precision screwdriver can help with locks. Anyone can carry them, but knowing how to use them is another matter. Take the precision core and bring it to me. Don't hang about until dawn.",
       "choices": [
         {
           "id": "back",
@@ -223,7 +274,7 @@
       ]
     },
     "smuggler-3-thanks": {
-      "text": "That is the core. You have earned my trust. Take this rare Triquetra pendant, 20 Thalers, and my apartment 12 keys, attached to your key ring. The apartment is in Living District; the building key is on the same ring. I have one final job for you.",
+      "text": "That's the core. Didn't think you'd pull it off. Here's a rare Triquetra pendant, 20 Thalers, and the keys to my apartment 12 in Living District. Building key's on the same ring. Don't lose them. One last job, if you've still got the stomach for it.",
       "choices": [
         {
           "id": "back",
@@ -233,7 +284,7 @@
       ]
     },
     "smuggler-4-instructions": {
-      "text": "I know someone is hiding an illegal weapon in apartment 11 in Living District, on the ground floor. He will not go to the militia over an illegal gun. Pick the apartment door at night, open the locked safe inside, and take the service pistol and all five bullets. Keep them. Once you have both, our business is finished. If you need help with lockpicking, buy additional tools from my Barter stock. After this, ask me for work: I can offer one crate delivery or apartment loot tip each day. Finish any outstanding job before taking another.",
+      "text": "There's a man keeping an illegal weapon in apartment 11, ground floor, Living District. He won't run to the militia if it goes missing. Go at night, pick his door, then open the safe. Take the service pistol and all five bullets. If you already cleared that safe, that counts too. They're yours. Once you've got both, we're square. Need help with locks? Check my barter stock. After that, I can give you one crate delivery or apartment loot tip a day. Finish one job before asking for the next. And don't wave that pistol around unless you mean it.",
       "choices": [
         {
           "id": "back",
@@ -248,7 +299,7 @@
       ]
     },
     "cashier-3-cashier-3-deliver-0": {
-      "text": "Thank you. The delivery is recorded.",
+      "text": "Batteries? Good. Can't get decent ones through the factory anymore. Here's your thanks. And let's not make a record of where they end up.",
       "choices": [
         {
           "id": "back",
@@ -263,67 +314,67 @@
       ]
     },
     "courier-pickup-confirmed": {
-      "text": "Take this parcel to the recipient named in your journal.",
+      "text": "Here's the parcel. Recipient's in your journal. Get it there without opening it, and don't tell the patrols whose business you're carrying.",
       "choices": [
         {
           "id": "back",
-          "text": "Back.",
+          "text": "Anything else?",
           "next": "greeting"
         }
       ]
     },
     "courier-delivery-thanks": {
-      "text": "Thank you. Here is your payment.",
+      "text": "You made it. Good. Here's your payment. These days, getting anything across town is a job in itself.",
       "choices": [
         {
           "id": "back",
-          "text": "Back.",
+          "text": "Anything else?",
           "next": "greeting"
         }
       ]
     },
     "smuggler-delivery-instructions": {
-      "text": "Collect the shipment at night, put it in the destination crate, then return to me.",
+      "text": "Pick up the shipment at night and leave it in the destination crate. Then come back to me. Don't carry it longer than you have to. Patrols aren't the only trouble after dark.",
       "choices": [
         {
           "id": "back",
-          "text": "Back.",
+          "text": "Anything else?",
           "next": "greeting"
         }
       ]
     },
     "smuggler-delivery-thanks": {
-      "text": "Good work. Here is your 16 Thalers.",
+      "text": "Crate's filled, nobody's asking questions. That's how I like it. Here's your 16 Thalers.",
       "choices": [
         {
           "id": "back",
-          "text": "Back.",
+          "text": "Anything else?",
           "next": "greeting"
         }
       ]
     },
     "find-item-instructions": {
-      "text": "Find the requested item and take it to the recipient in your journal.",
+      "text": "I've marked the item and the person who needs it in your journal. Find it and get it to them. Can't rely on official supplies anymore. Haven't been able to for a long time.",
       "choices": [
         {
           "id": "back",
-          "text": "Back.",
+          "text": "Anything else?",
           "next": "greeting"
         }
       ]
     },
     "find-item-payment": {
-      "text": "Exactly what was requested. Here is your payment.",
+      "text": "That's the one. Good work. Here's your payment. I'd rather pay someone who gets things done than fill out another useless requisition.",
       "choices": [
         {
           "id": "back",
-          "text": "Back.",
+          "text": "Anything else?",
           "next": "greeting"
         }
       ]
     },
     "tablet-response": {
-      "text": "I don't need that medicine. I don't trust it, and I don't believe it works. Keep your tablet.",
+      "text": "Keep that thing away from me. They won't tell us what's in those tablets, yet we're meant to swallow them every day? Funny how the people who ask questions end up in hospital. I've been out at night. I know what I saw, and no pill's going to make it disappear. Tell Nadia I don't want it. Nadia means well. I know that. But meaning well does not make those tablets work.",
       "choices": [
         {
           "id": "back",
@@ -334,6 +385,369 @@
           "id": "goodbye",
           "text": "Goodbye.",
           "close": true
+        }
+      ]
+    },
+    "town-opinion": {
+      "text": "What do I think? Same as everyone else, I suppose. Times are hard. Best to be patient and do as we're told. There. That official enough for you?",
+      "choices": [
+        {
+          "id": "town-honest-intimidation",
+          "text": "[Intimidation] Drop the act. What do you really think?",
+          "next": "town-dissatisfied",
+          "skillRequirement": {
+            "skill": "intimidation",
+            "level": 6
+          }
+        },
+        {
+          "id": "town-honest-diplomacy",
+          "text": "[Diplomacy] I'm not reporting you. Tell me what you really think.",
+          "next": "town-dissatisfied",
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 6
+          }
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "town-dissatisfied": {
+      "text": "You want the truth? We're running out of food, fuel, and parts, while the soldiers get fresh deliveries. They tell us to wait, then they tell us to wait some more. I've been outside after curfew. Whatever's out there, it isn't some fever dream. And those pills? I wouldn't touch them. Government says it's all under control because admitting otherwise would finish them.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about": {
+      "text": "Depends who's asking. I know this town better than the men who send orders from the capital. What do you want to know?",
+      "choices": [
+        {
+          "id": "ask-about-1",
+          "text": "[Scraper] Why are factory parts disappearing?",
+          "trustRequirement": 1,
+          "skillRequirement": {
+            "skill": "scraper",
+            "level": 4
+          },
+          "next": "ask-about-answer-1"
+        },
+        {
+          "id": "ask-about-2",
+          "text": "[Lockpicking] What's been happening to people's doors at night?",
+          "trustRequirement": 2,
+          "skillRequirement": {
+            "skill": "lockpicking",
+            "level": 6
+          },
+          "next": "ask-about-answer-2"
+        },
+        {
+          "id": "ask-about-3",
+          "text": "[Barter] Why do the soldiers still get supplies when everyone else is starving?",
+          "trustRequirement": 3,
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 8
+          },
+          "next": "ask-about-answer-3"
+        },
+        {
+          "id": "ask-about-4",
+          "text": "[Sneaking] What have you seen while smuggling after curfew?",
+          "trustRequirement": 4,
+          "skillRequirement": {
+            "skill": "stealth",
+            "level": 10
+          },
+          "next": "ask-about-answer-4"
+        },
+        {
+          "id": "ask-about-5",
+          "text": "[Weapons] What are the soldiers really fighting out there?",
+          "trustRequirement": 5,
+          "skillRequirement": {
+            "skill": "weapons",
+            "level": 12
+          },
+          "next": "ask-about-answer-5"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-1": {
+      "text": "The factory's being stripped bare. We fix one machine by gutting another. Officially, every missing part is 'accounted for.' Funny, isn't it? There's always enough metal for the patrol vehicles, but never enough to keep the pumps running. I pocket a few bits myself. At least mine get used. Irina keeps the work plan together with string and stubbornness. She thinks the missing parts are a paperwork problem. I wish they were.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else do you know?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-2": {
+      "text": "People have been finding doors open in the morning. Locks bent, frames scratched up. The militia calls it burglary. I've repaired enough locks to know when somebody picked one and when something simply forced its way through. And some of those marks are too high up for any ordinary thief.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else do you know?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-3": {
+      "text": "Food's scarce, fuel's worse, and the factory barely gets what it needs. But military trucks roll through with sealed crates, night after night. I've seen ammunition boxes and heavy lamps among the loads. What sort of virus needs bullets and floodlights? You tell me.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else do you know?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-4": {
+      "text": "I move goods after curfew. Used to think the worst I'd meet was a patrol. Then I saw something cross the street on all fours and stand up taller than a man. No, I wasn't drunk. I know what moonshine does to a person, and that wasn't it. At sunrise, it was gone. The soldiers were already washing the street. Make of that what you will. Viktor heard the shooting from his bar; ask him if you think I made the whole thing up.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else do you know?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-5": {
+      "text": "You want to know why the soldiers carry weapons at night? Because they know what's out there. I've seen one of those things take a hit and keep moving. The government calls it sickness, hands out tablets, and sends anyone who talks to the madhouse. Maybe the pills are meant to keep us quiet. Maybe they're testing something on us. I can't prove that part. But I know the creatures are real. Don't repeat that with my name attached.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else do you know?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-menu": {
+      "text": "Depends who you mean. And whether you want the polite version.",
+      "choices": [
+        {
+          "id": "people-about-elena-jovanovic",
+          "text": "Elena Jovanovic",
+          "next": "people-about-elena-jovanovic"
+        },
+        {
+          "id": "people-about-pavel-sokolov",
+          "text": "Pavel Sokolov",
+          "next": "people-about-pavel-sokolov"
+        },
+        {
+          "id": "people-about-irina-kovalenko",
+          "text": "Irina Kovalenko",
+          "next": "people-about-irina-kovalenko"
+        },
+        {
+          "id": "people-about-viktor-petrov",
+          "text": "Viktor Petrov",
+          "next": "people-about-viktor-petrov"
+        },
+        {
+          "id": "people-about-zofia-nowak",
+          "text": "Zofia Nowak",
+          "next": "people-about-zofia-nowak"
+        },
+        {
+          "id": "people-about-milena-vukovic",
+          "text": "Milena Vukovic",
+          "next": "people-about-milena-vukovic"
+        },
+        {
+          "id": "people-about-nadia-morozova",
+          "text": "Nadia Morozova",
+          "next": "people-about-nadia-morozova"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-elena-jovanovic": {
+      "text": "Elena? She'd report her own shadow for breaking curfew. Keep your mouth shut around her. She's not cruel exactly—just certain that being obedient makes her good.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-pavel-sokolov": {
+      "text": "Sokolov smiles like a man counting your teeth. His papers say the factory gets supplies; my shelves say otherwise. He knows where the missing shipments go. I'd bet my last cigarette on it.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-irina-kovalenko": {
+      "text": "Irina's the reason half those machines still turn. Good woman. Thinks every problem can be solved with a proper work order. I don't tell her everything; she'd try to fix me next.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-viktor-petrov": {
+      "text": "Viktor's an old friend. Lets me sit at the bar when I can't stand my own thoughts. He still swallows those white tablets. I give him hell for it; he pours me another drink.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-zofia-nowak": {
+      "text": "Zofia treats a stamped form like holy scripture. She'll tell you the capital delivered ten crates while you're standing in front of an empty shelf. Don't expect an argument to change her mind.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-milena-vukovic": {
+      "text": "Milena's got guts. Too much, maybe. She wants to save everyone and asks questions where soldiers can hear. I told her the streets aren't a university debate club.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-nadia-morozova": {
+      "text": "Nadia's got a decent heart and a lousy set of orders. She knows those pills aren't doing much. I wish she'd say it out loud, but I won't blame her for trying to keep people alive.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-factory-workshop-ledger": {
+      "text": "These ledger markings match the slip. The main door is restricted, but the maintenance passage is still open. Keep my name out of it if you can.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-factory-workshop-inspect": {
+      "text": "Use the service route to enter the restricted workshop and inspect reinforced doors.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-factory-missing-worker-dusan": {
+      "text": "That slip is for the sealed workshop. The ledger you brought uses the same routing code. A service passage avoids the main door.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "postman-thanks": {
+      "text": "Thank you for bringing my letter.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Anything else?",
+          "next": "greeting"
         }
       ]
     }
@@ -348,7 +762,8 @@
           "itemId": "lockpick",
           "quantity": 3
         }
-      ]
+      ],
+      "stockTable": "merchant-worker-basic"
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "id": "clerk-report",
+  "price": 12,
+  "name": "Clerk's report to the capital",
+  "description": "Pavel Sokolov's report about the town.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Quest",
+  "icon": {
+    "x": 495,
+    "y": 455,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "saleable": false,
+  "randomLoot": false,
+  "maxStack": 1,
+  "readingText": "To the capital: There are no problems in the town. Food and drink supplies are sufficient, and everything is under control. Pavel Sokolov, town clerk."
+}

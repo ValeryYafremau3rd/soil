@@ -1,63 +1,63 @@
 {
-    "name":  "Cargo truck",
-    "key":  "vehicle-big-car",
-    "path":  "assets/transport/cars.png",
-    "background":  "none",
-    "referenceWidth":  2172,
-    "crop":  {
-                 "x":  1396,
-                 "y":  248,
-                 "width":  760,
-                 "height":  340
-             },
-    "displayHeight":  190,
-    "scale":  1,
-    "action":  "none",
-    "interactionRadius":  40,
-    "prompt":  "Cargo truck",
-    "groundOrigin":  0.94,
-    "platforms":  [
-                      {
-                          "left":  0.06,
-                          "right":  0.55,
-                          "top":  0.04,
-                          "rightTop":  0.04
-                      },
-                      {
-                          "left":  0.55,
-                          "right":  0.59,
-                          "top":  0.04,
-                          "rightTop":  0.16
-                      },
-                      {
-                          "left":  0.59,
-                          "right":  0.64,
-                          "top":  0.16,
-                          "rightTop":  0.16
-                      },
-                      {
-                          "left":  0.64,
-                          "right":  0.77,
-                          "top":  0.16,
-                          "rightTop":  0.19
-                      },
-                      {
-                          "left":  0.77,
-                          "right":  0.84,
-                          "top":  0.19,
-                          "rightTop":  0.38
-                      },
-                      {
-                          "left":  0.84,
-                          "right":  0.94,
-                          "top":  0.38,
-                          "rightTop":  0.48
-                      },
-                      {
-                          "left":  0.94,
-                          "right":  0.98,
-                          "top":  0.48,
-                          "rightTop":  0.57
-                      }
-                  ]
+  "name": "Cargo truck",
+  "key": "vehicle-big-car",
+  "path": "assets/transport/cars.png",
+  "background": "none",
+  "referenceWidth": 2172,
+  "crop": {
+    "x": 1396,
+    "y": 248,
+    "width": 760,
+    "height": 340
+  },
+  "displayHeight": 190,
+  "scale": 1,
+  "action": "vehicle",
+  "interactionRadius": 40,
+  "prompt": "Enter · Inspect vehicle",
+  "groundOrigin": 0.94,
+  "platforms": [
+    {
+      "left": 0.06,
+      "right": 0.55,
+      "top": 0.04,
+      "rightTop": 0.04
+    },
+    {
+      "left": 0.55,
+      "right": 0.59,
+      "top": 0.04,
+      "rightTop": 0.16
+    },
+    {
+      "left": 0.59,
+      "right": 0.64,
+      "top": 0.16,
+      "rightTop": 0.16
+    },
+    {
+      "left": 0.64,
+      "right": 0.77,
+      "top": 0.16,
+      "rightTop": 0.19
+    },
+    {
+      "left": 0.77,
+      "right": 0.84,
+      "top": 0.19,
+      "rightTop": 0.38
+    },
+    {
+      "left": 0.84,
+      "right": 0.94,
+      "top": 0.38,
+      "rightTop": 0.48
+    },
+    {
+      "left": 0.94,
+      "right": 0.98,
+      "top": 0.48,
+      "rightTop": 0.57
+    }
+  ]
 }

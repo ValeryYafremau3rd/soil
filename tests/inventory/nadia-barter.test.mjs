@@ -2,8 +2,8 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content } from '../helpers/content.mjs'
 import { buildVendorSeeds } from '../../src/app/content/vendorSeeds.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
 
 const shopId = 'merchant:citizen-nurse'
 test('Nadia opens medical barter without quest progress, charges configured prices, and preserves purchases', () => {

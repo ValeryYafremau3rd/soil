@@ -1,14 +1,14 @@
 ﻿import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content, catalogue } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 const stack=(itemId,quantity=1)=>({itemId,quantity})
 function setup(items=[]){
- const data=content(),time=new DayTime(),inventory=new InventoryService(data.items,[],()=>0,items)
+ const data=content(),time=new DayTimeService(),inventory=new InventoryService(data.items,[],()=>0,items)
  const quests=new QuestService(data.quests,inventory,undefined,time,()=>0)
  const dialogue=new DialogueService(()=>{}, {canChoose:(npc,c)=>quests.canAdvanceDialogue(c.questId,npc,c.id),choose:(npc,c)=>quests.advanceDialogue(c.questId,npc,c.id),describeQuest:id=>quests.definitions.find(q=>q.id===id)?.description})
  const talk=npc=>dialogue.openDialogue(data.npcs[npc].name,data.dialogues[data.npcs[npc].dialogueId],npc)

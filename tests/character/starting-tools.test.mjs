@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import classes from '../../src/content/classes.json' with { type: 'json' }
 import { content } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { unmetItemRequirements } from '../../src/domain/inventory/items.ts'
 

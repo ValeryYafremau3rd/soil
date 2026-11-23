@@ -1,9 +1,50 @@
 {
   "start": "greeting",
+  "openingLines": [
+    "If you are hurt, tell me where. I have other people waiting for help too.",
+    "Clean wounds and a little rest can save you a great deal of trouble. How can I help?",
+    "Medical supplies are precious these days. Let us make sure you get what you need."
+  ],
   "nodes": {
     "greeting": {
-      "text": "I'm Nadia Morozova, the nurse. I am the district nurse. I check on the barracks residents and make rounds in Center.",
+      "text": "I'm Nadia Morozova, the district nurse. I distribute medicine from the capital and check on patients in the barracks. If you're unwell, tell me your symptoms. Please don't wait until they get worse.",
       "choices": [
+        {
+          "id": "hospital-register-report",
+          "text": "[Quest] Return to Nadia with the mismatched entries.",
+          "questId": "hospital-patient-register",
+          "next": "story-hospital-register-report"
+        },
+        {
+          "id": "hospital-register-inspect",
+          "text": "[Quest] Review the hospital patient register and note missing transfer entries.",
+          "questId": "hospital-patient-register",
+          "next": "story-hospital-register-inspect"
+        },
+        {
+          "id": "hospital-register-start",
+          "text": "[Quest] Ask Nadia about discrepancies in the patient register.",
+          "questId": "hospital-patient-register",
+          "next": "story-hospital-register-start"
+        },
+        {
+          "id": "hospital-patient-register-offer",
+          "text": "[Quest] The Patient Register",
+          "acceptQuestId": "hospital-patient-register",
+          "next": "greeting"
+        },
+        {
+          "id": "hospital-no-visitors-nadia",
+          "text": "[Quest] Ask Nadia about the military authorization code on the transfer forms.",
+          "questId": "hospital-no-visitors",
+          "next": "story-hospital-no-visitors-nadia"
+        },
+        {
+          "id": "town-opinion",
+          "text": "[Town situation] What do you think about the quarantine?",
+          "next": "town-opinion",
+          "questId": "town-opinions"
+        },
         {
           "id": "barter",
           "text": "[Barter] I need medical supplies.",
@@ -11,12 +52,12 @@
         },
         {
           "id": "ask-about-tablets",
-          "text": "[Work] Do you need help with your patients?",
+          "text": "[Work] Do you need help delivering medicine?",
           "next": "tablet-request"
         },
         {
           "id": "nurse-tablet-report",
-          "text": "[Medicine] I spoke to Elena and Dusan. Dusan refused his tablet.",
+          "text": "[Medicine] Elena took her tablet. Dusan refused.",
           "questId": "nurse-tablet-deliveries",
           "next": "tablet-reward"
         },
@@ -31,6 +72,12 @@
           "text": "[Courier] I have your parcel.",
           "questId": "courier-delivery",
           "next": "courier-delivery-thanks"
+        },
+        {
+          "id": "postman-deliver",
+          "text": "[Delivery] Here is your letter.",
+          "questId": "postman",
+          "next": "postman-thanks"
         },
         {
           "id": "advice",
@@ -70,11 +117,29 @@
           "text": "[Find item] I found the requested item.",
           "questId": "find-item",
           "next": "find-item-payment"
+        },
+        {
+          "id": "ask-about",
+          "text": "I want to ask you about...",
+          "next": "ask-about"
+        },
+        {
+          "id": "people-menu",
+          "text": "Can you tell me about a specific person?",
+          "next": "people-menu"
+        },
+        {
+          "id": "story-consequence-expose",
+          "text": "About what we decided…",
+          "storyConditions": {
+            "patient_records_fate": "expose"
+          },
+          "next": "story-consequence-expose"
         }
       ]
     },
     "advice": {
-      "text": "Bandages and medicine restore Health. Open your inventory and use a medical supply before your Health runs out.",
+      "text": "Keep bandages and medicine close. They restore Health, and a wound is easier to treat before it gets infected. As for the white tablets... take them as directed. I wish I could tell you exactly how well they work.",
       "choices": [
         {
           "id": "back",
@@ -89,7 +154,7 @@
       ]
     },
     "about": {
-      "text": "I am the district nurse. I check on the barracks residents and make rounds in Center. Morning: you can find me in the barracks. Afternoon: you can find me in the barracks. Evening: you can find me in the streets of Center. Night: you can find me in apartment 22 in Living District.",
+      "text": "I trained to treat people, not count tablets, but now half my day is spent signing for shipments from the capital. I make rounds in the barracks in the morning and afternoon, visit Center in the evening, and go home to apartment 22 in Living District at night. The patients still need me, even when the paperwork says they're fine.",
       "choices": [
         {
           "id": "back",
@@ -104,7 +169,7 @@
       ]
     },
     "cashier-2-cashier-2-deliver-0": {
-      "text": "Thank you. The delivery is recorded.",
+      "text": "A bandage. Thank you. I'll record the delivery. We have more patients than supplies, so even one helps.",
       "choices": [
         {
           "id": "back",
@@ -119,7 +184,7 @@
       ]
     },
     "cashier-5-cashier-5-deliver": {
-      "text": "Thank you. The delivery is recorded.",
+      "text": "You brought it this morning, just as requested. Thank you. I'll sign for the bandage. Please don't take unnecessary risks on the night routes.",
       "choices": [
         {
           "id": "back",
@@ -134,7 +199,7 @@
       ]
     },
     "courier-pickup-confirmed": {
-      "text": "Take this parcel to the recipient named in your journal.",
+      "text": "The recipient is listed in your journal. Please deliver the parcel intact. Medical shipments are difficult enough to replace.",
       "choices": [
         {
           "id": "back",
@@ -144,7 +209,7 @@
       ]
     },
     "courier-delivery-thanks": {
-      "text": "Thank you. Here is your payment.",
+      "text": "Thank you. Everything is accounted for. Here's your payment; you've saved me another trip through the district.",
       "choices": [
         {
           "id": "back",
@@ -154,7 +219,7 @@
       ]
     },
     "find-item-instructions": {
-      "text": "Find the requested item and take it to the recipient in your journal.",
+      "text": "The item and recipient are in your journal. Bring it to them if you can. These days, small things can make a real difference.",
       "choices": [
         {
           "id": "back",
@@ -164,7 +229,7 @@
       ]
     },
     "find-item-payment": {
-      "text": "Exactly what was requested. Here is your payment.",
+      "text": "Yes, that's what was requested. Thank you. Here's your payment.",
       "choices": [
         {
           "id": "back",
@@ -174,11 +239,11 @@
       ]
     },
     "tablet-request": {
-      "text": "The virus affects some people more seriously than others. They need to take these tablets regularly. Could you deliver one white tablet to Elena Jovanovic, the caretaker, and one to Dusan Markovic? I can give you a white tablet and a Medicine magazine for your help.",
+      "text": "The official guidance says the white tablets protect against the virus's effects. Elena Jovanovic and Dusan Markovic are due for theirs. Would you take one tablet to each of them? I can't leave my patients. I'll give you a tablet and a Medicine magazine for helping. And... please tell me how they're actually feeling, not just whether they took it.",
       "choices": [
         {
           "id": "accept-tablets",
-          "text": "I'll take the tablets to them.",
+          "text": "I'll deliver the tablets and ask how they're feeling.",
           "acceptQuestId": "nurse-tablet-deliveries",
           "next": "tablet-accepted"
         },
@@ -195,7 +260,7 @@
       ]
     },
     "tablet-accepted": {
-      "text": "Here are two white tablets, one for Elena and one for Dusan. You can visit them in either order. Come back and tell me how it went.",
+      "text": "Two white tablets: one for Elena, one for Dusan. Either order is fine. Dusan may refuse; don't force him. Come back and tell me what happened, especially if either of them mentions strange symptoms.",
       "choices": [
         {
           "id": "back",
@@ -210,17 +275,372 @@
       ]
     },
     "tablet-reward": {
-      "text": "Thank you for checking on them. I wish Dusan would listen, but you did all you could. Here is a white tablet and a Medicine magazine for you. If you feel symptoms of the virus, take this pill.",
+      "text": "Elena took hers, and Dusan refused? I expected as much. Thank you for trying. Here's the white tablet and Medicine magazine I promised. The instructions say to take the tablet if symptoms appear. I follow those instructions... though I still wish the hospital would share its treatment results with us.",
       "choices": [
         {
           "id": "back",
-          "text": "Something else...",
+          "text": "Is there anything else I can do?",
           "next": "greeting"
         },
         {
           "id": "goodbye",
           "text": "Goodbye.",
           "close": true
+        }
+      ]
+    },
+    "town-opinion": {
+      "text": "The quarantine is meant to protect us. I know the capital is sending what it can, and I won't tell patients to disregard medical orders. But I've treated people who take every tablet and still report the same visions. Perhaps recovery takes longer than we thought. I keep telling myself that.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about": {
+      "text": "What have you heard? If it's about someone's symptoms, I'd rather know than have another rumor spread.",
+      "choices": [
+        {
+          "id": "ask-about-1",
+          "text": "[Medicine] Why do patients hear the same sounds after curfew?",
+          "trustRequirement": 1,
+          "skillRequirement": {
+            "skill": "medicine",
+            "level": 4
+          },
+          "next": "ask-about-answer-1"
+        },
+        {
+          "id": "ask-about-2",
+          "text": "[Medicine] Do the white tablets actually stop the visions?",
+          "trustRequirement": 2,
+          "skillRequirement": {
+            "skill": "medicine",
+            "level": 6
+          },
+          "next": "ask-about-answer-2"
+        },
+        {
+          "id": "ask-about-3",
+          "text": "[Erudition] Why do unrelated patients describe the same thing?",
+          "trustRequirement": 3,
+          "skillRequirement": {
+            "skill": "erudition",
+            "level": 8
+          },
+          "next": "ask-about-answer-3"
+        },
+        {
+          "id": "ask-about-4",
+          "text": "[Diplomacy] What happens to patients sent to the hospital?",
+          "trustRequirement": 4,
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 10
+          },
+          "next": "ask-about-answer-4"
+        },
+        {
+          "id": "ask-about-5",
+          "text": "[Medicine] Have you treated anyone injured near the factory at night?",
+          "trustRequirement": 5,
+          "skillRequirement": {
+            "skill": "medicine",
+            "level": 12
+          },
+          "next": "ask-about-answer-5"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-1": {
+      "text": "Some patients hear scraping or footsteps outside after curfew. Others say someone calls their name from the street. Sleep deprivation and fever can distort sounds; that's the explanation I've been giving them. But several people described the same knocking rhythm, independently. I haven't found a good explanation for that. Elena follows every instruction and says the noises are fever dreams. Dusan refuses the tablets and says the noises come from something outside. I have examined them both. Neither account is enough to settle this.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I want to ask you about...",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-2": {
+      "text": "The white tablets arrive in sealed packets from the capital. I'm told they reduce the virus's effects, but we don't receive the trial records or even a full ingredient list. I've kept notes: some patients improve, some don't, and a few who never miss a dose still see things. That doesn't prove the medicine is useless. It does mean I need better answers. Zofia signs for the medical deliveries at the shop; I sign when they reach the barracks. Between those signatures there are questions neither of us can answer.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I want to ask you about...",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-3": {
+      "text": "A patient told me she saw a figure outside her window, far too tall to be a person. The hospital recorded it as a visual hallucination. Another patient, on a different day, described the same shape near the factory. I checked their files. They hadn't met. There could be a shared rumor, of course. There has to be a rational explanation... doesn't there?",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I want to ask you about...",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-4": {
+      "text": "People are taken to the hospital after reporting severe symptoms. Some never come back, and families are told they're still under observation. I ask for updates and receive the same stamped reply. I'm a nurse; I know records can be delayed. But a woman begged me to find her husband, and I couldn't even tell her which ward he was in. I haven't forgotten her face. Milena has asked me about her mother. I cannot access the hospital ward records, and I refuse to invent reassurance for her.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I want to ask you about...",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-5": {
+      "text": "I'll tell you something I haven't put in my reports. After one night of shooting near the factory, soldiers brought in a man with deep cuts across his back. He kept saying, 'It stood up.' The officer called it a fever episode and ordered the statement removed. The wounds were real. I cleaned them myself. Perhaps he was attacked by machinery or an animal. But why would the officer care what he said? Please don't repeat this with my name attached. I still have patients to look after. Viktor says a wounded soldier came into his bar after that patrol. I treated one the same week. I cannot establish whether they were the same man.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have patients told you?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-menu": {
+      "text": "I can share my impressions, not confidential patient information.",
+      "choices": [
+        {
+          "id": "people-about-elena-jovanovic",
+          "text": "Elena Jovanovic",
+          "next": "people-about-elena-jovanovic"
+        },
+        {
+          "id": "people-about-pavel-sokolov",
+          "text": "Pavel Sokolov",
+          "next": "people-about-pavel-sokolov"
+        },
+        {
+          "id": "people-about-dusan-markovic",
+          "text": "Dusan Markovic",
+          "next": "people-about-dusan-markovic"
+        },
+        {
+          "id": "people-about-irina-kovalenko",
+          "text": "Irina Kovalenko",
+          "next": "people-about-irina-kovalenko"
+        },
+        {
+          "id": "people-about-viktor-petrov",
+          "text": "Viktor Petrov",
+          "next": "people-about-viktor-petrov"
+        },
+        {
+          "id": "people-about-zofia-nowak",
+          "text": "Zofia Nowak",
+          "next": "people-about-zofia-nowak"
+        },
+        {
+          "id": "people-about-milena-vukovic",
+          "text": "Milena Vukovic",
+          "next": "people-about-milena-vukovic"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-elena-jovanovic": {
+      "text": "Elena takes her tablets faithfully. She also reports neighbors who don't. I know she means well, but illness isn't a moral failing, and frightened people need care, not accusations.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-pavel-sokolov": {
+      "text": "Mr. Sokolov signs the medical allocations. He's efficient with paperwork, less so with answers. I've requested treatment data from the capital three times. All three replies used the same wording.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-dusan-markovic": {
+      "text": "Dusan refuses the tablets, and I can't force him. He isn't wrong to question them; he's wrong to assume every question has only one answer. I wish he'd let me examine him properly.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-irina-kovalenko": {
+      "text": "Irina has sent injured workers to me without making them feel ashamed. She's careful with details. I suspect she knows more about the factory's night activity than she says.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-viktor-petrov": {
+      "text": "Viktor gives exhausted soldiers somewhere to sit and drink. I wish he wouldn't give them quite so much to drink. Still, they talk to him when they won't talk to a nurse.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-zofia-nowak": {
+      "text": "Zofia follows supply rules to the letter. That's useful when we need antiseptic. Less useful when I ask why the tablets aren't helping some patients and she tells me to file a form.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-milena-vukovic": {
+      "text": "Milena is searching for her parents. I want to help, but I won't give her another unverified story to chase. She's kind, and she's brave. Those qualities need protecting.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-hospital-no-visitors-nadia": {
+      "text": "The bandage shipment carries that same authorization. Officially these are transfers for specialist treatment. I have not seen a receiving ward.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-hospital-register-start": {
+      "text": "The tablets and transfer dates do not balance. Read the register here in the hospital before we accuse anyone.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-hospital-register-inspect": {
+      "text": "Review the hospital patient register and note missing transfer entries.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-hospital-register-report": {
+      "text": "The missing signatures are real. They could mean rushed transfers, or records deliberately withheld. We need the journal and the stamped bandage delivery to compare them.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-consequence-expose": {
+      "text": "Milena challenged the missing records. If she is taken away, her quiet copy still has the dates we need.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "postman-thanks": {
+      "text": "Thank you for bringing my letter.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
         }
       ]
     }
@@ -243,14 +663,6 @@
         "quantity": 1
       }
     ],
-    "stock": {
-      "categories": [
-        "Medical"
-      ],
-      "minItems": 1,
-      "maxItems": 2,
-      "minQuantity": 1,
-      "maxQuantity": 1
-    }
+    "stockTable": "merchant-citizen-nurse"
   }
 }

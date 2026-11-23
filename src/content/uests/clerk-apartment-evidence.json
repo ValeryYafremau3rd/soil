@@ -1,0 +1,87 @@
+{
+  "id": "clerk-apartment-evidence",
+  "name": "Behind Closed Doors",
+  "description": "Pavel asks you to search private apartments for suspicious correspondence. What you hand over may decide who remains free tomorrow.",
+  "offeredBy": "citizen-clerk",
+  "offerText": "There is a confidential matter that requires your attention.",
+  "prerequisites": [
+    "town-opinions"
+  ],
+  "stages": [
+    {
+      "id": "find-evidence",
+      "description": "Search apartments 11, 22, 41 and 42 in the Living District for suspicious correspondence. Use a lockpick to enter locked rooms. Bring any evidence you find to Pavel Sokolov.",
+      "trigger": {
+        "kind": "inventory"
+      },
+      "requiredItems": [
+        {
+          "itemId": "suspicious-correspondence",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "report-clerk",
+      "description": "Bring the suspicious letter to Pavel Sokolov.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "apartment-evidence-report"
+      },
+      "requiredItems": [
+        {
+          "itemId": "suspicious-correspondence",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "suspicious-correspondence",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "reward": {
+    "money": 30
+  },
+  "_codex": {
+    "narrativeIntent": "Pavel recruits the player as an informer; the implicated resident may later be detained.",
+    "implementationNotes": [
+      "Preserve apartments 11, 22, 41, 42 and original inventory requirement.",
+      "At report-clerk offer report vs conceal via dialogue extension; see decision metadata."
+    ],
+    "decisions": [
+      {
+        "id": "apartment_evidence_choice",
+        "options": [
+          {
+            "value": "report",
+            "effects": [
+              "government_trust +1",
+              "set implicated_resident_detained after 1 day",
+              "spawn confiscation notice"
+            ]
+          },
+          {
+            "value": "conceal",
+            "effects": [
+              "government_trust -1",
+              "resident remains at normal schedule",
+              "Pavel questions the missing report"
+            ]
+          }
+        ],
+        "defaultIfLegacy": "report"
+      }
+    ],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "openDecision": "apartment_evidence_choice"
+      }
+    ]
+  }
+}

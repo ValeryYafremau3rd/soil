@@ -1,0 +1,34 @@
+{
+  "damageMultiplier": 1.1,
+  "id": "compact-pistol",
+  "price": 70,
+  "name": "Compact pistol",
+  "rarity": "epic",
+  "quality": 5,
+  "category": "Weapon",
+  "firearm": {
+    "ammunitionId": "pistol-ammunition"
+  },
+  "icon": {
+    "x": 385,
+    "y": 95,
+    "width": 160,
+    "height": 140
+  },
+  "scale": 1,
+  "description": "Compact pistol.",
+  "equipmentSlot": "ranged",
+  "skillRequirements": {
+    "weapons": 4
+  },
+  "bonus": {
+    "skill": "weapons",
+    "amount": 3
+  },
+  "bonuses": [
+    {
+      "skill": "stealth",
+      "amount": 1
+    }
+  ]
+}

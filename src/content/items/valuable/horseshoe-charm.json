@@ -1,0 +1,30 @@
+{
+  "id": "horseshoe-charm",
+  "fearResistance": 10,
+  "name": "Horseshoe charm",
+  "category": "Valuable",
+  "rarity": "epic",
+  "quality": 3,
+  "price": 35,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 1272,
+    "y": 681,
+    "width": 119,
+    "height": 142
+  },
+  "scale": 1,
+  "description": "Horseshoe charm.",
+  "skillRequirements": {
+    "barter": 9
+  },
+  "bonus": {
+    "attribute": "strength",
+    "amount": 1
+  },
+  "equipmentSlot": "amulet"
+}

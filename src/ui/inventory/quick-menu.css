@@ -1,4 +1,4 @@
-.quick-menu { position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 4px; padding: 6px; border: 1px solid #596473; border-radius: 6px; background: #141820ed; }
+.quick-menu { display: flex; justify-content: center; gap: 4px; padding: 5px 10px; border: 1px solid #756647; border-radius: 2px; background: #121719; box-shadow: inset 0 1px 6px #0008, 0 1px #c8ae6930; }
 .quick-menu button { position: relative; display: grid; place-items: center; width: clamp(30px, 8vw, 44px); height: 46px; padding: 0 0 9px; border: 1px solid #596473; border-radius: 4px; background: #252d38; color: #eee7da; cursor: pointer; }
 .quick-menu .item-icon { max-width: 100%; }
 .quick-menu button:disabled { cursor: default; }

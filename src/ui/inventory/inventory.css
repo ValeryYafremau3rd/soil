@@ -1,4 +1,7 @@
 .inventory-summary { margin: 0 0 12px; color: #b7c5d6; font-size: 13px; }
+.keys-list { display: flex; flex-direction: column; gap: 8px; list-style: none; padding: 0; margin: 16px 0; max-height: 46dvh; overflow-y: auto; }
+.keys-list__item { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border: 1px solid #4c5664; border-radius: 4px; background: #18202a; }
+.keys-list__item > span:last-child { min-width: 0; overflow-wrap: anywhere; }
 .ui-modal.inventory-modal { width: min(900px, calc(100vw - 32px)); }
 .ui-modal.inventory-modal--exchange { width: min(1120px, calc(100vw - 32px)); }
 .inventory-layout { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 24px; }
@@ -53,3 +56,110 @@
 
 .inventory-equipment { grid-column: 1 / -1; min-width: 0; }
 .inventory-equipment .inventory-grid--equipment { margin-bottom: 0; }
+
+/* Paper inventory keeps the configured grid and its keyboard coordinates. */
+.ui-modal.dossier-modal.inventory-modal { width: min(1000px, calc(100vw - 24px)); }
+.ui-modal.dossier-modal.inventory-modal--exchange { width: min(1180px, calc(100vw - 24px)); }
+.dossier-modal .inventory-layout { flex: 1; min-height: 0; grid-template-columns: minmax(0, 1fr) 260px; grid-template-rows: auto minmax(0, 1fr); gap: 18px 24px; overflow: auto; }
+.dossier-modal .inventory-layout > div { min-width: 0; overflow: auto; }
+.dossier-modal .inventory-layout h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font: bold 19px Georgia, serif; }
+.dossier-modal .inventory-layout h3::after { content: ''; flex: 1; border-top: 1px solid var(--paper-rule); }
+.dossier-modal .inventory-grid { gap: 7px; max-height: none; }
+.dossier-modal .inventory-grid--equipment { grid-template-columns: repeat(8, minmax(64px, 1fr)); padding-bottom: 3px; }
+.dossier-modal .inventory-slot { min-height: 105px; padding: 10px 6px 18px; gap: 6px; border: 1px solid var(--paper-edge); border-radius: 3px; color: var(--paper-ink); background: #91653716; }
+.dossier-modal .inventory-slot[data-appearance] { --rarity-color: #57432c; border-color: var(--paper-edge); background: linear-gradient(135deg, var(--paper-highlight), var(--paper-surface)); }
+.dossier-modal .inventory-slot[data-appearance='rare'] { --rarity-color: #3d6639; }
+.dossier-modal .inventory-slot[data-appearance='epic'] { --rarity-color: #345d89; }
+.dossier-modal .inventory-slot[data-appearance='legendary'] { --rarity-color: #70457c; }
+.dossier-modal .inventory-slot[data-appearance='unknown'] { --rarity-color: #776d5a; }
+.dossier-modal .inventory-slot[data-loot-rarity='common'] { --loot-rarity-tint: #ffffff99; }
+.dossier-modal .inventory-slot[data-loot-rarity='uncommon'] { --loot-rarity-tint: #ffe78099; }
+.dossier-modal .inventory-slot[data-loot-rarity='rare'] { --loot-rarity-tint: #95d99b99; }
+.dossier-modal .inventory-slot[data-loot-rarity='epic'] { --loot-rarity-tint: #8fb9ff99; }
+.dossier-modal .inventory-slot[data-loot-rarity='legendary'] { --loot-rarity-tint: #d5a7f599; }
+.dossier-modal .inventory-slot[data-loot-rarity] { isolation: isolate; }
+/* Keep the rarity wash behind artwork, quantities and the selection border. */
+.dossier-modal .inventory-slot[data-loot-rarity]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(ellipse at top left, var(--loot-rarity-tint), transparent 30%);
+}
+.dossier-modal .inventory-slot[aria-pressed='true'] { background: #a0522020; border-color: var(--paper-red); box-shadow: inset 0 0 0 1px var(--paper-red); }
+.dossier-modal .inventory-slot:hover { background: #a0522020; }
+.dossier-modal .inventory-slot--empty { border-style: dashed; color: var(--paper-muted); background: #75552b0c; }
+.dossier-modal .inventory-slot { box-shadow: inset 0 0 0 3px var(--paper-highlight), inset 0 0 12px #8b652122, 1px 2px 2px #59432222; }
+.dossier-modal .inventory-slot__empty { font: 30px Georgia, serif; opacity: .6; }
+.dossier-modal .inventory-slot__item-name { display: none; }
+.dossier-modal .inventory-slot__equipment-label { font: bold 12px/1.1 'Trebuchet MS', sans-serif; color: var(--paper-ink); min-height: 26px; }
+.dossier-modal .inventory-slot[data-appearance] .inventory-slot__name { color: var(--paper-ink); }
+.dossier-modal .inventory-grid--equipment .inventory-slot { min-height: 112px; justify-content: flex-start; padding: 8px 3px; }
+.dossier-modal .inventory-grid--equipment .inventory-slot__empty { margin: auto; }
+.dossier-modal .inventory-slot > kbd, .dossier-modal .inventory-slot__quantity { color: var(--paper-ink); border: 0; background: #d7c095cc; border-radius: 1px; padding: 0 3px; }
+.dossier-modal .inventory-slot__quantity { top: auto; bottom: 4px; font-size: 11px; }
+.dossier-modal .inventory-player-grids { max-height: none; }
+.dossier-modal .inventory-bag-slots { border: 0; border-top: 1px solid var(--paper-rule); padding: 12px 0 0; }
+.dossier-modal .inventory-bag-slots legend { padding: 0 10px 0 0; color: var(--paper-ink); font: bold 18px Georgia, serif; }
+.dossier-modal .inventory-details { padding-left: 22px; border-color: var(--paper-rule); overflow-y: auto; }
+/* Crop percentages need a square frame to preserve the item's original proportions. */
+.dossier-modal .inventory-details > .item-icon {
+  width: 140px !important;
+  max-width: 100%;
+  height: 140px !important;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--paper-rule);
+  background: #b1844810;
+  margin: 0 0 14px;
+}
+.dossier-modal .inventory-details > .item-icon > span { max-width: 128px; max-height: 128px; }
+.dossier-modal .inventory-details p { margin: 9px 0; line-height: 1.45; }
+.dossier-modal .inventory-details__category, .dossier-modal .inventory-details__effect small { color: var(--paper-muted); }
+.dossier-modal .inventory-details__effect { color: var(--paper-green); }
+.dossier-modal .inventory-item-name[data-appearance] { color: var(--paper-ink); }
+.dossier-modal .inventory-help { margin: 10px 0 0; }
+/* Each exchange pane owns its scroll; long stock lists must not stretch the row. */
+.dossier-modal.inventory-modal--exchange .inventory-layout > div {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.dossier-modal .inventory-exchange {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.dossier-modal .inventory-exchange > section {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.dossier-modal .inventory-exchange h3 { flex-shrink: 0; }
+.dossier-modal .inventory-exchange :is(.inventory-player-grids, section > .inventory-grid) {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+.dossier-modal .inventory-exchange .inventory-grid { align-content: start; }
+@media (max-width: 800px) {
+  .dossier-modal .inventory-layout { grid-template-columns: minmax(0, 1fr) 200px; gap: 14px; }
+  .dossier-modal.inventory-modal--exchange .inventory-layout { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .dossier-modal.inventory-modal--exchange .inventory-details { border-left: 0; border-top: 1px solid var(--paper-rule); padding: 14px 0 0; overflow: visible; }
+  .dossier-modal .inventory-exchange { flex: none; height: 40dvh; }
+}
+@media (max-width: 540px) {
+  .dossier-modal .inventory-layout { display: block; }
+  .dossier-modal .inventory-equipment { margin-bottom: 16px; }
+  .dossier-modal .inventory-grid--equipment { grid-template-columns: repeat(8, 72px); }
+  .dossier-modal .inventory-details { border-left: 0; border-top: 1px solid var(--paper-rule); padding: 16px 0 0; margin-top: 16px; overflow: visible; }
+  .dossier-modal .inventory-details > .item-icon { max-width: 180px; }
+  .dossier-modal .inventory-exchange { gap: 20px; }
+  .dossier-modal .inventory-exchange { height: auto; overflow: visible; }
+  .dossier-modal .inventory-exchange :is(.inventory-player-grids, section > .inventory-grid) {
+    max-height: 35dvh;
+  }
+}

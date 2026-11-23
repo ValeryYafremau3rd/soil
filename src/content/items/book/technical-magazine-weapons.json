@@ -1,0 +1,49 @@
+{
+  "id": "technical-magazine-weapons",
+  "name": "Technical magazine issue 1: Weapons",
+  "description": "Read once to permanently gain +1 Weapons. Duplicate copies give no further bonus.",
+  "category": "Book",
+  "rarity": "common",
+  "quality": 1,
+  "price": 12,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 563,
+    "y": 357,
+    "width": 143,
+    "height": 161
+  },
+  "iconClip": [
+    {
+      "x": 0.025,
+      "y": 0.2
+    },
+    {
+      "x": 0.73,
+      "y": 0.04
+    },
+    {
+      "x": 1,
+      "y": 0.87
+    },
+    {
+      "x": 0.25,
+      "y": 1
+    }
+  ],
+  "scale": 1,
+  "maxStack": 1,
+  "bonus": {
+    "skill": "weapons",
+    "amount": 1
+  },
+  "readable": true,
+  "consumable": true,
+  "skillRequirements": {
+    "weapons": 4
+  }
+}

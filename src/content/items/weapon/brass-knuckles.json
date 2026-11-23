@@ -1,0 +1,31 @@
+{
+  "damageMultiplier": 1,
+  "id": "brass-knuckles",
+  "price": 15,
+  "name": "Brass knuckles",
+  "quality": 3,
+  "category": "Weapon",
+  "icon": {
+    "x": 1335,
+    "y": 105,
+    "width": 160,
+    "height": 110
+  },
+  "scale": 1,
+  "rarity": "rare",
+  "description": "Brass knuckles.",
+  "equipmentSlot": "melee",
+  "skillRequirements": {
+    "intimidation": 12
+  },
+  "bonus": {
+    "skill": "intimidation",
+    "amount": 3
+  },
+  "bonuses": [
+    {
+      "skill": "barter",
+      "amount": 1
+    }
+  ]
+}

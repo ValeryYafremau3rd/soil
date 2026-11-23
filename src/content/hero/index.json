@@ -1,9 +1,4 @@
 {
-  "asset": {
-    "key": "hero-sheet",
-    "path": "assets/characters/hero.png?v=921f1e50",
-    "referenceWidth": 2048
-  },
   "actions": {
     "idle": "hero-idle",
     "run": "hero-run",
@@ -27,7 +22,7 @@
     "combatLevelTolerance": 20,
     "speed": 120,
     "scale": 0.8,
-    "roomScale": 0.64,
+    "roomScale": 0.736,
     "edgeMargin": 40,
     "maxDeltaMs": 50,
     "jumpHeight": 60,
@@ -53,11 +48,12 @@
     }
   },
   "matte": {
-    "redMax": 32,
-    "greenMax": 40,
-    "blueMax": 48,
-    "minGreenRed": 3,
-    "minBlueRed": 5
+    "redMax": 6,
+    "greenMax": 6,
+    "blueMax": 6,
+    "minGreenRed": -6,
+    "minBlueRed": -6
   },
-  "$comment": "Crop coordinates use the 2048-wide reference layout. Per-frame scale normalizes the larger replacement poses without changing world display scale."
+  "$comment": "Crops use each sheet’s native pixel coordinates with a one-pixel margin. Running and jumping use scale 0.7 for every outfit; other per-frame scales preserve the standard outfit?s pose heights.",
+  "basicOutfit": "basic"
 }

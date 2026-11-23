@@ -1,9 +1,9 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { content } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
 
 const id = 'nurse-tablet-deliveries'
 const stack = itemId => ({ itemId, quantity: 1 })
@@ -47,7 +47,7 @@ for (const order of [['citizen-caretaker', 'citizen-mechanic'], ['citizen-mechan
     assert.equal(report(), true)
     assert.equal(quests.isCompleted(id), true)
     assert.equal(count('white-tablets'), 2)
-    assert.equal(count('medicine-training-magazine'), 1)
+    assert.equal(count('health-magazine-medicine'), 1)
     assert.equal(report(), false)
     assert.equal(visit(order[1]), false)
     assert.equal(inventory.getSnapshot().money, 0)
@@ -55,7 +55,7 @@ for (const order of [['citizen-caretaker', 'citizen-mechanic'], ['citizen-mechan
 }
 
 test('nurse acceptance and reward preserve items when inventory is full; missing tablets block visits', () => {
-  const fillers = ['rope', 'matchbox', 'leather-journal', 'red-cigarettes', 'cloth', 'bread'].map(stack)
+  const fillers = ['rope', 'matchbox', 'chemistry-erudition', 'red-cigarettes', 'cloth', 'bread'].map(stack)
   const { inventory, quests, count, visit, report } = setup(fillers)
   assert.equal(quests.acceptFromNpc(id, 'citizen-nurse'), false)
   assert.equal(count('white-tablets'), 0)

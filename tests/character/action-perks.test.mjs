@@ -4,13 +4,13 @@ import { content } from '../helpers/content.mjs'
 import { emptyPerks, progressForAction, perkCharacter } from '../../src/domain/character/perks.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { conditionedCharacter } from '../../src/domain/skills/condition.ts'
-import { PerksService } from '../../src/app/services/PerksService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { PerksService } from '../../src/app/services/character/PerksService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 
 const data = content(), definitions = data.ui.perks
-const service = () => new PerksService(definitions, new DayTime(), { drain() {} })
+const service = () => new PerksService(definitions, new DayTimeService(), { drain() {} })
 
 test('each competing pair locks at its configured goal, with independent groups and no duplicate awards', () => {
   for (const [winner, action, repeats, loser] of [
@@ -55,7 +55,7 @@ test('alignment, possessions and combat style coexist and apply their exact modi
       const bonus = ids.reduce((sum, id) => sum + (definitions.find(perk => perk.id === id).skillModifiers[skill] ?? 0), 0)
       assert.equal(actual[skill], normal[skill] + bonus, skill)
     }
-    const restored = new PerksService(definitions, new DayTime(), { drain() {} }, JSON.parse(JSON.stringify(state)))
+    const restored = new PerksService(definitions, new DayTimeService(), { drain() {} }, JSON.parse(JSON.stringify(state)))
     assert.deepEqual(restored.getSnapshot().acquired, ids)
   }
 })

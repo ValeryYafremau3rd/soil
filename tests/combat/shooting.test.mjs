@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { spendShot } from '../../src/domain/combat/shooting.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { catalogue, content } from '../helpers/content.mjs'
 

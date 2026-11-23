@@ -1,0 +1,33 @@
+{
+  "id": "fantasy-book",
+  "eruditionRequired": 4,
+  "price": 22,
+  "name": "Fantasy novel",
+  "quality": 3,
+  "category": "Book",
+  "icon": {
+    "x": 20,
+    "y": 450,
+    "width": 145,
+    "height": 155
+  },
+  "scale": 1,
+  "rarity": "epic",
+  "description": "Read once to permanently gain +2 Athletics, +1 Martial arts, +1 Barter. Duplicate copies give no further bonus.",
+  "readable": true,
+  "consumable": true,
+  "bonuses": [
+    {
+      "skill": "athletics",
+      "amount": 2
+    },
+    {
+      "skill": "martialArts",
+      "amount": 1
+    },
+    {
+      "skill": "barter",
+      "amount": 1
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "idleAnimation": "solider-idle",
+  "frameRate": 6,
+  "repeat": -1,
+  "idleSteps": [
+    {
+      "x": 330,
+      "y": 38,
+      "width": 140,
+      "height": 194,
+      "anchorX": 49.5,
+      "anchorY": 192,
+      "excludeRegions": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 140,
+          "height": 3
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "width": 42,
+          "height": 2
+        },
+        {
+          "x": 57,
+          "y": 3,
+          "width": 83,
+          "height": 2
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "width": 39,
+          "height": 3
+        },
+        {
+          "x": 61,
+          "y": 5,
+          "width": 79,
+          "height": 3
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "width": 37,
+          "height": 4
+        },
+        {
+          "x": 65,
+          "y": 8,
+          "width": 75,
+          "height": 4
+        }
+      ]
+    },
+    {
+      "x": 470,
+      "y": 38,
+      "width": 135,
+      "height": 194,
+      "anchorX": 49.5,
+      "anchorY": 192
+    },
+    {
+      "x": 605,
+      "y": 38,
+      "width": 135,
+      "height": 194,
+      "anchorX": 51.5,
+      "anchorY": 191
+    },
+    {
+      "x": 740,
+      "y": 38,
+      "width": 135,
+      "height": 194,
+      "anchorX": 52.5,
+      "anchorY": 192
+    },
+    {
+      "x": 875,
+      "y": 38,
+      "width": 140,
+      "height": 194,
+      "anchorX": 57.5,
+      "anchorY": 192
+    },
+    {
+      "x": 1015,
+      "y": 38,
+      "width": 120,
+      "height": 194,
+      "anchorX": 57,
+      "anchorY": 191
+    }
+  ]
+}

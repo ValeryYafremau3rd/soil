@@ -1,6 +1,7 @@
 {
   "name": "Octopus",
   "kind": "monster",
+  "corpseLootTable": "octopus",
   "combat": {
     "attackCooldownMs": 1400,
     "levelTolerance": 24,

@@ -1,0 +1,19 @@
+{
+  "id": "sealed-documents",
+  "price": 45,
+  "name": "Sealed documents",
+  "description": "A bundle of official papers kept under seal.",
+  "rarity": "common",
+  "quality": 4,
+  "category": "Valuable",
+  "icon": {
+    "x": 630,
+    "y": 804,
+    "width": 190,
+    "height": 175
+  },
+  "scale": 1,
+  "skillRequirements": {
+    "barter": 12
+  }
+}

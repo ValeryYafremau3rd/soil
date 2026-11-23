@@ -2,18 +2,20 @@
 import test from 'node:test'
 import { content, catalogue } from '../helpers/content.mjs'
 import { normalizeStacks } from '../../src/domain/inventory/loot.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 const stack=(itemId,quantity=1)=>({itemId,quantity})
-const bottles=['beer-bottle','cider','kvass-bottle','spirits','vodka','water-bottle','whiskey','wine']
+const bottles=['kvass-bottle','water-bottle']
+const alcohol=['beer-bottle','canned-beer','cider','spirits','vodka','whiskey','wine']
 
-test('bottled drinks stack to one, ammunition six, cigarettes ten, and medicines stay at five',()=>{
+test('alcohol stacks to three, other bottles one, ammunition six, cigarettes ten, medicines five',()=>{
  const {items}=content();const byId=Object.fromEntries(items.map(i=>[i.id,i]));const limit=id=>byId[id].maxStack??1
  for(const id of [...bottles,'oil','flask'])assert.equal(limit(id),1,id)
- for(const id of ['antiseptic','antiseptic-bottle','medicine-bottle','canned-beer'])assert.equal(limit(id),5,id)
+ for(const id of alcohol)assert.equal(limit(id),3,id)
+ for(const id of ['antiseptic','antiseptic-bottle','medicine-bottle'])assert.equal(limit(id),5,id)
  for(const item of items.filter(i=>i.ammunition))assert.equal(item.maxStack,6,item.id)
  for(const id of ['red-cigarettes','grey-cigarettes'])assert.equal(limit(id),10,id)
- assert.deepEqual(normalizeStacks([stack('vodka',3)],limit),[stack('vodka'),stack('vodka'),stack('vodka')])
+ assert.deepEqual(normalizeStacks([stack('vodka',4)],limit),[stack('vodka',3),stack('vodka')])
  assert.deepEqual(normalizeStacks([stack('pistol-ammunition',7)],limit),[stack('pistol-ammunition',6),stack('pistol-ammunition')])
  assert.deepEqual(normalizeStacks([stack('red-cigarettes',11)],limit),[stack('red-cigarettes',10),stack('red-cigarettes')])
 })
@@ -39,9 +41,9 @@ test('restoring old bottle stacks preserves quantity and indexed partial ammunit
  const inventory=new InventoryService(content().items,[{id:'stash',name:'Stash',locationId:'test',items:[]}],()=>0)
  const saved=inventory.saveState();saved.items=[stack('vodka',3),stack('pistol-ammunition',5),stack('pistol-ammunition'),stack('red-cigarettes',10)];saved.containers.stash.items=[stack('beer-bottle',5)]
  inventory.restoreState(saved)
- assert.deepEqual(inventory.getSnapshot().items,[stack('vodka'),stack('vodka'),stack('vodka'),stack('pistol-ammunition',5),stack('pistol-ammunition'),stack('red-cigarettes',10)])
- assert.equal(inventory.getSnapshot().containers.stash.items.length,5)
- const before=inventory.getSnapshot();saved.items.push(stack('letter'))
+ assert.deepEqual(inventory.getSnapshot().items,[stack('vodka',3),stack('pistol-ammunition',5),stack('pistol-ammunition'),stack('red-cigarettes',10)])
+ assert.deepEqual(inventory.getSnapshot().containers.stash.items,[stack('beer-bottle',3),stack('beer-bottle',2)])
+ const before=inventory.getSnapshot();saved.items.push(stack('letter'),stack('rope'),stack('cloth'))
  assert.throws(()=>inventory.restoreState(saved),/capacity/);assert.equal(inventory.getSnapshot(),before)
 })
 test('spent shotgun shells are single-slot scrap, not ammunition, and scrapping spends exactly the selected shell',()=>{

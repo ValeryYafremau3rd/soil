@@ -4,7 +4,7 @@ Parked vehicles use `small-car`, `bus`, and `big-car`, cropped from `transport/c
 
 Vehicle `groundOrigin` aligns the tire bottoms with the street while keeping the shadow below it. Their `platforms` arrays trace connected roof, windshield, and hood segments. Each normalized segment has `left`, `right`, and `top`; optional `rightTop` gives its right endpoint a different height for slopes. Omit `rightTop` for a flat surface. The existing single `platform` field remains supported.
 
-Each JSON filename in `types/` is a reusable furniture type ID. All 34 objects in the three supplied sheets have configs. Streets use five scattered hiding spots per district: courtyard storage and a dumpster in Living District, shop/delivery storage and a street barrier in Center, and industrial supplies and barriers in Factory. Cover is spaced about 550–650 world pixels apart, with spots near both district approaches. Unused cover types remain available for authoring. Each district has one outdoor bench; vehicles retain their placements; apartments vary their chairs, beds, mattresses and sofas. Placement positions and type IDs are authored in each location or room file.
+Each JSON filename in `types/` is a reusable furniture type ID. All 34 objects in the three supplied sheets have configs. Streets use five scattered hiding spots per district: courtyard storage and a dumpster in Living District, shop/delivery storage and a street barrier in Center, and industrial supplies and barriers in Factory. Cover is spaced about 550–650 world pixels apart, with spots near both district approaches. Unused cover types remain available for authoring. Each district has one outdoor bench; vehicles retain their placements; apartments vary their chairs and sofas. Mattress and bed types remain available for authoring. Placement positions and type IDs are authored in each location or room file.
 
 | Sheet | Type IDs | Interaction |
 | --- | --- | --- |
@@ -29,3 +29,9 @@ Place apartment furniture in a room's `furniture` array, using room-local coordi
 ```
 
 Sleep furniture belongs indoors; cover belongs outdoors. New types are available automatically and only appear when placed. `crop` uses the sheet's `referenceWidth` coordinates and ends at the object's feet. `displayHeight` sets its base world size; type and placement `scale` multiply it. `platform` describes the standable top in normalized crop coordinates. Adjust that surface when changing the crop.
+
+Indoor rest and sleep furniture is sized against the roughly 90-pixel indoor NPCs.
+Chairs and sofas use a base `displayHeight` of 70, beds 85, and mattresses 55.
+Room furniture also inherits the building scale and its authored placement scale;
+the apartment building's 0.8 scale therefore gives a full-size chair a 56-pixel back.
+Mattresses use a larger height than before so their horizontal length fits an adult.

@@ -1,0 +1,35 @@
+{
+  "id": "flat-cap",
+  "name": "Flat cap",
+  "category": "Clothing",
+  "damageResistance": 5,
+  "stealthModifier": 1,
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 8,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 1227,
+    "y": 520,
+    "width": 224,
+    "height": 159
+  },
+  "scale": 1,
+  "description": "Flat cap.",
+  "equipmentSlot": "accessory",
+  "skillRequirements": { "persuasion": 4 },
+  "bonus": {
+    "skill": "persuasion",
+    "amount": 2
+  },
+  "bonuses": [
+    {
+      "skill": "barter",
+      "amount": 1
+    }
+  ]
+}

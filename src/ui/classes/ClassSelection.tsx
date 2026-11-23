@@ -1,83 +1,95 @@
-import { useRef, useState } from "react";
-import { CLASSES } from "../../content/classes";
-import { ITEM_BY_ID } from "../../content/items";
+import { menuAction } from '../../platform/ui/menuNavigation'
+import { selectionIndex } from '../components/selection'
+import { useRef, useState } from "react"
+import { CLASSES } from "../../content/classes"
+import { ITEM_BY_ID } from "../../content/items"
 import { difficultyRules } from '../../content/difficulty'
 import { attributeVitals } from '../../domain/skills/vitals'
 import {
   createCharacter,
-} from "../../domain/skills/character";
-import { VITAL_LABELS, understandsItem, itemRequirementStates, activeBonusItems, applyCarriedBonuses } from "../../domain/inventory/items";
+} from "../../domain/skills/character"
+import {
+  VITAL_LABELS,
+  understandsItem,
+  itemRequirementStates,
+  activeBonusItems,
+  applyCarriedBonuses
+} from "../../domain/inventory/items"
 import { ItemRequirements } from '../inventory/ItemRequirements'
 import { ItemBonusText } from '../inventory/ItemBonusText'
-import type { Vital } from "../../domain/inventory/items";
-import { useModalDialog } from "../../platform/ui/useModalDialog";
-import { CharacterDetails } from "../character/CharacterDetails";
-import { Button } from "../components/Button";
-import { ItemIcon } from "../inventory/ItemIcon";
-import "../components/components.css";
-import "../inventory/inventory.css";
-import "./classes.css";
+import type { Vital } from "../../domain/inventory/items"
+import { useModalDialog } from "../../platform/ui/useModalDialog"
+import { CharacterDetails } from "../character/CharacterDetails"
+import { Button } from "../components/Button"
+import { ItemIcon } from "../inventory/ItemIcon"
+import "../components/components.css"
+import "../inventory/inventory.css"
+import "../components/dossier.css"
+import "./classes.css"
 
+/**
+ * Perform class selection.
+ * @param {{ onSelect: (classId: string) => void }} options - The options supplied to this operation.
+ * @returns {Element} The result described by the TypeScript return signature.
+ */
 export function ClassSelection({
   onSelect,
 }: {
-  onSelect: (classId: string) => void;
+  onSelect: (classId: string) => void
 }) {
-  const [index, setIndex] = useState(0);
-  const ref = useModalDialog();
-  const submitted = useRef(false);
-  const definition = CLASSES[index];
+  const [index, setIndex] = useState(0)
+  const ref = useModalDialog()
+  const submitted = useRef(false)
+  const definition = CLASSES[index]
   const character = applyCarriedBonuses(
     createCharacter(definition),
-    activeBonusItems(definition.startingItems.map(itemId => ({ itemId, quantity: definition.startingItemQuantities?.[itemId] ?? 1 })), {}, ITEM_BY_ID),
+    activeBonusItems(
+      definition.startingItems.map(itemId => ({ itemId, quantity: definition.startingItemQuantities?.[itemId] ?? 1 })),
+      {},
+      ITEM_BY_ID
+    ),
     ITEM_BY_ID,
-  );
-  const vitals = attributeVitals(difficultyRules().stats, character.attributes);
+  )
+  const vitals = attributeVitals(difficultyRules().stats, character.attributes)
+
   return (
     <dialog
       ref={ref}
-      className="class-selection"
+      className="ui-modal dossier-modal class-selection"
       aria-labelledby="class-selection-title"
       onKeyDown={(event) => {
-        if (event.key === "Escape") event.preventDefault();
+        if (event.key === "Escape") event.preventDefault()
       }}
       onKeyDownCapture={(event) => {
-        if (
-          event.nativeEvent.isComposing ||
-          event.altKey ||
-          event.ctrlKey ||
-          event.metaKey
-        )
-          return;
-        if (event.key === "Enter") {
-          event.preventDefault();
-          event.stopPropagation();
-          if (!event.repeat)
-            ref.current?.querySelector("form")?.requestSubmit();
-          return;
+        const action = menuAction(event)
+        if (action === 'choose') {
+          event.preventDefault()
+          event.stopPropagation()
+          if (!event.repeat) ref.current?.querySelector('form')?.requestSubmit()
+
+          return
         }
-        let next: number;
-        if (event.key === "ArrowRight") next = (index + 1) % CLASSES.length;
-        else if (event.key === "ArrowLeft")
-          next = (index + CLASSES.length - 1) % CLASSES.length;
-        else if (event.key === "Home") next = 0;
-        else if (event.key === "End") next = CLASSES.length - 1;
-        else return;
-        event.preventDefault();
-        event.stopPropagation();
-        setIndex(next);
+
+        if (!action || action === 'up' || action === 'down') return
+
+        const next = selectionIndex(index, CLASSES.length, action)
+        event.preventDefault()
+        event.stopPropagation()
+        setIndex(next)
         ref.current
           ?.querySelector<HTMLElement>(`#class-tab-${CLASSES[next].id}`)
-          ?.focus();
+          ?.focus()
       }}
       onCancel={(event) => event.preventDefault()}
     >
       <form
+        className="ui-panel"
         onSubmit={(event) => {
-          event.preventDefault();
-          if (submitted.current) return;
-          submitted.current = true;
-          onSelect(definition.id);
+          event.preventDefault()
+          if (submitted.current) return
+
+          submitted.current = true
+          onSelect(definition.id)
         }}
       >
         <header>
@@ -128,13 +140,14 @@ export function ClassSelection({
               <h3>Starting items</h3>
               <ul className="class-selection__items">
                 {definition.startingItems.map((id) => {
-                  const item = ITEM_BY_ID[id];
-                  const skills = character.skills;
-                  const known = understandsItem(item, skills.erudition, skills);
+                  const item = ITEM_BY_ID[id]
+                  const skills = character.skills
+                  const known = understandsItem(item, skills.erudition, skills)
                   const recovery = Object.entries(item.recovery ?? {}) as [
                     Vital,
                     number,
-                  ][];
+                  ][]
+
                   return (
                     <li key={id}>
                       <ItemIcon itemId={id} />
@@ -143,29 +156,29 @@ export function ClassSelection({
                         {(definition.startingItemQuantities?.[id] ?? 1) > 1 && ` ×${definition.startingItemQuantities![id]}`}
                         {(!known || item.requirementMode === 'any') && <ItemRequirements requirements={itemRequirementStates(item, skills)} />}
                         {known && <>
-                        {(item.bonus || item.bonuses?.length) && (
-                          <small className="class-selection__item-effect">
-                            <ItemBonusText item={item} />
-                          </small>
-                        )}
-                        {!!item.stealthModifier && <small className="class-selection__item-effect">{item.stealthModifier > 0 ? '+' : ''}{item.stealthModifier} Stealth</small>}
-                        {!!item.damageResistance && <small className="class-selection__item-effect">+{item.damageResistance}% Damage resistance</small>}
-                        {!!item.fearResistance && <small className="class-selection__item-effect">+{item.fearResistance}% Fear resistance</small>}
-                        {recovery.length > 0 && (
-                          <small className="class-selection__item-effect">
-                            On use:{" "}
-                            {recovery
-                              .map(
-                                ([key, amount]) =>
-                                  `+${amount} ${VITAL_LABELS[key]}`,
-                              )
-                              .join(", ")}
-                          </small>
-                        )}
+                          {(item.bonus || item.bonuses?.length) && (
+                            <small className="class-selection__item-effect">
+                              <ItemBonusText item={item} />
+                            </small>
+                          )}
+                          {!!item.stealthModifier && <small className="class-selection__item-effect">{item.stealthModifier > 0 ? '+' : ''}{item.stealthModifier} Stealth</small>}
+                          {!!item.damageResistance && <small className="class-selection__item-effect">+{item.damageResistance}% Damage resistance</small>}
+                          {!!item.fearResistance && <small className="class-selection__item-effect">+{item.fearResistance}% Fear resistance</small>}
+                          {recovery.length > 0 && (
+                            <small className="class-selection__item-effect">
+                              On use:{" "}
+                              {recovery
+                                .map(
+                                  ([key, amount]) =>
+                                    `+${amount} ${VITAL_LABELS[key]}`,
+                                )
+                                .join(", ")}
+                            </small>
+                          )}
                         </>}
                       </span>
                     </li>
-                  );
+                  )
                 })}
               </ul>
             </section>
@@ -173,5 +186,5 @@ export function ClassSelection({
         </section>
       </form>
     </dialog>
-  );
+  )
 }

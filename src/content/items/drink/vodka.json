@@ -1,0 +1,22 @@
+{
+  "id": "vodka",
+  "price": 6,
+  "name": "Vodka",
+  "description": "A bottle of vodka. Drink to recover Sanity.",
+  "consumable": true,
+  "maxStack": 3,
+  "recovery": {
+    "sanity": 60,
+    "energy": 15
+  },
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Drink",
+  "icon": {
+    "x": 1000,
+    "y": 265,
+    "width": 70,
+    "height": 155
+  },
+  "scale": 1
+}

@@ -1,7 +1,7 @@
 ﻿import assert from 'node:assert/strict'
 import test from 'node:test'
 import { closestPatrol, PatrolCombat } from '../../src/domain/combat/patrolCombat.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
 import { catalogue, content } from '../helpers/content.mjs'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 

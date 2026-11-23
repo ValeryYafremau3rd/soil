@@ -1,36 +1,50 @@
+import { useState } from 'react'
+import type { AudioController } from '../../app/contracts/audio'
+import { OptionsDialog } from './OptionsDialog'
 import type { MessageController } from '../../app/contracts/messages'
 import type { OptionsController } from '../../app/contracts/save'
 import { isModifiedOrComposing } from '../../platform/ui/isModifiedOrComposing.ts'
+import { menuKeyboard } from '../components/menuKeyboard'
 import { useModalDialog } from '../../platform/ui/useModalDialog'
 import { Button } from '../components/Button'
 import { GameMessages } from '../components/GameMessages'
 import '../components/components.css'
 import './start.css'
 
-export function StartMenu({ onNewGame, options, messages }: {
-  onNewGame: () => void; options: Pick<OptionsController, 'load'>; messages: MessageController
+/**
+ * Perform start menu.
+ * @param {Function} options - The options supplied to this operation.
+ * @returns {Element} The result described by the TypeScript return signature.
+ */
+export function StartMenu({ onNewGame, options, messages, audio }: {
+  audio: AudioController
+  onNewGame: () => void
+  options: OptionsController
+  messages: MessageController
 }) {
+  const [showOptions, setShowOptions] = useState(false)
   const ref = useModalDialog()
+
   return <dialog ref={ref} className="start-menu" aria-labelledby="start-menu-title"
     onCancel={event => event.preventDefault()} onKeyDown={event => {
       if (isModifiedOrComposing(event)) return
+
       event.stopPropagation()
-      if (event.key === 'Escape') event.preventDefault()
-      if (event.key === 'Enter') {
+      if (event.key === 'Escape') {
         event.preventDefault()
-        if (!event.repeat) (event.target as HTMLElement).closest<HTMLButtonElement>('button')?.click()
-      } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-        event.preventDefault()
-        const buttons = [...event.currentTarget.querySelectorAll<HTMLButtonElement>('button')]
-        const current = buttons.indexOf(event.target as HTMLButtonElement)
-        buttons[(current + (event.key === 'ArrowDown' ? 1 : buttons.length - 1)) % buttons.length]?.focus()
+        setShowOptions(false)
       }
+
+      menuKeyboard(event, { items: 'button' })
     }}>
     <h1 id="start-menu-title">Main menu</h1>
     <div className="start-menu-actions">
-      <Button data-autofocus onClick={onNewGame}>New game</Button>
-      <Button onClick={options.load}>Load</Button>
+        <Button data-autofocus onClick={onNewGame}>New game</Button>
+        <Button onClick={options.load}>Load</Button>
+        <Button onClick={() => setShowOptions(true)}>Options</Button>
     </div>
     <GameMessages messages={messages} />
+    {showOptions && <OptionsDialog audio={audio} options={options}
+      onClose={() => setShowOptions(false)} />}
   </dialog>
 }

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { HudService } from '../../src/app/services/HudService.ts'
-import { isGameplayBlocked } from '../../src/app/services/isGameplayBlocked.ts'
+import { HudService } from '../../src/app/services/ui/HudService.ts'
+import { isGameplayBlocked } from '../../src/app/services/session/isGameplayBlocked.ts'
 
 test('HUD panels reject unknown IDs and release subscriptions', () => {
   const hud = new HudService(['character', 'map'])

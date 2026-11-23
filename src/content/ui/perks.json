@@ -253,5 +253,26 @@
       "martialArts": 1,
       "athletics": 1
     }
+  },
+  {
+    "id": "well-trained",
+    "group": "training",
+    "name": "Well Trained",
+    "description": "+1 Weapons, +1 Martial Arts, +1 Sneaking.",
+    "itemIds": [],
+    "goal": 1,
+    "actionPoints": {
+      "wellTrainedFinished": 1
+    },
+    "skillModifiers": {
+      "weapons": 1,
+      "martialArts": 1,
+      "stealth": 1
+    },
+    "sanityMultiplier": 1,
+    "withdrawalFraction": 0,
+    "willpowerOnUse": 0,
+    "willpowerAfterDay": 0,
+    "consumeAtMaximum": false
   }
 ]

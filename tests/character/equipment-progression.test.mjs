@@ -7,27 +7,19 @@ import { validateContent } from '../../src/app/content/validateContent.ts'
 
 const stack = itemId => ({ itemId, quantity: 1 })
 
-test('every class can collect beginner and advanced reading bonuses for every skill and attribute', () => {
+test('every class learns all eleven skills through issues and tomes without gaining attributes', () => {
   const { data } = catalogue()
   const definitions = Object.fromEntries(data.items.map(item => [item.id, item]))
+  const sources = data.items.filter(item => item.readable && item.bonus).map(item => ({ ...stack(item.id), learned: true }))
   for (const definition of contentFiles()['./classes.json']) {
     const base = createCharacter(definition)
-    const references = ['encyclopedia', 'leather-journal', 'erudition-training-magazine'].map(stack)
-    const prepared = applyCarriedBonuses(base, references, definitions)
+    const learned = applyCarriedBonuses(base, sources, definitions)
     for (const skill of Object.keys(SKILL_LABELS)) {
-      const beginner = `${skill}-training-magazine`, advanced = `${skill}-training-handbook`
-      const first = applyCarriedBonuses(base, [...references, stack(beginner)], definitions)
-      assert.equal(first.skills[skill], Math.min(skill === 'erudition' ? 20 : Infinity, prepared.skills[skill] + (skill === 'erudition' ? 0 : 2)), `${definition.id}: ${skill} beginner`)
-      const both = applyCarriedBonuses(base, [...references, stack(advanced), stack(beginner)], definitions)
-      assert.equal(both.skills[skill], Math.min(skill === 'erudition' ? 20 : Infinity, prepared.skills[skill] + (skill === 'erudition' ? 4 : 6)), `${definition.id}: ${skill} advanced`)
+      assert.equal(learned.skills[skill], Math.min(skill === 'erudition' ? 20 : Infinity, base.skills[skill] + 3))
     }
-    for (const attribute of Object.keys(ATTRIBUTE_LABELS)) {
-      const items = [...references, ...[`${attribute}-training-pocket-guide`, `${attribute}-training-handbook`].map(stack)]
-      assert.equal(applyCarriedBonuses(base, items, definitions).attributes[attribute], base.attributes[attribute] + 3, `${definition.id}: ${attribute}`)
-    }
+    assert.deepEqual(learned.attributes, base.attributes)
   }
 })
-
 test('multiple attribute and skill bonuses apply once per type and end together on removal', () => {
   const base = createCharacter({ id: 'test', name: 'Test', attributes: { strength: 1, agility: 1, intelligence: 1, willpower: 1, charisma: 1 }, startingItems: [] })
   const item = { id: 'gear', bonuses: [{ attribute: 'strength', amount: 2 }, { attribute: 'agility', amount: 1 }, { skill: 'stealth', amount: 3 }] }

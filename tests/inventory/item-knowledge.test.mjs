@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { applyCarriedBonuses, understandsItem } from '../../src/domain/inventory/items.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { catalogue } from '../helpers/content.mjs'
@@ -24,19 +24,17 @@ test('Erudition reveals knowledge independently of training and blocks repeated 
   assert.equal(inventory.understandsItem('missing'), false)
 })
 
-test('Encyclopedia reveals and activates previously unknown gear; removal hides and disables it again', () => {
+test('learning Erudition reveals advanced reading without granting unread bonuses', () => {
   const { data } = catalogue()
   const definitions = Object.fromEntries(data.items.map(item => [item.id, item]))
   const base = createCharacter({ id: 'reader', name: 'Reader', attributes: {
     strength: 2, agility: 1, intelligence: 2, willpower: 2, charisma: 2,
   }, startingItems: [] })
-  const magazine = { itemId: 'sewing-magazine', quantity: 1 }
-  const encyclopedia = { itemId: 'encyclopedia', quantity: 1 }
-  const unknown = applyCarriedBonuses(base, [magazine], definitions)
-  assert.equal(understandsItem(definitions[magazine.itemId], unknown.skills.erudition), false)
-  assert.equal(unknown.skills.lockpicking, base.skills.lockpicking)
-  const known = applyCarriedBonuses(base, [magazine, encyclopedia], definitions)
-  assert.equal(understandsItem(definitions[magazine.itemId], known.skills.erudition), true)
-  assert.equal(known.skills.lockpicking, base.skills.lockpicking + 2)
-  assert.deepEqual(applyCarriedBonuses(known, [magazine], definitions), unknown)
+  const tome = { itemId: 'mechanics-lockpicking', quantity: 1 }
+  const unknown = applyCarriedBonuses(base, [tome], definitions)
+  assert.equal(understandsItem(definitions[tome.itemId], unknown.skills.erudition), false)
+  const learned = ['health-magazine-erudition', 'chemistry-erudition', 'sci-fi-book'].map(itemId => ({ itemId, quantity: 1, learned: true }))
+  const known = applyCarriedBonuses(base, [tome, ...learned], definitions)
+  assert.equal(understandsItem(definitions[tome.itemId], known.skills.erudition), true)
+  assert.equal(known.skills.lockpicking, base.skills.lockpicking)
 })

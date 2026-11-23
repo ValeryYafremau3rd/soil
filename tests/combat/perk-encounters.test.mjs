@@ -31,7 +31,8 @@ test('death, changing context or concealment cancels chase credit without awardi
   for (const end of [{ alive: false }, { visible: false }, { hidden: true }]) {
     const tracker = new PatrolPerkTracker()
     tracker.observe('a', { ...observation, detected: true })
-    assert.deepEqual(tracker.observe('a', { ...observation, inRange: false, ...end }), [])
+    assert.deepEqual(tracker.observe('a', { ...observation, inRange: false, ...end }),
+      end.hidden ? ['chaseHidden'] : [])
     assert.deepEqual(tracker.observe('a', { ...observation, inRange: false }), [])
   }
   const tracker = new PatrolPerkTracker()

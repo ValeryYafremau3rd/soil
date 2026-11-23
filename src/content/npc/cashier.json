@@ -1,0 +1,118 @@
+{
+  "name": "Zofia Nowak",
+  "sourceKey": "vendors-source",
+  "textureKey": "cashier",
+  "path": "assets/characters/npc/vendors.png",
+  "idleAnimation": "cashier-idle",
+  "referenceWidth": 2170,
+  "frameRate": 6,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "idleSteps": [
+    {
+      "x": 440,
+      "y": 270,
+      "width": 112,
+      "height": 300,
+      "anchorX": 60.5,
+      "anchorY": 300
+    },
+    {
+      "x": 684,
+      "y": 270,
+      "width": 112,
+      "height": 301,
+      "anchorX": 59,
+      "anchorY": 301
+    },
+    {
+      "x": 925,
+      "y": 270,
+      "width": 111,
+      "height": 301,
+      "anchorX": 58,
+      "anchorY": 301
+    },
+    {
+      "x": 1156,
+      "y": 270,
+      "width": 114,
+      "height": 300,
+      "anchorX": 61,
+      "anchorY": 300
+    },
+    {
+      "x": 1381,
+      "y": 270,
+      "width": 115,
+      "height": 300,
+      "anchorX": 58,
+      "anchorY": 300
+    },
+    {
+      "x": 1619,
+      "y": 270,
+      "width": 110,
+      "height": 300,
+      "anchorX": 60,
+      "anchorY": 300
+    }
+  ],
+  "frameSize": {
+    "width": 180,
+    "height": 309,
+    "referenceHeight": 301
+  },
+  "dialogueId": "cashier",
+  "scale": 0.9,
+  "background": "none",
+  "repeat": -1,
+  "schedule": {
+    "morning": {
+      "locationId": "center",
+      "buildingId": "center-shop",
+      "scale": 0.8,
+      "x": 220
+    },
+    "afternoon": {
+      "locationId": "center",
+      "buildingId": "center-shop",
+      "scale": 0.8,
+      "x": 220
+    },
+    "evening": {
+      "locationId": "center",
+      "buildingId": "center-shop",
+      "scale": 0.8,
+      "x": 220
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-41",
+      "x": 187
+    }
+  },
+  "_codex": {
+    "character": "Zofia Nowak",
+    "arc": "government investigation",
+    "questLinks": [
+      "cashier-1",
+      "cashier-2",
+      "cashier-3",
+      "cashier-4",
+      "cashier-5",
+      "clerk-official-seal"
+    ],
+    "dialogueImplementation": "NPC file is a sprite/schedule configuration, not a dialogue tree. Extend dialogue system using quest stage choiceIds from linked quests; do not overwrite animation/schedule fields. Use conditional options by quest state and flags.",
+    "scheduleOverrides": [],
+    "dialogueBeats": [
+      "Initially loyal to Pavel and the official story.",
+      "May reconsider after seeing mismatched manifests; avoid sudden conversion."
+    ]
+  },
+  "portraitIndex": 4,
+  "portraitBackgroundThreshold": 45
+}

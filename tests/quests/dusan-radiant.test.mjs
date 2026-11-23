@@ -1,11 +1,11 @@
 ﻿import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-function setup(roll=0){const data=content(),time=new DayTime(),inventory=new InventoryService(data.items,[]),quests=new QuestService(data.quests,inventory,undefined,time,()=>roll);const unlock=()=>quests.restoreState([1,2,3,4].map(n=>({questId:`smuggler-${n}`,stageIndex:data.quests.find(q=>q.id===`smuggler-${n}`).stages.length})));return {data,time,inventory,quests,unlock}}
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+function setup(roll=0){const data=content(),time=new DayTimeService(),inventory=new InventoryService(data.items,[]),quests=new QuestService(data.quests,inventory,undefined,time,()=>roll);const unlock=()=>quests.restoreState([1,2,3,4].map(n=>({questId:`smuggler-${n}`,stageIndex:data.quests.find(q=>q.id===`smuggler-${n}`).stages.length})));return {data,time,inventory,quests,unlock}}
 test('Dusan offers one generic smuggler run after the story and preserves randomized locations on reload',()=>{
  const targets=new Set()
  for(const roll of [0,0.2,0.4,0.6,0.8,0.999]){

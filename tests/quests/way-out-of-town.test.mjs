@@ -1,8 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { content } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
 import { availableBoardQuests } from '../../src/domain/quests/quests.ts'
 import { rollCorpseLoot } from '../../src/domain/combat/patrolCombat.ts'
 
@@ -28,21 +28,21 @@ test('starting quest appears once, stays off boards, and restores without resett
   inventory.openContainer('titan-corpse')
   assert.equal(stage(), 1, 'opening or cancelling a search does not collect the key')
   inventory.takeAll()
-  assert.equal(stage(), 2)
+  assert.equal(stage(), 4)
   assert.equal(quests.isCompleted('way-out-of-town'), false)
   assert.deepEqual(inventory.getSnapshot().containers['titan-corpse'].items, [])
   inventory.takeAll()
-  assert.equal(stage(), 2)
+  assert.equal(stage(), 4)
   const saved = structuredClone(quests.getSnapshot().progress)
   quests.restoreState(saved)
   quests.startInitialQuests()
-  assert.equal(stage(), 2)
+  assert.equal(stage(), 4)
   assert.equal(quests.getSnapshot().progress.length, data.quests.filter(q => q.autoStart).length)
   assert.equal(inventory.getSnapshot().items.filter(item => item.itemId === 'strange-key').length, 1)
   quests.restoreState([])
   quests.startInitialQuests()
   quests.visitLocation('center')
-  assert.equal(stage(), 2, 'older saves gain the quest and recognize an already acquired key')
+  assert.equal(stage(), 4, 'older saves gain the quest and recognize an already acquired key')
 })
 
 test('full inventory leaves the key on the corpse until a successful pickup', () => {
@@ -54,7 +54,7 @@ test('full inventory leaves the key on the corpse until a successful pickup', ()
   assert.deepEqual(inventory.getSnapshot().containers['titan-corpse'].items, [{ itemId: 'strange-key', quantity: 1 }])
   inventory.removeItems([{ itemId: 'rope', quantity: 1 }])
   inventory.takeAll()
-  assert.equal(stage(), 2)
+  assert.equal(stage(), 4)
 })
 
 test('escape opening advances only on reaching Center, once, and keeps an early key', () => {
@@ -68,9 +68,9 @@ test('escape opening advances only on reaching Center, once, and keeps an early 
   quests.visitLocation('living-district')
   assert.equal(stage(), 0)
   quests.visitLocation('center')
-  assert.equal(stage(), 2)
+  assert.equal(stage(), 4)
   quests.visitLocation('center')
-  assert.equal(stage(), 2)
+  assert.equal(stage(), 4)
 })
 
 test('Center changes the opening objective to finding a way out', () => {
@@ -81,5 +81,5 @@ test('Center changes the opening objective to finding a way out', () => {
   quests.visitLocation('center')
   const progress = quests.getSnapshot().progress.find(entry => entry.questId === 'way-out-of-town')
   assert.equal(progress.stageIndex, 1)
-  assert.equal(data.quests.find(entry => entry.id === progress.questId).stages[progress.stageIndex].description, 'Find a way out of the town.')
+  assert.equal(data.quests.find(entry => entry.id === progress.questId).stages[progress.stageIndex].id, 'guard-key-clue')
 })

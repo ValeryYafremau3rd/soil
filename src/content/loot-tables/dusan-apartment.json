@@ -7,5 +7,11 @@
     "canned-meat",
     "water-bottle"
   ],
-  "rarityWeighted": true
+  "rarityWeighted": true,
+  "weights": {
+    "pistol-ammunition": 1,
+    "medicine": 1,
+    "canned-meat": 1,
+    "water-bottle": 1
+  }
 }

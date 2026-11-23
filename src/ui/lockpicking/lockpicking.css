@@ -1,111 +1,163 @@
 .ui-modal.lock-modal {
+  width: min(470px, calc(100vw - 24px));
   height: auto;
-  width: min(1000px, calc(100vw - 24px), calc((100dvh - var(--hud-bottom-height) - 40px) * 1.9643));
-  max-height: none;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  overflow: visible;
-  color: #772608;
-  container-type: inline-size;
+  border: 1px solid #57625f;
+  border-radius: 12px;
+  color: #e7e4d8;
+  background: #202a29;
+  box-shadow: 0 24px 90px #000b, inset 0 1px #ffffff18;
 }
-.lock-modal .ui-panel {
+
+.ui-modal.lock-modal .ui-panel {
   height: auto;
-  overflow: visible;
-  position: relative;
-  padding: 0;
-  aspect-ratio: 1760 / 896;
-  background: url('/assets/ui/lock.png') center / 100% 100% no-repeat;
-  font-family: Georgia, 'Times New Roman', serif;
+  padding: 24px;
+  background: radial-gradient(ellipse at 50% 35%, #4a5750, transparent 65%), #202a29;
+  box-shadow: inset 0 0 50px #0d15164d;
 }
+
 .lock-modal .ui-modal__header {
   position: absolute;
-  inset: 0;
-  margin: 0;
-  display: block;
-  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
 }
-.lock-modal .ui-modal__header h2 {
+
+.lock-heading { position: relative; padding-right: 24px; }
+.lock-heading h3 { margin: 9px 0 6px; color: #f1e9d6; font-size: 25px; font-weight: 500; }
+.lock-heading p { margin: 0; color: #b5bdb4; font: 13px/1.5 sans-serif; }
+.lock-eyebrow { color: #c7ae75; font: 10px/1.5 monospace; letter-spacing: .12em; text-transform: uppercase; }
+.lock-heading .lock-close {
   position: absolute;
-  left: 17%;
-  top: 6%;
-  width: 71%;
-  height: 9%;
-  display: flex;
-  align-items: center;
-  font: bold clamp(12px, 2.8cqw, 28px) Georgia, 'Times New Roman', serif;
-  text-shadow: 0 1px #ffe0a5;
-}
-.lock-modal .ui-modal__header button {
-  position: absolute;
-  right: 3.2%;
-  top: 5.5%;
-  width: 5%;
-  height: 10%;
-  min-height: 0;
+  right: -10px;
+  top: -12px;
+  width: 32px;
+  height: 32px;
   padding: 0;
   border: 0;
   background: transparent;
-  color: #8d210d;
-  font-size: 0;
-  pointer-events: auto;
-}
-.lock-modal .ui-modal__header button::after { content: '\00d7'; font: bold 5cqw Georgia, serif; line-height: 1; }
-.lock-modal .ui-modal__header button:hover { color: #bc4312; }
-.lock-timer {
-  position: absolute;
-  left: 7.4%;
-  top: 34.4%;
-  width: 85.5%;
-  height: 6.2%;
-  overflow: hidden;
-  border-radius: 2cqw;
-}
-.lock-timer__fill {
-  height: 100%;
-  background: linear-gradient(#ffe58e 0%, #e9b33f 25%, #d49524 80%, #f7ce68 100%);
-  box-shadow: inset 0 0 .4cqw #fff1a3;
-  border-right: 1px solid #ffdf83;
-  transition: width 50ms linear;
-}
-.lock-sum {
-  position: absolute;
-  left: 5%;
-  top: 54%;
-  width: 19%;
-  height: 28%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-shadow: 0 1px #ffe0a5;
-}
-.lock-sum span { font-size: 2.1cqw; font-weight: bold; }
-.lock-sum strong { font-size: 8cqw; line-height: 1.1; }
-.lock-sum small { font-size: 1.8cqw; }
-.lock-numbers { position: absolute; inset: 0; pointer-events: none; }
-.lock-numbers button {
-  position: absolute;
-  top: 54%;
-  width: 12.6%;
-  height: 28%;
-  padding: 0;
-  border: .35cqw solid transparent;
-  border-radius: 1.5cqw;
-  background: transparent;
-  color: #f4c993;
-  font: bold 9.8cqw / 1 Georgia, 'Times New Roman', serif;
-  text-shadow: 0 .2cqw .3cqw #100b06, 0 0 .15cqw #ffe2ad;
+  color: #c9d0c7;
+  font: 24px/1 sans-serif;
   cursor: pointer;
-  pointer-events: auto;
 }
-.lock-numbers button:nth-child(1) { left: 33%; }
-.lock-numbers button:nth-child(2) { left: 50.5%; }
-.lock-numbers button:nth-child(3) { left: 67.7%; }
-.lock-numbers button.is-selected {
-  border-color: #ffcf29;
-  outline: .55cqw solid #ffbf19;
-  outline-offset: .8cqw;
-  box-shadow: 0 0 1.4cqw .7cqw #ffb000b3, inset 0 0 .8cqw #ffc83e66;
+
+.lock-mechanism { width: min(300px, 100%); margin: 22px auto 18px; }
+.lock-shackle {
+  box-sizing: border-box;
+  width: 168px;
+  height: 108px;
+  margin: 0 auto -15px;
+  border: 20px solid #a9b6b2;
+  border-bottom: 0;
+  border-radius: 85px 85px 0 0;
+  background: transparent;
+  box-shadow: inset 4px 3px 6px #0b1316, 3px -2px 0 #e4eee3, -4px 0 0 #687873;
 }
-.lock-numbers button:focus-visible { outline-color: #ffe45e; }
+
+.lock-body {
+  position: relative;
+  padding: 22px 28px 20px;
+  border: 1px solid #f4d994;
+  border-bottom: 5px solid #6a461c;
+  border-radius: 19px 19px 27px 27px;
+  color: #372a18;
+  background:
+    repeating-linear-gradient(0deg, #fff1 0 1px, #35200208 1px 3px),
+    linear-gradient(110deg, #aa7c34, #e6c985 24%, #b88c43 52%, #d6b66d 76%, #94702e);
+  box-shadow: inset 0 2px 2px #fff8, inset 0 -10px 20px #50310b45, 0 16px 22px #0006;
+}
+
+.lock-engraving { display: block; text-align: center; font: 9px/1.5 monospace; letter-spacing: .15em; opacity: .7; }
+.lock-target { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 12px 0 3px; font: 12px monospace; text-transform: uppercase; }
+.lock-target strong { font-size: 26px; text-shadow: 0 1px #ffe6a4; }
+.lock-dial-bank { display: flex; justify-content: center; gap: 9px; }
+.lock-wheel { min-width: 0; flex: 1; max-width: 67px; }
+.lock-wheel .lock-wheel__turn {
+  display: block;
+  width: 100%;
+  height: 25px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #463213;
+  font-size: 20px;
+  cursor: pointer;
+}
+.lock-wheel .lock-wheel__turn:hover { color: #fff0b1; background: #4b330b25; }
+.lock-wheel__window {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 108px;
+  padding: 0;
+  overflow: hidden;
+  border: 3px solid #644a24;
+  border-radius: 5px;
+  background: #bec5bb;
+  box-shadow: 0 1px #fbe8ad, inset 0 3px 8px #0008;
+  cursor: ns-resize;
+  touch-action: none;
+  user-select: none;
+}
+.lock-wheel__window::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(#101917d9, transparent 37%, transparent 63%, #101917d9);
+  box-shadow: inset 0 0 7px #0009;
+}
+.lock-wheel__window::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 32% 0;
+  border-block: 1px solid #29332766;
+  pointer-events: none;
+}
+.lock-wheel__reel { display: flex; flex-direction: column; height: 100%; color: #202821; }
+.lock-wheel__reel > * {
+  display: grid;
+  place-items: center;
+  flex: 0 0 34px;
+  font: 25px/34px sans-serif;
+  font-weight: bold;
+  text-shadow: 0 1px #f0f5e0;
+}
+.lock-wheel__reel strong { background: #f3f0cf44; font-size: 35px; }
+.lock-wheel.is-selected .lock-wheel__window { border-color: #304c3e; outline: 2px solid #f4e3a2; outline-offset: 2px; }
+.lock-wheel__window:focus-visible { outline: 3px solid #fff4c9; outline-offset: 2px; }
+.lock-readout { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; font: 10px/1.5 monospace; }
+.lock-readout strong { font-size: 13px; }
+.lock-rivet { position: absolute; bottom: 11px; width: 7px; height: 7px; border-radius: 50%; background: #77501c; box-shadow: inset 0 1px 2px #362208, 0 1px #fbe4a1; }
+.lock-rivet--left { left: 10px; }
+.lock-rivet--right { right: 10px; }
+.lock-time-label { display: flex; justify-content: space-between; color: #bac4b9; font: 11px/1.5 monospace; text-transform: uppercase; letter-spacing: .05em; }
+.lock-time-label strong { color: #e8c67e; font-weight: normal; }
+.lock-timer { display: block; width: 100%; height: 5px; margin: 8px 0 17px; border: 0; border-radius: 5px; overflow: hidden; appearance: none; background: #111b1b; }
+.lock-timer::-webkit-progress-bar { background: #111b1b; }
+.lock-timer::-webkit-progress-value { background: #d8b66e; }
+.lock-timer::-moz-progress-bar { background: #d8b66e; }
+.lock-workbench .lock-submit {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b3a075;
+  border-radius: 4px;
+  background: #d9c08a;
+  color: #242b24;
+  font: bold 12px/1.3 monospace;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  cursor: pointer;
+}
+.lock-workbench .lock-submit:hover { background: #f1dba7; }
+.lock-controls { margin: 12px 0 0; color: #9daea2; text-align: center; font: 10px/1.6 monospace; }
+
+@media (max-height: 760px), (max-width: 400px) {
+  .ui-modal.lock-modal .ui-panel { padding: 18px; }
+  .lock-heading h3 { font-size: 22px; }
+  .lock-mechanism { margin-block: 12px; width: min(280px, 100%); }
+  .lock-shackle { height: 78px; }
+  .lock-body { padding-block: 15px; }
+}

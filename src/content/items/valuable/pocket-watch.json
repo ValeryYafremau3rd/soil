@@ -1,0 +1,24 @@
+{
+  "id": "pocket-watch",
+  "price": 65,
+  "name": "Pocket watch",
+  "rarity": "rare",
+  "quality": 4,
+  "category": "Valuable",
+  "equipmentSlot": "tool",
+  "icon": {
+    "x": 1070,
+    "y": 449,
+    "width": 115,
+    "height": 135
+  },
+  "scale": 1,
+  "description": "Pocket watch.",
+  "bonus": {
+    "skill": "barter",
+    "amount": 2
+  },
+  "skillRequirements": {
+    "barter": 4
+  }
+}

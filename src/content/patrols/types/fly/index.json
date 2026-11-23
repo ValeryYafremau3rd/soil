@@ -1,6 +1,7 @@
 {
   "name": "Fly",
   "kind": "monster",
+  "corpseLootTable": "fly",
   "combat": {
     "attackCooldownMs": 1200,
     "levelTolerance": 26,
@@ -21,15 +22,14 @@
   },
   "sourceKey": "fly-source",
   "textureKey": "fly",
-  "path": "assets/characters/patrol/fly.png",
+  "path": "assets/characters/patrol/topa.png",
   "referenceWidth": 2172,
   "background": "dark",
-  "backgroundThreshold": 24,
-  "backgroundMinGreenRed": 0,
+  "backgroundThreshold": 6,
   "keepLargestComponent": true,
   "displayHeight": 140,
   "frameSize": {
-    "referenceHeight": 188,
+    "referenceHeight": 180,
     "width": 300,
     "height": 210
   },

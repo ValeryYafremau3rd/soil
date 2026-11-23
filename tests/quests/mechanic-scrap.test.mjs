@@ -1,9 +1,9 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { content } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
 
 const id = 'mechanic-scrap'
 const stack = itemId => ({ itemId, quantity: 1 })
@@ -56,7 +56,7 @@ test('Irina scrap request supports declining, collection, restored progress and 
 
 test('carried scrap counts and a full inventory preserves hand-in until reward space is available', () => {
   const { inventory, quests, deliver, progress } = setup([
-    stack('copper-wire'), stack('rope'), stack('matchbox'), stack('leather-journal'),
+    stack('copper-wire'), stack('rope'), stack('matchbox'), stack('chemistry-erudition'),
     stack('red-cigarettes'), stack('cloth'),
   ])
   assert.equal(quests.acceptFromNpc(id, 'worker'), true)

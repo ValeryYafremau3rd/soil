@@ -1,0 +1,29 @@
+{
+  "id": "romance-book",
+  "eruditionRequired": 4,
+  "price": 22,
+  "name": "Romance novel",
+  "quality": 3,
+  "category": "Book",
+  "icon": {
+    "x": 20,
+    "y": 450,
+    "width": 145,
+    "height": 155
+  },
+  "scale": 1,
+  "rarity": "epic",
+  "description": "Read once to permanently gain +3 Diplomacy, +1 Sneaking. Duplicate copies give no further bonus.",
+  "readable": true,
+  "consumable": true,
+  "bonuses": [
+    {
+      "skill": "persuasion",
+      "amount": 3
+    },
+    {
+      "skill": "stealth",
+      "amount": 1
+    }
+  ]
+}

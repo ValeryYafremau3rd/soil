@@ -1,11 +1,5 @@
 [
   {
-    "id": "perks",
-    "title": "Perks",
-    "key": "p",
-    "emptyMessage": "No perks acquired yet."
-  },
-  {
     "id": "character",
     "title": "Character",
     "key": "c"
@@ -18,7 +12,8 @@
   {
     "id": "map",
     "title": "Map",
-    "key": "m"
+    "key": "m",
+    "showInBar": false
   },
   {
     "id": "quests",
@@ -37,8 +32,14 @@
     "key": "t"
   },
   {
+    "id": "developer",
+    "title": "Developer console",
+    "key": "x",
+    "showInBar": false
+  },
+  {
     "id": "options",
-    "title": "Options",
+    "title": "System",
     "key": "Escape"
   }
 ]

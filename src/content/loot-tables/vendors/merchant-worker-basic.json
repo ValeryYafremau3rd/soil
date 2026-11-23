@@ -1,0 +1,271 @@
+{
+  "categories": [
+    "Tool"
+  ],
+  "minItems": 1,
+  "maxItems": 2,
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "offers": [
+    {
+      "itemId": "adjustable-wrench",
+      "chance": 0.2
+    },
+    {
+      "itemId": "barbed-bat",
+      "chance": 0.2
+    },
+    {
+      "itemId": "batteries",
+      "chance": 0.27
+    },
+    {
+      "itemId": "bent-nails",
+      "chance": 0.92
+    },
+    {
+      "itemId": "blowtorch",
+      "chance": 0.1
+    },
+    {
+      "itemId": "brass-knuckles",
+      "chance": 0.21
+    },
+    {
+      "itemId": "cloth",
+      "chance": 0.86
+    },
+    {
+      "itemId": "compact-pistol",
+      "chance": 0.06
+    },
+    {
+      "itemId": "compass",
+      "chance": 0.21
+    },
+    {
+      "itemId": "copper-wire",
+      "chance": 0.92
+    },
+    {
+      "itemId": "crowbar",
+      "chance": 0.23
+    },
+    {
+      "itemId": "flashlight",
+      "chance": 0.21
+    },
+    {
+      "itemId": "gears",
+      "chance": 0.92
+    },
+    {
+      "itemId": "hammer",
+      "chance": 0.38
+    },
+    {
+      "itemId": "hatchet",
+      "chance": 0.2
+    },
+    {
+      "itemId": "knife",
+      "chance": 0.23
+    },
+    {
+      "itemId": "leather",
+      "chance": 0.25
+    },
+    {
+      "itemId": "light-bulb",
+      "chance": 0.29
+    },
+    {
+      "itemId": "loose-nuts",
+      "chance": 0.92
+    },
+    {
+      "itemId": "mechanics-lockpicking",
+      "chance": 0.15
+    },
+    {
+      "itemId": "mechanics-scraper",
+      "chance": 0.15
+    },
+    {
+      "itemId": "mechanics-weapons",
+      "chance": 0.15
+    },
+    {
+      "itemId": "metal-bars",
+      "chance": 0.92
+    },
+    {
+      "itemId": "military-coat",
+      "chance": 0.1
+    },
+    {
+      "itemId": "multimeter",
+      "chance": 0.11
+    },
+    {
+      "itemId": "needles",
+      "chance": 0.92
+    },
+    {
+      "itemId": "nuts-and-bolts",
+      "chance": 0.92
+    },
+    {
+      "itemId": "oil",
+      "chance": 0.81
+    },
+    {
+      "itemId": "old-ashtray",
+      "chance": 0.92
+    },
+    {
+      "itemId": "pipe-wrench",
+      "chance": 0.22
+    },
+    {
+      "itemId": "pliers",
+      "chance": 0.24
+    },
+    {
+      "itemId": "precision-screwdriver",
+      "chance": 0.21
+    },
+    {
+      "itemId": "repair-pliers",
+      "chance": 0.2
+    },
+    {
+      "itemId": "revolver",
+      "chance": 0.05
+    },
+    {
+      "itemId": "rope",
+      "chance": 0.25
+    },
+    {
+      "itemId": "rusty-gears",
+      "chance": 0.92
+    },
+    {
+      "itemId": "screwdriver",
+      "chance": 0.4
+    },
+    {
+      "itemId": "service-pistol",
+      "chance": 0.05
+    },
+    {
+      "itemId": "shotgun-shells",
+      "chance": 0.29
+    },
+    {
+      "itemId": "soldering-iron",
+      "chance": 0.16
+    },
+    {
+      "itemId": "technical-magazine-lockpicking",
+      "chance": 0.68
+    },
+    {
+      "itemId": "technical-magazine-scraper",
+      "chance": 0.68
+    },
+    {
+      "itemId": "technical-magazine-weapons",
+      "chance": 0.68
+    },
+    {
+      "itemId": "tool-roll",
+      "chance": 0.19
+    },
+    {
+      "itemId": "vacuum-tube",
+      "chance": 0.79
+    },
+    {
+      "itemId": "wire-coil",
+      "chance": 0.92
+    },
+    {
+      "itemId": "work-gloves",
+      "chance": 0.25
+    },
+    {
+      "itemId": "work-jacket",
+      "chance": 0.18
+    },
+    {
+      "itemId": "wrench",
+      "chance": 0.16
+    },
+    {
+      "itemId": "chef-jacket",
+      "chance": 0.2
+    },
+    {
+      "itemId": "flat-cap",
+      "chance": 0.25
+    },
+    {
+      "itemId": "leather-belt",
+      "chance": 0.24
+    },
+    {
+      "itemId": "leather-boots",
+      "chance": 0.16
+    },
+    {
+      "itemId": "medical-coat",
+      "chance": 0.19
+    },
+    {
+      "itemId": "suspenders",
+      "chance": 0.25
+    },
+    {
+      "itemId": "trainers",
+      "chance": 0.13
+    },
+    {
+      "itemId": "wool-socks",
+      "chance": 0.27
+    },
+    {
+      "itemId": "duffel-bag",
+      "chance": 1
+    },
+    {
+      "itemId": "cooking-pot",
+      "chance": 0.23
+    },
+    {
+      "itemId": "lighter",
+      "chance": 0.42
+    },
+    {
+      "itemId": "horseshoe-charm",
+      "chance": 0.15
+    },
+    {
+      "itemId": "medal",
+      "chance": 0.1
+    },
+    {
+      "itemId": "red-star",
+      "chance": 0.17
+    },
+    {
+      "itemId": "sun-amulet",
+      "chance": 0.11
+    },
+    {
+      "itemId": "triquetra-pendant",
+      "chance": 0.06
+    }
+  ]
+}

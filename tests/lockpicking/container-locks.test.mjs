@@ -4,10 +4,10 @@ import { catalogue, content } from '../helpers/content.mjs'
 import { buildContainerSeeds } from '../../src/app/content/containerSeeds.ts'
 import { roomContainerPlacements } from '../../src/app/content/roomContainerPlacements.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { LockpickingService } from '../../src/app/services/LockpickingService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { MessageService } from '../../src/app/services/MessageService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { LockpickingService } from '../../src/app/services/puzzles/LockpickingService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { MessageService } from '../../src/app/services/ui/MessageService.ts'
 
 test('container locks default to false, inherit from types, and allow placement overrides including rooms', () => {
   const data = content()
@@ -41,7 +41,7 @@ function setup(picks = 3) {
     { id: 'open', name: 'Open chest', locationId: 'test', locked: false, items: [] },
   ], () => 0, picks ? [{ itemId: 'lockpick', quantity: picks }] : [], undefined, undefined,
   (id, name, onUnlocked) => locks.attemptContainer(id, name, onUnlocked))
-  const time = new DayTime(1, 'morning')
+  const time = new DayTimeService(1, 'morning')
   locks = new LockpickingService(time, () => 0, { lockpickingBaseSeconds: 1, lockpickingSecondsPerPoint: 1 },
     { has: () => inventory.getSnapshot().items.some(item => item.itemId === 'lockpick'), consume: () => inventory.consumeItem('lockpick') }, () => now, () => 0, messages.show)
   return { inventory, locks, time, messages, expire: () => { now += 1000; locks.tick() } }

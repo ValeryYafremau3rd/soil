@@ -1,9 +1,9 @@
-import { useState,useSyncExternalStore } from 'react'
+import { useState, useSyncExternalStore } from 'react'
 import type { QuestController } from '../../app/contracts/quests'
 import { ITEM_BY_ID } from '../../content/items'
 import type { QuestDefinition } from '../../domain/quests/quests'
 import { activeQuestStages } from '../../domain/quests/quests'
-import { isModifiedOrComposing } from '../../platform/ui/isModifiedOrComposing.ts'
+import { menuKeyboard } from '../components/menuKeyboard'
 import { Button } from '../components/Button'
 import { Modal } from '../components/Modal'
 import { QuestText } from '../notes/QuestText'
@@ -12,6 +12,11 @@ import './quests.css'
 
 type QuestMenuProps = { quests: QuestController; onOpenNote: (target: NoteTarget) => void }
 
+/**
+ * Perform quest reward.
+ * @param {{ quest: QuestDefinition; onOpenNote: (target: NoteTarget) => void }} options - The options supplied to this operation.
+ * @returns {Element | null} The result described by the TypeScript return signature.
+ */
 function QuestReward({ quest, onOpenNote }: { quest: QuestDefinition; onOpenNote: (target: NoteTarget) => void }) {
   if (!quest.reward) return null
   const parts = (quest.reward.items ?? []).map(item => `${ITEM_BY_ID[item.itemId]?.name ?? item.itemId} ×${item.quantity}`)
@@ -19,22 +24,24 @@ function QuestReward({ quest, onOpenNote }: { quest: QuestDefinition; onOpenNote
   return <p className="quest-reward">Reward: <QuestText text={parts.join(' · ')} onOpenNote={onOpenNote} /></p>
 }
 
-function moveQuest(quests: readonly QuestDefinition[], selected: string | undefined, direction: number, onSelect: (id: string) => void, root: HTMLElement, wrap = true) {
-  if (!quests.length) return
-  const index = Math.max(0, quests.findIndex(quest => quest.id === selected))
-  const next = wrap ? (index + direction + quests.length) % quests.length : Math.max(0, Math.min(quests.length - 1, index + direction))
-  onSelect(quests[next].id)
-  root.querySelectorAll<HTMLButtonElement>('.quest-names button')[next]?.focus()
-}
-
+/**
+ * Perform quest names.
+ * @param {{ quests: readonly QuestDefinition[]; selected?: string; onSelect: (id: string) => void }} options - The options supplied to this operation.
+ * @returns {Element} The result described by the TypeScript return signature.
+ */
 function QuestNames({ quests, selected, onSelect }: { quests: readonly QuestDefinition[]; selected?: string; onSelect: (id: string) => void }) {
   return <nav className="quest-names" aria-label="Quest names">
     {quests.map(quest => <button type="button" key={quest.id} aria-current={quest.id === selected ? 'true' : undefined}
       data-autofocus={quest.id === selected ? true : undefined} tabIndex={quest.id === selected ? 0 : -1}
-      onClick={() => onSelect(quest.id)} onFocus={() => onSelect(quest.id)}>{quest.name}</button>)}
+      onFocus={() => onSelect(quest.id)} onClick={() => onSelect(quest.id)}>{quest.name}</button>)}
   </nav>
 }
 
+/**
+ * Perform quest journal.
+ * @param {QuestMenuProps} options - The options supplied to this operation.
+ * @returns {Element} The result described by the TypeScript return signature.
+ */
 export function QuestJournal({ quests, onOpenNote }: QuestMenuProps) {
   const { progress } = useSyncExternalStore(quests.subscribe, quests.getSnapshot)
   const [tab, setTab] = useState<'active' | 'finished'>('active')
@@ -48,18 +55,7 @@ export function QuestJournal({ quests, onOpenNote }: QuestMenuProps) {
   const activeStages = selected && current ? activeQuestStages(selected, current) : []
   const visibleEnd = selected && current ? Math.max(current.stageIndex, ...activeStages.map(stage => selected.stages.indexOf(stage)),
     ...selected.stages.map((stage, index) => current.completedStageIds?.includes(stage.id) ? index : 0)) : 0
-  return <div className="quest-journal" onKeyDownCapture={event => {
-    if (isModifiedOrComposing(event)) return
-    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return
-    event.preventDefault()
-    event.stopPropagation()
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-      const next = tab === 'active' ? 'finished' : 'active'
-      setTab(next)
-      setSelectedId('')
-      event.currentTarget.querySelector<HTMLButtonElement>(`#quest-tab-${next}`)?.focus()
-    } else moveQuest(entries, selected?.id, event.key === 'ArrowDown' ? 1 : -1, setSelectedId, event.currentTarget)
-  }}>
+  return <div className="quest-journal" onKeyDownCapture={event => menuKeyboard(event, { tabs: '.quest-tabs button', items: '.quest-names button' })}>
     <div className="quest-tabs" role="tablist" aria-label="Quest status">
       {(['active', 'finished'] as const).map(status => <button key={status} type="button" role="tab" id={`quest-tab-${status}`}
         aria-selected={status === tab} aria-controls="quest-panel" tabIndex={status === tab ? 0 : -1}
@@ -90,26 +86,28 @@ export function QuestJournal({ quests, onOpenNote }: QuestMenuProps) {
   </div>
 }
 
+/**
+ * Perform quest board.
+ * @param {QuestMenuProps} options - The options supplied to this operation.
+ * @returns {Element | null} The result described by the TypeScript return signature.
+ */
 export function QuestBoard({ quests, onOpenNote }: QuestMenuProps) {
   const { boardOpen, courierBoard } = useSyncExternalStore(quests.subscribe, quests.getSnapshot)
   const [selectedId, setSelectedId] = useState('')
   if (!boardOpen) return null
   const available = quests.getBoardQuests()
   const selected = available.find(quest => quest.id === selectedId) ?? available[0]
+
+  /**
+   * Perform accept.
+   * @returns {void} Completes the operation without returning a value.
+   */
   const accept = () => {
     if (!selected) return
     quests.accept(selected.id)
   }
   return <Modal title="Available quests" onClose={quests.closeBoard} className="quest-modal">
-    <div onKeyDownCapture={event => {
-      if (isModifiedOrComposing(event)) return
-      if ((event.target as HTMLElement).closest('.quest-note-link')) return
-      if (!['Enter', 'ArrowUp', 'ArrowDown'].includes(event.key)) return
-      event.preventDefault()
-      event.stopPropagation()
-      if (event.key === 'Enter') { if (!event.repeat) accept() }
-      else moveQuest(available, selected?.id, event.key === 'ArrowDown' ? 1 : -1, setSelectedId, event.currentTarget, false)
-    }}>
+    <div onKeyDownCapture={event => menuKeyboard(event, { items: '.quest-names button', wrap: false, choose: accept })}>
     <p>Day {courierBoard.day}: {courierBoard.acceptedQuestIds.filter(id => quests.definitions.find(quest => quest.id === id)?.deliveryKind === 'courier').length} of {courierBoard.offeredQuestIds.filter(id => quests.definitions.find(quest => quest.id === id)?.deliveryKind === 'courier').length} courier jobs accepted. New notices each morning.</p>
     {!selected ? <p>No new quests available today. Accepted quests are in your quest journal.</p> : <div className="quest-layout">
       <QuestNames quests={available} selected={selected.id} onSelect={setSelectedId} />

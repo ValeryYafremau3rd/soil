@@ -1,0 +1,34 @@
+{
+  "id": "canvas-backpack",
+  "name": "Canvas backpack",
+  "description": "A canvas backpack. Adds three inventory slots while equipped.",
+  "inventorySlots": 3,
+  "category": "Supply",
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 25,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 40,
+    "y": 681,
+    "width": 160,
+    "height": 142
+  },
+  "scale": 1,
+  "equipmentSlot": "bag",
+  "skillRequirements": { "athletics": 2 },
+  "bonus": {
+    "skill": "athletics",
+    "amount": 3
+  },
+  "bonuses": [
+    {
+      "skill": "stealth",
+      "amount": 1
+    }
+  ]
+}

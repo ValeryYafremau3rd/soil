@@ -1,0 +1,73 @@
+{
+  "id": "prologue-last-night",
+  "name": "The Last Night",
+  "description": "Three separate investigations converge on a nighttime operation at the factory.",
+  "offeredBy": "citizen-clerk",
+  "offerText": "Three separate investigations converge on a nighttime operation at the factory.",
+  "prerequisites": [
+    "factory-locked-workshop",
+    "hospital-no-visitors",
+    "clerk-official-seal"
+  ],
+  "stages": [
+    {
+      "id": "compare-evidence",
+      "description": "Compare factory, hospital and government evidence; identify the convoy departure.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "last-night-evidence"
+      }
+    },
+    {
+      "id": "reach-factory",
+      "description": "Reach the restricted factory area during the convoy operation.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "last-night-factory"
+      },
+      "worldInteraction": "factory-convoy-entry",
+      "phases": [
+        "night"
+      ]
+    },
+    {
+      "id": "witness-incident",
+      "description": "Survive the military operation and discover a route beyond the district.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "last-night-incident"
+      },
+      "worldInteraction": "factory-convoy-incident",
+      "phases": [
+        "night"
+      ]
+    }
+  ],
+  "_codex": {
+    "narrativeIntent": "Three separate investigations converge on a nighttime operation at the factory.",
+    "implementationNotes": [
+      "Unlock only when all three branch finales are complete, regardless of order.",
+      "Use world-object interaction for factory entry; current dialogue triggers are compatibility stubs.",
+      "Incident reveals a massive creature but does not explain the larger origin of the outbreak.",
+      "After incident set escape_routes_unlocked; Titan strange-key route and Pavel permit route are alternatives.",
+      "If Dusan arrested, his workshop is closed but maintenance access remains obtainable through discovered notes.",
+      "If Milena detained, optional rescue can occur during convoy chaos; do not hard-lock ending."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [
+      "factory-locked-workshop",
+      "hospital-no-visitors",
+      "clerk-official-seal"
+    ],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "escape_routes_unlocked",
+        "value": true
+      }
+    ]
+  }
+}

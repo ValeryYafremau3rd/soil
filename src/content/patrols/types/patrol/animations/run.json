@@ -9,7 +9,15 @@
       "height": 151,
       "anchorX": 64,
       "anchorY": 149,
-      "scale": 1.08
+      "scale": 1.08,
+      "excludeRegions": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 108,
+          "height": 2
+        }
+      ]
     },
     {
       "x": 414,

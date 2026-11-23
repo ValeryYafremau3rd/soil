@@ -1,0 +1,19 @@
+{
+  "id": "coins",
+  "price": 12,
+  "name": "Coins",
+  "description": "A handful of metal coins with worn markings.",
+  "rarity": "common",
+  "quality": 2,
+  "category": "Valuable",
+  "icon": {
+    "x": 965,
+    "y": 505,
+    "width": 110,
+    "height": 98
+  },
+  "scale": 1,
+  "skillRequirements": {
+    "barter": 4
+  }
+}

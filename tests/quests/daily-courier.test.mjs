@@ -1,10 +1,10 @@
 ﻿import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-function setup(roll=0){const data=content(),time=new DayTime(),inventory=new InventoryService(data.items,[]),quests=new QuestService(data.quests,inventory,undefined,time,()=>roll);return {data,time,inventory,quests}}
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+function setup(roll=0){const data=content(),time=new DayTimeService(),inventory=new InventoryService(data.items,[]),quests=new QuestService(data.quests,inventory,undefined,time,()=>roll);return {data,time,inventory,quests}}
 test('the board offers one generic courier and one generic find request with stable parameters all day',()=>{
  for(const roll of [0,0.5,0.999]){
   const {quests,time}=setup(roll),before=structuredClone(quests.getSnapshot().courierBoard)

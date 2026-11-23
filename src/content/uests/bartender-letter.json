@@ -1,0 +1,98 @@
+{
+  "id": "bartender-letter",
+  "name": "Everything Under Control",
+  "description": "Viktor wants a look at Pavel’s report before it is collected. Read it, show Viktor, and return it without drawing attention.",
+  "offeredBy": "bartender",
+  "offerText": "Check Pavel Sokolov's letter in Center's postbox at night.",
+  "prerequisites": [
+    "bartender-shortages",
+    "cashier-3"
+  ],
+  "deliveryItemId": "clerk-report",
+  "stages": [
+    {
+      "id": "collect-report",
+      "description": "Take Pavel Sokolov's letter from Center's postbox at night.",
+      "trigger": {
+        "kind": "loot",
+        "containerId": "center-post"
+      },
+      "phases": [
+        "night"
+      ],
+      "requiredItems": [
+        {
+          "itemId": "clerk-report",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "letter-show",
+      "description": "Show the letter to Viktor. Viktor notices the same military routing seal used on other deliveries.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "letter-show"
+      },
+      "requiredItems": [
+        {
+          "itemId": "clerk-report",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "return-report",
+      "description": "Put the letter back into Center's postbox at night.",
+      "trigger": {
+        "kind": "deposit",
+        "containerId": "center-post"
+      },
+      "phases": [
+        "night"
+      ],
+      "requiredItems": [
+        {
+          "itemId": "clerk-report",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "letter-finish",
+      "description": "Return to Viktor for payment.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "letter-finish"
+      }
+    }
+  ],
+  "reward": {
+    "money": 20,
+    "items": [
+      {
+        "itemId": "barbed-bat",
+        "quantity": 1
+      }
+    ]
+  },
+  "_codex": {
+    "narrativeIntent": "Viktor asks the player to temporarily intercept Pavel’s report and return it, learning that supply transfers are deliberately concealed.",
+    "implementationNotes": [
+      "Keep center-post, night restriction and return-to-postbox mechanic.",
+      "The report contains a transport seal/code; do not make it a full confession.",
+      "Set government_report_seen on completion."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "government_report_seen",
+        "value": true
+      }
+    ]
+  }
+}

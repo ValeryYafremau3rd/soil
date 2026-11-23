@@ -18,3 +18,48 @@
 @media (max-width: 560px) { .quest-layout { grid-template-columns: 1fr; } .quest-details { border-left: 0; border-top: 1px solid #69717d; padding: 16px 0 0; } }
 .quest-note-link { color: #f3ce8a; text-decoration: underline; text-underline-offset: 2px; }
 .quest-note-link:focus-visible { outline: 2px solid #dbad57; outline-offset: 2px; }
+
+/* Taskboard notices use the compact paper surface, so their ink must stay dark. */
+.quest-modal .quest-names button {
+  color: #352d22;
+  background: #e6d2aa;
+  border-color: #9b8055;
+}
+.quest-modal .quest-names button:hover { background: #d6bd8c; }
+.quest-modal .quest-names button[aria-current='true'] {
+  color: #fff0cf;
+  background: #63372e;
+  border-color: #63372e;
+}
+.quest-modal .quest-details { border-color: #9b8055; }
+.quest-modal .quest-reward { color: #3c512e; font-weight: bold; }
+.quest-modal .quest-note-link { color: #783323; }
+.ui-modal.quest-modal .ui-panel p.quest-help { color: #534632; }
+.quest-modal :is(.quest-names button, .quest-note-link):focus-visible {
+  outline: 2px solid #783323;
+  outline-offset: 2px;
+}
+
+.dossier-modal :is(.quest-journal, .perks-journal) { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.dossier-modal #quest-panel { flex: 1; min-height: 0; overflow: auto; }
+.dossier-modal .quest-layout { height: 100%; min-height: 0; grid-template-columns: minmax(180px, 30%) minmax(0, 1fr); gap: 24px; }
+.dossier-modal .quest-names { height: 100%; max-height: none; box-sizing: border-box; gap: 6px; }
+.dossier-modal .quest-details { min-height: 0; overflow-y: auto; padding-left: 24px; border-color: var(--paper-rule); }
+.dossier-modal .quest-details > p { margin: 0 0 14px; }
+.dossier-modal .quest-reward { color: var(--paper-ink); font-weight: bold; }
+.dossier-modal .quest-stages { list-style: none; counter-reset: quest-stage; padding: 0; margin: 16px 0; }
+.dossier-modal .quest-stages li { position: relative; counter-increment: quest-stage; padding: 0 0 20px 34px; color: var(--paper-ink); }
+.dossier-modal .quest-stages li::before { content: ''; position: absolute; left: 0; top: 2px; width: 18px; height: 18px; border: 2px solid var(--paper-red); border-radius: 2px; }
+.dossier-modal .quest-stages li.is-finished::before { content: '✓'; text-align: center; font-size: 17px; line-height: 18px; border-color: var(--paper-green); background: var(--paper-green); color: #f5e5bf; }
+.dossier-modal .quest-stages strong::before { content: counter(quest-stage) '. '; }
+.dossier-modal .quest-stages .is-finished strong { color: var(--paper-green); }
+.dossier-modal .quest-stages .is-active strong { color: var(--paper-ink); }
+.dossier-modal .quest-stages li p { margin: 4px 0 0; }
+.dossier-modal .quest-finished { color: var(--paper-green); }
+.dossier-modal .quest-help { flex-shrink: 0; border-top: 1px solid var(--paper-rule); padding-top: 10px; margin-top: 14px; }
+@media (max-width: 560px) {
+  .dossier-modal .quest-layout { grid-template-columns: 1fr; height: auto; gap: 16px; }
+  .dossier-modal .quest-names { height: auto; max-height: 160px; flex-shrink: 0; }
+  .dossier-modal .quest-names::after { display: none; }
+  .dossier-modal .quest-details { overflow: visible; padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--paper-rule); }
+}

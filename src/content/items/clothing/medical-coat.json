@@ -1,0 +1,37 @@
+{
+  "id": "medical-coat",
+  "name": "Medical coat",
+  "category": "Clothing",
+  "damageResistance": 5,
+  "stealthModifier": -3,
+  "quality": 3,
+  "price": 20,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 246,
+    "y": 520,
+    "width": 202,
+    "height": 159
+  },
+  "scale": 1,
+  "rarity": "rare",
+  "description": "Medical coat.",
+  "equipmentSlot": "armor",
+  "skillRequirements": {
+    "medicine": 4
+  },
+  "bonus": {
+    "skill": "medicine",
+    "amount": 3
+  },
+  "bonuses": [
+    {
+      "skill": "erudition",
+      "amount": 1
+    }
+  ]
+}

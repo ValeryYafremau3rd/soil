@@ -1,5 +1,10 @@
 {
   "start": "greeting",
+  "openingLines": [
+    "An empty pantry makes for a quiet bar. What can I do for you?",
+    "People come here for a drink and a little news. Which are you after?",
+    "Pull up a chair. There is always something to talk about, even when supplies are short."
+  ],
   "barter": {
     "id": "merchant:bartender",
     "name": "Viktor Petrov - Barter",
@@ -20,64 +25,13 @@
       {
         "itemId": "matchbox",
         "quantity": 1
-      },
-      {
-        "itemId": "agility-training-pocket-guide",
-        "quantity": 1
-      },
-      {
-        "itemId": "lockpicking-training-magazine",
-        "quantity": 1
-      },
-      {
-        "itemId": "strength-training-pocket-guide",
-        "quantity": 1
-      },
-      {
-        "itemId": "barbed-bat",
-        "quantity": 1
-      },
-      {
-        "itemId": "flat-cap",
-        "quantity": 1
-      },
-      {
-        "itemId": "leather-journal",
-        "quantity": 1
-      },
-      {
-        "itemId": "red-book",
-        "quantity": 1
-      },
-      {
-        "itemId": "tool-roll",
-        "quantity": 1
-      },
-      {
-        "itemId": "machine-blueprints",
-        "quantity": 1
-      },
-      {
-        "itemId": "service-pistol",
-        "quantity": 1
       }
     ],
-    "stock": {
-      "categories": [
-        "Food",
-        "Drink",
-        "Supply",
-        "Book"
-      ],
-      "minItems": 1,
-      "maxItems": 2,
-      "minQuantity": 1,
-      "maxQuantity": 1
-    }
+    "stockTable": "merchant-bartender"
   },
   "nodes": {
     "find-rope-thanks": {
-      "text": "Perfect. That rope will hold the cellar supplies. Here is the payment from my notice.",
+      "text": "That's the rope. Good. The cellar shelves are about one bad night away from collapsing. Here's what I promised.",
       "choices": [
         {
           "id": "back",
@@ -87,8 +41,54 @@
       ]
     },
     "greeting": {
-      "text": "I'm Viktor Petrov, the bartender. Welcome to my bar. I serve food, drinks, and the occasional bit of local news.",
+      "text": "Viktor Petrov. I run this bar, when there's anything left to run. Want a drink, a cigarette, or a story that'll make you wish you'd stayed home?",
       "choices": [
+        {
+          "id": "official-seal-viktor",
+          "text": "[Quest] Tell Viktor that the records lead to the restricted factory warehouse.",
+          "questId": "clerk-official-seal",
+          "next": "story-official-seal-viktor"
+        },
+        {
+          "id": "clerk-official-seal-offer",
+          "text": "[Quest] The Official Seal",
+          "acceptQuestId": "clerk-official-seal",
+          "next": "greeting"
+        },
+        {
+          "id": "shortages-offer",
+          "text": "[Quest] Any word on your missing supplies?",
+          "next": "shortages-offer"
+        },
+        {
+          "id": "shortages-report",
+          "text": "[Quest] Pavel says he informed the capital.",
+          "next": "shortages-paid",
+          "questId": "bartender-shortages"
+        },
+        {
+          "id": "letter-offer",
+          "text": "Do you believe Pavel reported the shortages?",
+          "next": "letter-offer"
+        },
+        {
+          "id": "letter-show",
+          "text": "[Quest] I found Pavel’s letter.",
+          "next": "letter-read",
+          "questId": "bartender-letter"
+        },
+        {
+          "id": "letter-finish",
+          "text": "[Quest] The letter is back in the postbox.",
+          "next": "letter-paid",
+          "questId": "bartender-letter"
+        },
+        {
+          "id": "town-opinion",
+          "text": "What do you really think of the quarantine?",
+          "next": "town-opinion",
+          "questId": "town-opinions"
+        },
         {
           "id": "ask-for-job",
           "text": "Do you have a job for me?",
@@ -113,26 +113,20 @@
           "next": "courier-delivery-thanks"
         },
         {
+          "id": "postman-deliver",
+          "text": "[Delivery] Here is your letter.",
+          "questId": "postman",
+          "next": "postman-thanks"
+        },
+        {
           "id": "advice",
-          "text": "[Advice]",
+          "text": "Any advice for staying sane?",
           "next": "advice"
         },
         {
           "id": "about",
-          "text": "Tell about yourself.",
+          "text": "How long have you worked here?",
           "next": "about"
-        },
-        {
-          "id": "delivery-notice",
-          "text": "[Quest] I saw your delivery notice.",
-          "questId": "a-fraying-strap",
-          "next": "delivery-request"
-        },
-        {
-          "id": "deliver-rope",
-          "text": "[Quest] Here is a rope for your delivery.",
-          "questId": "a-fraying-strap",
-          "next": "delivery-thanks"
         },
         {
           "id": "barter",
@@ -141,7 +135,7 @@
         },
         {
           "id": "news",
-          "text": "What do you serve?",
+          "text": "What have you got to sell?",
           "next": "menu"
         },
         {
@@ -166,31 +160,27 @@
           "text": "[Find item] I found the requested item.",
           "questId": "find-item",
           "next": "find-item-payment"
-        }
-      ]
-    },
-    "delivery-request": {
-      "text": "The strap on my delivery crate snapped. Bring me one rope and I can secure it. The cashier across the street sells rope, or you might find some in a container.",
-      "choices": [
+        },
         {
-          "id": "goodbye",
-          "text": "I'll find you a rope.",
-          "close": true
-        }
-      ]
-    },
-    "delivery-thanks": {
-      "text": "That is just what I needed. I'll take this rope and tie the crate down. Here is a service pistol and five bullets for your help. Thank you!",
-      "choices": [
+          "id": "ask-about",
+          "text": "What have you heard about the nights?",
+          "next": "ask-about"
+        },
         {
-          "id": "goodbye",
-          "text": "Glad I could help.",
-          "close": true
+          "id": "people-menu",
+          "text": "Can you tell me about a specific person?",
+          "next": "people-menu"
+        },
+        {
+          "id": "escape-guard-key",
+          "text": "[Quest] Did you know a guard with a key to the old service gate?",
+          "questId": "way-out-of-town",
+          "next": "escape-guard-key-account"
         }
       ]
     },
     "menu": {
-      "text": "I always keep spirits behind the counter. My selection of food and other drinks changes each morning, so have a look at today's stock.",
+      "text": "There's always a little spirits behind the counter. Food and other drinks depend on what turns up each morning. Have a look. If you see something you like, buy it before somebody else does.",
       "choices": [
         {
           "id": "barter",
@@ -205,7 +195,7 @@
       ]
     },
     "advice": {
-      "text": "If your mind is fraying, drink some vodka: the Spirits in my stock restore Sanity. Do not let Sanity reach zero.",
+      "text": "When your head starts playing tricks on you, a shot of spirits can steady your nerves and restore Sanity. A smoke helps me too. Don't let your Sanity hit zero. And don't mistake a clear head for a safe street.",
       "choices": [
         {
           "id": "back",
@@ -220,7 +210,7 @@
       ]
     },
     "about": {
-      "text": "Welcome to my bar. I serve food, drinks, and the occasional bit of local news. Morning: you can find me in Center's bar. Afternoon: you can find me in Center's bar. Evening: you can find me in Center's bar. Night: you can find me in apartment 51 in Living District.",
+      "text": "Been pouring drinks long enough to know when a man wants to talk and when he wants to forget. Soldiers come in for both. Morning, afternoon, evening: I'm at the bar in Center. At night, I'm in apartment 51 in Living District. Door locked, curtains shut. Usually.",
       "choices": [
         {
           "id": "back",
@@ -235,7 +225,7 @@
       ]
     },
     "cashier-1-cashier-1-deliver-0": {
-      "text": "Thank you. The delivery is recorded.",
+      "text": "A beer bottle. Now there's a sight worth celebrating. Thanks, I'll mark the delivery down.",
       "choices": [
         {
           "id": "back",
@@ -250,7 +240,7 @@
       ]
     },
     "courier-pickup-confirmed": {
-      "text": "Take this parcel to the recipient named in your journal.",
+      "text": "Here's the parcel. The recipient's in your journal. Keep it dry, and don't stop to chat with patrols.",
       "choices": [
         {
           "id": "back",
@@ -260,7 +250,7 @@
       ]
     },
     "courier-delivery-thanks": {
-      "text": "Thank you. Here is your payment.",
+      "text": "You made it back. That's worth something these days. Here's your payment.",
       "choices": [
         {
           "id": "back",
@@ -270,7 +260,7 @@
       ]
     },
     "find-item-instructions": {
-      "text": "Find the requested item and take it to the recipient in your journal.",
+      "text": "The item and recipient are in your journal. Find it, hand it over, and try not to attract attention.",
       "choices": [
         {
           "id": "back",
@@ -280,7 +270,7 @@
       ]
     },
     "find-item-payment": {
-      "text": "Exactly what was requested. Here is your payment.",
+      "text": "That's the one. Here's your payment. No questions, no paperwork.",
       "choices": [
         {
           "id": "back",
@@ -290,7 +280,7 @@
       ]
     },
     "supplies-job": {
-      "text": "Yes, I have one. My supplies are running low. Bring me one food item and one alcoholic drink. Any kind will do. I will pay you 10 Thalers and give you a frying pan.",
+      "text": "I've got a job, if you're hungry enough for one. Bring me one food item and one alcoholic drink. Any kind. I'll give you 10 Thalers and a frying pan. Can't serve a bar full of frightened people with empty shelves.",
       "choices": [
         {
           "id": "accept-supplies",
@@ -306,7 +296,7 @@
       ]
     },
     "supplies-accepted": {
-      "text": "Good. Bring both supplies back to me when you have them.",
+      "text": "One food item, one alcoholic drink. Bring them here when you've got both. And don't let anyone talk you into giving them away on the way.",
       "choices": [
         {
           "id": "goodbye",
@@ -316,11 +306,480 @@
       ]
     },
     "supplies-thanks": {
-      "text": "Just what I needed! Here are 10 Thalers and a frying pan for your trouble.",
+      "text": "Food and a bottle. Beautiful. Here's your 10 Thalers and the frying pan. More useful than half the promises coming out of the capital. I once knew a guard who carried a key to the old service gate.",
       "choices": [
+        {
+          "id": "escape-guard-key",
+          "text": "Tell me more about the missing guard.",
+          "questId": "way-out-of-town",
+          "next": "escape-guard-key-account"
+        },
         {
           "id": "goodbye",
           "text": "Glad I could help.",
+          "close": true
+        }
+      ]
+    },
+    "town-opinion": {
+      "text": "The quarantine? Necessary, they say. Pills every day, doors locked every night. Sure. Maybe it'll all be over soon. That's what you wanted to hear, isn't it?",
+      "choices": [
+        {
+          "id": "town-honest-intimidation",
+          "text": "[Intimidation] Drop the official line. What do you think?",
+          "next": "town-dissatisfied",
+          "skillRequirement": {
+            "skill": "intimidation",
+            "level": 6
+          }
+        },
+        {
+          "id": "town-honest-diplomacy",
+          "text": "[Diplomacy] I won’t repeat this. Tell me what you think.",
+          "next": "town-dissatisfied",
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 6
+          }
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "town-dissatisfied": {
+      "text": "All right, you want the truth? We're being left to rot. I know Dusan thinks the pills are poison. I still take mine. If they do nothing, fine. If they help, even better. But I've heard gunfire after curfew, and I've served soldiers who couldn't hold a glass steady. Whatever's out there, it isn't going away.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "shortages-offer": {
+      "text": "Look at those shelves. Soon I'll be serving boiled water and charging for the glass. Ask Zofia when the food and drink deliveries are coming. I'll pay you and throw in an enamel mug. At least the mug won't lie to us.",
+      "choices": [
+        {
+          "id": "shortages-accept",
+          "text": "I will ask her.",
+          "next": "shortages-accepted",
+          "acceptQuestId": "bartender-shortages"
+        },
+        {
+          "id": "back",
+          "text": "Maybe later.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "shortages-accepted": {
+      "text": "Zofia runs the shop. Ask when the next delivery's due. She hears things before I do, unless a soldier gets drunk enough to talk.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "shortages-paid": {
+      "text": "So Pavel informed the capital. Wonderful. Perhaps they'll send us a framed acknowledgment to eat. Here's your payment and the enamel mug, as promised.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "letter-offer": {
+      "text": "Pavel says he's told the capital everything. I'd like to see what 'everything' means in his handwriting. Check the postbox in Center at night. Find his letter and bring it to me. Then we'll put it back before he notices. Yes, I know what walks those streets after dark. I'm asking anyway.",
+      "choices": [
+        {
+          "id": "letter-accept",
+          "text": "I will check the postbox at night.",
+          "next": "letter-accepted",
+          "acceptQuestId": "bartender-letter"
+        },
+        {
+          "id": "back",
+          "text": "Maybe later.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "letter-accepted": {
+      "text": "The postbox in Center. After dark. Bring me Pavel's letter before returning it. If you hear something calling from the far end of the street, don't go looking for its owner.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "letter-read": {
+      "text": "Listen to this: 'There are no problems in the town. Everything is under control.' Not a word about empty shelves or the people who never came home. Put it back in the same postbox at night. I want him to keep believing nobody's read it.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "letter-paid": {
+      "text": "Good. Pavel's letter is back where it belongs, and we know what his promises are worth. Here's your payment and the barbed bat. Keep it close after sundown.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about": {
+      "text": "You want to know what's happening in this town? Fine. Just don't repeat my name when you repeat the stories.",
+      "choices": [
+        {
+          "id": "ask-about-1",
+          "text": "[Barter] What makes those noises outside at night?",
+          "trustRequirement": 1,
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 4
+          },
+          "next": "ask-about-answer-1"
+        },
+        {
+          "id": "ask-about-2",
+          "text": "[Diplomacy] What have the soldiers told you about hallucinations?",
+          "trustRequirement": 2,
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 6
+          },
+          "next": "ask-about-answer-2"
+        },
+        {
+          "id": "ask-about-3",
+          "text": "[Barter] Why does the factory need so much ammunition?",
+          "trustRequirement": 3,
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 8
+          },
+          "next": "ask-about-answer-3"
+        },
+        {
+          "id": "ask-about-4",
+          "text": "[Intimidation] What happened to the patrol near the factory?",
+          "trustRequirement": 4,
+          "skillRequirement": {
+            "skill": "intimidation",
+            "level": 10
+          },
+          "next": "ask-about-answer-4"
+        },
+        {
+          "id": "ask-about-5",
+          "text": "[Diplomacy] Have you ever seen one of those things yourself?",
+          "trustRequirement": 5,
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 12
+          },
+          "next": "ask-about-answer-5"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        },
+        {
+          "id": "escape-guard-key-lore-topic",
+          "text": "Why would a guard carry a maintenance key?",
+          "skillRequirement": {
+            "skill": "erudition",
+            "level": 8
+          },
+          "next": "escape-guard-key-lore-answer"
+        }
+      ]
+    },
+    "ask-about-answer-1": {
+      "text": "Every night I hear something dragging along the street. Slow, heavy, like a loaded cart with one broken wheel. Then comes a scraping sound against the walls. The official explanation is pipes, stray dogs, or a sick mind. Funny how the pipes stop whenever the patrols start shooting.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have you heard?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-2": {
+      "text": "Soldiers drink here when they're off duty. One swore he saw a woman standing under a streetlamp, facing the wrong way. When he called out, she turned without moving her feet. His friend said it was the pills, or exhaustion. Then they both went quiet when I asked why they'd fired half a magazine at her. Nadia would call it a stress reaction. Maybe she is right about the fear. That still does not explain the ammunition.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have you heard?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-3": {
+      "text": "The soldiers get food, ammunition, fuel, fresh lamps. We get ration slips. I don't begrudge a hungry man his supper, but why are they hauling crates of ammunition toward the factory every night? Dusan says something big is kept there. I told him to stop drinking his own moonshine. Then I heard the factory siren go off after midnight. Irina is trying to keep the factory running while Pavel counts crates that never seem to reach her. That is a joke without a punchline.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have you heard?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-4": {
+      "text": "A sergeant came in with his sleeve torn from shoulder to wrist. Said he'd caught it on a fence. Another soldier laughed, then started crying. They'd been posted near the factory. I asked what happened. The sergeant grabbed my arm and said, 'If the searchlights go out, don't look up.' Next morning, he was gone. Transferred, they told me.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have you heard?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-5": {
+      "text": "You want to know what I believe? I think there are things outside after dark that no fever invented. I've seen a shape cross the street where there wasn't room for a man to pass, and I've heard something breathe outside my window on the fifth floor. I take the pills anyway. Dusan calls me a fool. Maybe I am. But the soldiers have guns, the government has secrets, and I have a bottle. Guess which one helps me sleep. Milena came asking whether the men at my bar knew anything about her father. I could not give her an answer. I gave her tea instead. Even I know when not to offer a drink.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "What else have you heard?",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-menu": {
+      "text": "People talk after a drink. Does not mean I believe every word.",
+      "choices": [
+        {
+          "id": "people-about-elena-jovanovic",
+          "text": "Elena Jovanovic",
+          "next": "people-about-elena-jovanovic"
+        },
+        {
+          "id": "people-about-pavel-sokolov",
+          "text": "Pavel Sokolov",
+          "next": "people-about-pavel-sokolov"
+        },
+        {
+          "id": "people-about-dusan-markovic",
+          "text": "Dusan Markovic",
+          "next": "people-about-dusan-markovic"
+        },
+        {
+          "id": "people-about-irina-kovalenko",
+          "text": "Irina Kovalenko",
+          "next": "people-about-irina-kovalenko"
+        },
+        {
+          "id": "people-about-zofia-nowak",
+          "text": "Zofia Nowak",
+          "next": "people-about-zofia-nowak"
+        },
+        {
+          "id": "people-about-milena-vukovic",
+          "text": "Milena Vukovic",
+          "next": "people-about-milena-vukovic"
+        },
+        {
+          "id": "people-about-nadia-morozova",
+          "text": "Nadia Morozova",
+          "next": "people-about-nadia-morozova"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-elena-jovanovic": {
+      "text": "Elena comes in for news, never a drink. Funny how she remembers every complaint word for word. I serve her tea and make sure my customers know when she's listening.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-pavel-sokolov": {
+      "text": "Sokolov? He files reports, I collect empty glasses. We both know how to make a bad night disappear on paper. Difference is, I don't pretend the glasses were never broken.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-dusan-markovic": {
+      "text": "Dusan's my friend. Loud, stubborn bastard. He tells me to stop taking the pills; I tell him to stop drinking my profits. Neither of us listens. At least he knows what he's seen.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-irina-kovalenko": {
+      "text": "Irina keeps the factory standing with string and stubbornness. She pays her tabs, even when I tell her not to. If she says something's wrong with those doors, I'd listen.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-zofia-nowak": {
+      "text": "Zofia's got an answer for every empty shelf: 'The capital is handling it.' I'd like to order a crate of that confidence. Probably out of stock.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-milena-vukovic": {
+      "text": "Milena reminds me of people who still think the truth fixes things. I hope she's right. I also hope she learns when to lower her voice before someone teaches her the hard way.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-nadia-morozova": {
+      "text": "Nadia patches up men who swear they fell down stairs. Some of those stairs must have teeth. She never laughs at that joke. Can't say I blame her.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-official-seal-viktor": {
+      "text": "So the paperwork leads back to that warehouse. That tells us who signed for supplies, not what happened to the patients.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "postman-thanks": {
+      "text": "Thank you for bringing my letter.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "escape-guard-key-account": {
+      "text": "I knew a guard who carried the old service-gate key on his belt; he took the factory night watch and never came back.",
+      "choices": [
+        {
+          "id": "escape-guard-key-lore",
+          "text": "Why would a guard carry a maintenance key?",
+          "skillRequirement": {
+            "skill": "erudition",
+            "level": 8
+          },
+          "next": "escape-guard-key-lore-answer"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "escape-guard-key-lore-answer": {
+      "text": "The service gate predates the quarantine. Shift guards kept maintenance routes open, but the new orders sealed everything without recalling the old keys. A lock can outlast the authority that issued it.",
+      "choices": [
+        {
+          "id": "goodbye",
+          "text": "Goodbye.",
           "close": true
         }
       ]

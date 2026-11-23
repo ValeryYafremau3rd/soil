@@ -47,11 +47,11 @@
     "locked": true,
     "items": [
       {
-        "itemId": "intelligence-training-pocket-guide",
+        "itemId": "romance-book",
         "quantity": 1
       },
       {
-        "itemId": "intelligence-training-handbook",
+        "itemId": "fantasy-book",
         "quantity": 1
       },
       {
@@ -70,15 +70,19 @@
     "locked": false,
     "items": [
       {
-        "itemId": "medicine-training-magazine",
+        "itemId": "health-magazine-medicine",
         "quantity": 1
       },
       {
-        "itemId": "erudition-training-handbook",
+        "itemId": "chemistry-erudition",
         "quantity": 1
       },
       {
-        "itemId": "stealth-training-handbook",
+        "itemId": "anatomy-stealth",
+        "quantity": 1
+      },
+      {
+        "itemId": "milena-mother-journal",
         "quantity": 1
       }
     ],
@@ -94,7 +98,7 @@
     "locked": false,
     "items": [
       {
-        "itemId": "persuasion-training-magazine",
+        "itemId": "newspaper-persuasion",
         "quantity": 1
       },
       {
@@ -118,7 +122,7 @@
     "locked": false,
     "items": [
       {
-        "itemId": "willpower-training-pocket-guide",
+        "itemId": "chemistry-erudition",
         "quantity": 1
       },
       {
@@ -132,5 +136,20 @@
     ],
     "heightOffset": 186.864,
     "restock": false
+  },
+  {
+    "id": "factory-night-log-lockbox",
+    "type": "toolbox",
+    "x": 1210,
+    "space": "outside",
+    "scale": 0.6,
+    "locked": true,
+    "restock": false,
+    "items": [
+      {
+        "itemId": "factory-night-shift-log",
+        "quantity": 1
+      }
+    ]
   }
 ]

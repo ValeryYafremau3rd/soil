@@ -1,0 +1,31 @@
+{
+  "damageMultiplier": 1,
+  "id": "knife",
+  "price": 12,
+  "name": "Knife",
+  "description": "A simple knife with a narrow blade and a firm grip.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Weapon",
+  "icon": {
+    "x": 730,
+    "y": 75,
+    "width": 180,
+    "height": 175
+  },
+  "scale": 1,
+  "equipmentSlot": "melee",
+  "skillRequirements": {
+    "stealth": 4
+  },
+  "bonus": {
+    "skill": "stealth",
+    "amount": 3
+  },
+  "bonuses": [
+    {
+      "skill": "lockpicking",
+      "amount": 1
+    }
+  ]
+}

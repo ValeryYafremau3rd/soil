@@ -50,7 +50,8 @@
     }
   ],
   "reward": {
-    "money": 5
+    "money": 5,
+    "items": [{ "itemId": "leather-belt", "quantity": 1 }]
   },
   "deliveryKind": "courier"
 }

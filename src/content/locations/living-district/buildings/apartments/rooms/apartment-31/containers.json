@@ -16,7 +16,7 @@
     "locked": true,
     "items": [
       {
-        "itemId": "scraper-training-magazine",
+        "itemId": "technical-magazine-scraper",
         "quantity": 1
       },
       {
@@ -25,5 +25,19 @@
       }
     ],
     "restock": false
+  },
+  {
+    "id": "apartment-notice-case",
+    "type": "suitcase",
+    "x": 240,
+    "scale": 0.6,
+    "locked": false,
+    "restock": false,
+    "items": [
+      {
+        "itemId": "apartment-notice",
+        "quantity": 1
+      }
+    ]
   }
 ]

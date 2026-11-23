@@ -1,0 +1,47 @@
+{
+  "name": "Soldier",
+  "kind": "human",
+  "combat": {
+    "detectionRadius": 520,
+    "hitFlashMs": 180,
+    "chaseStopRatio": 0.8,
+    "health": 150,
+    "meleeDamage": 23,
+    "meleeRange": 60,
+    "attackCooldownMs": 1000,
+    "reactionDelayMs": 600,
+    "deathHoldMs": 500,
+    "chaseSpeed": 320,
+    "levelTolerance": 20,
+    "ranged": {
+      "damage": 30,
+      "requiresProvocation": false,
+      "range": 520,
+      "heightTolerance": 120
+    }
+  },
+  "sourceKey": "solider-source",
+  "textureKey": "solider",
+  "path": "assets/characters/patrol/solider.png",
+  "referenceWidth": 2170,
+  "background": "dark",
+  "backgroundThreshold": 6,
+  "keepLargestComponent": true,
+  "displayHeight": 100,
+  "frameSize": {
+    "width": 224,
+    "height": 240,
+    "referenceHeight": 184
+  },
+  "scale": 1,
+  "depth": 6.5,
+  "interactionRadius": 65,
+  "movement": {
+    "speed": 55,
+    "minWalkMs": 1800,
+    "maxWalkMs": 6500,
+    "minPauseMs": 900,
+    "maxPauseMs": 2600
+  },
+  "corpseLootTable": "solider"
+}

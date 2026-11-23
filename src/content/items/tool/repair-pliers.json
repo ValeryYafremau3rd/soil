@@ -1,0 +1,51 @@
+{
+  "id": "repair-pliers",
+  "name": "Repair pliers",
+  "category": "Tool",
+  "rarity": "uncommon",
+  "quality": 3,
+  "price": 18,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 1350,
+    "y": 844,
+    "width": 180,
+    "height": 145
+  },
+  "scale": 1,
+  "iconClip": [
+    {
+      "y": 0,
+      "x": 0.28
+    },
+    {
+      "y": 0,
+      "x": 1
+    },
+    {
+      "y": 1,
+      "x": 1
+    },
+    {
+      "y": 1,
+      "x": 0
+    },
+    {
+      "y": 0.48,
+      "x": 0
+    }
+  ],
+  "description": "Repair pliers.",
+  "equipmentSlot": "tool",
+  "skillRequirements": {
+    "medicine": 2
+  },
+  "bonus": {
+    "skill": "medicine",
+    "amount": 1
+  }
+}

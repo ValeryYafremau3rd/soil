@@ -2,8 +2,8 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content, catalogue } from '../helpers/content.mjs'
 import { scrapChance, scrapReward } from '../../src/domain/inventory/scrap.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { applyCarriedBonuses } from '../../src/domain/inventory/items.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { applyCarriedBonuses, itemBonuses } from '../../src/domain/inventory/items.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 
@@ -20,11 +20,11 @@ function setup(items, rolls, skill = 10) {
 
 test('Scraper increases a small capped chance; rarity-weighted rewards include tools, ammunition and a rare gun', () => {
   assert.equal(scrapChance(0), 0.04)
-  assert.ok(Math.abs(scrapChance(10) - 0.24) < 1e-12)
-  assert.equal(scrapChance(1000), 0.5)
+  assert.ok(Math.abs(scrapChance(10) - 0.44) < 1e-12)
+  assert.equal(scrapChance(1000), 1)
   assert.equal(scrapChance(-100), scrapChance(0))
   for (const skill of [0, 1, 5, 10, 14]) {
-    assert.ok(Math.abs(scrapChance(skill) - 2 * Math.min(0.45, 0.02 + skill * 0.01)) < 1e-12)
+    assert.ok(Math.abs(scrapChance(skill) - Math.min(0.9, 0.04 + skill * 0.04)) < 1e-12)
   }
   assert.equal(scrapReward(10, definitions, () => scrapChance(10)), null)
   const improvedRolls = [0.2, 0, 0]
@@ -76,7 +76,8 @@ test('scrapping is blocked in container menus and stronger gear can improve its 
   assert.equal(inventory.getSnapshot(), before)
   const hero = createCharacter({ id: 'test', name: 'Test', attributes: { strength: 2, agility: 2, intelligence: 4, willpower: 2, charisma: 2 }, startingItems: [] })
   const gear = applyCarriedBonuses(hero, [stack('work-gloves')], definitions)
-  assert.equal(gear.skills.scraper, hero.skills.scraper + 2, 'authored +2 Scraper contributes exactly +2')
+  const amount = itemBonuses(definitions['work-gloves']).find(bonus => bonus.skill === 'scraper').amount
+  assert.equal(gear.skills.scraper, hero.skills.scraper + amount, 'authored Scraper bonus applies exactly once')
   assert.ok(scrapChance(gear.skills.scraper) > scrapChance(hero.skills.scraper))
 })
 

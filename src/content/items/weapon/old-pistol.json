@@ -1,0 +1,29 @@
+{
+  "damageMultiplier": 1.1,
+  "id": "old-pistol",
+  "price": 30,
+  "name": "Old pistol",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Weapon",
+  "firearm": {
+    "ammunitionId": "pistol-ammunition"
+  },
+  "icon": {
+    "x": 385,
+    "y": 95,
+    "width": 160,
+    "height": 140
+  },
+  "scale": 1,
+  "description": "An old pistol found in the room 21 safe.",
+  "skillRequirements": {
+    "weapons": 4
+  },
+  "equipmentSlot": "ranged",
+  "randomLoot": false,
+  "bonus": {
+    "skill": "weapons",
+    "amount": 1
+  }
+}

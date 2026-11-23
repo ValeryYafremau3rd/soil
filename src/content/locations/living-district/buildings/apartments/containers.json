@@ -1,0 +1,11 @@
+[
+  {
+    "id": "living-district:apartments:apartment-21:developer-container",
+    "type": "safe",
+    "floor": 4,
+    "x": 1000,
+    "scale": 0.7,
+    "locked": false,
+    "developerStock": true
+  }
+]

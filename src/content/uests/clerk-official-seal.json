@@ -1,0 +1,62 @@
+{
+  "id": "clerk-official-seal",
+  "name": "The Official Seal",
+  "description": "Investigate why supply and medical shipments share a restricted military routing code.",
+  "offeredBy": "bartender",
+  "offerText": "Investigate why supply and medical shipments share a restricted military routing code.",
+  "prerequisites": [
+    "bartender-letter",
+    "cashier-5",
+    "factory-supplies"
+  ],
+  "stages": [
+    {
+      "id": "compare-manifests",
+      "description": "Compare Viktor’s notes with Zofia’s delivery register.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "cashier",
+        "choiceId": "official-seal-cashier"
+      }
+    },
+    {
+      "id": "question-pavel",
+      "description": "Question Pavel about the military routing code.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "official-seal-clerk"
+      }
+    },
+    {
+      "id": "return-viktor",
+      "description": "Tell Viktor that the records lead to the restricted factory warehouse.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "official-seal-viktor"
+      }
+    }
+  ],
+  "_codex": {
+    "narrativeIntent": "Investigate why supply and medical shipments share a restricted military routing code.",
+    "implementationNotes": [
+      "Add delivery register inspection via Zofia dialogue; do not fabricate item IDs.",
+      "Pavel admits only that emergency transport is authorized under quarantine powers.",
+      "Unlock official route negotiation later, not immediate permission."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [
+      "bartender-letter",
+      "cashier-5",
+      "factory-supplies"
+    ],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "government_transport_evidence",
+        "value": true
+      }
+    ]
+  }
+}

@@ -1,20 +1,69 @@
 [
   {
-    "id": "loader", "name": "Burglar",
-    "attributes": { "strength": 3, "agility": 2, "intelligence": 1, "willpower": 2, "charisma": 1 },
-    "startingItems": ["crowbar", "rope", "canned-meat", "stealth-training-magazine", "money"],
-    "startingItemQuantities": { "canned-meat": 2, "money": 8 }
+    "id": "loader",
+    "name": "Burglar",
+    "attributes": {
+      "strength": 3,
+      "agility": 2,
+      "intelligence": 1,
+      "willpower": 2,
+      "charisma": 1
+    },
+    "startingItems": [
+      "crowbar",
+      "rope",
+      "canned-meat",
+      "sport-magazine-stealth",
+      "money"
+    ],
+    "startingItemQuantities": {
+      "canned-meat": 2,
+      "money": 8
+    }
   },
   {
-    "id": "safecracker", "name": "Safecracker",
-    "attributes": { "strength": 1, "agility": 3, "intelligence": 2, "willpower": 2, "charisma": 1 },
-    "startingItems": ["lockpick", "pliers", "lockpicking-training-magazine", "red-cigarettes", "money"],
-    "startingItemQuantities": { "lockpick": 3, "red-cigarettes": 2, "money": 12 }
+    "id": "safecracker",
+    "name": "Safecracker",
+    "attributes": {
+      "strength": 1,
+      "agility": 3,
+      "intelligence": 2,
+      "willpower": 2,
+      "charisma": 1
+    },
+    "startingItems": [
+      "lockpick",
+      "pliers",
+      "technical-magazine-lockpicking",
+      "red-cigarettes",
+      "money"
+    ],
+    "startingItemQuantities": {
+      "lockpick": 3,
+      "red-cigarettes": 2,
+      "money": 12
+    }
   },
   {
-    "id": "professor", "name": "Grifter",
-    "attributes": { "strength": 1, "agility": 2, "intelligence": 2, "willpower": 1, "charisma": 3 },
-    "startingItems": ["briefcase", "medicine-training-magazine", "postcard", "medicine-bottle", "money"],
-    "startingItemQuantities": { "medicine-bottle": 2, "money": 16 }
+    "id": "professor",
+    "name": "Grifter",
+    "attributes": {
+      "strength": 1,
+      "agility": 2,
+      "intelligence": 2,
+      "willpower": 1,
+      "charisma": 3
+    },
+    "startingItems": [
+      "briefcase",
+      "health-magazine-medicine",
+      "postcard",
+      "medicine-bottle",
+      "money"
+    ],
+    "startingItemQuantities": {
+      "medicine-bottle": 2,
+      "money": 16
+    }
   }
 ]

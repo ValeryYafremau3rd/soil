@@ -1,0 +1,34 @@
+{
+  "id": "tool-roll",
+  "price": 20,
+  "name": "Tool roll",
+  "quality": 3,
+  "category": "Tool",
+  "icon": {
+    "x": 475,
+    "y": 630,
+    "width": 135,
+    "height": 150
+  },
+  "scale": 1,
+  "rarity": "epic",
+  "description": "Tool roll.",
+  "skillRequirements": {
+    "scraper": 6
+  },
+  "equipmentSlot": "tool",
+  "bonus": {
+    "attribute": "intelligence",
+    "amount": 1
+  },
+  "bonuses": [
+    {
+      "skill": "scraper",
+      "amount": 2
+    },
+    {
+      "skill": "erudition",
+      "amount": 2
+    }
+  ]
+}

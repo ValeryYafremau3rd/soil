@@ -1,0 +1,35 @@
+{
+  "id": "leather-belt",
+  "name": "Leather belt",
+  "category": "Clothing",
+  "damageResistance": 5,
+  "stealthModifier": 1,
+  "quality": 3,
+  "price": 10,
+  "skillRequirements": { "athletics": 2 },
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 577,
+    "y": 681,
+    "width": 147,
+    "height": 142
+  },
+  "scale": 1,
+  "rarity": "rare",
+  "description": "Leather belt.",
+  "equipmentSlot": "accessory",
+  "bonus": {
+    "skill": "athletics",
+    "amount": 2
+  },
+  "bonuses": [
+    {
+      "skill": "martialArts",
+      "amount": 1
+    }
+  ]
+}

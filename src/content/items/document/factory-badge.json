@@ -1,0 +1,17 @@
+{
+  "id": "factory-badge",
+  "skillRequirements": { "persuasion": 2 },
+  "price": 30,
+  "name": "Factory badge",
+  "description": "A metal identification badge bearing a factory emblem.",
+  "rarity": "uncommon",
+  "quality": 3,
+  "category": "Document",
+  "icon": {
+    "x": 815,
+    "y": 638,
+    "width": 110,
+    "height": 129
+  },
+  "scale": 1
+}

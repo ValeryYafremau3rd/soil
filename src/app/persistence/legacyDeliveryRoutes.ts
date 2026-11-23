@@ -1,4 +1,7 @@
-export const courierRoutes: Record<string, { sourceId: string; destinationId: string }> = {
+export const courierRoutes: Record<string, {
+  sourceId: string
+  destinationId: string
+}> = {
   "courier-bartender": {
     "sourceId": "bartender",
     "destinationId": "citizen-mechanic"
@@ -32,7 +35,10 @@ export const courierRoutes: Record<string, { sourceId: string; destinationId: st
     "destinationId": "cashier"
   }
 }
-export const smugglerRoutes: Record<string, { sourceId: string; destinationId: string }> = {
+export const smugglerRoutes: Record<string, {
+  sourceId: string
+  destinationId: string
+}> = {
   "dusan-crate-center-living": {
     "sourceId": "center",
     "destinationId": "living-district"

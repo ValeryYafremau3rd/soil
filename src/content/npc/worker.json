@@ -1,0 +1,109 @@
+{
+  "name": "Irina Kovalenko",
+  "sourceKey": "worker-source",
+  "textureKey": "worker",
+  "path": "assets/characters/npc/worekr.png",
+  "idleAnimation": "worker-idle",
+  "referenceWidth": 2048,
+  "frameRate": 6,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "idleSteps": [
+    {
+      "x": 120,
+      "y": 40,
+      "width": 215,
+      "height": 595,
+      "anchorX": 108,
+      "anchorY": 595
+    },
+    {
+      "x": 445,
+      "y": 40,
+      "width": 215,
+      "height": 595,
+      "anchorX": 110.5,
+      "anchorY": 595
+    },
+    {
+      "x": 770,
+      "y": 40,
+      "width": 215,
+      "height": 595,
+      "anchorX": 112.5,
+      "anchorY": 595
+    },
+    {
+      "x": 1090,
+      "y": 40,
+      "width": 215,
+      "height": 595,
+      "anchorX": 121.5,
+      "anchorY": 595
+    },
+    {
+      "x": 1415,
+      "y": 40,
+      "width": 215,
+      "height": 595,
+      "anchorX": 128,
+      "anchorY": 595
+    },
+    {
+      "x": 1740,
+      "y": 40,
+      "width": 215,
+      "height": 595,
+      "anchorX": 137,
+      "anchorY": 595
+    }
+  ],
+  "dialogueId": "worker",
+  "scale": 0.9,
+  "background": "light",
+  "repeat": -1,
+  "schedule": {
+    "morning": {
+      "locationId": "factory",
+      "x": 1196
+    },
+    "afternoon": {
+      "locationId": "factory",
+      "x": 1020
+    },
+    "evening": {
+      "locationId": "center",
+      "x": 1000
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-31",
+      "x": 187
+    }
+  },
+  "frameSize": {
+    "width": 300,
+    "height": 605,
+    "referenceHeight": 595
+  },
+  "_codex": {
+    "character": "Irina Kovalenko",
+    "arc": "factory investigation",
+    "questLinks": [
+      "factory-supplies",
+      "factory-missing-worker",
+      "factory-locked-workshop"
+    ],
+    "dialogueImplementation": "NPC file is a sprite/schedule configuration, not a dialogue tree. Extend dialogue system using quest stage choiceIds from linked quests; do not overwrite animation/schedule fields. Use conditional options by quest state and flags.",
+    "scheduleOverrides": [],
+    "dialogueBeats": [
+      "Concerned about missing worker and family safety; does not want open confrontation.",
+      "Can direct player to workshop clues if Dusan is arrested."
+    ]
+  },
+  "portraitIndex": 2,
+  "portraitBackgroundThreshold": 45
+}

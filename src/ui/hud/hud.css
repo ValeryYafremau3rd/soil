@@ -26,3 +26,39 @@
   .game-hud-bottom button { padding: 4px 5px; font-size: 11px; }
   .game-hud-bottom kbd { display: none; }
 }
+/* Riveted metal framing echoes the dossier menus without covering the world. */
+.game-hud-top, .game-hud-footer {
+  color: #e4d8ba;
+  border-color: #8d7950;
+  background:
+    radial-gradient(circle at 10px 10px, #b9a374 0 2px, #080c0d 3px, transparent 4px),
+    radial-gradient(circle at calc(100% - 10px) 10px, #b9a374 0 2px, #080c0d 3px, transparent 4px),
+    repeating-linear-gradient(0deg, #c1ad7905 0 1px, transparent 1px 4px),
+    linear-gradient(110deg, #252b2a, #151c20 55%, #2c3029);
+}
+.game-hud-top { padding: 12px 28px; border-bottom: 3px double #8d7950; box-shadow: inset 0 -4px 12px #0007, 0 3px 12px #0006; }
+.game-hud-location strong { font-family: Georgia, serif; letter-spacing: .04em; text-shadow: 0 2px #000; }
+.game-hud-footer { position: fixed; inset: auto 0 0; z-index: 10; height: var(--hud-bottom-height); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 8px 24px max(8px, env(safe-area-inset-bottom)); border-top: 3px double #8d7950; box-shadow: inset 0 4px 12px #0007, 0 -3px 12px #0006; }
+.game-hud-footer .game-hud-bottom { position: static; background: transparent; padding: 0; }
+.game-hud-bottom button { border-color: #72664f; border-radius: 2px; background: linear-gradient(#343a35, #202725); box-shadow: inset 0 1px #e5d09918, 0 2px 2px #0005; }
+.game-hud-bottom button:hover { border-color: #c0a66e; background: #41483a; }
+.game-hud-bottom kbd { display: inline-block; padding: 1px 4px; border: 1px solid #81704c; border-radius: 2px; background: #11191b; color: #d9c48f; font-size: 10px; }
+@media (max-width: 720px) {
+  .game-hud-footer { padding-inline: 16px; gap: 7px; }
+  .game-hud-top { padding-inline: 20px; }
+}
+.game-hud-footer > * { flex-shrink: 0; }
+/* Keep the quick slots centered between the two window-button groups. */
+.game-hud-top { flex-wrap: wrap; gap: 8px 16px; }
+.game-hud-top .controls-help { flex: 1; min-width: 160px; }
+.game-hud-footer { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 12px; }
+.game-hud-footer .game-hud-bottom { justify-content: flex-end; }
+.game-hud-footer .quick-menu + .game-hud-bottom { justify-content: flex-start; }
+@media (max-width: 720px) {
+  .game-hud-footer { padding-inline: 8px; gap: 5px; }
+  .game-hud-footer .game-hud-bottom { flex-direction: column; align-items: stretch; gap: 4px; }
+  .game-hud-footer .game-hud-bottom button { font-size: 10px; padding: 4px 2px; }
+  .game-hud-footer .game-hud-bottom kbd { display: none; }
+  .game-hud-footer .quick-menu { max-width: 42vw; flex-wrap: wrap; padding: 4px; }
+  .game-hud-footer .quick-menu button { width: 32px; height: 40px; }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "mother-safe-key",
+  "saleable": false,
+  "price": 30,
+  "name": "Room 21 safe key",
+  "description": "Milena gave you the key to her motherвЂ™s safe in room 21.",
+  "maxStack": 1,
+  "randomLoot": false,
+  "keys": [
+    {
+      "id": "mother-safe",
+      "name": "Room 21 safe key",
+      "doorId": "container:living-district:apartments:apartment-21:mother-safe"
+    }
+  ],
+  "rarity": "uncommon",
+  "quality": 1,
+  "category": "Tool",
+  "icon": {
+    "x": 665,
+    "y": 634,
+    "width": 115,
+    "height": 140
+  },
+  "scale": 1,
+  "attachToKeyRing": true
+}

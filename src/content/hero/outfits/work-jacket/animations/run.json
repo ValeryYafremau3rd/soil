@@ -1,0 +1,74 @@
+{
+  "steps": [
+    {
+      "x": 693,
+      "y": 196,
+      "width": 122,
+      "height": 136,
+      "anchorX": 61,
+      "anchorY": 135,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 811,
+      "y": 197,
+      "width": 120,
+      "height": 135,
+      "anchorX": 60,
+      "anchorY": 134,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 932,
+      "y": 197,
+      "width": 118,
+      "height": 140,
+      "anchorX": 59,
+      "anchorY": 139,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 1040,
+      "y": 194,
+      "width": 123,
+      "height": 139,
+      "anchorX": 61.5,
+      "anchorY": 138,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 1165,
+      "y": 192,
+      "width": 122,
+      "height": 140,
+      "anchorX": 61,
+      "anchorY": 139,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 1312,
+      "y": 192,
+      "width": 94,
+      "height": 142,
+      "anchorX": 47,
+      "anchorY": 141,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    },
+    {
+      "x": 1437,
+      "y": 195,
+      "width": 100,
+      "height": 139,
+      "anchorX": 50,
+      "anchorY": 138,
+      "scale": 0.75,
+      "keepLargestComponent": true
+    }
+  ]
+}

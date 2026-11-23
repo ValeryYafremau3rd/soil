@@ -10,6 +10,10 @@ import type { Character } from '../../domain/skills/character'
 import '../character/perks.css'
 
 const ACTION_LABELS: Record<PerkAction, string> = {
+  gunDefeat: 'Enemies defeated with a gun',
+  meleeDefeat: 'Enemies defeated with melee attacks',
+  chaseHidden: 'Chases escaped in a hideout',
+  wellTrainedFinished: 'Well Trained completed',
   lockPicked: 'Successfully pick a lock',
   policeHit: 'Damage an officer',
   policeKilled: 'Kill an officer (in addition to hit points)',
@@ -31,13 +35,36 @@ const ACTION_LABELS: Record<PerkAction, string> = {
   policeHidden: 'Hide within a living officer’s detection range (once per officer per location visit)',
   monsterHidden: 'Hide within a living monster’s detection range (once per monster per location visit)',
 }
+
+/**
+ * Perform signed.
+ * @param {number} amount - Amount to apply to the operation.
+ * @returns {string} The resolved text value.
+ */
 const signed = (amount: number) => amount > 0 ? `+${amount}` : String(amount)
+
+/**
+ * Perform item names.
+ * @param {readonly string[]} ids - The ids supplied to this operation.
+ * @returns {string} The resolved text value.
+ */
 const itemNames = (ids: readonly string[]) => ids.map(id => ITEM_BY_ID[id].name).join(', ')
 
-export function PerkNote({ id, perks, state, skills = {} }: { id: string; perks: PerksController; state: PerksSnapshot; skills?: Partial<Character['skills']> }) {
+/**
+ * Perform perk note.
+ * @param {{ id: string perks: PerksController state: PerksSnapshot skills?: Partial<Character['skills']> }} options - The options supplied to this operation.
+ * @returns {Element} The result described by the TypeScript return signature.
+ */
+export function PerkNote({ id, perks, state, skills = {} }: {
+  id: string
+  perks: PerksController
+  state: PerksSnapshot
+  skills?: Partial<Character['skills']>
+}) {
   const legendary = skillsConfig.legendary.perks.find(perk => `legendary:${perk.skill}` === id)
   if (legendary) {
     const skill = legendary.skill as keyof Character['skills']
+
     return <>
       <h3>Legendary {SKILL_LABELS[skill]}</h3>
       <p>Legendary perk · {legendarySkill(skills, skill) ? 'Active' : 'Inactive'}</p>
@@ -51,10 +78,12 @@ export function PerkNote({ id, perks, state, skills = {} }: { id: string; perks:
       <p>Active while {SKILL_LABELS[skill]} is {skillsConfig.legendary.threshold} or higher. The effect is removed if the skill falls below {skillsConfig.legendary.threshold}.</p>
     </>
   }
+
   const buff = id.startsWith('buff:') ? perks.buffDefinitions.find(entry => `buff:${entry.id}` === id) : undefined
   if (buff) {
     const effect = buff.attribute ? ATTRIBUTE_LABELS[buff.attribute]
-      : buff.damageResistance ? "Damage resistance (%)" : buff.fearResistance ? 'Fear resistance (%)' : `Maximum ${VITAL_LABELS[buff.vital!]}`
+      : buff.skill ? SKILL_LABELS[buff.skill] : buff.damageResistance ? "Damage resistance (%)" : buff.fearResistance ? 'Fear resistance (%)' : `Maximum ${VITAL_LABELS[buff.vital!]}`
+
     return <>
       <h3>{buff.name}</h3>
       <p>{buff.description}</p>
@@ -69,9 +98,11 @@ export function PerkNote({ id, perks, state, skills = {} }: { id: string; perks:
       <p>{buff.group ? 'Only one item’s effects can be active in this category. Using another replaces the previous bonuses and penalties together.' : 'Different temporary effects can be active together, including benefits and penalties from the same item.'}</p>
     </>
   }
+
   const perk = perks.definitions.find(entry => entry.id === id)!
   const competitors = perks.definitions.filter(entry => entry.group === perk.group && entry.id !== id)
   const lockedBy = competitors.find(entry => state.acquired.includes(entry.id))
+
   return <>
     <h3>{perk.name}</h3>
     <p>{perk.description}</p>

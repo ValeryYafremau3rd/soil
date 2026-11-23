@@ -1,9 +1,9 @@
 ﻿import test from 'node:test'
 import assert from 'node:assert/strict'
 import { content } from '../helpers/content.mjs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
 
 test('Milena offers her keepsake quest and exchanges the collected photo once', () => {
   const data = content()
@@ -43,13 +43,13 @@ test('Milena offers her keepsake quest and exchanges the collected photo once', 
   dialogue.chooseReply('return-family-photo')
   assert.equal(quests.isCompleted(id), true)
   assert.equal(inventory.getSnapshot().items.some(s => s.itemId === id), false)
-  assert.equal(inventory.getSnapshot().items.find(s => s.itemId === 'athletics-training-magazine')?.quantity, 1)
+  assert.equal(inventory.getSnapshot().items.find(s => s.itemId === 'sport-magazine-athletics')?.quantity, 1)
   assert.equal(deliver(), false)
   assert.equal(quests.acceptFromNpc(id, 'stranger'), false)
   const suitcase = data.containers.placements.find(c => c.id === 'milena-bus-stop-suitcase')
   assert.equal(suitcase.restock, false)
   assert.deepEqual(suitcase.items.map(s => [s.itemId, s.quantity]), [
-    [id, 1], ['wool-socks', 1], ['leather-journal', 1], ['white-tablets', 1], ['money', 8], ['bread', 1],
+    [id, 1], ['wool-socks', 1], ['chemistry-erudition', 1], ['white-tablets', 1], ['money', 8], ['bread', 1],
   ])
   assert.equal(data.items.find(i => i.id === id).saleable, false)
   assert.equal(data.items.find(i => i.id === id).randomLoot, false)

@@ -1,9 +1,35 @@
 .ui-modal.dialogue-modal { width: min(800px, calc(100vw - 32px)); }
 .dialogue-modal .ui-panel { display: flex; flex-direction: column; overflow: hidden; }
 .dialogue-modal .ui-modal__header { flex-shrink: 0; }
-.dialogue-trust { flex-shrink: 0; padding-top: 8px; color: #d9c58a; letter-spacing: 3px; }
+.dialogue-modal .ui-modal__header h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  width: 100%;
+}
+.dialogue-trust {
+  display: inline-block;
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  vertical-align: middle;
+}
 .dialogue-layout { display: grid; grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); flex: 1; min-height: 0; }
 .dialogue-speech { padding: 16px 4px; border-bottom: 1px solid #4c5664; overflow: auto; }
 .dialogue-speech p { margin: 0; font-size: 18px; line-height: 1.6; }
 .dialogue-replies { padding-top: 16px; overflow: auto; }
 .dialogue-help { margin: 12px 0 0; color: #b7c5d6; font-size: 12px; }
+
+.dialogue-replies .selection-list__option { color: #fff; }
+.dialogue-replies .selection-list__option[data-visited] { color: #999; }
+
+.dialogue-modal.dossier-modal .dialogue-speech { border-color: var(--paper-rule); }
+.dialogue-modal.dossier-modal .dialogue-help { color: var(--paper-muted); }
+.dialogue-modal.dossier-modal .selection-list { border-color: var(--paper-edge); }
+.dialogue-modal.dossier-modal .selection-list__option { color: var(--paper-ink); }
+.dialogue-modal.dossier-modal .selection-list__option[data-visited] {
+  color: var(--paper-muted);
+}

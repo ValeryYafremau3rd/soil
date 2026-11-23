@@ -5,18 +5,14 @@ import { content } from '../helpers/content.mjs'
 import { applyCarriedBonuses, unmetItemRequirements } from '../../src/domain/inventory/items.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 
-test('reading helps Burglar reach specialist weapon requirements without supplying its own prerequisite', () => {
-  const data = content()
-  const definitions = Object.fromEntries(data.items.map(item => [item.id, item]))
+test('learned magazine and tome bonuses unlock specialist weapons without passive bonuses from unread copies', () => {
+  const definitions = Object.fromEntries(content().items.map(item => [item.id, item]))
   const hero = createCharacter(classes.find(item => item.id === 'loader'))
-  const carry = ids => applyCarriedBonuses(hero, ids.map(itemId => ({ itemId, quantity: 1 })), definitions)
-  assert.equal(carry(['workers-magazine']).skills.weapons, hero.skills.weapons + 2)
-  const trained = carry(['smuggler-lock-guide', 'workers-magazine', 'sewing-magazine', 'weapons-training-magazine'])
-  assert.deepEqual(unmetItemRequirements(definitions['service-pistol'], trained.skills), [])
-  assert.deepEqual(unmetItemRequirements(definitions.lockpick, trained.skills), [])
-  assert.ok(trained.skills.lockpicking > hero.skills.lockpicking)
+  const sources = ['technical-magazine-weapons', 'mechanics-weapons', 'detective-book'].map(itemId => ({ itemId, quantity: 1, learned: true }))
+  const trained = applyCarriedBonuses(hero, sources, definitions)
+  assert.equal(trained.skills.weapons, hero.skills.weapons + 4)
+  assert.deepEqual(applyCarriedBonuses(hero, sources.map(item => ({ itemId: item.itemId, quantity: 1 })), definitions), hero)
 })
-
 test('simple dressings are accessible; stronger treatments require training and tablets provide temporary tradeoffs', () => {
   const definitions = Object.fromEntries(content().items.map(item => [item.id, item]))
   for (const id of ['bandage', 'balm-tin']) assert.deepEqual(unmetItemRequirements(definitions[id], { erudition: 2, medicine: 1 }), [])

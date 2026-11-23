@@ -1,0 +1,31 @@
+{
+  "id": "anatomy-stealth",
+  "name": "Anatomy tome 1: Sneaking",
+  "description": "Read once to permanently gain +2 Sneaking. Duplicate copies give no further bonus.",
+  "category": "Book",
+  "rarity": "rare",
+  "quality": 3,
+  "price": 32,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 563,
+    "y": 357,
+    "width": 143,
+    "height": 161
+  },
+  "scale": 1,
+  "maxStack": 1,
+  "bonus": {
+    "skill": "stealth",
+    "amount": 2
+  },
+  "readable": true,
+  "consumable": true,
+  "skillRequirements": {
+    "stealth": 12
+  }
+}

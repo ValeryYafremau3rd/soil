@@ -44,6 +44,29 @@
       "scale": 0.7,
       "locked": false,
       "items": []
+    },
+    {
+      "id": "mother-safe",
+      "type": "safe",
+      "x": 100,
+      "scale": 0.7,
+      "locked": true,
+      "keyOnly": true,
+      "restock": false,
+      "items": [
+        {
+          "itemId": "old-pistol",
+          "quantity": 1
+        },
+        {
+          "itemId": "pistol-ammunition",
+          "quantity": 6
+        },
+        {
+          "itemId": "milena-mother-letter",
+          "quantity": 1
+        }
+      ]
     }
   ]
 }

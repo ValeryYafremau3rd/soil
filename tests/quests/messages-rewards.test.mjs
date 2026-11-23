@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content } from '../helpers/content.mjs'
-import { MessageService } from '../../src/app/services/MessageService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
+import { strapQuestCatalogue } from '../helpers/strapQuest.mjs'
+import { MessageService } from '../../src/app/services/ui/MessageService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
 
 test('shared messages retain repeated notifications as separate entries and dismiss by ID', () => {
   const messages = new MessageService()
@@ -40,7 +41,7 @@ test('every full-inventory pickup and take-all attempt notifies, while partial s
 })
 
 function turnInSetup(startingItems, reward) {
-  const data = content()
+  const { data } = strapQuestCatalogue()
   const definition = data.quests[0]
   if (reward) definition.reward = reward
   const messages = new MessageService()

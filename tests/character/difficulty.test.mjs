@@ -2,11 +2,11 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { resolveDifficulty, patrolDifficulty, patrolMovementDifficulty } from '../../src/domain/character/difficulty.ts'
 import { fallDamage } from '../../src/domain/movement/fallDamage.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { drainStatusWithTime } from '../../src/app/services/drainStatusWithTime.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { drainStatusWithTime } from '../../src/app/services/character/drainStatusWithTime.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { content, catalogue } from '../helpers/content.mjs'
 
@@ -14,12 +14,12 @@ const data = content()
 const base = { hero: data.hero.settings, stats: data.ui.stats, rest: data.ui.rest, timeCosts: data.daytime.statCostsPerPhase }
 const rules = id => resolveDifficulty(data.difficulty, id, base)
 
-test('tenfold faster Energy phase drain preserves difficulty scaling, Sanity costs and day rollover', () => {
-  for (const [id, energy, sanity] of [['easy', 1.5, 0.01], ['normal', 2.5, 0.01], ['hard', 4, 0.02]]) {
+test('percentage phase drain preserves difficulty scaling and day rollover', () => {
+  for (const [id, energy, sanity] of [['easy', 3, 5], ['normal', 5, 5], ['hard', 8, 10]]) {
     const selected = rules(id)
     assert.ok(Math.abs(selected.timeCosts.energy - energy) < 1e-10)
     assert.equal(selected.timeCosts.sanity, sanity)
-    const time = new DayTime(1, 'night')
+    const time = new DayTimeService(1, 'night')
     const status = new StatusService()
     status.restoreState({ health: 50, energy: 50, sanity: 50 })
     const stop = drainStatusWithTime(time, status, selected.timeCosts)
@@ -33,13 +33,13 @@ test('tenfold faster Energy phase drain preserves difficulty scaling, Sanity cos
 
 test('phase drain stays active above and below fifty percent Energy', () => {
   for (const energy of [80, 50, 20]) {
-    const time = new DayTime()
+    const time = new DayTimeService()
     const status = new StatusService()
     status.restoreState({ health: 50, energy, sanity: 50 })
     const stop = drainStatusWithTime(time, status, rules('normal').timeCosts)
     time.advance()
-    assert.equal(status.getSnapshot().energy, energy - 2.5)
-    assert.equal(status.getSnapshot().sanity, 49.99)
+    assert.equal(status.getSnapshot().energy, energy - 5)
+    assert.equal(status.getSnapshot().sanity, 45)
     stop()
   }
 })
@@ -74,9 +74,9 @@ test('Easy and Hard change all configured damage, patrol, recovery and time modi
   for (const selected of [easy, normal, hard]) {
     for (const stat of selected.stats) assert.equal(stat.value, stat.max)
   }
-  assert.deepEqual(easy.timeCosts, { energy: 0.03, sanity: 0.01 })
-  assert.ok(Math.abs(hard.timeCosts.energy - 0.08) < 1e-10)
-  assert.equal(hard.timeCosts.sanity, 0.02)
+  assert.deepEqual(easy.timeCosts, { energy: 3, sanity: 5 })
+  assert.ok(Math.abs(hard.timeCosts.energy - 8) < 1e-10)
+  assert.equal(hard.timeCosts.sanity, 10)
 })
 
 test('militia speed uses the authored Hard baseline and detection uses the Normal baseline', () => {
@@ -141,7 +141,7 @@ test('consumable recovery matches the selected preset without changing item conf
 
 test('rest, sleep and time costs support all vitals and selected presets', () => {
   for (const id of ['easy', 'normal', 'hard']) {
-    const selected = rules(id), time = new DayTime(), status = new StatusService()
+    const selected = rules(id), time = new DayTimeService(), status = new StatusService()
     status.configure(selected.stats, selected.modifiers.itemRecovery)
     const rest = new RestService(time, status, selected.recovery)
     drainStatusWithTime(time, status, selected.timeCosts, () => rest.isAdvancingTime)
@@ -150,7 +150,7 @@ test('rest, sleep and time costs support all vitals and selected presets', () =>
     assert.equal(status.getSnapshot().sanity, selected.stats[2].value - selected.timeCosts.sanity)
     assert.equal(status.getSnapshot().health, Math.min(selected.stats[0].max, selected.stats[0].value + selected.recovery.rest.health))
   }
-  const status = new StatusService(), rest = new RestService(new DayTime(), status, { rest: { energy: 10, sanity: 5 }, sleep: { energy: 25 } })
+  const status = new StatusService(), rest = new RestService(new DayTimeService(), status, { rest: { energy: 10, sanity: 5 }, sleep: { energy: 25 } })
   status.restoreState({ health: 50, energy: 50, sanity: 50 })
   rest.open('rest', 'Bench'); rest.confirm()
   assert.deepEqual(status.getSnapshot(), { health: 50, energy: 60, sanity: 55 })
@@ -161,7 +161,7 @@ test('rest and sleep recover Energy for every difficulty and phase without charg
     const selected = rules(id)
     for (const phase of ['morning', 'afternoon', 'evening', 'night']) {
       for (const kind of ['rest', 'sleep']) {
-        const time = new DayTime(2, phase), status = new StatusService()
+        const time = new DayTimeService(2, phase), status = new StatusService()
         status.configure(selected.stats, selected.modifiers.itemRecovery)
         status.drain({ energy: status.getSnapshot().energy - 10 })
         const rest = new RestService(time, status, selected.recovery)
@@ -181,7 +181,7 @@ test('rest and sleep recover Energy for every difficulty and phase without charg
         assert.equal(status.getSnapshot().energy, Math.max(0, expected - selected.timeCosts.energy), 'later time advancement charges exactly one phase')
       }
     }
-    const time = new DayTime(), status = new StatusService()
+    const time = new DayTimeService(), status = new StatusService()
     status.configure(selected.stats, selected.modifiers.itemRecovery)
     status.recover({ energy: 1000 })
     const rest = new RestService(time, status, selected.recovery)

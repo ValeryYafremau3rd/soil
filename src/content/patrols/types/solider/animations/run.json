@@ -1,0 +1,70 @@
+{
+  "key": "solider-run",
+  "frameRate": 24,
+  "steps": [
+    {
+      "x": 284,
+      "y": 286,
+      "width": 128,
+      "height": 159,
+      "anchorX": 64,
+      "anchorY": 156,
+      "excludeRegions": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 128,
+          "height": 3
+        }
+      ]
+    },
+    {
+      "x": 412,
+      "y": 284,
+      "width": 124,
+      "height": 161,
+      "anchorX": 62,
+      "anchorY": 158
+    },
+    {
+      "x": 536,
+      "y": 286,
+      "width": 125,
+      "height": 159,
+      "anchorX": 62,
+      "anchorY": 156
+    },
+    {
+      "x": 666,
+      "y": 286,
+      "width": 117,
+      "height": 159,
+      "anchorX": 58,
+      "anchorY": 156
+    },
+    {
+      "x": 790,
+      "y": 286,
+      "width": 114,
+      "height": 159,
+      "anchorX": 57,
+      "anchorY": 156
+    },
+    {
+      "x": 912,
+      "y": 286,
+      "width": 117,
+      "height": 159,
+      "anchorX": 58,
+      "anchorY": 156
+    },
+    {
+      "x": 1037,
+      "y": 284,
+      "width": 115,
+      "height": 161,
+      "anchorX": 57,
+      "anchorY": 158
+    }
+  ]
+}

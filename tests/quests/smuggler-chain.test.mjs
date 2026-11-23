@@ -4,19 +4,19 @@ import { content } from '../helpers/content.mjs'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 import { buildContainerSeeds } from '../../src/app/content/containerSeeds.ts'
 import { buildVendorSeeds } from '../../src/app/content/vendorSeeds.ts'
-import { QuestService } from '../../src/app/services/QuestService.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
-import { LockpickingService } from '../../src/app/services/LockpickingService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { refreshContainersEachMorning } from '../../src/app/services/refreshContainersEachMorning.ts'
+import { QuestService } from '../../src/app/services/quests/QuestService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
+import { LockpickingService } from '../../src/app/services/puzzles/LockpickingService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { refreshContainersEachMorning } from '../../src/app/services/inventory/refreshContainersEachMorning.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { applyCarriedBonuses, unmetItemRequirements } from '../../src/domain/inventory/items.ts'
 import { rollLockTarget } from '../../src/domain/buildings/lockpicking.ts'
 import classes from '../../src/content/classes.json' with { type: 'json' }
 
 test('Dusan chain enforces order, night crates, locks, combined barter and atomic final rewards', () => {
-  const data = content(), time = new DayTime(), messages = []
+  const data = content(), time = new DayTimeService(), messages = []
   const seeds = [...buildContainerSeeds(data.containers, data.items), ...buildVendorSeeds(data.dialogues, data.items)]
   const inventory = new InventoryService(data.items, seeds, () => 0, [], undefined, undefined,
     (id, name, done, rarity) => locks.attemptContainer(id, name, done, rarity), text => messages.push(text), () => 20, false,

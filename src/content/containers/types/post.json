@@ -1,0 +1,24 @@
+{
+  "name": "Post box",
+  "sheet": {
+    "sourceKey": "post-source",
+    "textureKey": "post",
+    "path": "assets/containers/post.png",
+    "referenceWidth": 1024,
+    "background": "dark"
+  },
+  "x": 216,
+  "y": 308,
+  "width": 592,
+  "height": 1056,
+  "displayHeight": 110,
+  "scale": 1,
+  "groundOrigin": 0.98,
+  "platform": {
+    "left": 0.12,
+    "right": 0.88,
+    "top": 0.03
+  },
+  "locked": false,
+  "quality": 1
+}

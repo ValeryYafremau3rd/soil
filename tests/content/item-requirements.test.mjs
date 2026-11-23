@@ -9,19 +9,19 @@ import { itemBonuses, unmetItemRequirements } from '../../src/domain/inventory/i
 test('specialist tiers cap at ten while advanced education stays reachable at twenty', () => {
   const items = Object.fromEntries(content().items.map(item => [item.id, item]))
   assert.equal(items.bread.eruditionRequired, 2)
-  assert.equal(items.encyclopedia.eruditionRequired, 4)
+  assert.equal(items['health-magazine-erudition'].eruditionRequired, 4)
   assert.equal(items.crowbar.eruditionRequired, 8)
   assert.deepEqual(items.crowbar.skillRequirements, { martialArts: 5 })
   assert.equal(items['service-pistol'].eruditionRequired, 12)
   assert.deepEqual(items['service-pistol'].skillRequirements, { weapons: 10 })
   assert.equal(items['medical-case'].eruditionRequired, 18)
   assert.deepEqual(items['medical-case'].skillRequirements, { medicine: 10 })
-  assert.deepEqual(items['machine-blueprints'].skillRequirements, { scraper: 10 })
-  assert.deepEqual(items['machine-blueprints'].bonus, { skill: 'scraper', amount: 5 })
+  assert.equal(items['mechanics-scraper'].eruditionRequired, 10)
+  assert.deepEqual(items['mechanics-scraper'].bonus, { skill: 'scraper', amount: 2 })
   assert.equal(items['triquetra-pendant'].eruditionRequired, 20)
   assert.deepEqual(unmetItemRequirements(items['triquetra-pendant'], { erudition: 20 }), [])
   assert.deepEqual(items.crowbar.bonus, { skill: 'martialArts', amount: 2 })
-  assert.deepEqual(items.encyclopedia.bonus, { skill: 'erudition', amount: 3 })
+  assert.deepEqual(items['health-magazine-erudition'].bonus, { skill: 'erudition', amount: 1 })
 })
 
 test('every authored item requires education, with basic goods and specialist equipment in appropriate tiers', () => {

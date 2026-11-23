@@ -1,0 +1,25 @@
+{
+  "sourceLocationId": "factory",
+  "destinationLocationId": "center",
+  "fadeMs": 1400,
+  "nextLabel": "Next",
+  "backLabel": "Back",
+  "finishLabel": "Begin story",
+  "slides": [
+    {
+      "title": "The Town",
+      "image": "assets/background/story/1.png",
+      "text": "A viral outbreak has affected a small industrial town, causing psychological disorders and hallucinations among its residents. The government has introduced mandatory medical treatment to contain the disease."
+    },
+    {
+      "title": "The Blockade",
+      "image": "assets/background/story/2.png",
+      "text": "To prevent the infection from spreading, the authorities have placed the town under indefinite quarantine. All access routes are sealed, and essential supplies are distributed under government supervision."
+    },
+    {
+      "title": "The Curfew",
+      "image": "assets/background/story/3.png",
+      "text": "For public safety, a strict nighttime curfew has been imposed. Military patrols maintain order, and citizens are required to remain indoors after sunset. All restrictions will remain in force until the situation is stabilized."
+    }
+  ]
+}

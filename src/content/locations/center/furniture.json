@@ -28,13 +28,6 @@
     "scale": 1
   },
   {
-    "id": "center-cover-barrel-metal",
-    "type": "cover-barrel-metal",
-    "x": 1900,
-    "space": "outside",
-    "scale": 1
-  },
-  {
     "id": "center-cover-locker",
     "type": "cover-locker",
     "x": 2550,

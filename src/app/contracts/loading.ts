@@ -1,5 +1,14 @@
 export type LoadingPhase = 'idle' | 'fade-out' | 'loading' | 'fade-in'
-export interface LoadingSnapshot { readonly phase: LoadingPhase; readonly locationName: string }
+/**
+ * Observable loading state exposed to service subscribers.
+ */
+export interface LoadingSnapshot {
+  readonly phase: LoadingPhase
+  readonly locationName: string
+}
+/**
+ * Typed loading actions and queries exposed across application layers.
+ */
 export interface LoadingController {
   readonly fadeMs: number
   getSnapshot(): LoadingSnapshot

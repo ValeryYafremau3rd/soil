@@ -1,3 +1,5 @@
+import { audioSchema } from './schemas/audio.ts'
+import { storySchema } from './schemas/story.ts'
 import type { Schema } from './schema'
 import { adviceSchema } from './schemas/advice.ts'
 import { buildingsSchema } from './schemas/buildings.ts'
@@ -19,6 +21,8 @@ import { taskboardsSchema } from './schemas/taskboards.ts'
 import { uiSchema } from './schemas/ui.ts'
 
 export const CONFIG_SCHEMAS: Record<string, Schema> = {
+  story: storySchema,
+  audio: audioSchema,
   advice: adviceSchema,
   quests: questsSchema,
   skills: skillsSchema,

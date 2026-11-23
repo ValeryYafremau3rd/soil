@@ -1,11 +1,11 @@
-﻿import assert from 'node:assert/strict'
+import assert from 'node:assert/strict'
 import test from 'node:test'
-import { LockpickingService } from '../../src/app/services/LockpickingService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { LockpickingService } from '../../src/app/services/puzzles/LockpickingService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 import { content } from '../helpers/content.mjs'
 test('legendary lockpicking needs no pick, never breaks one, and skill loss is checked before completion',()=>{
  let skill=15,broken=0,unlocked=0
- const locks=new LockpickingService(new DayTime(1,'night'),()=>skill,content().skills,{has:()=>false,canUse:()=>false,consume:()=>{broken++;return false}},()=>0,()=>0)
+ const locks=new LockpickingService(new DayTimeService(1,'night'),()=>skill,content().skills,{has:()=>false,canUse:()=>false,consume:()=>{broken++;return false}},()=>0,()=>0)
  const open=()=>locks.attemptContainer('box','Box',()=>unlocked++)
  open();assert.ok(locks.getSnapshot().puzzle);locks.close();assert.equal(broken,0)
  open();skill=14;for(const [index,value] of [1,1,2].entries())locks.setNumber(index,value)

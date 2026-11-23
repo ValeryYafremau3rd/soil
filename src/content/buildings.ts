@@ -6,6 +6,14 @@ export const BUILDINGS = CONTENT.data.buildings as Readonly<Record<string, Build
 export const HOUSE = BUILDINGS.house
 export const FACTORY = BUILDINGS.factory
 
+/**
+ * Perform building sprites.
+ * @param {BuildingDefinition} definition - The definition supplied to this operation.
+ * @returns {SpriteDefinition[]} The result described by the TypeScript return signature.
+ */
 export function buildingSprites(definition: BuildingDefinition) {
-  return [...definition.sprites, ...(definition.rooms ?? []).map(binding => ROOMS[binding.type].sprite)]
+  return [
+    ...definition.sprites,
+    ...(definition.rooms ?? []).map(binding => ROOMS[binding.type].sprite)
+  ]
 }

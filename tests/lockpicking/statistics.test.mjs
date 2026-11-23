@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { LockpickingService } from '../../src/app/services/LockpickingService.ts'
-import { StatisticsService } from '../../src/app/services/StatisticsService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
+import { LockpickingService } from '../../src/app/services/puzzles/LockpickingService.ts'
+import { StatisticsService } from '../../src/app/services/progression/StatisticsService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
 
 test('successful locks identify containers and doors once; cancellation counts nothing', () => {
   const totals = new StatisticsService()
-  const locks = new LockpickingService(new DayTime(1, 'night'), () => 0,
+  const locks = new LockpickingService(new DayTimeService(1, 'night'), () => 0,
     { lockpickingBaseSeconds: 10, lockpickingSecondsPerPoint: 1 },
     { has: () => true, consume: () => true }, () => 0, () => 0)
   locks.onLockType = kind => totals.record(kind === 'container' ? 'containersLockpicked' : 'doorsLockpicked')

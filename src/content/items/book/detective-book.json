@@ -1,0 +1,33 @@
+{
+  "id": "detective-book",
+  "eruditionRequired": 4,
+  "price": 22,
+  "name": "Detective novel",
+  "quality": 3,
+  "category": "Book",
+  "icon": {
+    "x": 20,
+    "y": 450,
+    "width": 145,
+    "height": 155
+  },
+  "scale": 1,
+  "rarity": "epic",
+  "description": "Read once to permanently gain +2 Intimidation, +1 Weapons, +1 Lockpicking. Duplicate copies give no further bonus.",
+  "readable": true,
+  "consumable": true,
+  "bonuses": [
+    {
+      "skill": "intimidation",
+      "amount": 2
+    },
+    {
+      "skill": "weapons",
+      "amount": 1
+    },
+    {
+      "skill": "lockpicking",
+      "amount": 1
+    }
+  ]
+}

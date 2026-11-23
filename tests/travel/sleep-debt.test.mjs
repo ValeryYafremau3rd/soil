@@ -1,9 +1,9 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { StatusService } from '../../src/app/services/StatusService.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { drainStatusWithTime } from '../../src/app/services/drainStatusWithTime.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { StatusService } from '../../src/app/services/character/StatusService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { drainStatusWithTime } from '../../src/app/services/character/drainStatusWithTime.ts'
 import { advanceSleepDebt } from '../../src/domain/character/sleep.ts'
 import { content } from '../helpers/content.mjs'
 
@@ -18,7 +18,7 @@ test('sleep restores vitals per phase and clears debt once', () => {
   const data = content()
   assert.equal(data.ui.rest.sanityRecovery.rest, 0)
   assert.equal(data.ui.rest.sanityRecovery.sleep, 10)
-  const time = new DayTime()
+  const time = new DayTimeService()
   const status = new StatusService(['health', 'energy', 'sanity'].map(id => ({ id, value: 100, max: 100 })))
   const rest = new RestService(time, status)
   const sleep = { ...data.daytime.sleepDeprivation, awakePhases: 0, isSleeping: () => rest.isSleeping }

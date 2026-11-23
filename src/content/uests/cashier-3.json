@@ -1,0 +1,80 @@
+{
+  "id": "cashier-3",
+  "name": "One day: supplies for Dusan",
+  "description": "Ask Zofia Nowak for work, deliver the regular goods, then return for payment. Finish within one day (four phases), including your return. Restart with Zofia if late; buy replacements if needed. Deliver 1 Batteries to Dusan Markovic.",
+  "offeredBy": "cashier",
+  "offerText": "Looking for courier work?",
+  "prerequisites": [
+    "cashier-2"
+  ],
+  "retryStage": 1,
+  "stages": [
+    {
+      "id": "cashier-3-collect",
+      "description": "Receive the delivery goods from Zofia.",
+      "trigger": {
+        "kind": "accept"
+      },
+      "grantItems": [
+        {
+          "itemId": "batteries",
+          "quantity": 1
+        }
+      ],
+      "deadlinePhases": 4
+    },
+    {
+      "id": "cashier-3-deliver-0",
+      "description": "Deliver 1 Batteries to Dusan Markovic.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "cashier-3-deliver-0"
+      },
+      "requiredItems": [
+        {
+          "itemId": "batteries",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "batteries",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "cashier-3-return",
+      "description": "Report completed deliveries and collect payment.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "cashier",
+        "choiceId": "cashier-3-return"
+      }
+    }
+  ],
+  "reward": {
+    "money": 10,
+    "items": [
+      {
+        "itemId": "canvas-backpack",
+        "quantity": 1
+      }
+    ]
+  },
+  "retryTrigger": {
+    "npcId": "cashier",
+    "choiceId": "cashier-3-retry"
+  },
+  "deliveryKind": "courier",
+  "_codex": {
+    "narrativeIntent": "Delivery paperwork starts using unfamiliar military routing codes.",
+    "implementationNotes": [
+      "Preserve delivery targets and timing."
+    ],
+    "decisions": [],
+    "crossQuestHooks": [],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems."
+  }
+}

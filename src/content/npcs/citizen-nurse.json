@@ -4,67 +4,67 @@
   "textureKey": "citizen-nurse",
   "path": "assets/characters/npc/citizens.png",
   "idleAnimation": "citizen-nurse-idle",
-  "referenceWidth": 2048,
+  "referenceWidth": 2172,
   "frameRate": 3,
   "displayHeight": 108,
   "depth": 6,
   "interactionRadius": 65,
-  "background": "light",
+  "background": "none",
   "scale": 0.9,
   "repeat": -1,
   "frameSize": {
-    "width": 112,
-    "height": 180,
-    "referenceHeight": 176
+    "width": 128,
+    "height": 224,
+    "referenceHeight": 216
   },
   "idleSteps": [
     {
-      "x": 70,
-      "y": 174,
-      "width": 96,
-      "height": 180,
+      "x": 309,
+      "y": 240,
+      "width": 82,
+      "height": 216,
       "anchorX": 48,
-      "anchorY": 176
+      "anchorY": 216
     },
     {
-      "x": 252,
-      "y": 174,
-      "width": 96,
-      "height": 180,
-      "anchorX": 48,
-      "anchorY": 176
+      "x": 475,
+      "y": 240,
+      "width": 82,
+      "height": 216,
+      "anchorX": 48.5,
+      "anchorY": 216
     },
     {
-      "x": 434,
-      "y": 174,
-      "width": 96,
-      "height": 180,
-      "anchorX": 48,
-      "anchorY": 176
+      "x": 634,
+      "y": 240,
+      "width": 93,
+      "height": 216,
+      "anchorX": 47.5,
+      "anchorY": 216
     },
     {
-      "x": 616,
-      "y": 174,
-      "width": 96,
-      "height": 180,
-      "anchorX": 48,
-      "anchorY": 176
+      "x": 792,
+      "y": 240,
+      "width": 84,
+      "height": 216,
+      "anchorX": 49.5,
+      "anchorY": 216
     },
     {
-      "x": 798,
-      "y": 174,
-      "width": 96,
-      "height": 180,
+      "x": 958,
+      "y": 240,
+      "width": 82,
+      "height": 216,
       "anchorX": 48,
-      "anchorY": 176
+      "anchorY": 216
     },
     {
-      "x": 980,
-      "y": 174,
-      "width": 96,
-      "height": 180,
-      "anchorX": 48,
-      "anchorY": 176
+      "x": 1126,
+      "y": 240,
+      "width": 82,
+      "height": 216,
+      "anchorX": 47,
+      "anchorY": 216
     }
   ],
   "dialogueId": "citizen-nurse",

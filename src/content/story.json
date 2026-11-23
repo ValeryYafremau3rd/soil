@@ -1,0 +1,406 @@
+{
+  "consequenceDelayDays": 1,
+  "interactionRadius": 65,
+  "messages": {
+    "interact": "Enter · {name}",
+    "unavailable": "No new evidence is available. Follow the current quest objective and its time restrictions before proceeding.",
+    "illegalBlocked": "The service gate needs the Titan’s strange key and a cleared convoy route. Make room for the quest reward.",
+    "officialBlocked": "The checkpoint requires the confidential handoff and an exit permit. A work pass is not sufficient. Make room for the quest reward.",
+    "leave": "Leave.",
+    "complete": "Prologue complete.",
+    "save": "Save ending",
+    "load": "Load game",
+    "newGame": "New game"
+  },
+  "completedFlags": {
+    "town-opinions": "prologue_investigations_unlocked",
+    "bartender-letter": "government_report_seen",
+    "cashier-4": "courier_work_pass",
+    "clerk-official-seal": "government_transport_evidence",
+    "factory-locked-workshop": "factory_access_evidence",
+    "factory-missing-worker": "factory_worker_clue",
+    "factory-supplies": "factory_empty_crates_seen",
+    "hospital-no-visitors": "hospital_transfer_evidence",
+    "hospital-patient-register": "hospital_missing_records",
+    "milena-mother-journal": "hospital_journal_found",
+    "nurse-tablet-deliveries": "hospital_tablet_discrepancy",
+    "prologue-government-exit": "official_exit_ready",
+    "prologue-last-night": "escape_routes_unlocked",
+    "smuggler-3": "factory_ledger_seen"
+  },
+  "decisions": [
+    {
+      "id": "dusan_fate",
+      "questId": "factory-locked-workshop",
+      "choiceId": "factory-workshop-report",
+      "legacyDefault": "warn",
+      "options": [
+        {
+          "value": "warn"
+        },
+        {
+          "value": "report",
+          "npcId": "citizen-mechanic"
+        }
+      ]
+    },
+    {
+      "id": "patient_records_fate",
+      "questId": "hospital-no-visitors",
+      "choiceId": "hospital-no-visitors-decision",
+      "legacyDefault": "copy",
+      "options": [
+        {
+          "value": "copy"
+        },
+        {
+          "value": "expose",
+          "npcId": "stranger"
+        },
+        {
+          "value": "pavel"
+        }
+      ]
+    },
+    {
+      "id": "apartment_evidence_choice",
+      "questId": "clerk-apartment-evidence",
+      "choiceId": "apartment-evidence-report",
+      "legacyDefault": "report",
+      "options": [
+        {
+          "value": "report",
+          "npcId": "citizen-caretaker"
+        },
+        {
+          "value": "conceal"
+        }
+      ]
+    },
+    {
+      "id": "government_exit_bargain",
+      "questId": "prologue-government-exit",
+      "choiceId": "government-exit-negotiate",
+      "legacyDefault": "refuse",
+      "options": [
+        {
+          "value": "accept"
+        },
+        {
+          "value": "refuse"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "factory-locker",
+      "name": "Worker locker",
+      "locationId": "factory",
+      "buildingId": "factory-main",
+      "floor": 0,
+      "x": 250,
+      "questId": "factory-missing-worker",
+      "stageId": "inspect-locker",
+      "text": "An abandoned locker holds a night-shift maintenance slip. The worker was assigned to the sealed workshop. There is no record here of his death."
+    },
+    {
+      "id": "factory-workshop",
+      "name": "Restricted workshop · service passage",
+      "locationId": "factory",
+      "buildingId": "factory-main",
+      "floor": 0,
+      "x": 1500,
+      "questId": "factory-locked-workshop",
+      "stageId": "enter-workshop",
+      "text": "The maintenance passage bypasses the sealed main door. Beyond it, reinforced containment doors bear the same supply markings as the ledger. The records do not explain what was held here."
+    },
+    {
+      "id": "hospital-register",
+      "name": "Patient register",
+      "locationId": "living-district",
+      "buildingId": "living-barracks",
+      "floor": 0,
+      "x": 400,
+      "questId": "hospital-patient-register",
+      "stageId": "check-records",
+      "text": "The register lists patients transferred for specialist treatment. Several departures have no receiving signature. Their dates match the missing tablet deliveries."
+    },
+    {
+      "id": "factory-convoy-entry",
+      "name": "Restricted convoy entrance",
+      "locationId": "factory",
+      "x": 1800,
+      "questId": "prologue-last-night",
+      "stageId": "reach-factory",
+      "text": "At night the maintenance route leads behind the convoy cordon. The posted order calls this a medical containment transfer."
+    },
+    {
+      "id": "factory-convoy-incident",
+      "name": "Convoy observation point",
+      "locationId": "factory",
+      "x": 1950,
+      "questId": "prologue-last-night",
+      "stageId": "witness-incident",
+      "text": "A massive creature breaks through the convoy cordon. The Titan is real; the transport markings still do not explain its origin. The perimeter service gate and official checkpoint offer separate ways out."
+    },
+    {
+      "id": "factory-perimeter-service-gate",
+      "name": "Perimeter service gate",
+      "locationId": "factory",
+      "x": 130,
+      "route": "illegal",
+      "text": "An old maintenance lock blocks the perimeter passage. The strange key taken from a Titan fits it."
+    },
+    {
+      "id": "checkpoint-handoff",
+      "name": "Checkpoint confidential handoff",
+      "locationId": "center",
+      "x": 2650,
+      "questId": "prologue-government-exit",
+      "stageId": "handoff",
+      "text": "The officer files the copied transport evidence under the containment order and issues an exit permit bearing your name."
+    },
+    {
+      "id": "district-official-checkpoint",
+      "name": "Military departure checkpoint",
+      "locationId": "center",
+      "x": 2780,
+      "route": "official",
+      "text": "Departure requires a named exit permit. Courier work passes authorize duties inside the quarantine district only."
+    },
+    {
+      "id": "dusan-confiscation-notice",
+      "name": "Workshop confiscation notice",
+      "locationId": "factory",
+      "x": 1140,
+      "absentNpcId": "citizen-mechanic",
+      "fallbackNpcId": "citizen-mechanic",
+      "text": "Dusan has been arrested pending a containment inquiry. Beneath the seal, his maintenance notes preserve the locker explanation, ledger code and service-passage directions. The workshop service passage remains accessible."
+    },
+    {
+      "id": "milena-detention-notice",
+      "name": "Detention transfer notice",
+      "locationId": "living-district",
+      "x": 210,
+      "absentNpcId": "stranger",
+      "fallbackNpcId": "stranger",
+      "text": "Milena was transferred to custody after challenging the register. A quiet copy left for Nadia preserves her mother’s dates and the patient-transfer comparison. A convoy custody reference offers a possible rescue lead."
+    },
+    {
+      "id": "resident-confiscation-notice",
+      "name": "Apartment inquiry notice",
+      "locationId": "living-district",
+      "x": 1250,
+      "absentNpcId": "citizen-caretaker",
+      "fallbackNpcId": "citizen-caretaker",
+      "text": "The resident has been detained for a containment inquiry. Notes left at the apartment preserve the tablet delivery acknowledgement and her earlier account of the district."
+    }
+  ],
+  "ending": {
+    "illegal": "Beyond the quarantine perimeter",
+    "official": "Authorized transfer beyond the district"
+  },
+  "endingSlides": {
+    "images": [
+      "assets/background/story/1.png",
+      "assets/background/story/2.png",
+      "assets/background/story/3.png"
+    ],
+    "fadeMs": 1400,
+    "nextLabel": "Next",
+    "backLabel": "Back",
+    "finishLabel": "Finish",
+    "slides": [
+      {
+        "id": "departure",
+        "title": "Departure",
+        "defaultVariant": "titan_key",
+        "variants": {
+          "titan_key": "The old service gate opened for the first time in years. By morning, the militia was searching for an escapee who had already left the district behind.",
+          "government_permit": "The checkpoint guards examined the papers and raised the barrier. The government recorded the departure as a routine transfer—and kept a record of where the traveler was going."
+        },
+        "rules": [
+          {
+            "variant": "government_permit",
+            "when": {
+              "route": "official"
+            }
+          }
+        ]
+      },
+      {
+        "id": "disappeared",
+        "title": "The Disappeared",
+        "defaultVariant": "records_hidden",
+        "variants": {
+          "records_exposed": "The stolen transfer lists reached the families of the missing. Some learned where their relatives were held. Others found only crossed-out names and unanswered questions.",
+          "records_hidden": "The missing remained listed as patients or administrative transfers. Their families kept asking for news. The authorities kept telling them to wait."
+        },
+        "rules": [
+          {
+            "variant": "records_exposed",
+            "when": {
+              "decision": {
+                "id": "patient_records_fate",
+                "value": "expose"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "dusan",
+        "title": "Dusan",
+        "defaultVariant": "default",
+        "variants": {
+          "safe": "Warned in time, Dusan avoided the arrests and returned to his workshop. He still helped his neighbors, but never again kept his secrets where soldiers could find them.",
+          "arrested": "Dusan's workshop was sealed and his tools confiscated. The administration said he had been transferred for questioning. No one could say where.",
+          "rescued": "Freed during the confusion at the factory, Dusan went into hiding. Spare parts still appeared at his friends' doors, though nobody admitted knowing who left them.",
+          "dead": "The factory called Dusan's death an accident and replaced him within a week. Irina kept his old wrench and refused to believe the report.",
+          "default": "Dusan kept his workshop running through the shortages. He complained about the government, repaired what he could, and survived another winter."
+        },
+        "rules": [
+          {
+            "variant": "arrested",
+            "when": {
+              "absentNpcId": "citizen-mechanic"
+            }
+          },
+          {
+            "variant": "safe",
+            "when": {
+              "decision": {
+                "id": "dusan_fate",
+                "value": "warn"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "milena",
+        "title": "Milena",
+        "defaultVariant": "safe",
+        "variants": {
+          "safe": "Milena stayed in the district and continued searching for her parents. She learned to ask dangerous questions quietly, and to keep copies of everything she found.",
+          "detained": "Milena was taken away before dawn. The authorities called it psychiatric observation. Her room was locked, and no hospital admitted receiving her.",
+          "rescued": "Milena escaped detention, but not the district. She continued looking for her family, now knowing that the truth alone would not protect her.",
+          "dead": "Milena never learned what happened to her parents. A few pages of her investigation survived, waiting for someone else to continue it."
+        },
+        "rules": [
+          {
+            "variant": "detained",
+            "when": {
+              "absentNpcId": "stranger"
+            }
+          }
+        ]
+      },
+      {
+        "id": "irina",
+        "title": "Irina",
+        "defaultVariant": "default",
+        "variants": {
+          "protected": "Irina kept the factory workers out of the investigation. She returned to her shift and quietly helped the families of those who never came back.",
+          "dismissed": "Irina lost her job after the factory records came to light. Her former coworkers left food outside her door, one small parcel at a time.",
+          "detained": "Irina was taken for questioning over the missing records. The factory continued without her. Her coworkers stopped speaking openly about the night shift.",
+          "default": "Irina went to work each morning, shared what little she had, and tried to keep the factory running. For her, survival remained a daily task."
+        },
+        "rules": []
+      },
+      {
+        "id": "nadia",
+        "title": "Nadia",
+        "defaultVariant": "default",
+        "variants": {
+          "protected": "Nadia remained at the hospital. She still handed out the prescribed tablets, but kept a secret list of every patient taken away.",
+          "betrayed": "After the patient records were exposed, Nadia lost her position and was summoned for questioning. Her replacement asked fewer questions.",
+          "missing": "One morning, Nadia did not arrive for her shift. Officials said she had been reassigned. None of her colleagues knew where.",
+          "default": "Nadia continued treating patients despite the shortages. She doubted the official reports, but would not abandon those who depended on her."
+        },
+        "rules": []
+      },
+      {
+        "id": "zofia",
+        "title": "Zofia",
+        "defaultVariant": "loyal",
+        "variants": {
+          "disillusioned": "Zofia stopped believing every word from the administration. She quietly set aside supplies for families who had lost someone.",
+          "loyal": "Zofia kept the ration books in order and reported suspicious customers. She believed obedience was the district's best chance of recovery.",
+          "dismissed": "Zofia was dismissed for giving out supplies without authorization. For the first time, she stood in the ration queue instead of behind the counter."
+        },
+        "rules": []
+      },
+      {
+        "id": "viktor",
+        "title": "Viktor",
+        "defaultVariant": "default",
+        "variants": {
+          "protected": "Viktor kept the bar open. Soldiers still drank there, and he still listened—passing what he learned to families searching for the missing.",
+          "arrested": "The militia arrested Viktor over a stolen report. His bar was boarded up, but people kept coming to its door hoping for news.",
+          "closed": "Shortages finally closed Viktor's bar. He traded favors and information from his apartment, even after the last bottle was gone.",
+          "default": "Viktor kept serving what little he could find. In a district where everyone watched their words, his bar remained a place to talk."
+        },
+        "rules": []
+      },
+      {
+        "id": "elena",
+        "title": "Elena",
+        "defaultVariant": "loyal",
+        "variants": {
+          "doubtful": "Elena still swept the streets and took her medicine. But after watching neighbors disappear, she stopped repeating every conversation to the authorities.",
+          "untreated": "When medicine ran short, Elena was told to return tomorrow. She kept waiting, certain the administration would correct its mistake.",
+          "loyal": "Elena obeyed the curfew and trusted the government. As more neighbors disappeared, she convinced herself they must have broken the rules.",
+          "detained": "Elena was detained for a containment inquiry. Her apartment stood silent; the authorities offered no further explanation."
+        },
+        "rules": [
+          {
+            "variant": "detained",
+            "when": {
+              "absentNpcId": "citizen-caretaker"
+            }
+          }
+        ]
+      },
+      {
+        "id": "pavel",
+        "title": "Pavel",
+        "defaultVariant": "in_power",
+        "variants": {
+          "exposed": "Pavel was recalled after copies of his reports reached the capital. His replacement arrived with the same orders and a different signature.",
+          "cooperated": "Pavel approved one departure and recorded it as official business. He kept copies of the papers—and a detailed account of the traveler.",
+          "in_power": "Pavel reported that the quarantine was working. The capital approved his recommendations, and the district received another set of restrictions."
+        },
+        "rules": [
+          {
+            "variant": "cooperated",
+            "when": {
+              "route": "official"
+            }
+          }
+        ]
+      },
+      {
+        "id": "district",
+        "title": "The District",
+        "defaultVariant": "controlled",
+        "variants": {
+          "resistance": "Families exchanged names. Workers hid supplies. Anonymous notices appeared on doors. The curfew remained, but fewer people believed the official story.",
+          "factory_disaster": "The factory was sealed after the final operation. The government blamed damaged machinery. Without wages, the workers faced a harsher winter.",
+          "controlled": "The factory reopened, ration lines grew longer, and the curfew stayed in force. The authorities promised the restrictions were temporary, but gave no date for their end."
+        },
+        "rules": []
+      },
+      {
+        "id": "beyond",
+        "title": "Beyond the District",
+        "defaultVariant": "always",
+        "variants": {
+          "always": "Beyond the checkpoint, other towns waited under the same official promises. Military convoys still moved after dark. The quarantine was larger than anyone in the district had been told.\n\nThe journey had only begun."
+        },
+        "rules": []
+      }
+    ]
+  }
+}

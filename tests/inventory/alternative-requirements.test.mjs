@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { understandsItem, unmetItemRequirements, applyCarriedBonuses, itemRequirementStates } from '../../src/domain/inventory/items.ts'
 import { createCharacter } from '../../src/domain/skills/character.ts'
 import { catalogue, contentFiles } from '../helpers/content.mjs'
@@ -70,7 +70,7 @@ test('education thresholds exceed all specialized alternatives and invalid autho
     item.eruditionRequired = level
     assert.throws(() => validateContent(data, sources), /education must exceed/)
   }
-  assert.equal(data.items.find(item => item.id === 'encyclopedia').eruditionRequired, 4)
+  assert.equal(data.items.find(item => item.id === 'health-magazine-erudition').eruditionRequired, 4)
 })
 
 test('requirement states distinguish fulfilled, unmet, and unused alternatives', () => {

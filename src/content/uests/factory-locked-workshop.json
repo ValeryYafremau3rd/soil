@@ -1,0 +1,85 @@
+{
+  "id": "factory-locked-workshop",
+  "name": "The Locked Workshop",
+  "description": "Trace the night-shift maintenance slip to a restricted factory workshop.",
+  "offeredBy": "citizen-mechanic",
+  "offerText": "Trace the night-shift maintenance slip to a restricted factory workshop.",
+  "prerequisites": [
+    "factory-missing-worker",
+    "smuggler-3"
+  ],
+  "stages": [
+    {
+      "id": "discuss-ledger",
+      "description": "Compare the sealed ledger with the maintenance slip at Dusan’s workshop.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "factory-workshop-ledger"
+      }
+    },
+    {
+      "id": "enter-workshop",
+      "description": "Use the service route to enter the restricted workshop and inspect reinforced doors.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "factory-workshop-inspect"
+      },
+      "worldInteraction": "factory-workshop"
+    },
+    {
+      "id": "report-findings",
+      "description": "Tell Irina about the military equipment without exposing Dusan.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "factory-workshop-report"
+      }
+    }
+  ],
+  "_codex": {
+    "narrativeIntent": "Trace the night-shift maintenance slip to a restricted factory workshop.",
+    "implementationNotes": [
+      "Add a restricted factory workshop and service route; entry should be possible by stealth or via Dusan trust.",
+      "Inspect workshop reveals reinforced containment doors and supply markings, not a full monster explanation.",
+      "Implement report-Dusan choice: warn Dusan or inform Pavel. If reported, arrest him next day, suppress NPC schedule, disable services; add alternative workshop entry for finale."
+    ],
+    "decisions": [
+      {
+        "id": "dusan_fate",
+        "options": [
+          {
+            "value": "warn",
+            "effects": [
+              "dusan_status=normal",
+              "factory_tunnel_access=true",
+              "government_trust -1"
+            ]
+          },
+          {
+            "value": "report",
+            "effects": [
+              "dusan_status=arrested next day",
+              "government_trust +1",
+              "factory_tunnel_access=false",
+              "spawn workshop confiscation notice"
+            ]
+          }
+        ],
+        "defaultIfLegacy": "warn"
+      }
+    ],
+    "crossQuestHooks": [
+      "factory-missing-worker",
+      "smuggler-3"
+    ],
+    "compatibility": "_codex is design metadata, not an executable trigger. Keep all original IDs, trigger shapes, rewards, and existing save compatibility. Add runtime support only after implementing the documented systems.",
+    "onQuestCompleted": [
+      {
+        "setFlag": "factory_access_evidence",
+        "value": true
+      }
+    ]
+  }
+}

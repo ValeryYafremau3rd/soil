@@ -23,13 +23,13 @@
     {
       "id": "chair",
       "type": "chair-armrests",
-      "x": 198,
+      "x": 175,
       "scale": 1
     },
     {
       "id": "sofa",
       "type": "sofa-patterned",
-      "x": 302.5,
+      "x": 295,
       "scale": 1
     }
   ]

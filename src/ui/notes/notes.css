@@ -7,12 +7,29 @@
 .notes-help { margin: 16px 0 0; font-size: 12px; color: #b7c5d6; }
 .notes-tabs [aria-selected="true"], .notes-entries [aria-pressed="true"] { border-color: #e7c976; background: #464332; }
 .notes-entries { list-style: none; padding: 0; margin: 0; display: grid; gap: 5px; }
-.notes-group { font-weight: 700; }
+.notes-group { font-weight: 400; }
 .notes-group-items { list-style: none; margin: 5px 0 0; padding-left: 12px; }
 .notes-group-items li + li { margin-top: 5px; }
 .notes-entries button:focus-visible { outline: 2px solid #e7c976; outline-offset: -3px; }
 .notes-details h3 { margin-top: 0; }
 .notes-details { display: flow-root; }
-.notes-npc-preview { float: left; width: auto; height: 150px; max-width: 40%; object-fit: contain; margin: 0 16px 12px 0; }
 .notes-details li { margin-bottom: 8px; }
 @media (max-width: 540px) { .notes-layout { grid-template-columns: 135px minmax(0, 1fr); gap: 12px; } }
+
+.dossier-modal .notes-menu { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.dossier-modal .notes-layout { flex: 1; min-height: 0; grid-template-columns: minmax(180px, 28%) minmax(0, 1fr); gap: 24px; }
+.dossier-modal .notes-sidebar, .dossier-modal .notes-details { max-height: none; min-height: 0; }
+.dossier-modal .notes-details { border-left: 1px solid var(--paper-rule); padding-left: 24px; }
+.dossier-modal .notes-tabs { flex-shrink: 0; }
+.dossier-modal .notes-tabs button { gap: 10px; }
+.dossier-modal .notes-tabs span { font-variant-numeric: tabular-nums; }
+.dossier-modal .notes-entries { gap: 5px; }
+.dossier-modal .notes-entries button { border-color: #996e47; }
+.dossier-modal .notes-details p { margin: 0 0 14px; }
+.dossier-modal .notes-help { flex-shrink: 0; margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--paper-rule); }
+@media (max-width: 600px) {
+  .dossier-modal .notes-layout { grid-template-columns: minmax(110px, 36%) minmax(0, 1fr); gap: 12px; }
+  .dossier-modal .notes-details { padding-left: 12px; }
+  .dossier-modal .notes-tabs { gap: 5px; }
+  .dossier-modal .notes-tabs button { gap: 6px; font-size: 12px; }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "bartender-letter",
+  "name": "Everything under control",
+  "description": "Check the clerk's letter in Center's postbox at night, show Viktor, then return it at night.",
+  "offeredBy": "bartender",
+  "offerText": "Check the clerk's letter in Center's postbox at night.",
+  "prerequisites": [
+    "bartender-shortages"
+  ],
+  "deliveryItemId": "clerk-report",
+  "stages": [
+    {
+      "id": "collect-report",
+      "description": "Take the clerk's letter from Center's postbox at night.",
+      "trigger": {
+        "kind": "loot",
+        "containerId": "center-post"
+      },
+      "phases": [
+        "night"
+      ],
+      "requiredItems": [
+        {
+          "itemId": "clerk-report",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "letter-show",
+      "description": "Show the letter to Viktor.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "letter-show"
+      },
+      "requiredItems": [
+        {
+          "itemId": "clerk-report",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "return-report",
+      "description": "Put the letter back into Center's postbox at night.",
+      "trigger": {
+        "kind": "deposit",
+        "containerId": "center-post"
+      },
+      "phases": [
+        "night"
+      ],
+      "requiredItems": [
+        {
+          "itemId": "clerk-report",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "letter-finish",
+      "description": "Return to Viktor for payment.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "letter-finish"
+      }
+    }
+  ],
+  "reward": {
+    "money": 20,
+    "items": [
+      {
+        "itemId": "barbed-bat",
+        "quantity": 1
+      }
+    ]
+  }
+}

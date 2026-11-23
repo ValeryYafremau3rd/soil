@@ -1,0 +1,16 @@
+{
+  "id": "oil",
+  "price": 5,
+  "name": "Oil bottle",
+  "description": "A container of dark lubricating oil.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Material",
+  "icon": {
+    "x": 1410,
+    "y": 255,
+    "width": 95,
+    "height": 165
+  },
+  "scale": 1
+}

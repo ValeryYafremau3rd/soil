@@ -1,0 +1,82 @@
+{
+  "id": "postman",
+  "name": "Postman: a letter for {destination}",
+  "description": "Collect the letter from the Center postbox and deliver it to {destination}. No further letters arrive while this delivery is unfinished.",
+  "repeatable": true,
+  "morningStart": true,
+  "deliveryItemId": "postman-letter",
+  "reward": {
+    "money": 8
+  },
+  "destinations": [
+    {
+      "id": "bartender",
+      "name": "Viktor Petrov"
+    },
+    {
+      "id": "cashier",
+      "name": "Zofia Nowak"
+    },
+    {
+      "id": "citizen-caretaker",
+      "name": "Elena Jovanovic"
+    },
+    {
+      "id": "citizen-clerk",
+      "name": "Pavel Sokolov"
+    },
+    {
+      "id": "citizen-mechanic",
+      "name": "Dusan Markovic"
+    },
+    {
+      "id": "citizen-nurse",
+      "name": "Nadia Morozova"
+    },
+    {
+      "id": "stranger",
+      "name": "Milena Vukovic"
+    },
+    {
+      "id": "worker",
+      "name": "Irina Kovalenko"
+    }
+  ],
+  "stages": [
+    {
+      "id": "pickup",
+      "description": "Take the letter for {destination} from the Center postbox.",
+      "trigger": {
+        "kind": "loot",
+        "containerId": "center-post"
+      },
+      "requiredItems": [
+        {
+          "itemId": "postman-letter",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "deliver",
+      "description": "Deliver the letter to {destination}.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "$destination",
+        "choiceId": "postman-deliver"
+      },
+      "requiredItems": [
+        {
+          "itemId": "postman-letter",
+          "quantity": 1
+        }
+      ],
+      "removeItems": [
+        {
+          "itemId": "postman-letter",
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}

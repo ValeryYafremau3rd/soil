@@ -1,13 +1,13 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { RestService } from '../../src/app/services/RestService.ts'
-import { LocationLoadingService } from '../../src/app/services/LocationLoadingService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { RestService } from '../../src/app/services/world/RestService.ts'
+import { LocationLoadingService } from '../../src/app/services/session/LocationLoadingService.ts'
 
 for (const threat of ['combat', 'fear aura', 'both']) for (const kind of ['rest', 'sleep']) {
   test(`${kind} is blocked during ${threat}, including an open menu and a pending transition`, t => {
     t.mock.timers.enable({ apis: ['setTimeout'] })
-    const time = new DayTime(), loading = new LocationLoadingService(200)
+    const time = new DayTimeService(), loading = new LocationLoadingService(200)
     let recoveries = 0, saves = 0
     const rest = new RestService(time, { recover: () => { recoveries++ } },
       { rest: 3, sleep: 7 }, () => { saves++ }, loading)
@@ -46,7 +46,7 @@ for (const threat of ['combat', 'fear aura', 'both']) for (const kind of ['rest'
 for (const kind of ['rest', 'sleep']) {
   test(`${kind} covers time changes, blocks repeated actions and finishes the loading screen`, t => {
     t.mock.timers.enable({ apis: ['setTimeout'] })
-    const time = new DayTime(1, 'evening'), loading = new LocationLoadingService(200)
+    const time = new DayTimeService(1, 'evening'), loading = new LocationLoadingService(200)
     let recoveries = 0, saves = 0
     const rest = new RestService(time, { recover: () => { recoveries++ } },
       { rest: 3, sleep: 7 }, () => { saves++ }, loading)
@@ -80,7 +80,7 @@ for (const kind of ['rest', 'sleep']) {
 
 test('rest cannot open during another loading transition', () => {
   const loading = new LocationLoadingService(200)
-  const rest = new RestService(new DayTime(), { recover: () => assert.fail('unexpected recovery') },
+  const rest = new RestService(new DayTimeService(), { recover: () => assert.fail('unexpected recovery') },
     { rest: 3, sleep: 7 }, () => {}, loading)
   loading.begin('Factory')
   rest.open('rest', 'Bench')

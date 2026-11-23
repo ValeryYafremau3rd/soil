@@ -1,0 +1,115 @@
+{
+  "name": "Milena Vukovic",
+  "sourceKey": "stranger-source",
+  "textureKey": "stranger",
+  "path": "assets/characters/npc/stranger.png",
+  "idleAnimation": "stranger-idle",
+  "referenceWidth": 2048,
+  "frameRate": 6,
+  "displayHeight": 108,
+  "depth": 6,
+  "interactionRadius": 65,
+  "idleSteps": [
+    {
+      "x": 116,
+      "y": 30,
+      "width": 232,
+      "height": 624,
+      "anchorX": 132.5,
+      "anchorY": 624
+    },
+    {
+      "x": 450,
+      "y": 30,
+      "width": 232,
+      "height": 624,
+      "anchorX": 124,
+      "anchorY": 624
+    },
+    {
+      "x": 780,
+      "y": 30,
+      "width": 232,
+      "height": 624,
+      "anchorX": 127.5,
+      "anchorY": 624
+    },
+    {
+      "x": 1100,
+      "y": 30,
+      "width": 232,
+      "height": 624,
+      "anchorX": 131.5,
+      "anchorY": 624
+    },
+    {
+      "x": 1425,
+      "y": 30,
+      "width": 232,
+      "height": 624,
+      "anchorX": 141,
+      "anchorY": 624
+    },
+    {
+      "x": 1750,
+      "y": 30,
+      "width": 232,
+      "height": 624,
+      "anchorX": 144,
+      "anchorY": 624
+    }
+  ],
+  "dialogueId": "stranger",
+  "scale": 0.9,
+  "background": "light",
+  "repeat": -1,
+  "schedule": {
+    "morning": {
+      "locationId": "living-district",
+      "x": 210
+    },
+    "afternoon": {
+      "locationId": "center",
+      "x": 2200
+    },
+    "evening": {
+      "locationId": "living-district",
+      "x": 1250
+    },
+    "night": {
+      "locationId": "living-district",
+      "buildingId": "apartments",
+      "scale": 0.8,
+      "roomId": "apartment-11",
+      "x": 187
+    }
+  },
+  "frameSize": {
+    "width": 300,
+    "height": 634,
+    "referenceHeight": 624
+  },
+  "_codex": {
+    "character": "Milena Vukovic",
+    "arc": "hospital and family",
+    "questLinks": [
+      "milena-mother-letter",
+      "milena-mother-journal",
+      "hospital-patient-register",
+      "hospital-no-visitors"
+    ],
+    "dialogueImplementation": "NPC file is a sprite/schedule configuration, not a dialogue tree. Extend dialogue system using quest stage choiceIds from linked quests; do not overwrite animation/schedule fields. Use conditional options by quest state and flags.",
+    "scheduleOverrides": [
+      {
+        "when": "milena_status=detained",
+        "effect": "suppress usual spawns, place detention lead at former location; optionally rescue in finale"
+      }
+    ],
+    "dialogueBeats": [
+      "Mother is missing; father disappearance remains unresolved in prologue.",
+      "If records handed to Pavel, reduce trust; if exposed, arrest after one day."
+    ]
+  },
+  "portraitIndex": 1,
+  "portraitBackgroundThreshold": 45
+}

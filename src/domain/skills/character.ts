@@ -1,19 +1,25 @@
 import skillConfig from '../../content/skills.json' with { type: 'json' }
 
+/**
+ * Base character attributes used to derive skills and vital limits.
+ */
 export interface Attributes {
-  strength: number;
-  agility: number;
-  intelligence: number;
-  willpower: number;
-  charisma: number;
+  strength: number
+  agility: number
+  intelligence: number
+  willpower: number
+  charisma: number
 }
 
+/**
+ * Authored starting class attributes, identity and inventory supplies.
+ */
 export interface ClassDefinition {
-  id: string;
-  name: string;
-  attributes: Readonly<Attributes>;
-  startingItems: readonly string[];
-  startingItemQuantities?: Readonly<Partial<Record<string, number>>>;
+  id: string
+  name: string
+  attributes: Readonly<Attributes>
+  startingItems: readonly string[]
+  startingItemQuantities?: Readonly<Partial<Record<string, number>>>
 }
 
 export const ATTRIBUTE_LABELS = {
@@ -22,7 +28,7 @@ export const ATTRIBUTE_LABELS = {
   intelligence: "Intelligence",
   willpower: "Willpower",
   charisma: "Charisma",
-} as const;
+} as const
 
 export const SKILL_LABELS = {
   athletics: "Athletics",
@@ -30,26 +36,37 @@ export const SKILL_LABELS = {
   martialArts: "Martial Arts",
   scraper: "Scraper",
   lockpicking: "Lockpicking",
-  stealth: "Stealth",
+  stealth: "Sneaking",
   medicine: "Medicine",
   erudition: "Erudition",
   intimidation: "Intimidation",
-  persuasion: "Persuasion",
+  persuasion: "Diplomacy",
   barter: "Barter",
-} as const;
+} as const
 
-type Skills = Record<keyof typeof SKILL_LABELS, number>;
-export type SkillAttributeWeights = Record<keyof Skills, Record<keyof Attributes, number>>;
+type Skills = Record<keyof typeof SKILL_LABELS, number>
+export type SkillAttributeWeights = Record<keyof Skills, Record<keyof Attributes, number>>
 
-const attributeWeights = skillConfig.attributeWeights satisfies SkillAttributeWeights;
+const attributeWeights = skillConfig.attributeWeights satisfies SkillAttributeWeights
 
+/**
+ * Calculate skills.
+ * @param {Readonly<Attributes>} attributes - The attributes supplied to this operation.
+ * @returns {Skills} The result described by the TypeScript return signature.
+ */
 export function calculateSkills(attributes: Readonly<Attributes>): Skills {
-  return Object.fromEntries(Object.entries(attributeWeights).map(([skill, weights]) => [skill,
+  return Object.fromEntries(Object.entries(attributeWeights).map(([skill, weights]) => [
+    skill,
     (Object.keys(ATTRIBUTE_LABELS) as (keyof Attributes)[])
       .reduce((total, attribute) => total + attributes[attribute] * weights[attribute], 0),
-  ])) as Skills;
+  ])) as Skills
 }
 
+/**
+ * Create character.
+ * @param {ClassDefinition} definition - The definition supplied to this operation.
+ * @returns {object} The result described by the TypeScript return signature.
+ */
 export function createCharacter(definition: ClassDefinition) {
   return {
     classId: definition.id,
@@ -57,32 +74,45 @@ export function createCharacter(definition: ClassDefinition) {
     attributes: { ...definition.attributes },
     baseAttributes: { ...definition.attributes },
     skills: calculateSkills(definition.attributes),
-  };
+  }
 }
 
-export type Character = ReturnType<typeof createCharacter> & { skillModifiers?: Partial<ReturnType<typeof calculateSkills>> };
+export type Character = ReturnType<typeof createCharacter> & {
+  skillModifiers?: Partial<ReturnType<typeof calculateSkills>>
+}
 
+/**
+ * Validate classes against the supported rules.
+ * @param {readonly ClassDefinition[]} classes - The classes supplied to this operation.
+ * @param {readonly string[]} itemIds - The item ids supplied to this operation.
+ * @returns {void} Completes the operation without returning a value.
+ */
 export function validateClasses(
   classes: readonly ClassDefinition[],
   itemIds: readonly string[],
 ): void {
-  const ids = new Set<string>();
+  const ids = new Set<string>()
+
   for (const definition of classes) {
     if (!definition.id || !definition.name || ids.has(definition.id))
-      throw new Error("Classes require unique IDs and names");
-    ids.add(definition.id);
+      throw new Error("Classes require unique IDs and names")
+
+    ids.add(definition.id)
+
     for (const [id, quantity] of Object.entries(definition.startingItemQuantities ?? {})) {
       if (!definition.startingItems.includes(id) || typeof quantity !== "number" || !Number.isSafeInteger(quantity) || quantity < 1)
-        throw new Error(`Invalid starting item quantity for class ${definition.id}: ${id}`);
+        throw new Error(`Invalid starting item quantity for class ${definition.id}: ${id}`)
     }
+
     for (const key of Object.keys(ATTRIBUTE_LABELS) as (keyof Attributes)[]) {
       if (
         !Number.isInteger(definition.attributes[key]) ||
         definition.attributes[key] < 0
       ) {
-        throw new Error(`Invalid ${key} for class ${definition.id}`);
+        throw new Error(`Invalid ${key} for class ${definition.id}`)
       }
     }
+
     if (
       definition.startingItems.length < 3 || definition.startingItems.length > 6 ||
       new Set(definition.startingItems).size !== definition.startingItems.length ||
@@ -90,7 +120,7 @@ export function validateClasses(
     ) {
       throw new Error(
         `Class ${definition.id} requires three to six distinct existing starting items`,
-      );
+      )
     }
   }
 }

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import classes from '../../src/content/classes.json' with { type: 'json' }
 import { ATTRIBUTE_LABELS, calculateSkills, createCharacter, validateClasses } from '../../src/domain/skills/character.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { content } from '../helpers/content.mjs'
 import { applyCarriedBonuses, itemBonuses, unmetItemRequirements } from '../../src/domain/inventory/items.ts'
 
@@ -80,9 +80,9 @@ test('each class starts with its configured items and pickups respect stack limi
 test('starting kits fit six slots, add no attributes, and support each class supplies', () => {
   const definitions = Object.fromEntries(itemDefinitions.map(item => [item.id, item]))
   const kits = [
-    ['crowbar', 'rope', 'canned-meat', 'stealth-training-magazine', 'key-ring', 'money'],
-    ['lockpick', 'pliers', 'lockpicking-training-magazine', 'red-cigarettes', 'key-ring', 'money'],
-    ['briefcase', 'medicine-training-magazine', 'postcard', 'medicine-bottle', 'key-ring', 'money'],
+    ['crowbar', 'rope', 'canned-meat', 'sport-magazine-stealth', 'key-ring', 'money'],
+    ['lockpick', 'pliers', 'technical-magazine-lockpicking', 'red-cigarettes', 'key-ring', 'money'],
+    ['briefcase', 'health-magazine-medicine', 'postcard', 'medicine-bottle', 'key-ring', 'money'],
   ]
   classes.forEach((entry, index) => {
     assert.deepEqual(entry.startingItems, kits[index])

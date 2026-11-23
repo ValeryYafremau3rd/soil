@@ -1,5 +1,10 @@
 {
   "start": "greeting",
+  "openingLines": [
+    "Have a look while you can. I never know what the next delivery will bring.",
+    "I can help you at the counter, but I cannot promise what will be on the shelves tomorrow.",
+    "Buying, selling, or looking for work? Let us see what we can arrange."
+  ],
   "barter": {
     "id": "merchant:cashier",
     "name": "Zofia Nowak - Barter",
@@ -8,65 +13,32 @@
       {
         "itemId": "rope",
         "quantity": 1
-      },
-      {
-        "itemId": "certificate",
-        "quantity": 1
-      },
-      {
-        "itemId": "old-newspapers",
-        "quantity": 1
-      },
-      {
-        "itemId": "screwdriver",
-        "quantity": 1
-      },
-      {
-        "itemId": "charisma-training-handbook",
-        "quantity": 1
-      },
-      {
-        "itemId": "horseshoe-charm",
-        "quantity": 1
-      },
-      {
-        "itemId": "mechanics-book",
-        "quantity": 1
-      },
-      {
-        "itemId": "sewing-magazine",
-        "quantity": 1
-      },
-      {
-        "itemId": "wool-socks",
-        "quantity": 1
-      },
-      {
-        "itemId": "multimeter",
-        "quantity": 1
       }
     ],
-    "stock": {
-      "categories": [
-        "Tool",
-        "Medical",
-        "Material",
-        "Supply",
-        "Electronics",
-        "Clothing",
-        "Book",
-        "Document"
-      ],
-      "minItems": 3,
-      "maxItems": 4,
-      "minQuantity": 1,
-      "maxQuantity": 1
-    }
+    "stockTable": "merchant-cashier"
   },
   "nodes": {
     "greeting": {
-      "text": "I'm Zofia Nowak, the shop cashier. I run the shop counter. Looking for tools or supplies? Ask to barter.",
+      "text": "Zofia Nowak. I manage the shop and its allocations. Every item comes through approved channels, so please don't ask me to sell what hasn't been issued. Mr. Sokolov keeps the records in order. If everyone did their part, we'd have far fewer problems.",
       "choices": [
+        {
+          "id": "official-seal-cashier",
+          "text": "[Quest] Compare Viktor’s notes with Zofia’s delivery register.",
+          "questId": "clerk-official-seal",
+          "next": "story-official-seal-cashier"
+        },
+        {
+          "id": "shortages-cashier",
+          "text": "[Quest] When will Viktor's bar receive supplies?",
+          "next": "shortages-answer",
+          "questId": "bartender-shortages"
+        },
+        {
+          "id": "town-opinion",
+          "text": "[Town situation] Do you still believe the quarantine is working?",
+          "next": "town-opinion",
+          "questId": "town-opinions"
+        },
         {
           "id": "courier-pickup",
           "text": "[Courier] I am here to collect the parcel.",
@@ -80,13 +52,19 @@
           "next": "courier-delivery-thanks"
         },
         {
+          "id": "postman-deliver",
+          "text": "[Delivery] Here is your letter.",
+          "questId": "postman",
+          "next": "postman-thanks"
+        },
+        {
           "id": "advice",
-          "text": "[Advice]",
+          "text": "[Advice] Any practical advice?",
           "next": "advice"
         },
         {
           "id": "about",
-          "text": "Tell about yourself.",
+          "text": "Tell me about your work.",
           "next": "about"
         },
         {
@@ -96,12 +74,12 @@
         },
         {
           "id": "stock",
-          "text": "What do you have?",
+          "text": "What supplies are available?",
           "next": "supplies"
         },
         {
           "id": "cashier-1-accept",
-          "text": "[Work] First job: beer for Viktor",
+          "text": "[Work] Deliver beer to Viktor.",
           "next": "cashier-1-cashier-1-accept",
           "acceptQuestId": "cashier-1"
         },
@@ -113,7 +91,7 @@
         },
         {
           "id": "cashier-2-accept",
-          "text": "[Work] A courier in the making",
+          "text": "[Work] Take the next courier assignment.",
           "next": "cashier-2-cashier-2-accept",
           "acceptQuestId": "cashier-2"
         },
@@ -125,7 +103,7 @@
         },
         {
           "id": "cashier-3-accept",
-          "text": "[Work] One day: supplies for Dusan",
+          "text": "[Work] Deliver batteries to Dusan.",
           "next": "cashier-3-cashier-3-accept",
           "acceptQuestId": "cashier-3"
         },
@@ -137,25 +115,25 @@
         },
         {
           "id": "cashier-4-accept",
-          "text": "[Work] One day: two deliveries",
+          "text": "[Work] Take two deliveries in one day.",
           "next": "cashier-4-cashier-4-accept",
           "acceptQuestId": "cashier-4"
         },
         {
           "id": "cashier-4-return",
-          "text": "[Delivery] Report completed deliveries and collect payment.",
+          "text": "[Delivery] I've completed both deliveries.",
           "next": "cashier-4-cashier-4-return",
           "questId": "cashier-4"
         },
         {
           "id": "cashier-5-accept",
-          "text": "[Work] Ask about the next delivery.",
+          "text": "[Work] Is there a night delivery?",
           "next": "cashier-5-cashier-5-accept",
           "acceptQuestId": "cashier-5"
         },
         {
           "id": "cashier-5-return",
-          "text": "[Delivery] Return to Zofia for payment before afternoon.",
+          "text": "[Delivery] The night delivery is complete.",
           "next": "cashier-5-cashier-5-return",
           "questId": "cashier-5"
         },
@@ -193,11 +171,21 @@
           "text": "[Find item] I found the requested item.",
           "questId": "find-item",
           "next": "find-item-payment"
+        },
+        {
+          "id": "ask-about",
+          "text": "I have questions about this town.",
+          "next": "ask-about"
+        },
+        {
+          "id": "people-menu",
+          "text": "Can you tell me about a specific person?",
+          "next": "people-menu"
         }
       ]
     },
     "supplies": {
-      "text": "I always keep rope for delivery work. The rest changes each morning: tools, medicine, materials, and practical supplies. Ask to barter to see what arrived today.",
+      "text": "Rope is always available for delivery work. Other stock changes each morning: tools, medicine, materials, whatever the capital can spare. People complain about empty shelves as though I personally ate the shipments. Ask to barter and I'll show you today's allocation.",
       "choices": [
         {
           "id": "barter",
@@ -212,7 +200,7 @@
       ]
     },
     "advice": {
-      "text": "You only have six inventory slots. Stack supplies where you can, and leave room before collecting a delivery.",
+      "text": "You have six inventory slots. Stack what you can and leave room before collecting deliveries. Order begins with small things. People who cannot organize a bag shouldn't lecture the authorities on organizing a city.",
       "choices": [
         {
           "id": "back",
@@ -227,7 +215,7 @@
       ]
     },
     "about": {
-      "text": "I run the shop counter. Looking for tools or supplies? Ask to barter. Morning: you can find me in Center's shop. Afternoon: you can find me in Center's shop. Evening: you can find me in Center's shop. Night: you can find me in apartment 41 in Living District.",
+      "text": "I run the shop in Center and coordinate deliveries with Pavel Sokolov, the capital's representative. He's a capable man, whatever people say. I'm at the shop morning, afternoon, and evening. At night I go straight home to apartment 41 in Living District. I lock my door, take my tablets, and sleep. That's what sensible people do.",
       "choices": [
         {
           "id": "back",
@@ -242,7 +230,7 @@
       ]
     },
     "cashier-1-cashier-1-accept": {
-      "text": "Deliver 1 Beer bottle to Viktor Petrov. The goods are yours now. Return to me for payment.",
+      "text": "One beer bottle for Viktor Petrov. The goods are in your care now. Deliver it and return to me for payment. And don't let Viktor talk you into one of his ridiculous theories.",
       "choices": [
         {
           "id": "back",
@@ -257,7 +245,7 @@
       ]
     },
     "cashier-1-cashier-1-return": {
-      "text": "Good work. Here is your pay. Ask for another job.",
+      "text": "Delivery confirmed. Here's your pay, and a leather belt from the shop stock. Keep your delivery things secured. See? When people follow instructions, things get done. Ask me for another assignment.",
       "choices": [
         {
           "id": "back",
@@ -272,7 +260,7 @@
       ]
     },
     "cashier-2-cashier-2-accept": {
-      "text": "Deliver 1 Bandage to Nadia Morozova. The goods are yours now. Return to me for payment.",
+      "text": "Take one bandage to Nadia Morozova, then return for payment. Medical supplies are limited, so please don't misplace it. The capital has enough demands on its resources.",
       "choices": [
         {
           "id": "back",
@@ -287,7 +275,7 @@
       ]
     },
     "cashier-2-cashier-2-return": {
-      "text": "Here is a cap and your pay. You can work as a courier now.",
+      "text": "Here's your pay and a cap. You're qualified for courier work now. It's a modest responsibility, but responsibility is how we keep this town alive.",
       "choices": [
         {
           "id": "back",
@@ -302,7 +290,7 @@
       ]
     },
     "cashier-3-cashier-3-accept": {
-      "text": "Deliver 1 Batteries to Dusan Markovic. The goods are yours now. Return to me for payment. You have one day (four phases), including your return.",
+      "text": "One set of batteries for Dusan Markovic. Deliver them and return for payment within one day—four phases, including the return trip. If he starts complaining about the government, remind him the factory still runs on supplies the government provides.",
       "choices": [
         {
           "id": "back",
@@ -317,7 +305,7 @@
       ]
     },
     "cashier-3-cashier-3-return": {
-      "text": "Here is a bag and your pay. You may need it: there will be several deliveries at once.",
+      "text": "On time. Good. Here's your pay and a bag; you'll be carrying several deliveries at once soon. I wish every worker were this dependable.",
       "choices": [
         {
           "id": "back",
@@ -332,7 +320,7 @@
       ]
     },
     "cashier-4-cashier-4-accept": {
-      "text": "Deliver 1 Duct tape to Elena Jovanovic. Deliver 1 Water bottle to Irina Kovalenko. The goods are yours now. Return to me for payment. You have one day (four phases), including your return.",
+      "text": "Two deliveries: one roll of duct tape to Elena Jovanovic and one water bottle to Irina Kovalenko. Return within one day—four phases, including your return. Both women understand the value of honest work.",
       "choices": [
         {
           "id": "back",
@@ -347,7 +335,7 @@
       ]
     },
     "cashier-4-cashier-4-return": {
-      "text": "Here is your pay and a courier night pass. Carry it and patrols treat you as they do during daytime. Monsters still attack.",
+      "text": "Here are your wages and a courier night pass. Carry it and the patrols will treat you as an authorized courier, as they would during the day. The pass does not protect you from whatever dangerous things may be outside. The militia has its reasons for the curfew; don't test them unnecessarily.",
       "choices": [
         {
           "id": "back",
@@ -362,7 +350,7 @@
       ]
     },
     "cashier-5-cashier-5-accept": {
-      "text": "Take a bandage from the courier crate near the shop in Center at night. Deliver it to Nadia Morozova the following morning and return before afternoon. Carry your pass for the night journey.",
+      "text": "There's a bandage in the courier crate near the shop in Center. Collect it at night, deliver it to Nadia Morozova the next morning, and return before afternoon. Keep your night pass with you and follow the patrols' instructions without argument.",
       "choices": [
         {
           "id": "back",
@@ -377,7 +365,7 @@
       ]
     },
     "cashier-5-cashier-5-return": {
-      "text": "Night delivery complete. Here is your pay. Taskboards offer more night deliveries with different goods and recipients.",
+      "text": "Night delivery completed and properly recorded. Here's your pay, and a pair of leather boots from the shop stock. A reliable courier needs sound footwear. The taskboards list more nighttime deliveries. Authorized work is one thing; wandering about to satisfy morbid curiosity is another.",
       "choices": [
         {
           "id": "back",
@@ -392,7 +380,7 @@
       ]
     },
     "cashier-3-retry": {
-      "text": "The delivery is active again. No replacement goods are issued. Check your journal for the delivery instructions.",
+      "text": "Your assignment has been reactivated. No replacement goods will be issued. Consult your journal and complete the delivery this time. We cannot afford waste.",
       "choices": [
         {
           "id": "back",
@@ -407,7 +395,7 @@
       ]
     },
     "cashier-4-retry": {
-      "text": "The delivery is active again. No replacement goods are issued. Check your journal for the delivery instructions.",
+      "text": "The delivery is active again, but I cannot issue replacement goods. Check your journal. These shortages are precisely why we have procedures.",
       "choices": [
         {
           "id": "back",
@@ -422,7 +410,7 @@
       ]
     },
     "cashier-5-retry": {
-      "text": "The delivery is active again. No replacement goods are issued. Check your journal for the delivery instructions.",
+      "text": "Your night delivery has been reactivated. No replacement goods. Read your journal carefully, and don't linger outside after completing your route.",
       "choices": [
         {
           "id": "back",
@@ -437,7 +425,7 @@
       ]
     },
     "courier-pickup-confirmed": {
-      "text": "Take this parcel to the recipient named in your journal.",
+      "text": "Here is the parcel. The recipient is listed in your journal. Deliver it directly; every missing package becomes another report on Mr. Sokolov's desk.",
       "choices": [
         {
           "id": "back",
@@ -447,7 +435,7 @@
       ]
     },
     "courier-delivery-thanks": {
-      "text": "Thank you. Here is your payment.",
+      "text": "Delivery received. Thank you. Here's your payment. A little reliability is a welcome change.",
       "choices": [
         {
           "id": "back",
@@ -457,7 +445,7 @@
       ]
     },
     "find-item-instructions": {
-      "text": "Find the requested item and take it to the recipient in your journal.",
+      "text": "The requested item and its recipient are listed in your journal. Please follow the instructions exactly; improvisation usually creates more work for everyone else.",
       "choices": [
         {
           "id": "back",
@@ -467,7 +455,332 @@
       ]
     },
     "find-item-payment": {
-      "text": "Exactly what was requested. Here is your payment.",
+      "text": "Yes, that's the correct item. Here's the agreed payment. It's pleasant when a transaction goes according to plan.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Back.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "town-opinion": {
+      "text": "The quarantine is necessary. The capital sends medicine, soldiers, and supplies, and still people find reasons to complain. I trust Mr. Sokolov. I trust the militia. Things will improve once everyone stops spreading panic and follows the rules. They have to improve.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "shortages-answer": {
+      "text": "I haven't been given a delivery date for Viktor's bar. Mr. Sokolov handles requests to the capital, and I have complete confidence in his judgment. Tell Viktor that rumors won't make the trucks arrive any faster.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about": {
+      "text": "What is it now? If you've heard another story about the streets after dark, I'd prefer facts to gossip.",
+      "choices": [
+        {
+          "id": "ask-about-1",
+          "text": "[Barter] Why are the shelves empty if supplies still arrive?",
+          "trustRequirement": 1,
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 4
+          },
+          "next": "ask-about-answer-1"
+        },
+        {
+          "id": "ask-about-2",
+          "text": "[Barter] What do you make of the noises people hear at night?",
+          "trustRequirement": 2,
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 6
+          },
+          "next": "ask-about-answer-2"
+        },
+        {
+          "id": "ask-about-3",
+          "text": "[Diplomacy] Why do soldiers need so much equipment near the factory?",
+          "trustRequirement": 3,
+          "skillRequirement": {
+            "skill": "persuasion",
+            "level": 8
+          },
+          "next": "ask-about-answer-3"
+        },
+        {
+          "id": "ask-about-4",
+          "text": "[Erudition] Why don't the factory's delivery records add up?",
+          "trustRequirement": 4,
+          "skillRequirement": {
+            "skill": "erudition",
+            "level": 10
+          },
+          "next": "ask-about-answer-4"
+        },
+        {
+          "id": "ask-about-5",
+          "text": "[Barter] Have you heard about people vanishing after dark?",
+          "trustRequirement": 5,
+          "skillRequirement": {
+            "skill": "barter",
+            "level": 12
+          },
+          "next": "ask-about-answer-5"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-1": {
+      "text": "The shelves are thin because the city is under blockade. That's hardly a secret. Some people insist the government is hiding food. If it were, why would it bother sending us anything at all? Mr. Sokolov says the allocations are fair. I believe him. I just wish I had more to put on the shelves. Irina Kovalenko has complained about a missing factory delivery. I have the paperwork in front of me; I cannot make a shipment appear by arguing.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I want to ask you about...",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-2": {
+      "text": "Every few days someone claims to hear screams, engines, or gunfire after curfew. I hear none of it. I'm home with my windows shut, like we're instructed. The doctors say infection can cause hallucinations, and people who refuse their tablets make themselves worse. What else am I supposed to believe—Viktor's drunken stories? Nadia says some patients still report symptoms after taking their medicine. Then she should speak to the Health Department, not encourage the rest of us to doubt our treatment.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I want to ask you about...",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-3": {
+      "text": "Soldiers take priority because they're keeping the city secure. I've seen requests for extra fuel, lamps, and heavy equipment routed through this shop's records. That's perfectly reasonable for patrols. Someone asked why they need so much near the factory. Because it's an important facility, obviously. Why does everyone insist on making ordinary things sinister?",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I want to ask you about...",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-4": {
+      "text": "You know how to read an allocation ledger, then? Fine. Some crates arrive sealed, with quantities entered by the capital before they reach my counter. I can't open them or alter the figures. Once, a shipment was marked 'delivered' although the factory reported receiving nothing. Mr. Sokolov said it was an administrative matter. I accepted that explanation. I still kept my own copy of the figures.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I want to ask you about...",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "ask-about-answer-5": {
+      "text": "You're asking whether people really disappear at night. I don't know. I've never seen anyone taken, and I have no intention of going outside to investigate. But a woman came here asking for her brother. She said he worked a late shift near the factory. His name wasn't on any transfer list I was allowed to see. I told her the authorities would handle it. She asked me to look her in the eye and promise. I couldn't. Please don't repeat that. It doesn't mean I believe those stories about something enormous walking behind the factory. It means I don't know where her brother is. That university girl, Milena, keeps asking about her parents. I wish I had an answer she would accept. I really do.",
+      "choices": [
+        {
+          "id": "ask-more",
+          "text": "I want to ask you about...",
+          "next": "ask-about"
+        },
+        {
+          "id": "back",
+          "text": "Something else...",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-menu": {
+      "text": "I can speak to their conduct as customers and residents. I will not entertain malicious gossip.",
+      "choices": [
+        {
+          "id": "people-about-elena-jovanovic",
+          "text": "Elena Jovanovic",
+          "next": "people-about-elena-jovanovic"
+        },
+        {
+          "id": "people-about-pavel-sokolov",
+          "text": "Pavel Sokolov",
+          "next": "people-about-pavel-sokolov"
+        },
+        {
+          "id": "people-about-dusan-markovic",
+          "text": "Dusan Markovic",
+          "next": "people-about-dusan-markovic"
+        },
+        {
+          "id": "people-about-irina-kovalenko",
+          "text": "Irina Kovalenko",
+          "next": "people-about-irina-kovalenko"
+        },
+        {
+          "id": "people-about-viktor-petrov",
+          "text": "Viktor Petrov",
+          "next": "people-about-viktor-petrov"
+        },
+        {
+          "id": "people-about-milena-vukovic",
+          "text": "Milena Vukovic",
+          "next": "people-about-milena-vukovic"
+        },
+        {
+          "id": "people-about-nadia-morozova",
+          "text": "Nadia Morozova",
+          "next": "people-about-nadia-morozova"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-elena-jovanovic": {
+      "text": "Mrs. Jovanovic is diligent and public-spirited. She reports violations instead of spreading them. I respect that, even if she does linger at the counter when there's a queue.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-pavel-sokolov": {
+      "text": "Mr. Sokolov is the capital's appointed representative. He works with the figures I submit and has never given me cause to question his instructions. People should show him more respect.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-dusan-markovic": {
+      "text": "Dusan Markovic collects supplies and then insults the system that provides them. The factory needs mechanics, yes, but it also needs discipline. I won't reward his theatrics.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-irina-kovalenko": {
+      "text": "Viktor complains about shortages as though I personally ate his inventory. He should be grateful the bar still receives an allocation at all.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-viktor-petrov": {
+      "text": "Irina is efficient, and I admire that. But she keeps comparing the factory's records with my invoices, looking for errors that must have a perfectly reasonable explanation.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-milena-vukovic": {
+      "text": "Milena is upset about her family. I sympathize. Truly. But she's young, and repeating rumors about hospitals only makes frightened people more frightened.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "people-about-nadia-morozova": {
+      "text": "Nadia receives medical supplies through approved channels. She's responsible, although lately she asks unusual questions about the tablets. I hope exhaustion isn't affecting her judgment.",
+      "choices": [
+        {
+          "id": "ask-another-person",
+          "text": "What about someone else?",
+          "next": "people-menu"
+        },
+        {
+          "id": "back",
+          "text": "Something else.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "story-official-seal-cashier": {
+      "text": "Viktor’s note and my delivery register share a routing stamp. Even the factory’s empty crates were signed into the same account.",
+      "choices": [
+        {
+          "id": "back",
+          "text": "Continue.",
+          "next": "greeting"
+        }
+      ]
+    },
+    "postman-thanks": {
+      "text": "Thank you for bringing my letter.",
       "choices": [
         {
           "id": "back",

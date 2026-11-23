@@ -1,0 +1,26 @@
+{
+  "id": "red-cigarettes",
+  "name": "Red cigarette pack (strong)",
+  "description": "Strong cigarettes. Recover 32 Sanity and gain +2 Concentration and -2 Physique until four phases pass or you sleep.",
+  "category": "Supply",
+  "rarity": "common",
+  "quality": 1,
+  "price": 2,
+  "iconSheet": {
+    "path": "assets/items/items2.png",
+    "width": 1535,
+    "height": 1024
+  },
+  "icon": {
+    "x": 35,
+    "y": 192,
+    "width": 135,
+    "height": 154
+  },
+  "scale": 1,
+  "consumable": true,
+  "maxStack": 10,
+  "recovery": {
+    "sanity": 32
+  }
+}

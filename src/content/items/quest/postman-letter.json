@@ -1,0 +1,19 @@
+{
+  "id": "postman-letter",
+  "price": 12,
+  "name": "Delivery letter",
+  "description": "A sealed letter. Your Postman journal entry names its recipient.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Quest",
+  "icon": {
+    "x": 495,
+    "y": 455,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "saleable": false,
+  "randomLoot": false,
+  "maxStack": 1
+}

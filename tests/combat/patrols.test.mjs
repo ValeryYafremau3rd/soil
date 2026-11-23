@@ -66,9 +66,9 @@ test('walking and pause timers account for elapsed time across multiple state ch
   assert.equal(one.x, x)
 })
 
-test('districts have the requested daytime and night patrol populations', () => {
+test('legacy district counts stay empty alongside the shared outdoor populations', () => {
   const config = content().patrols
-  const expected = { center: [2, 2, 2, 3], factory: [1, 1, 1, 2], 'living-district': [0, 0, 0, 1] }
+  const expected = { center: [0, 0, 0, 0], factory: [0, 0, 0, 0], 'living-district': [0, 0, 0, 0] }
   for (const [location, counts] of Object.entries(expected)) {
     assert.deepEqual(DAY_PHASES.map(phase => resolvePatrolPopulation(config, location, phase)?.count ?? 0), counts)
   }

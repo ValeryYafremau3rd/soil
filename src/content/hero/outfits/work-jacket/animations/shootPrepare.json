@@ -1,0 +1,22 @@
+{
+  "steps": [
+    {
+      "x": 52,
+      "y": 352,
+      "width": 82,
+      "height": 176,
+      "anchorX": 41,
+      "anchorY": 175,
+      "scale": 0.69090909
+    },
+    {
+      "x": 197,
+      "y": 352,
+      "width": 119,
+      "height": 176,
+      "anchorX": 59.5,
+      "anchorY": 175,
+      "scale": 0.67272727
+    }
+  ]
+}

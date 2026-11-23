@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { readFileSync } from 'node:fs'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { tradePrice } from '../../src/domain/inventory/trade.ts'
 import { validateClasses } from '../../src/domain/skills/character.ts'
 import { content } from '../helpers/content.mjs'

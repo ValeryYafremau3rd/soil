@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { content } from '../helpers/content.mjs'
 import test from 'node:test'
-import { TravelService } from '../../src/app/services/TravelService.ts'
+import { TravelService } from '../../src/app/services/world/TravelService.ts'
 
 const locations = content().locations.sort((a, b) => Number(b.id === 'center') - Number(a.id === 'center'))
 

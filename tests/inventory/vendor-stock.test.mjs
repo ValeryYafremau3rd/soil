@@ -2,18 +2,18 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { content, catalogue } from '../helpers/content.mjs'
 import { buildVendorSeeds } from '../../src/app/content/vendorSeeds.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
-import { DayTime } from '../../src/app/services/DayTime.ts'
-import { refreshContainersEachMorning } from '../../src/app/services/refreshContainersEachMorning.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
+import { DayTimeService } from '../../src/app/services/world/DayTimeService.ts'
+import { refreshContainersEachMorning } from '../../src/app/services/inventory/refreshContainersEachMorning.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
-import { DialogueService } from '../../src/app/services/DialogueService.ts'
+import { DialogueService } from '../../src/app/services/dialogue/DialogueService.ts'
 
 test('Dusan offers his complete stock from the first conversation without completed quests', () => {
   const data = content()
   const definition = data.dialogues['citizen-mechanic']
   const seed = buildVendorSeeds({ dusan: definition }, data.items)[0]
   assert.equal(seed.requiresQuest, undefined)
-  const inventory = new InventoryService(data.items, [seed])
+  const inventory = new InventoryService(data.items, [seed], () => 0.999)
   const dialogue = new DialogueService(inventory.openContainer, {
     isCompleted: () => false, canChoose: () => false, choose: () => false,
   })
@@ -27,7 +27,7 @@ test('Dusan offers his complete stock from the first conversation without comple
   }
 })
 
-test('vendors roll goods only from their configured categories with guaranteed staples and bounded quantities', () => {
+test('vendors roll authored offers with guaranteed staples and bounded quantities', () => {
   const data = content()
   for (const roll of [0, 0.5, 0.999]) {
     const seeds = buildVendorSeeds(data.dialogues, data.items)
@@ -35,15 +35,15 @@ test('vendors roll goods only from their configured categories with guaranteed s
     for (const id of ['bartender', 'cashier']) {
       const barter = data.dialogues[id].barter
       const stock = inventory.getSnapshot().containers[barter.id].items
-      for (const staple of barter.items) assert.equal(stock.filter(item => item.itemId === staple.itemId).reduce((sum, item) => sum + item.quantity, 0), staple.quantity)
-      assert.ok(stock.length <= barter.items.length + barter.stock.maxItems)
+      for (const staple of barter.items) assert.equal(stock.filter(item => item.itemId === staple.itemId).reduce((sum, item) => sum + item.quantity, 0), Math.min(staple.quantity, data.items.find(item => item.id === staple.itemId).maxStack ?? 1))
+      assert.ok(stock.length <= barter.items.length + barter.stock.offers.length)
       const quantities = new Map()
       for (const stack of stock.filter(item => !barter.items.some(staple => staple.itemId === item.itemId))) quantities.set(stack.itemId, (quantities.get(stack.itemId) ?? 0) + stack.quantity)
-      assert.ok(quantities.size >= barter.stock.minItems && quantities.size <= barter.stock.maxItems)
+      assert.ok(quantities.size <= barter.stock.offers.length)
       for (const [itemId, quantity] of quantities) {
         const item = data.items.find(item => item.id === itemId)
-        assert.ok(barter.stock.categories.includes(item.category))
-        assert.notEqual(item.randomLoot, false, 'keys and courier parcels are not vendor-generated goods')
+        assert.ok(barter.stock.offers.some(offer => offer.itemId === itemId))
+        assert.notEqual(item.saleable, false, 'quest goods are not vendor-generated goods')
         assert.ok(quantity >= barter.stock.minQuantity && quantity <= barter.stock.maxQuantity)
       }
     }
@@ -52,10 +52,10 @@ test('vendors roll goods only from their configured categories with guaranteed s
 
 test('morning changes stock; visits, ordinary phases, and night do not reroll; sold goods survive', () => {
   const data = content()
-  let roll = 0, calls = 0
+  let roll = 0.999, calls = 0
   const random = () => { calls++; return roll }
   const inventory = new InventoryService(data.items, buildVendorSeeds(data.dialogues, data.items), random, [{ itemId: 'portrait', quantity: 1 }])
-  const time = new DayTime()
+  const time = new DayTimeService()
   refreshContainersEachMorning(time, inventory)
   const initial = structuredClone(inventory.getSnapshot().containers)
   const initialCalls = calls
@@ -67,7 +67,7 @@ test('morning changes stock; visits, ordinary phases, and night do not reroll; s
   inventory.storeItem('portrait', 0)
   inventory.closeMenu()
   const money = inventory.getSnapshot().money
-  roll = 0.999
+  roll = 0
   time.advance()
   assert.notDeepEqual(inventory.getSnapshot().containers['merchant:cashier'].items, initial['merchant:cashier'].items)
   assert.notDeepEqual(inventory.getSnapshot().containers['merchant:bartender'].items, initial['merchant:bartender'].items)
@@ -94,10 +94,10 @@ test('loading preserves daily vendor contents and purchases without replenishing
 test('vendor stock config rejects unknown categories, empty pools, invalid counts and quantities', () => {
   for (const patch of [
     stock => { stock.categories = ['Unknown'] },
-    stock => { stock.categories = ['Quest'] },
+    stock => { stock.offers[0].itemId = 'courier-parcel' },
     stock => { stock.categories.push(stock.categories[0]) },
     stock => { stock.minItems = 4; stock.maxItems = 1 },
-    stock => { stock.minItems = 10000; stock.maxItems = 10000 },
+    stock => { stock.offers[0].chance = 2 },
     stock => { stock.minQuantity = 4; stock.maxQuantity = 1 },
     stock => { stock.maxQuantity = 0 },
   ]) {

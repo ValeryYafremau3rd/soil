@@ -1,0 +1,92 @@
+/* A second sheet and restrained office details tie the three document windows together. */
+.ui-modal:is(.dialogue-modal, .notes-modal, .inventory-modal) {
+  filter: drop-shadow(0 14px 20px #0008);
+}
+:is(.dialogue-modal, .notes-modal, .inventory-modal) .ui-panel {
+  border-color: #94744f;
+  box-shadow: inset 0 0 32px #79512026, 2px 3px 0 #c4ad82,
+    3px 4px 0 #806a48, 6px 7px 0 #d8c29b;
+}
+:is(.dialogue-modal, .notes-modal, .inventory-modal) .ui-modal__header {
+  position: relative;
+  border-bottom: 3px double #80684280;
+  padding-top: 16px;
+}
+:is(.dialogue-modal, .notes-modal, .inventory-modal) .ui-modal__header::before {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  color: #806842;
+  font: 9px/1.2 'Courier New', monospace;
+  letter-spacing: .22em;
+}
+.dialogue-modal .ui-modal__header::before { content: 'CONVERSATION RECORD'; }
+.notes-modal .ui-modal__header::before { content: 'PERSONAL ARCHIVE'; }
+.inventory-modal .ui-modal__header::before { content: 'PERSONAL EFFECTS'; }
+.ui-modal.dialogue-modal.dossier-modal {
+  width: min(840px, calc(100vw - 24px));
+}
+.dialogue-modal .ui-panel { padding: 28px 36px 24px; }
+.dialogue-modal .ui-modal__header h2 { font-size: 23px; letter-spacing: .05em; }
+.dialogue-modal .dialogue-layout { grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); }
+.dialogue-modal .dialogue-speech {
+  padding: 12px 8px 16px 16px;
+  border-left: 1px solid #873e3033;
+  background: linear-gradient(90deg, #80684208, transparent 45%);
+}
+.dialogue-modal .npc-portrait {
+  margin-right: 20px;
+  border: 0;
+  /* Fade the whole crop so its scaled canvas cannot leave a hard paper rim. */
+  mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent),
+    linear-gradient(to bottom, transparent, #000 13.5%, #000 86.5%, transparent);
+  mask-composite: intersect;
+}
+.dialogue-modal .npc-portrait__image {
+  filter: sepia(0.25) saturate(0.75) brightness(1.45) contrast(0.9);
+}
+.dialogue-modal .dialogue-replies { padding-top: 12px; }
+.dialogue-modal .selection-list {
+  border: 0;
+  border-top: 1px solid #80684266;
+  border-bottom: 1px solid #80684266;
+  border-radius: 0;
+}
+.dialogue-modal .selection-list__option {
+  border-bottom: 1px dotted #80684240;
+  padding: 10px 12px;
+}
+.dialogue-modal .selection-list__option:last-child { border-bottom: 0; }
+.dialogue-modal .dialogue-help { font-family: 'Courier New', monospace; }
+.notes-modal .notes-sidebar {
+  padding-right: 10px;
+  border-right: 1px dashed #80684266;
+}
+.notes-modal .notes-details {
+  background: linear-gradient(90deg, #8068420c, transparent 24%);
+}
+.notes-modal .notes-entries > li > button {
+  border-radius: 0 2px 2px 0;
+  border-left-width: 3px;
+  text-align: left;
+  box-shadow: 0 1px 2px #59432222;
+}
+.inventory-modal .inventory-details {
+  border-left: 1px dashed #80684280;
+  background: linear-gradient(90deg, #8068420c, transparent 40%);
+}
+.inventory-modal .inventory-bag-slots { border: 1px dashed #80684280; }
+.inventory-modal .inventory-slot {
+  border-radius: 1px;
+  box-shadow: inset 0 0 0 3px #eee0bd88, inset 0 0 14px #8b65211a,
+    1px 2px 0 #80684233;
+}
+.inventory-modal .inventory-slot > kbd {
+  border-radius: 0;
+  font-family: 'Courier New', monospace;
+}
+@media (max-width: 600px), (max-height: 540px) {
+  .dialogue-modal .ui-panel { padding: 22px 20px 18px; }
+  .dialogue-modal .ui-modal__header h2 { font-size: 19px; }
+  .dialogue-modal .dialogue-speech { padding-left: 10px; }
+}

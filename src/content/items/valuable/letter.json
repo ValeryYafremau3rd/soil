@@ -1,0 +1,19 @@
+{
+  "id": "letter",
+  "price": 12,
+  "name": "Handwritten letter",
+  "description": "A folded handwritten letter on yellowed paper.",
+  "rarity": "common",
+  "quality": 1,
+  "category": "Valuable",
+  "icon": {
+    "x": 495,
+    "y": 455,
+    "width": 105,
+    "height": 145
+  },
+  "scale": 1,
+  "skillRequirements": {
+    "barter": 6
+  }
+}

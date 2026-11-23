@@ -1,0 +1,40 @@
+{
+  "steps": [
+    {
+      "x": 323,
+      "y": 343,
+      "width": 142,
+      "height": 170,
+      "anchorX": 71,
+      "anchorY": 169,
+      "scale": 0.68705882
+    },
+    {
+      "x": 490,
+      "y": 343,
+      "width": 164,
+      "height": 170,
+      "anchorX": 82,
+      "anchorY": 169,
+      "scale": 0.68705882
+    },
+    {
+      "x": 658,
+      "y": 343,
+      "width": 127,
+      "height": 171,
+      "anchorX": 63.5,
+      "anchorY": 170,
+      "scale": 0.68304094
+    },
+    {
+      "x": 843,
+      "y": 340,
+      "width": 82,
+      "height": 174,
+      "anchorX": 41,
+      "anchorY": 173,
+      "scale": 0.66206897
+    }
+  ]
+}

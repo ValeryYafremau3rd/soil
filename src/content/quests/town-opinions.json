@@ -1,0 +1,99 @@
+{
+  "id": "town-opinions",
+  "name": "Voices of the town",
+  "description": "Ask everyone about the situation and report to the clerk.",
+  "offeredBy": "citizen-clerk",
+  "prerequisites": [
+    "find-work",
+    "first-steps"
+  ],
+  "stages": [
+    {
+      "id": "talk-bartender",
+      "description": "Ask Viktor Petrov about the town.",
+      "parallelGroup": "opinions",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "bartender",
+        "choiceId": "town-opinion"
+      }
+    },
+    {
+      "id": "talk-cashier",
+      "description": "Ask Zofia Nowak about the town.",
+      "parallelGroup": "opinions",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "cashier",
+        "choiceId": "town-opinion"
+      }
+    },
+    {
+      "id": "talk-citizen-caretaker",
+      "description": "Ask Elena Jovanovic about the town.",
+      "parallelGroup": "opinions",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-caretaker",
+        "choiceId": "town-opinion"
+      }
+    },
+    {
+      "id": "talk-citizen-mechanic",
+      "description": "Ask Dusan Markovic about the town.",
+      "parallelGroup": "opinions",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-mechanic",
+        "choiceId": "town-opinion"
+      }
+    },
+    {
+      "id": "talk-citizen-nurse",
+      "description": "Ask Nadia Morozova about the town.",
+      "parallelGroup": "opinions",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-nurse",
+        "choiceId": "town-opinion"
+      }
+    },
+    {
+      "id": "talk-stranger",
+      "description": "Ask Milena Vukovic about the town.",
+      "parallelGroup": "opinions",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "stranger",
+        "choiceId": "town-opinion"
+      }
+    },
+    {
+      "id": "talk-worker",
+      "description": "Ask Irina Kovalenko about the town.",
+      "parallelGroup": "opinions",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "worker",
+        "choiceId": "town-opinion"
+      }
+    },
+    {
+      "id": "return-clerk",
+      "description": "Report the townspeople’s opinions to Pavel Sokolov.",
+      "trigger": {
+        "kind": "dialogue",
+        "npcId": "citizen-clerk",
+        "choiceId": "town-opinions-report"
+      }
+    }
+  ],
+  "reward": {
+    "items": [
+      {
+        "itemId": "red-star",
+        "quantity": 1
+      }
+    ]
+  }
+}

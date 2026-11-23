@@ -3,7 +3,7 @@ import test from 'node:test'
 import { content, catalogue } from '../helpers/content.mjs'
 import { roomContainerPlacements } from '../../src/app/content/roomContainerPlacements.ts'
 import { buildContainerSeeds } from '../../src/app/content/containerSeeds.ts'
-import { InventoryService } from '../../src/app/services/InventoryService.ts'
+import { InventoryService } from '../../src/app/services/inventory/InventoryService.ts'
 import { validateContent } from '../../src/app/content/validateContent.ts'
 
 test('room 21 floor suitcase stores items across refreshes and save restoration', () => {
