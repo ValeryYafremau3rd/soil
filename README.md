@@ -25,6 +25,20 @@ Production output goes to dist/. The canvas fits a 960 x 540 logical viewport.
 This runs on desktop and mobile browsers. Native desktop installers and mobile app
 packages need wrappers and platform testing later. No native tooling is configured.
 
+## GitHub Pages
+
+The repository root contains this game's package.json. The Pages workflow builds
+and publishes dist/ on pushes to main, or when run manually from GitHub Actions.
+Vite uses /soil/ as its base path for the soil repository.
+
+In the repository's Settings → Pages, select GitHub Actions as the deployment source.
+After the changes are committed and pushed, check the Deploy SOIL to GitHub Pages
+workflow in the Actions tab. The published URL is
+https://ValeryYafremau3rd.github.io/soil/.
+
+Run npm run build and npm run preview to preview the production build locally;
+open the printed URL under /soil/.
+
 ## Game versions and saves
 
 The game version is defined in `src/app/version.ts` and displayed in the bottom-right

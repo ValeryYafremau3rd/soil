@@ -37,7 +37,7 @@ export function NpcPortrait({ npcId }: { npcId?: string }) {
       }
       context.putImageData(frame, 0, 0)
     }
-    image.src = '/assets/characters/npc/faces.png'
+    image.src = `${import.meta.env.BASE_URL}assets/characters/npc/faces.png`
     return () => { disposed = true }
   }, [index, npc])
   if (!npc || index === undefined) return null
